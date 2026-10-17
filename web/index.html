@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anchor Drift Prototype</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hud" aria-label="game status">
+        <div>
+          <span class="label">DISTANCE</span>
+          <strong id="distance">0.00 km</strong>
+          <span id="speedState" class="speed-state">速度 7.2 m/s</span>
+        </div>
+        <div>
+          <span class="label">BEST</span>
+          <strong id="best">0.00 km</strong>
+        </div>
+        <div>
+          <span class="label">ANCHOR</span>
+          <strong id="anchorState">READY</strong>
+          <div id="livesState" class="life-row" aria-label="生命 3/3"></div>
+        </div>
+        <div class="era-card">
+          <span class="label">ERA</span>
+          <strong id="eraState">石器时代</strong>
+          <span id="eraCountdown" class="era-countdown">距下个时代 260 m</span>
+          <div class="era-meter" aria-hidden="true">
+            <span id="eraFill"></span>
+          </div>
+        </div>
+      </section>
+
+      <canvas id="game" aria-label="Anchor Drift prototype game canvas"></canvas>
+
+      <section id="eraBanner" class="era-banner is-hidden" aria-live="polite">
+        <span class="label">NEW ERA</span>
+        <i id="eraBannerSigil" aria-hidden="true">STONE</i>
+        <strong id="eraBannerTitle">石器时代</strong>
+      </section>
+
+      <section class="era-timeline" aria-label="时代时间线">
+        <span class="timeline-label">TIMELINE</span>
+        <div id="eraTimelineTrack" class="timeline-track"></div>
+      </section>
+
+      <section class="round-legend" aria-label="本轮图示">
+        <div>
+          <span class="legend-label">本轮图示</span>
+        </div>
+        <div class="legend-line">
+          <span>障碍</span>
+          <i id="legendObstacleA" aria-hidden="true"></i>
+          <i id="legendObstacleB" aria-hidden="true"></i>
+        </div>
+        <div class="legend-line">
+          <span>护盾</span>
+          <i id="legendShield" aria-hidden="true"></i>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="controls">
+        <div id="controlHints" class="control-hints">
+          <kbd>A</kbd><span>左锚</span>
+          <kbd>D</kbd><span>右锚</span>
+          <kbd>Space</kbd><span>松锚 / 重开</span>
+        </div>
+      </section>
+
+      <div id="overlay" class="overlay">
+        <h1 id="overlayTitle">Anchor Drift</h1>
+        <p id="result">用左右锚把船甩过时代障碍，别让船撞到岸边或奇怪物件。</p>
+        <ul id="overlayTips" class="overlay-tips">
+          <li><kbd>A</kbd><span>左锚转向</span></li>
+          <li><kbd>D</kbd><span>右锚转向</span></li>
+          <li><kbd>Space</kbd><span>松开当前锚</span></li>
+        </ul>
+        <div class="overlay-actions">
+          <button id="startGame" type="button">开始游戏</button>
+          <button id="restart" type="button" hidden>重新开始</button>
+          <a id="returnMenu" class="overlay-link" href="./anchor-plus3.html">返回序号选择</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="./game.js"></script>
+  </body>
+</html>

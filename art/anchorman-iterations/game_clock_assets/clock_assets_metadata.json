@@ -1,0 +1,25 @@
+{
+  "asset_name": "pastel_hand_drawn_clock",
+  "canvas_px": [
+    1024,
+    1024
+  ],
+  "pivot_px": [
+    512,
+    512
+  ],
+  "transparent_background": true,
+  "default_hand_orientation": "Both hands point to 12 o'clock/up.",
+  "rotation_formula_degrees_clockwise_from_12": {
+    "minute_hand": "minute * 6",
+    "hour_hand": "(hour % 12) * 30 + minute * 0.5"
+  },
+  "layers_bottom_to_top": [
+    "clock_face_1024.png",
+    "clock_hour_hand_1024_pivot_center.png",
+    "clock_minute_hand_1024_pivot_center.png",
+    "clock_center_pin_1024.png"
+  ],
+  "preview": "clock_preview_10_10.png",
+  "notes": "All full-canvas hand sprites share the same 1024x1024 size and center pivot for easy layering and precise minute display."
+}

@@ -1,0 +1,120 @@
+{
+  "sheet": "assets/generation-90s-cutouts.png",
+  "bankTexture": "assets/generation-90s-bank-texture.png",
+  "riverTexture": "assets/generation-90s-river-texture.png",
+  "columns": 4,
+  "rows": 3,
+  "items": [
+    {
+      "file": "90s-bp-pager.png",
+      "id": "bp_pager",
+      "label": "BP机",
+      "note": "腰间开始震动的即时通讯",
+      "mode": "bg",
+      "index": 0,
+      "sprite": "assets/generation-90s-items/00-bp_pager.png"
+    },
+    {
+      "file": "90s-bb-phone-storefront.png",
+      "id": "bb_phone_storefront",
+      "label": "BB机店招",
+      "note": "通讯焦虑变成街头招牌",
+      "mode": "ragged",
+      "index": 1,
+      "sprite": "assets/generation-90s-items/01-bb_phone_storefront.png"
+    },
+    {
+      "file": "90s-vcd-discs.png",
+      "id": "vcd_discs",
+      "label": "VCD影碟",
+      "note": "盗版碟片把影像带回客厅",
+      "mode": "ragged",
+      "index": 2,
+      "sprite": "assets/generation-90s-items/02-vcd_discs.png"
+    },
+    {
+      "file": "90s-portable-vcd-player.png",
+      "id": "portable_vcd_player",
+      "label": "便携VCD",
+      "note": "家庭影音突然变成随身机器",
+      "mode": "ragged",
+      "index": 3,
+      "sprite": "assets/generation-90s-items/03-portable_vcd_player.png"
+    },
+    {
+      "file": "90s-cd-album-grid.png",
+      "id": "cd_album_grid",
+      "label": "唱片封面",
+      "note": "流行文化开始批量复制",
+      "mode": "ragged",
+      "index": 4,
+      "sprite": "assets/generation-90s-items/04-cd_album_grid.png"
+    },
+    {
+      "file": "90s-learning-computer-box.png",
+      "id": "learning_computer_box",
+      "label": "学习机包装",
+      "note": "电脑梦先从包装盒开始",
+      "mode": "ragged",
+      "index": 5,
+      "sprite": "assets/generation-90s-items/05-learning_computer_box.png"
+    },
+    {
+      "file": "90s-learning-keyboard-console.png",
+      "id": "learning_keyboard_console",
+      "label": "电脑学习机",
+      "note": "打字和游戏共用一块键盘",
+      "mode": "bg_white",
+      "index": 6,
+      "sprite": "assets/generation-90s-items/06-learning_keyboard_console.png"
+    },
+    {
+      "file": "90s-xiaobawang-console.png",
+      "id": "xiaobawang_console",
+      "label": "小霸王游戏机",
+      "note": "红白机进入客厅",
+      "mode": "ragged",
+      "index": 7,
+      "sprite": "assets/generation-90s-items/07-xiaobawang_console.png"
+    },
+    {
+      "file": "90s-arcade-cabinets.png",
+      "id": "arcade_cabinets",
+      "label": "街机排",
+      "note": "投币声比课堂更响",
+      "mode": "ragged",
+      "index": 8,
+      "sprite": "assets/generation-90s-items/08-arcade_cabinets.png"
+    },
+    {
+      "file": "90s-arcade-hall.png",
+      "id": "arcade_hall",
+      "label": "街机厅",
+      "note": "屏幕前的集体上头",
+      "mode": "ragged",
+      "index": 9,
+      "sprite": "assets/generation-90s-items/09-arcade_hall.png"
+    },
+    {
+      "file": "90s-public-phone-booth.png",
+      "id": "public_phone_booth",
+      "label": "公用电话亭",
+      "note": "排队给远方打电话",
+      "mode": "ragged",
+      "index": 10,
+      "sprite": "assets/generation-90s-items/10-public_phone_booth.png"
+    },
+    {
+      "file": "90s-ic-card-phone.png",
+      "id": "ic_card_phone",
+      "label": "IC卡电话",
+      "note": "塑料卡里的长途",
+      "mode": "ragged",
+      "index": 11,
+      "sprite": "assets/generation-90s-items/11-ic_card_phone.png"
+    }
+  ],
+  "note": "No-frame low-poly transparent cutouts generated from user-provided 90s references. Floating memory text is rendered in-game, not baked into sprites.",
+  "bankTextureConcept": "90年代河岸：仅使用用户提供的通讯、VCD、唱片、学习机、街机、公用电话等照片素材做拼贴；辅助层只用直线、裁纸边、扫描线，不绘制想象图标。",
+  "riverTextureConcept": "90年代河面：深色电子水纹，只有直线水流与矩形扫描碎片，不绘制碟片/电话等符号图标。"
+}

@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "file": "assets/generation-reference/stone-age/stone-rock-art-bank.png",
+      "era": "石器时代",
+      "motif": "岩画石壁",
+      "roles": [
+        "reference",
+        "stone-age-material"
+      ],
+      "size": [
+        388,
+        515
+      ],
+      "note": "兽形记号留在石壁上"
+    },
+    {
+      "file": "assets/generation-reference/stone-age/stone-cave-fire.png",
+      "era": "石器时代",
+      "motif": "洞穴火堆",
+      "roles": [
+        "reference",
+        "stone-age-material"
+      ],
+      "size": [
+        275,
+        183
+      ],
+      "note": "火光从石壁缝里亮起来"
+    },
+    {
+      "file": "assets/generation-reference/stone-age/stone-perforated-axe.png",
+      "era": "石器时代",
+      "motif": "穿孔石斧",
+      "roles": [
+        "reference",
+        "stone-age-material"
+      ],
+      "size": [
+        360,
+        448
+      ],
+      "note": "石头第一次有了孔"
+    },
+    {
+      "file": "assets/generation-reference/stone-age/stone-handled-axes.png",
+      "era": "石器时代",
+      "motif": "石斧",
+      "roles": [
+        "reference",
+        "stone-age-material"
+      ],
+      "size": [
+        421,
+        475
+      ],
+      "note": "绑上木柄就变成工具"
+    },
+    {
+      "file": "assets/generation-reference/stone-age/stone-tool-fragments.png",
+      "era": "石器时代",
+      "motif": "石器碎片",
+      "roles": [
+        "reference",
+        "stone-age-material"
+      ],
+      "size": [
+        507,
+        394
+      ],
+      "note": "被打制出来的边缘"
+    }
+  ]
+}

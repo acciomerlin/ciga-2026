@@ -1,0 +1,172 @@
+{
+  "items": [
+    {
+      "file": "assets/generation-reference/90s/90s-bp-pager.png",
+      "era": "90年代",
+      "motif": "BP机",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        360,
+        306
+      ],
+      "note": "腰间开始震动的即时通讯"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-bb-phone-storefront.png",
+      "era": "90年代",
+      "motif": "BB机店招",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        400,
+        255
+      ],
+      "note": "通讯焦虑变成街头招牌"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-vcd-discs.png",
+      "era": "90年代",
+      "motif": "VCD影碟",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        515,
+        388
+      ],
+      "note": "盗版碟片把影像带回客厅"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-portable-vcd-player.png",
+      "era": "90年代",
+      "motif": "便携VCD",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        253,
+        198
+      ],
+      "note": "家庭影音突然变成随身机器"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-cd-album-grid.png",
+      "era": "90年代",
+      "motif": "唱片封面",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        386,
+        518
+      ],
+      "note": "流行文化开始批量复制"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-learning-computer-box.png",
+      "era": "90年代",
+      "motif": "学习机包装",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        515,
+        388
+      ],
+      "note": "电脑梦先从包装盒开始"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-learning-keyboard-console.png",
+      "era": "90年代",
+      "motif": "电脑学习机",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        499,
+        306
+      ],
+      "note": "打字和游戏共用一块键盘"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-xiaobawang-console.png",
+      "era": "90年代",
+      "motif": "小霸王游戏机",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        515,
+        388
+      ],
+      "note": "红白机进入客厅"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-arcade-cabinets.png",
+      "era": "90年代",
+      "motif": "街机排",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        528,
+        378
+      ],
+      "note": "投币声比课堂更响"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-arcade-hall.png",
+      "era": "90年代",
+      "motif": "街机厅",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        559,
+        357
+      ],
+      "note": "屏幕前的集体上头"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-public-phone-booth.png",
+      "era": "90年代",
+      "motif": "公用电话亭",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        402,
+        762
+      ],
+      "note": "排队给远方打电话"
+    },
+    {
+      "file": "assets/generation-reference/90s/90s-ic-card-phone.png",
+      "era": "90年代",
+      "motif": "IC卡电话",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        168,
+        300
+      ],
+      "note": "塑料卡里的长途"
+    }
+  ]
+}

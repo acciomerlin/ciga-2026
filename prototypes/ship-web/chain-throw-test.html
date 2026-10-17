@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>抛锚锁链效果验证</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #171717;
+        --paper: #f5f1e9;
+        --panel: rgba(255, 251, 242, 0.92);
+        --accent: #b9503f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(25, 22, 18, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(25, 22, 18, 0.035) 1px, transparent 1px),
+          var(--paper);
+        background-size: 38px 38px;
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .app {
+        position: fixed;
+        inset: 0;
+        min-width: 320px;
+        min-height: 460px;
+      }
+
+      canvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .hud,
+      .controls,
+      .keypad,
+      .title {
+        position: absolute;
+        z-index: 2;
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 3px 4px 0 rgba(23, 23, 23, 0.16);
+        backdrop-filter: blur(8px);
+      }
+
+      .title {
+        left: 22px;
+        top: 18px;
+        padding: 12px 14px;
+      }
+
+      .title strong {
+        display: block;
+        font-size: clamp(21px, 2vw, 30px);
+        line-height: 1;
+      }
+
+      .title span {
+        display: block;
+        margin-top: 7px;
+        color: rgba(23, 23, 23, 0.68);
+        font-size: 13px;
+      }
+
+      .hud {
+        top: 18px;
+        right: 22px;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(72px, 1fr));
+        gap: 8px;
+        padding: 8px;
+      }
+
+      .meter {
+        min-width: 88px;
+        border: 1px solid rgba(23, 23, 23, 0.55);
+        border-radius: 6px;
+        padding: 8px 10px;
+      }
+
+      .meter span {
+        display: block;
+        font-size: 11px;
+        color: rgba(23, 23, 23, 0.68);
+      }
+
+      .meter strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 21px;
+        line-height: 1;
+      }
+
+      .controls {
+        right: 22px;
+        bottom: 22px;
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+      }
+
+      .keypad {
+        left: 22px;
+        bottom: 22px;
+        display: grid;
+        grid-template-columns: repeat(4, 52px);
+        gap: 8px;
+        padding: 10px;
+      }
+
+      button {
+        appearance: none;
+        min-width: 118px;
+        height: 48px;
+        border: 2px solid var(--ink);
+        border-radius: 7px;
+        background: #fff8ea;
+        color: var(--ink);
+        cursor: pointer;
+        font: 800 15px/1 ui-sans-serif, system-ui, sans-serif;
+        box-shadow: 2px 3px 0 rgba(23, 23, 23, 0.18);
+      }
+
+      .key {
+        min-width: 52px;
+        width: 52px;
+        height: 48px;
+        font-size: 18px;
+      }
+
+      .key.active {
+        background: #20242b;
+        color: #fff8ea;
+      }
+
+      button.primary {
+        background: var(--accent);
+        color: #fff8ea;
+      }
+
+      button:active {
+        transform: translate(1px, 2px);
+        box-shadow: 1px 1px 0 rgba(23, 23, 23, 0.2);
+      }
+
+      @media (max-width: 760px) {
+        .title {
+          left: 10px;
+          top: 10px;
+          padding: 9px 10px;
+        }
+
+        .title span {
+          display: none;
+        }
+
+        .hud {
+          left: 10px;
+          right: auto;
+          width: calc(100vw - 20px);
+          max-width: 370px;
+          top: auto;
+          bottom: 86px;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 5px;
+          padding: 6px;
+        }
+
+        .meter {
+          min-width: 0;
+          padding: 6px 4px;
+        }
+
+        .meter span {
+          font-size: 9px;
+          white-space: nowrap;
+        }
+
+        .meter strong {
+          font-size: 14px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .controls {
+          left: 10px;
+          right: auto;
+          width: calc(100vw - 20px);
+          max-width: 370px;
+          bottom: 10px;
+          gap: 8px;
+          overflow: hidden;
+        }
+
+        .keypad {
+          left: 10px;
+          right: auto;
+          width: calc(100vw - 20px);
+          max-width: 370px;
+          bottom: 194px;
+          grid-template-columns: repeat(4, 1fr);
+          padding: 8px;
+          gap: 6px;
+          overflow: hidden;
+        }
+
+        .key {
+          width: 100% !important;
+          min-width: 0 !important;
+        }
+
+        .controls button {
+          width: auto !important;
+          min-width: 0 !important;
+        }
+
+        button {
+          flex: 1;
+          min-width: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <canvas id="stage" aria-label="抛锚锁链效果验证画布"></canvas>
+      <section class="title">
+        <strong>锁链抛锚验证</strong>
+        <span>AWDS 放链 / DWAS 收链 / 转轮驱动</span>
+      </section>
+      <section class="hud" aria-label="状态面板">
+        <div class="meter">
+          <span>链条状态</span>
+          <strong id="phaseText">待命</strong>
+        </div>
+        <div class="meter">
+          <span>放链数量</span>
+          <strong id="linkText">0</strong>
+        </div>
+        <div class="meter">
+          <span>锚摩擦</span>
+          <strong id="frictionText">0%</strong>
+        </div>
+        <div class="meter">
+          <span>命中</span>
+          <strong id="hitText">海水</strong>
+        </div>
+        <div class="meter">
+          <span>船速</span>
+          <strong id="shipSpeedText">100%</strong>
+        </div>
+        <div class="meter">
+          <span>缓和度</span>
+          <strong id="smoothnessText">100%</strong>
+        </div>
+      </section>
+      <section class="keypad" aria-label="转轮按键">
+        <button class="key" data-key="a" type="button">A</button>
+        <button class="key" data-key="w" type="button">W</button>
+        <button class="key" data-key="d" type="button">D</button>
+        <button class="key" data-key="s" type="button">S</button>
+      </section>
+      <section class="controls">
+        <button id="throwBtn" class="primary" type="button">自动演示</button>
+        <button id="resetBtn" type="button">重置</button>
+      </section>
+    </main>
+
+    <script>
+      const canvas = document.getElementById("stage");
+      const ctx = canvas.getContext("2d");
+      const phaseText = document.getElementById("phaseText");
+      const linkText = document.getElementById("linkText");
+      const frictionText = document.getElementById("frictionText");
+      const hitText = document.getElementById("hitText");
+      const shipSpeedText = document.getElementById("shipSpeedText");
+      const smoothnessText = document.getElementById("smoothnessText");
+      const throwBtn = document.getElementById("throwBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const keyButtons = [...document.querySelectorAll(".key")];
+
+      const WORLD = { w: 1774, h: 887 };
+      const SHIP_SCALE = 0.8;
+      const shipOffsetBase = { x: 310, y: 58 };
+      const originBase = { x: 112, y: 462 };
+      const winchBase = { x: 192, y: 360 };
+      const winchRadius = 43;
+      const idleRing = { x: 172, y: 404 };
+      const finalRing = { x: 80, y: 940 };
+      const waterBaseY = 770;
+      const seabedBaseY = 1010;
+      const maxLinks = 30;
+      const minLinks = 8;
+      const restLength = 18.5 * SHIP_SCALE;
+      const chainGravity = 900;
+      const downSequence = ["a", "w", "d", "s"];
+      const upSequence = ["d", "w", "a", "s"];
+      const assetPaths = {
+        background: "cruise-cutaway-bg-blank-transparent.png",
+        anchor: "assets/toy-anchor-trimmed.png",
+        link: "assets/chain-link.png",
+        pixelCloudFar: "assets/parallax/preview143-cloud-far.png",
+        pixelCloudNear: "assets/parallax/preview143-cloud-near.png",
+        pixelHorizon: "assets/parallax/preview143-horizon.png",
+        pixelWaterFar: "assets/parallax/preview143-water-far.png",
+        pixelWaterMid: "assets/parallax/preview143-water-mid.png",
+        pixelWaterNear: "assets/parallax/preview143-water-near.png"
+      };
+
+      const seabedProfile = {
+        sandPatches: [
+          { x: 0, w: 155, label: "松沙", grip: 0.28, dots: 54 },
+          { x: 155, w: 170, label: "砾石", grip: 0.52, dots: 42 },
+          { x: 325, w: 190, label: "细沙", grip: 0.34, dots: 64 },
+          { x: 515, w: 170, label: "硬沙", grip: 0.45, dots: 34 },
+          { x: 685, w: 1089, label: "沙土", grip: 0.36, dots: 120 }
+        ],
+        rocks: [
+          { x: 64, r: 18, grip: 0.58, kind: "卵石", angle: -0.2 },
+          { x: 122, r: 28, grip: 0.74, kind: "石块", angle: 0.12 },
+          { x: 184, r: 22, grip: 0.66, kind: "石块", angle: -0.08 },
+          { x: 252, r: 35, grip: 0.86, kind: "大石", angle: 0.2 },
+          { x: 404, r: 20, grip: 0.62, kind: "卵石", angle: 0.1 },
+          { x: 548, r: 26, grip: 0.78, kind: "石块", angle: -0.18 }
+        ],
+        pebbles: Array.from({ length: 78 }, (_, index) => ({
+          x: 18 + (index * 47) % 1680,
+          y: 12 + (index * 31) % 66,
+          r: 2.2 + (index % 5) * 0.85
+        })),
+        fish: [
+          { x: 92, y: 720, size: 16, speed: 18, phase: 0.2, dir: 1 },
+          { x: 154, y: 772, size: 19, speed: 12, phase: 1.1, dir: -1 },
+          { x: 286, y: 735, size: 14, speed: 23, phase: 2.4, dir: 1 },
+          { x: 430, y: 790, size: 21, speed: 10, phase: 3.1, dir: -1 },
+          { x: 598, y: 748, size: 15, speed: 16, phase: 4.5, dir: 1 }
+        ]
+      };
+
+      const images = {};
+      const state = {
+        phase: "idle",
+        time: 0,
+        last: 0,
+        release: 0,
+        activeLinks: 0,
+        tension: 0,
+        friction: 0,
+        frictionPeak: 0,
+        hitLabel: "海水",
+        shipSpeed: 1,
+        brakeForce: 0,
+        lastBrakeForce: 0,
+        impactBrake: 0,
+        stopHarshness: 0,
+        stopJerk: 0,
+        stopSmoothness: 1,
+        rhythmScore: 0.5,
+        payoutAggression: 0,
+        biteImpact: 0,
+        sailOffset: 0,
+        shipTravelX: 0,
+        anchorWorldTravelBase: 0,
+        shipRoll: 0,
+        snagClock: 0,
+        chainJerk: 0,
+        hookOpen: 0,
+        shock: 0,
+        shockClock: 0,
+        shipOffsetX: 0,
+        shipOffsetY: 0,
+        anchorRing: {
+          x: shipOffsetBase.x + idleRing.x * SHIP_SCALE,
+          y: shipOffsetBase.y + idleRing.y * SHIP_SCALE
+        },
+        anchorAngle: -0.15,
+        anchorSpin: 0,
+        wheelAngle: 0,
+        wheelVelocity: 0,
+        downIndex: 0,
+        upIndex: 0,
+        lastTapAt: 0,
+        lastDirection: 0,
+        lastKey: "",
+        keyFlash: 0,
+        demo: false,
+        demoTimer: 0,
+        demoIndex: 0,
+        snagged: false,
+        anchorContact: false,
+        bury: 0,
+        gouges: [],
+        lastGouge: null,
+        sandPuffs: [],
+        hitBursts: [],
+        fish: [],
+        points: [],
+        ready: false
+      };
+
+      const phaseLabel = {
+        idle: "待命",
+        unwinding: "放链",
+        retracting: "收链",
+        throwing: "放链",
+        sinking: "下坠",
+        dragging: "拖沟",
+        embedding: "入土",
+        snagged: "绷紧"
+      };
+
+      function loadImage(key, src) {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => {
+            images[key] = img;
+            resolve(img);
+          };
+          img.onerror = () => reject(new Error(`Image failed: ${src}`));
+          img.src = src;
+        });
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function easeInOut(t) {
+        return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      }
+
+      function cubicBezier(p0, p1, p2, p3, t) {
+        const mt = 1 - t;
+        const a = mt * mt * mt;
+        const b = 3 * mt * mt * t;
+        const c = 3 * mt * t * t;
+        const d = t * t * t;
+        return {
+          x: a * p0.x + b * p1.x + c * p2.x + d * p3.x,
+          y: a * p0.y + b * p1.y + c * p2.y + d * p3.y
+        };
+      }
+
+      function layoutPoint(point) {
+        return {
+          x: shipOffsetBase.x + point.x * SHIP_SCALE,
+          y: shipOffsetBase.y + point.y * SHIP_SCALE
+        };
+      }
+
+      function getShipPivot() {
+        return layoutPoint({ x: 560, y: 545 });
+      }
+
+      function rotateAround(point, center, angle) {
+        const dx = point.x - center.x;
+        const dy = point.y - center.y;
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
+        return {
+          x: center.x + dx * cos - dy * sin,
+          y: center.y + dx * sin + dy * cos
+        };
+      }
+
+      function shipPoint(point) {
+        const p = layoutPoint(point);
+        const pivot = getShipPivot();
+        const rotated = rotateAround(p, pivot, state.shipRoll);
+        return {
+          x: rotated.x + state.shipOffsetX,
+          y: rotated.y + state.shipOffsetY
+        };
+      }
+
+      function worldToScreen(point, lock = 1) {
+        const travelDelta = Math.max(0, state.shipTravelX - state.anchorWorldTravelBase);
+        return {
+          x: point.x - travelDelta * lock,
+          y: point.y
+        };
+      }
+
+      function wrappedWorldX(baseX, speed = 1, span = WORLD.w) {
+        let x = (baseX - state.shipTravelX * speed) % span;
+        if (x < -120) x += span;
+        return x;
+      }
+
+      function wrappedWorldCopies(baseX, speed = 1, margin = 140) {
+        const span = WORLD.w;
+        const first = wrappedWorldX(baseX, speed, span);
+        const copies = [first];
+        if (first > margin) copies.push(first - span);
+        if (first < WORLD.w - margin) copies.push(first + span);
+        return copies;
+      }
+
+      function getWaterY() {
+        return shipOffsetBase.y + waterBaseY * SHIP_SCALE;
+      }
+
+      function getSeabedY() {
+        return shipOffsetBase.y + seabedBaseY * SHIP_SCALE;
+      }
+
+      function getSeabedSurfaceY() {
+        return getSeabedY() - 4 * SHIP_SCALE;
+      }
+
+      function getOrigin() {
+        return shipPoint(originBase);
+      }
+
+      function getWinch() {
+        return shipPoint(winchBase);
+      }
+
+      function getAnchorHoleForRelease(release) {
+        const r = clamp(release, 0, 1);
+        let point;
+        if (r < 0.52) {
+          const t = easeInOut(r / 0.52);
+          point = cubicBezier(
+            idleRing,
+            { x: 136, y: 396 },
+            { x: 38, y: 540 },
+            { x: finalRing.x + 8, y: waterBaseY },
+            t
+          );
+        } else {
+          const t = easeOutCubic((r - 0.52) / 0.48);
+          point = {
+            x: lerp(finalRing.x + 8, finalRing.x, t),
+            y: lerp(waterBaseY, finalRing.y, t)
+          };
+        }
+        const worldLock = clamp((r - 0.42) / 0.34, 0, 1);
+        const worldPoint = worldToScreen(layoutPoint(point), worldLock);
+        const shipBoundPoint = shipPoint(point);
+        const followShip = clamp(1 - (r - 0.38) / 0.28, 0, 1);
+        return {
+          x: lerp(worldPoint.x, shipBoundPoint.x, followShip),
+          y: lerp(worldPoint.y, shipBoundPoint.y, followShip)
+        };
+      }
+
+      function getAnchorBitePoint() {
+        const h = 166 * SHIP_SCALE;
+        const angle = state.anchorAngle + state.anchorSpin * 0.05;
+        const localX = -10 * SHIP_SCALE;
+        const localY = h * 0.73;
+        return {
+          x: state.anchorRing.x + Math.cos(angle) * localX - Math.sin(angle) * localY,
+          y: state.anchorRing.y + Math.sin(angle) * localX + Math.cos(angle) * localY
+        };
+      }
+
+      function getPhaseFromMotion() {
+        if (state.release <= 0.015) return "idle";
+        if (state.wheelVelocity < -0.08) return "retracting";
+        if (state.release >= 0.995 && state.snagged) return "snagged";
+        if (state.anchorContact && state.bury > 0.42) return "embedding";
+        if (state.anchorContact) return "dragging";
+        if (state.release >= 0.52) return "sinking";
+        return "unwinding";
+      }
+
+      function resetFish() {
+        state.fish = seabedProfile.fish.map((fish) => ({
+          ...fish,
+          baseX: fish.x,
+          baseY: fish.y,
+          evade: 0,
+          hitClock: 0,
+          dead: false,
+          deathClock: 0,
+          vx: 0,
+          vy: 0,
+          rot: 0
+        }));
+      }
+
+      function getSandPatchAt(x) {
+        const worldX = ((x + state.shipTravelX) % WORLD.w + WORLD.w) % WORLD.w;
+        return seabedProfile.sandPatches.find((patch) => worldX >= patch.x && worldX < patch.x + patch.w) || seabedProfile.sandPatches[0];
+      }
+
+      function getFishPosition(fish) {
+        const waterScroll = state.shipTravelX * 0.92;
+        if (fish.dead) {
+          return { x: fish.baseX - waterScroll, y: fish.baseY };
+        }
+        const swim = state.time * fish.speed * fish.dir;
+        const evadePush = fish.evade * 42 * fish.dir;
+        return {
+          x: fish.baseX + swim + Math.sin(state.time * 1.4 + fish.phase) * 18 + evadePush - waterScroll,
+          y: fish.baseY + Math.sin(state.time * 2.1 + fish.phase) * 7 - fish.evade * 10
+        };
+      }
+
+      function wrapFish(fish) {
+        const span = WORLD.w + 160;
+        const pos = getFishPosition(fish);
+        if (pos.x < -80) {
+          fish.baseX += span;
+        } else if (pos.x > WORLD.w + 80) {
+          fish.baseX -= span;
+        }
+      }
+
+      function addHitBurst(x, y, label, strength = 1) {
+        state.hitBursts.push({
+          x,
+          y,
+          label,
+          strength,
+          life: 0.55,
+          maxLife: 0.55
+        });
+        if (state.hitBursts.length > 18) state.hitBursts.shift();
+      }
+
+      function sampleAnchorFriction(bite, speedFactor, depth) {
+        if (state.release < 0.5) {
+          return { value: 0, label: "海水", brake: 0 };
+        }
+
+        const surfaceY = getSeabedSurfaceY();
+        const waterY = getWaterY();
+        const labels = [];
+        let friction = bite.y > waterY ? 0.04 : 0;
+        let brake = 0;
+
+        if (depth > -18 * SHIP_SCALE) {
+          const patch = getSandPatchAt(bite.x);
+          const depthGrip = clamp((depth + 18 * SHIP_SCALE) / (68 * SHIP_SCALE), 0, 1);
+          const plowGrip = clamp(state.bury * 0.45 + speedFactor * 0.18, 0, 0.45);
+          friction += patch.grip * (0.36 + depthGrip * 0.76) + plowGrip;
+          brake += depthGrip * patch.grip * 0.08;
+          labels.push(patch.label);
+        }
+
+        for (const rock of seabedProfile.rocks) {
+          const ry = surfaceY + 22 * SHIP_SCALE;
+          for (const rx of wrappedWorldCopies(rock.x, 1, 180)) {
+            const dist = Math.hypot((bite.x - rx) / 1.2, bite.y - ry);
+            const radius = rock.r * SHIP_SCALE + 22 * SHIP_SCALE;
+            if (dist < radius) {
+              const weight = 1 - dist / radius;
+              friction += rock.grip * weight * 0.58;
+              brake += weight * rock.grip * 0.26;
+              state.impactBrake = Math.max(state.impactBrake, weight * rock.grip * 0.42);
+              state.stopHarshness = Math.max(state.stopHarshness, clamp(0.36 + weight * rock.grip * 0.46, 0, 1));
+              labels.push(rock.kind);
+            }
+          }
+        }
+
+        for (const fish of state.fish) {
+          if (fish.dead) continue;
+          const pos = getFishPosition(fish);
+          const dist = Math.hypot(bite.x - pos.x, bite.y - pos.y);
+          const radius = fish.size * 2.15;
+          if (dist < radius) {
+            const weight = 1 - dist / radius;
+            friction += (0.18 + fish.size * 0.006) * weight;
+            brake += 0.28 + weight * 0.28;
+            fish.dead = true;
+            fish.deathClock = 0;
+            fish.vx = (bite.x > pos.x ? -1 : 1) * (22 + speedFactor * 36);
+            fish.vy = 18 + speedFactor * 42;
+            fish.rot = (Math.random() - 0.5) * 0.8;
+            fish.hitClock = 0.42;
+            state.chainJerk = Math.max(state.chainJerk, 0.82);
+            state.impactBrake = Math.max(state.impactBrake, 0.28 + weight * 0.38);
+            state.stopHarshness = Math.max(state.stopHarshness, 0.42 + weight * 0.28);
+            addHitBurst(pos.x, pos.y, "鱼", 0.85);
+            labels.push("鱼");
+          }
+        }
+
+        return {
+          value: clamp(friction, 0, 1),
+          label: labels.length ? [...new Set(labels)].slice(0, 2).join("+") : "海水",
+          brake: clamp(brake, 0, 0.72)
+        };
+      }
+
+      function resetChain() {
+        state.phase = "idle";
+        state.time = 0;
+        state.release = 0;
+        state.activeLinks = 0;
+        state.tension = 0;
+        state.friction = 0;
+        state.frictionPeak = 0;
+        state.hitLabel = "海水";
+        state.shipSpeed = 1;
+        state.brakeForce = 0;
+        state.lastBrakeForce = 0;
+        state.impactBrake = 0;
+        state.stopHarshness = 0;
+        state.stopJerk = 0;
+        state.stopSmoothness = 1;
+        state.rhythmScore = 0.5;
+        state.payoutAggression = 0;
+        state.biteImpact = 0;
+        state.sailOffset = 0;
+        state.shipTravelX = 0;
+        state.anchorWorldTravelBase = 0;
+        state.shipRoll = 0;
+        state.snagClock = 0;
+        state.chainJerk = 0;
+        state.hookOpen = 0;
+        state.shock = 0;
+        state.shockClock = 0;
+        state.shipOffsetX = 0;
+        state.shipOffsetY = 0;
+        state.anchorRing = getAnchorHoleForRelease(0);
+        state.anchorAngle = -0.15;
+        state.anchorSpin = 0;
+        state.wheelAngle = 0;
+        state.wheelVelocity = 0;
+        state.downIndex = 0;
+        state.upIndex = 0;
+        state.lastTapAt = 0;
+        state.lastDirection = 0;
+        state.lastKey = "";
+        state.keyFlash = 0;
+        state.demo = false;
+        state.demoTimer = 0;
+        state.demoIndex = 0;
+        state.snagged = false;
+        state.anchorContact = false;
+        state.bury = 0;
+        state.gouges = [];
+        state.lastGouge = null;
+        state.sandPuffs = [];
+        state.hitBursts = [];
+        resetFish();
+        state.points = [];
+        syncChainPoints(minLinks);
+        updateHud();
+      }
+
+      function toggleDemo() {
+        if (!state.ready) return;
+        state.demo = !state.demo;
+        throwBtn.textContent = state.demo ? "停止演示" : "自动演示";
+      }
+
+      function syncChainPoints(count) {
+        const activeCount = clamp(count, minLinks, maxLinks);
+        const origin = getOrigin();
+        const end = { ...state.anchorRing };
+
+        if (!state.points.length) {
+          for (let i = 0; i < activeCount; i++) {
+            const t = i / (activeCount - 1);
+            const sag = Math.sin(t * Math.PI) * 18;
+            const x = lerp(origin.x, end.x, t);
+            const y = lerp(origin.y, end.y, t) + sag;
+            state.points.push({ x, y, px: x, py: y });
+          }
+        }
+
+        while (state.points.length < activeCount) {
+          const prev = state.points[state.points.length - 1] || origin;
+          state.points.push({ x: prev.x, y: prev.y, px: prev.x, py: prev.y });
+        }
+
+        if (state.points.length > activeCount) {
+          state.points.length = activeCount;
+        }
+
+        state.points[0].x = origin.x;
+        state.points[0].y = origin.y;
+        state.points[0].px = origin.x;
+        state.points[0].py = origin.y;
+
+        const last = state.points[state.points.length - 1];
+        last.x = end.x;
+        last.y = end.y;
+        last.px = end.x;
+        last.py = end.y;
+      }
+
+      function solveChain(dt) {
+        const origin = getOrigin();
+        const count = clamp(Math.round(minLinks + state.release * (maxLinks - minLinks)), minLinks, maxLinks);
+        syncChainPoints(count);
+
+        const points = state.points;
+        const lastIndex = points.length - 1;
+
+        for (let i = 1; i < lastIndex; i++) {
+          const p = points[i];
+          const vx = (p.x - p.px) * 0.985;
+          const vy = (p.y - p.py) * 0.985;
+          p.px = p.x;
+          p.py = p.y;
+          p.x += vx;
+          p.y += vy + chainGravity * dt * dt;
+
+          const seabedY = getSeabedY();
+          if (p.y > seabedY - 20 * SHIP_SCALE) {
+            p.y = seabedY - 20 * SHIP_SCALE;
+            p.px = p.x - vx * 0.35;
+            p.py = p.y + Math.abs(vy) * 0.15;
+          }
+        }
+
+        points[0].x = origin.x;
+        points[0].y = origin.y;
+        points[0].px = origin.x;
+        points[0].py = origin.y;
+
+        points[lastIndex].x = state.anchorRing.x;
+        points[lastIndex].y = state.anchorRing.y;
+        points[lastIndex].px = state.anchorRing.x;
+        points[lastIndex].py = state.anchorRing.y;
+
+        const targetLength = state.phase === "snagged" ? 8.8 * SHIP_SCALE : restLength;
+        for (let iteration = 0; iteration < 9; iteration++) {
+          points[0].x = origin.x;
+          points[0].y = origin.y;
+          points[lastIndex].x = state.anchorRing.x;
+          points[lastIndex].y = state.anchorRing.y;
+
+          for (let i = 0; i < lastIndex; i++) {
+            const a = points[i];
+            const b = points[i + 1];
+            const dx = b.x - a.x;
+            const dy = b.y - a.y;
+            const distance = Math.hypot(dx, dy) || 0.0001;
+            const diff = (distance - targetLength) / distance;
+            const ox = dx * diff;
+            const oy = dy * diff;
+            const aFixed = i === 0;
+            const bFixed = i + 1 === lastIndex;
+
+            if (aFixed && !bFixed) {
+              b.x -= ox;
+              b.y -= oy;
+            } else if (!aFixed && bFixed) {
+              a.x += ox;
+              a.y += oy;
+            } else if (!aFixed && !bFixed) {
+              a.x += ox * 0.5;
+              a.y += oy * 0.5;
+              b.x -= ox * 0.5;
+              b.y -= oy * 0.5;
+            }
+          }
+        }
+
+        const dx = state.anchorRing.x - origin.x;
+        const dy = state.anchorRing.y - origin.y;
+        const straight = Math.hypot(dx, dy);
+        const chainLength = targetLength * lastIndex;
+        state.tension = clamp((straight - chainLength) / 42 + state.shock * 0.58, 0, 1);
+        if (state.phase === "idle") state.tension = 0;
+      }
+
+      function pulseKey(rawKey) {
+        if (!state.ready) return;
+        const key = String(rawKey).toLowerCase();
+        if (!["a", "w", "d", "s"].includes(key)) return;
+
+        const downMatch = key === downSequence[state.downIndex];
+        const upMatch = key === upSequence[state.upIndex];
+        let direction = 0;
+
+        if (downMatch || upMatch) {
+          if (downMatch && (!upMatch || state.downIndex >= state.upIndex)) direction = 1;
+          else direction = -1;
+        } else {
+          state.downIndex = key === downSequence[0] ? 1 : 0;
+          state.upIndex = key === upSequence[0] ? 1 : 0;
+          return;
+        }
+
+        if (direction > 0) {
+          state.downIndex = (state.downIndex + 1) % downSequence.length;
+          state.upIndex = key === upSequence[0] ? 1 : 0;
+        } else {
+          state.upIndex = (state.upIndex + 1) % upSequence.length;
+          state.downIndex = key === downSequence[0] ? 1 : 0;
+        }
+
+        const now = performance.now();
+        const interval = state.lastTapAt ? now - state.lastTapAt : 260;
+        const rhythmBoost = clamp(260 / Math.max(interval, 80), 0.55, 2.3);
+        const continuity = state.lastDirection === direction ? 1.18 : 0.72;
+        const impulse = (0.34 + rhythmBoost * 0.18) * continuity;
+
+        state.wheelVelocity = clamp(state.wheelVelocity + direction * impulse, -2.4, 2.4);
+        state.release = clamp(state.release + direction * impulse * 0.022, 0, 1);
+        const stableBeat = 1 - clamp(Math.abs(interval - 185) / 230, 0, 1);
+        state.rhythmScore += (stableBeat - state.rhythmScore) * 0.34;
+        if (direction > 0) {
+          state.payoutAggression = clamp(
+            state.payoutAggression + impulse * (0.035 + rhythmBoost * 0.018) - state.rhythmScore * 0.012,
+            0,
+            1
+          );
+        } else {
+          state.payoutAggression = clamp(state.payoutAggression - impulse * 0.045, 0, 1);
+        }
+        state.anchorRing = getAnchorHoleForRelease(state.release);
+        state.lastTapAt = now;
+        state.lastDirection = direction;
+        state.lastKey = key.toUpperCase();
+        state.keyFlash = 0.18;
+        state.demo = false;
+        throwBtn.textContent = "自动演示";
+      }
+
+      function updateDemo(dt) {
+        if (!state.demo) return;
+        state.demoTimer -= dt;
+        if (state.demoTimer > 0) return;
+        if (state.release >= 0.995) {
+          state.demo = false;
+          state.demoIndex = 0;
+          throwBtn.textContent = "自动演示";
+          return;
+        }
+        pulseKey(downSequence[state.demoIndex % downSequence.length]);
+        state.demo = true;
+        throwBtn.textContent = "停止演示";
+        state.demoIndex += 1;
+        state.demoTimer = 0.095;
+      }
+
+      function addSandPuff(x, y, strength = 1) {
+        const count = Math.round(4 + strength * 7);
+        for (let i = 0; i < count; i++) {
+          const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.95;
+          const speed = 26 + Math.random() * 58 * strength;
+          state.sandPuffs.push({
+            x: x + (Math.random() - 0.5) * 22,
+            y: y + (Math.random() - 0.5) * 10,
+            vx: Math.cos(angle) * speed + 20 * strength,
+            vy: Math.sin(angle) * speed,
+            r: (2.2 + Math.random() * 5.2) * SHIP_SCALE,
+            life: 0.38 + Math.random() * 0.28,
+            maxLife: 0.66
+          });
+        }
+        if (state.sandPuffs.length > 90) {
+          state.sandPuffs.splice(0, state.sandPuffs.length - 90);
+        }
+      }
+
+      function addAnchorGouge(bite, strength = 1) {
+        const surfaceY = getSeabedSurfaceY();
+        const scale = clamp(0.46 + strength * 0.34 + state.bury * 0.18, 0.5, 0.92);
+        state.gouges.push({
+          x: bite.x + (Math.random() - 0.5) * 18,
+          y: surfaceY + 13 * SHIP_SCALE + Math.random() * 8,
+          angle: -0.12 + (Math.random() - 0.5) * 0.14,
+          scale,
+          mirror: Math.random() > 0.5 ? -1 : 1
+        });
+        if (state.gouges.length > 48) state.gouges.shift();
+      }
+
+      function updateSeabedInteraction(dt, beforeRelease) {
+        const bite = getAnchorBitePoint();
+        const surfaceY = getSeabedSurfaceY();
+        const depth = bite.y - surfaceY;
+        const wasContact = state.anchorContact;
+        const movingDown = state.release > beforeRelease + 0.0001 || state.wheelVelocity > 0.08;
+        const speedFactor = clamp(Math.abs(state.wheelVelocity) / 2.4, 0.16, 1);
+        const frictionSample = sampleAnchorFriction(bite, speedFactor, depth);
+        state.anchorContact = state.release > 0.48 && depth > -14 * SHIP_SCALE;
+        state.friction += (frictionSample.value - state.friction) * Math.min(dt * 10, 1);
+        state.frictionPeak = Math.max(state.frictionPeak, state.friction);
+        state.hitLabel = frictionSample.label;
+        if (frictionSample.brake > 0) {
+          state.wheelVelocity *= Math.max(0.12, 1 - frictionSample.brake);
+          state.chainJerk = Math.max(state.chainJerk, frictionSample.brake);
+        }
+
+        if (state.anchorContact) {
+          const depthFactor = clamp((depth + 16 * SHIP_SCALE) / (54 * SHIP_SCALE), 0, 1);
+          if (!wasContact) {
+            const landingImpact = clamp(
+              speedFactor * 0.58 + state.payoutAggression * 0.62 + frictionSample.brake * 0.48 - state.rhythmScore * 0.16,
+              0,
+              1
+            );
+            state.biteImpact = Math.max(state.biteImpact, landingImpact);
+            state.impactBrake = Math.max(state.impactBrake, 0.12 + landingImpact * 0.62);
+            state.stopHarshness = Math.max(state.stopHarshness, 0.12 + landingImpact * 0.78);
+            state.stopSmoothness = Math.min(state.stopSmoothness, 1 - landingImpact * 0.34);
+          }
+          const sandBrake = clamp(state.friction * 0.58 + state.bury * 0.24, 0, 1);
+          state.wheelVelocity *= Math.pow(0.08, dt * sandBrake);
+          state.chainJerk = Math.max(state.chainJerk, state.friction * 0.32);
+          state.bury = clamp(
+            state.bury + dt * (0.18 + depthFactor * 0.52 + speedFactor * 0.2 + state.friction * 0.4 + state.payoutAggression * 0.22),
+            0,
+            1
+          );
+
+          const last = state.lastGouge;
+          const distance = last ? Math.hypot(bite.x - last.x, bite.y - last.y) : Infinity;
+          const shouldStamp = !last || distance > 22 * SHIP_SCALE || (!wasContact && state.anchorContact);
+          if (movingDown && shouldStamp) {
+            addAnchorGouge(bite, speedFactor + state.friction * 0.55);
+            addSandPuff(bite.x, surfaceY + 8 * SHIP_SCALE, speedFactor + state.friction * 0.8);
+            addHitBurst(bite.x, surfaceY + 6 * SHIP_SCALE, "沙", 0.45 + state.friction * 0.4);
+            if (!wasContact) {
+              state.chainJerk = Math.max(state.chainJerk, 0.72);
+              state.shock = Math.max(state.shock, 0.22 + state.friction * 0.26);
+              state.wheelVelocity *= 0.42;
+            }
+            state.lastGouge = { x: bite.x, y: bite.y };
+          }
+        } else {
+          state.bury = Math.max(0, state.bury - dt * 0.38);
+          if (state.release < 0.42) state.lastGouge = null;
+          if (state.release < 0.5) {
+            state.friction = Math.max(0, state.friction - dt * 1.8);
+            state.frictionPeak = Math.max(0, state.frictionPeak - dt * 1.2);
+            state.hitLabel = "海水";
+          }
+        }
+
+        for (const puff of state.sandPuffs) {
+          puff.life -= dt;
+          puff.vy += 120 * dt;
+          puff.x += puff.vx * dt;
+          puff.y += puff.vy * dt;
+          puff.vx *= Math.pow(0.12, dt);
+        }
+        state.sandPuffs = state.sandPuffs.filter((puff) => puff.life > 0);
+
+        for (const burst of state.hitBursts) {
+          burst.life -= dt;
+          burst.y -= 18 * dt;
+        }
+        state.hitBursts = state.hitBursts.filter((burst) => burst.life > 0);
+      }
+
+      function updateFish(dt) {
+        const surfaceY = getSeabedSurfaceY();
+        for (const fish of state.fish) {
+          if (fish.dead) {
+            fish.deathClock += dt;
+            fish.baseX += fish.vx * dt;
+            fish.baseY += fish.vy * dt;
+            fish.vy += 46 * dt;
+            fish.vx *= Math.pow(0.32, dt);
+            fish.rot += dt * (fish.vx >= 0 ? 1 : -1) * 0.8;
+            if (fish.baseY > surfaceY - fish.size * 0.7) {
+              fish.baseY = surfaceY - fish.size * 0.7;
+              fish.vy *= -0.12;
+              fish.vx *= 0.58;
+            }
+            continue;
+          }
+          fish.evade = Math.max(0, fish.evade - dt * 1.45);
+          fish.hitClock = Math.max(0, fish.hitClock - dt);
+          wrapFish(fish);
+        }
+      }
+
+      function updateShipPose(dt) {
+        const cruiseBobX = Math.sin(state.time * 0.58 + state.sailOffset * 0.015) * (1.4 + state.shipSpeed * 2.6);
+        const cruiseBobY = Math.sin(state.time * 1.18) * (1.5 + state.shipSpeed * 1.7);
+        const baseRoll = Math.sin(state.time * 0.94) * (0.006 + state.shipSpeed * 0.006);
+
+        if (state.snagged || state.shock > 0.02) {
+          state.snagClock += dt;
+          const pull = clamp(
+            state.shock + state.tension * 0.42 + state.frictionPeak * 0.28 + state.brakeForce * 0.22 + state.stopHarshness * 0.18,
+            0,
+            1.35
+          );
+          state.shipOffsetX = cruiseBobX - pull * (20 + state.frictionPeak * 36) - Math.sin(state.snagClock * 5.6) * pull * 22;
+          state.shipOffsetY = cruiseBobY + Math.sin(state.snagClock * 6.2 + 0.8) * pull * 9;
+          state.shipRoll = baseRoll - pull * 0.016 + Math.sin(state.snagClock * 5.8) * pull * 0.04;
+        } else {
+          state.snagClock = 0;
+          state.shipOffsetX = cruiseBobX;
+          state.shipOffsetY = cruiseBobY;
+          state.shipRoll = baseRoll;
+        }
+      }
+
+      function updateStoppingModel(dt) {
+        const contactDrag = state.anchorContact ? state.friction * 0.16 + state.bury * 0.08 : 0;
+        const biteSeverity = clamp(state.biteImpact * 0.58 + state.stopHarshness * 0.56 + state.payoutAggression * 0.18, 0, 1);
+        const setGrip = state.frictionPeak * (0.34 + state.bury * 0.32 + biteSeverity * 0.68);
+        const snagDrag = state.snagged
+          ? setGrip + state.tension * 0.12 + state.impactBrake * 0.28 + state.biteImpact * 0.12
+          : 0;
+        const targetBrake = clamp(contactDrag + snagDrag, 0, 1.45);
+        const response = state.snagged
+          ? 1.45 + biteSeverity * 9.2
+          : 2.8 + state.stopHarshness * 2.4;
+
+        const previousBrake = state.brakeForce;
+        state.brakeForce += (targetBrake - state.brakeForce) * Math.min(dt * response, 1);
+        const jerk = clamp(Math.abs(state.brakeForce - previousBrake) / Math.max(dt, 0.016) * 0.08, 0, 1);
+        state.stopJerk += (jerk - state.stopJerk) * Math.min(dt * 8, 1);
+
+        const comfortTarget = clamp(1 - biteSeverity * 0.64 - state.stopJerk * 0.5 + state.rhythmScore * 0.12, 0, 1);
+        if (state.anchorContact || state.snagged || state.brakeForce > 0.08) {
+          state.stopSmoothness = Math.min(state.stopSmoothness, comfortTarget);
+        } else {
+          state.stopSmoothness += (1 - state.stopSmoothness) * Math.min(dt * 1.8, 1);
+        }
+
+        const brakeScale = 0.24 + biteSeverity * 0.78;
+        state.shipSpeed = clamp(state.shipSpeed - state.brakeForce * dt * brakeScale, 0, 1);
+        state.impactBrake *= Math.pow(0.28, dt);
+        state.stopHarshness *= Math.pow(state.snagged ? 0.9 : 0.72, dt);
+        state.payoutAggression *= Math.pow(0.82, dt);
+      }
+
+      function updateMotion(dt) {
+        state.time += dt;
+        state.sailOffset += state.shipSpeed * dt * 68;
+        state.shipTravelX = Math.min(620, state.shipTravelX + state.shipSpeed * dt * 120);
+        updateDemo(dt);
+
+        state.wheelVelocity *= Math.pow(0.2, dt);
+        if (Math.abs(state.wheelVelocity) < 0.015) state.wheelVelocity = 0;
+
+        const beforeRelease = state.release;
+        state.release = clamp(state.release + state.wheelVelocity * dt * 0.34, 0, 1);
+        state.wheelAngle += state.wheelVelocity * dt * 9.6;
+        if (beforeRelease <= 0.42 && state.release > 0.42) {
+          state.anchorWorldTravelBase = state.shipTravelX;
+        }
+        if (state.release < 0.38) {
+          state.anchorWorldTravelBase = state.shipTravelX;
+        }
+
+        state.anchorRing = getAnchorHoleForRelease(state.release);
+        state.anchorAngle = -0.15 - state.release * 0.42 + Math.sin(state.wheelAngle * 0.45) * 0.08;
+        state.anchorSpin += state.wheelVelocity * dt * 0.8;
+        state.chainJerk = Math.max(0, state.chainJerk - dt * 2.6);
+        state.hookOpen = Math.max(0, state.hookOpen - dt * 1.1);
+        updateFish(dt);
+        updateSeabedInteraction(dt, beforeRelease);
+
+        if (state.release >= 0.995 && !state.snagged && beforeRelease < state.release) {
+          state.snagged = true;
+          state.hookOpen = 1;
+          state.chainJerk = 1;
+          state.shock = clamp(
+            0.26 + Math.abs(state.wheelVelocity) * 0.13 + state.frictionPeak * 0.62 + state.bury * 0.22 + state.biteImpact * 0.38,
+            0.26,
+            1
+          );
+          state.stopHarshness = Math.max(
+            state.stopHarshness,
+            clamp(0.18 + state.biteImpact * 0.48 + state.payoutAggression * 0.32 + state.frictionPeak * 0.24 - state.rhythmScore * 0.14, 0, 1)
+          );
+          state.impactBrake = Math.max(state.impactBrake, 0.2 + state.biteImpact * 0.45 + state.frictionPeak * 0.18);
+          state.shockClock = 0;
+          addAnchorGouge(getAnchorBitePoint(), 0.6 + state.frictionPeak);
+          addSandPuff(getAnchorBitePoint().x, getSeabedSurfaceY() + 8 * SHIP_SCALE, 0.7 + state.frictionPeak);
+          addHitBurst(getAnchorBitePoint().x, getSeabedSurfaceY() - 10 * SHIP_SCALE, "钩", 1);
+        }
+
+        if (state.release < 0.96) state.snagged = false;
+
+        updateStoppingModel(dt);
+
+        if (state.snagged) {
+          state.shockClock += dt;
+          state.shock *= Math.pow(0.13, dt);
+          if (state.shock < 0.025) state.shock = 0;
+        }
+
+        updateShipPose(dt);
+        if (state.keyFlash > 0) state.keyFlash = Math.max(0, state.keyFlash - dt);
+        state.phase = getPhaseFromMotion();
+      }
+
+      function drawImageRotated(img, x, y, w, h, angle, alpha = 1) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+        ctx.globalAlpha = alpha;
+        ctx.drawImage(img, -w / 2, -h / 2, w, h);
+        ctx.restore();
+      }
+
+      function drawChainLink(x, y, h, angle, alpha = 0.96) {
+        const w = h * 0.58;
+        drawImageRotated(images.link, x, y, w, h, angle, alpha);
+      }
+
+      function fillViewportBackdrop() {
+        ctx.save();
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.fillStyle = "#8db8e6";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.restore();
+      }
+
+      function drawParallaxImageStrip(key, y, height, speed, alpha = 1, xOffset = 0) {
+        const img = images[key];
+        if (!img) return;
+        const width = img.width * (height / img.height);
+        const scroll = ((state.sailOffset * speed + xOffset) % width + width) % width;
+
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        for (let x = -scroll - width; x < WORLD.w + width; x += width) {
+          ctx.drawImage(img, x, y, width, height);
+        }
+        ctx.restore();
+      }
+
+      function drawSourcedParallaxBackdrop() {
+        const waterY = getWaterY();
+        const speed = clamp(state.shipSpeed + state.tension * 0.16, 0.05, 1.12);
+        ctx.save();
+        ctx.globalCompositeOperation = "source-over";
+
+        ctx.fillStyle = "#8db8e6";
+        ctx.fillRect(0, 0, WORLD.w, WORLD.h);
+        drawParallaxImageStrip("pixelCloudFar", 122 + Math.sin(state.time * 0.16) * 2, 198, 0.018 * speed, 0.58);
+        drawParallaxImageStrip("pixelCloudNear", waterY - 418, 178, 0.035 * speed, 0.62, 220);
+        drawParallaxImageStrip("pixelHorizon", waterY - 272, 104, 0.085 * speed, 0.72, 80);
+        drawParallaxImageStrip("pixelWaterFar", waterY - 164, 116, 0.22 * speed, 0.64, 260);
+        drawParallaxImageStrip("pixelWaterMid", waterY - 52, 156, 0.62 * speed, 0.54, 120);
+        drawParallaxImageStrip("pixelWaterNear", waterY + 88, 154, 1.18 * speed, 0.46, 360);
+
+        ctx.restore();
+      }
+
+      function drawWaterUnderlay() {
+        const waterY = getWaterY();
+        ctx.save();
+        ctx.fillStyle = "rgba(255, 255, 255, 0.34)";
+        ctx.beginPath();
+        ctx.moveTo(0, waterY + 18);
+        for (let x = 0; x <= WORLD.w; x += 36) {
+          const y = waterY + 18 + Math.sin((x + state.sailOffset * 0.7) * 0.025) * 8;
+          ctx.lineTo(x, y);
+        }
+        ctx.lineTo(WORLD.w, WORLD.h);
+        ctx.lineTo(0, WORLD.h);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.strokeStyle = "rgba(23, 23, 23, 0.18)";
+        ctx.lineWidth = 2 * SHIP_SCALE;
+        for (let row = 0; row < 7; row++) {
+          ctx.beginPath();
+          for (let x = 0; x <= WORLD.w; x += 24) {
+            const y = waterY + 30 + row * 18 + Math.sin((x + state.sailOffset * (0.55 + row * 0.04)) * 0.025 + row) * 5;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      function drawWaterOverlay() {
+        const waterY = getWaterY();
+        ctx.save();
+        ctx.fillStyle = "rgba(245, 241, 233, 0.24)";
+        ctx.beginPath();
+        ctx.moveTo(0, waterY + 14);
+        for (let x = 0; x <= WORLD.w; x += 24) {
+          const y = waterY + 14 + Math.sin((x + state.sailOffset) * 0.02) * 6;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.lineTo(WORLD.w, WORLD.h);
+        ctx.lineTo(0, WORLD.h);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.globalAlpha = 0.86;
+        ctx.strokeStyle = "rgba(23, 23, 23, 0.58)";
+        ctx.lineWidth = 2.6 * SHIP_SCALE;
+        ctx.beginPath();
+        for (let x = 0; x <= WORLD.w; x += 20) {
+          const y = waterY + 12 + Math.sin((x + state.sailOffset * 1.15) * 0.024) * 5;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        ctx.globalAlpha = 0.42;
+        ctx.lineWidth = 1.2 * SHIP_SCALE;
+        for (let i = 0; i < 22; i++) {
+          const x = (i * 91 + state.sailOffset * 0.45) % WORLD.w;
+          const y = waterY + 44 + (i * 29) % 128;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.quadraticCurveTo(x + 18, y - 7, x + 40, y + 1);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      function drawParallaxMotionCues() {
+        const waterY = getWaterY();
+        const speed = clamp(state.shipSpeed + state.tension * 0.18, 0, 1);
+        ctx.save();
+        ctx.lineCap = "round";
+
+        ctx.strokeStyle = "rgba(23, 23, 23, 0.13)";
+        ctx.lineWidth = 1.15 * SHIP_SCALE;
+        const farCount = 16 + Math.round(speed * 10);
+        for (let i = 0; i < farCount; i++) {
+          const x = ((i * 137 - state.sailOffset * 0.42) % (WORLD.w + 180) + WORLD.w + 180) % (WORLD.w + 180) - 90;
+          const y = waterY + 44 + ((i * 37) % 138);
+          const len = 28 + speed * 34 + (i % 4) * 7;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x - len, y + Math.sin(i) * 2.6);
+          ctx.stroke();
+        }
+
+        ctx.strokeStyle = `rgba(23, 23, 23, ${0.2 + speed * 0.26})`;
+        ctx.lineWidth = (1.5 + speed * 1.4) * SHIP_SCALE;
+        const nearCount = 10 + Math.round(speed * 20);
+        for (let i = 0; i < nearCount; i++) {
+          const x = ((i * 91 - state.sailOffset * 1.35) % (WORLD.w + 220) + WORLD.w + 220) % (WORLD.w + 220) - 110;
+          const y = waterY + 176 + ((i * 23) % 70);
+          const len = 42 + speed * 62 + (i % 3) * 13;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.quadraticCurveTo(x - len * 0.44, y - 3, x - len, y + 1);
+          ctx.stroke();
+        }
+
+        if (state.snagged || state.tension > 0.45) {
+          const pull = clamp(state.tension + state.shock, 0, 1);
+          ctx.globalAlpha = 0.22 + pull * 0.36;
+          ctx.strokeStyle = "#171717";
+          ctx.lineWidth = (2 + pull * 2.2) * SHIP_SCALE;
+          for (let i = 0; i < 8; i++) {
+            const x = shipPoint({ x: 88, y: 760 }).x - 24 - i * 34;
+            const y = waterY + 42 + i * 9;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x - 38 - pull * 36, y + Math.sin(state.time * 18 + i) * 9);
+            ctx.stroke();
+          }
+        }
+
+        ctx.restore();
+      }
+
+      function drawShipWake() {
+        if (state.shipSpeed <= 0.02 && !state.snagged) return;
+        const stern = shipPoint({ x: 48, y: 780 });
+        const strength = clamp(state.shipSpeed + state.tension * 0.35, 0.12, 1);
+        ctx.save();
+        ctx.strokeStyle = "rgba(23, 23, 23, 0.38)";
+        ctx.lineCap = "round";
+        for (let row = 0; row < 5; row++) {
+          ctx.globalAlpha = (0.2 + strength * 0.34) * (1 - row * 0.12);
+          ctx.lineWidth = (1.1 + strength * 1.4) * SHIP_SCALE;
+          ctx.beginPath();
+          const startX = stern.x - 34 - row * 10;
+          const startY = stern.y - 4 + row * 9;
+          ctx.moveTo(startX, startY);
+          for (let i = 1; i <= 8; i++) {
+            const x = startX - i * (20 + strength * 9);
+            const y = startY + Math.sin(state.time * 7 + i * 0.9 + row) * (3 + strength * 4);
+            ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+
+        if (state.snagged || state.tension > 0.45) {
+          ctx.globalAlpha = clamp(state.tension + state.shock, 0, 1) * 0.55;
+          ctx.strokeStyle = "#171717";
+          ctx.lineWidth = 2.8 * SHIP_SCALE;
+          for (let i = 0; i < 5; i++) {
+            ctx.beginPath();
+            ctx.arc(stern.x - i * 22, stern.y + i * 4, (18 + i * 9) * SHIP_SCALE, 0.1, Math.PI * 1.35);
+            ctx.stroke();
+          }
+        }
+        ctx.restore();
+      }
+
+      function drawSeabed() {
+        const surfaceY = getSeabedSurfaceY();
+        ctx.save();
+        ctx.fillStyle = "rgba(255, 255, 255, 0.72)";
+        ctx.beginPath();
+        ctx.moveTo(0, surfaceY);
+        for (let x = 0; x <= WORLD.w; x += 24) {
+          const y = surfaceY + Math.sin(x * 0.024) * 3 + Math.sin(x * 0.061) * 1.7;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.lineTo(WORLD.w, WORLD.h);
+        ctx.lineTo(0, WORLD.h);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.strokeStyle = "rgba(23, 23, 23, 0.82)";
+        ctx.lineWidth = 3.2 * SHIP_SCALE;
+        ctx.beginPath();
+        for (let x = 0; x <= WORLD.w; x += 22) {
+          const yy = surfaceY + Math.sin(x * 0.024) * 3 + Math.sin(x * 0.061) * 1.7;
+          if (x === 0) ctx.moveTo(x, yy);
+          else ctx.lineTo(x, yy);
+        }
+        ctx.stroke();
+
+        ctx.lineWidth = 1.2 * SHIP_SCALE;
+        for (const patch of seabedProfile.sandPatches) {
+          ctx.globalAlpha = 0.16 + patch.grip * 0.18;
+          for (const patchX of wrappedWorldCopies(patch.x, 1, patch.w + 160)) {
+            ctx.beginPath();
+            for (let i = 0; i < patch.dots; i++) {
+              const x = patchX + ((i * 37) % Math.max(patch.w, 1));
+              const y = surfaceY + 18 + ((i * 23) % 78);
+              if (x < -20 || x > WORLD.w + 20) continue;
+              ctx.moveTo(x, y);
+              ctx.arc(x, y, 0.9 + (i % 3) * 0.35, 0, Math.PI * 2);
+            }
+            ctx.stroke();
+          }
+        }
+
+        ctx.globalAlpha = 0.48;
+        for (const pebble of seabedProfile.pebbles) {
+          for (const x of wrappedWorldCopies(pebble.x, 1, 80)) {
+            ctx.beginPath();
+            ctx.ellipse(x, surfaceY + pebble.y, pebble.r, pebble.r * 0.66, 0.2, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+
+        ctx.globalAlpha = 0.92;
+        ctx.lineWidth = 2.4 * SHIP_SCALE;
+        ctx.fillStyle = "rgba(245, 241, 233, 0.86)";
+        for (const rock of seabedProfile.rocks) {
+          for (const x of wrappedWorldCopies(rock.x, 1, 150)) {
+            const y = surfaceY + 22 * SHIP_SCALE;
+            const r = rock.r * SHIP_SCALE;
+            ctx.beginPath();
+            ctx.moveTo(x - r * 1.3, y + r * 0.38);
+            ctx.lineTo(x - r * 0.72, y - r * 0.68);
+            ctx.lineTo(x + r * 0.08, y - r * 0.94);
+            ctx.lineTo(x + r * 1.12, y - r * 0.18);
+            ctx.lineTo(x + r * 0.82, y + r * 0.56);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.globalAlpha = 0.36;
+            ctx.beginPath();
+            ctx.moveTo(x - r * 0.62, y - r * 0.34);
+            ctx.lineTo(x + r * 0.1, y + r * 0.2);
+            ctx.lineTo(x + r * 0.78, y - r * 0.1);
+            ctx.stroke();
+            ctx.globalAlpha = 0.92;
+          }
+        }
+        ctx.restore();
+      }
+
+      function drawAnchorGouges() {
+        ctx.save();
+        ctx.strokeStyle = "rgba(23, 23, 23, 0.76)";
+        ctx.lineWidth = 2.2 * SHIP_SCALE;
+        ctx.lineCap = "round";
+        for (const gouge of state.gouges) {
+          ctx.save();
+          ctx.translate(gouge.x, gouge.y);
+          ctx.rotate(gouge.angle);
+          ctx.scale(gouge.mirror, 1);
+          const w = 64 * gouge.scale;
+          for (let i = 0; i < 4; i++) {
+            const y = (i - 1.5) * 5 * SHIP_SCALE;
+            ctx.beginPath();
+            ctx.moveTo(-w * 0.5, y);
+            ctx.quadraticCurveTo(-w * 0.1, y + (i % 2 ? 6 : -5), w * 0.5, y + 1);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
+        ctx.restore();
+      }
+
+      function drawSandPuffs() {
+        ctx.save();
+        for (const puff of state.sandPuffs) {
+          const alpha = clamp(puff.life / puff.maxLife, 0, 1);
+          ctx.globalAlpha = alpha * 0.6;
+          ctx.strokeStyle = "#171717";
+          ctx.lineWidth = 1.3 * SHIP_SCALE;
+          ctx.beginPath();
+          ctx.arc(puff.x, puff.y, puff.r, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.globalAlpha = alpha * 0.42;
+          ctx.beginPath();
+          ctx.moveTo(puff.x - puff.r * 0.7, puff.y + puff.r * 0.2);
+          ctx.lineTo(puff.x + puff.r * 0.68, puff.y - puff.r * 0.15);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      function drawFish() {
+        ctx.save();
+        ctx.strokeStyle = "rgba(23, 23, 23, 0.72)";
+        ctx.fillStyle = "rgba(255, 255, 255, 0.54)";
+        ctx.lineWidth = 2 * SHIP_SCALE;
+        for (const fish of state.fish) {
+          const pos = getFishPosition(fish);
+          const dir = fish.dir;
+          const size = fish.size * (1 + fish.evade * 0.16);
+          ctx.save();
+          ctx.translate(pos.x, pos.y);
+          if (fish.dead) {
+            ctx.rotate(Math.PI * 0.82 + fish.rot);
+          }
+          ctx.scale(dir, 1);
+          ctx.fillStyle = "rgba(255, 255, 255, 0.54)";
+          ctx.beginPath();
+          ctx.ellipse(0, 0, size, size * 0.46, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(-size * 0.96, 0);
+          ctx.lineTo(-size * 1.55, -size * 0.42);
+          ctx.lineTo(-size * 1.48, size * 0.42);
+          ctx.closePath();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(size * 0.48, -size * 0.08, 1.7 * SHIP_SCALE, 0, Math.PI * 2);
+          if (fish.dead) {
+            ctx.moveTo(size * 0.36, -size * 0.2);
+            ctx.lineTo(size * 0.58, size * 0.02);
+            ctx.moveTo(size * 0.58, -size * 0.2);
+            ctx.lineTo(size * 0.36, size * 0.02);
+            ctx.stroke();
+          } else {
+            ctx.fillStyle = "#171717";
+            ctx.fill();
+          }
+          ctx.restore();
+
+          if (fish.hitClock > 0) {
+            ctx.save();
+            ctx.globalAlpha = clamp(fish.hitClock / 0.42, 0, 1);
+            ctx.font = `800 ${18 * SHIP_SCALE}px ui-sans-serif, system-ui, sans-serif`;
+            ctx.fillStyle = "#171717";
+            ctx.fillText("!", pos.x + size * 1.2, pos.y - size * 0.8);
+            ctx.restore();
+          }
+        }
+        ctx.restore();
+      }
+
+      function drawHitBursts() {
+        ctx.save();
+        ctx.strokeStyle = "#171717";
+        ctx.fillStyle = "#171717";
+        ctx.lineCap = "round";
+        for (const burst of state.hitBursts) {
+          const alpha = clamp(burst.life / burst.maxLife, 0, 1);
+          const r = (14 + burst.strength * 18) * (1 - alpha * 0.15);
+          ctx.globalAlpha = alpha;
+          ctx.lineWidth = (1.4 + burst.strength * 1.2) * SHIP_SCALE;
+          for (let i = 0; i < 6; i++) {
+            const a = (i / 6) * Math.PI * 2 + state.time * 0.2;
+            ctx.beginPath();
+            ctx.moveTo(burst.x + Math.cos(a) * r * 0.35, burst.y + Math.sin(a) * r * 0.35);
+            ctx.lineTo(burst.x + Math.cos(a) * r, burst.y + Math.sin(a) * r);
+            ctx.stroke();
+          }
+          ctx.font = `800 ${16 * SHIP_SCALE}px ui-sans-serif, system-ui, sans-serif`;
+          ctx.fillText(burst.label, burst.x + r * 0.35, burst.y - r * 0.42);
+        }
+        ctx.restore();
+      }
+
+      function drawChain() {
+        const points = state.points;
+        if (points.length < 2) return;
+
+        ctx.save();
+        ctx.strokeStyle = `rgba(25, 28, 33, ${0.18 + state.tension * 0.25})`;
+        ctx.lineWidth = (7 + state.tension * 3) * SHIP_SCALE;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+        for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
+        ctx.stroke();
+        ctx.restore();
+
+        const linkImage = images.link;
+        for (let i = 0; i < points.length - 1; i++) {
+          const a = points[i];
+          const b = points[i + 1];
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const len = Math.hypot(dx, dy);
+          if (len < 2) continue;
+          const angle = Math.atan2(dy, dx) - Math.PI / 2;
+          const jerk = state.chainJerk * Math.sin(state.time * 58 + i * 1.7) * 4.5 * SHIP_SCALE;
+          const normalX = -dy / len;
+          const normalY = dx / len;
+          const x = (a.x + b.x) * 0.5 + normalX * jerk;
+          const y = (a.y + b.y) * 0.5 + normalY * jerk;
+          const h = clamp(len * 1.92, 28 * SHIP_SCALE, 42 * SHIP_SCALE);
+          const twist = i % 2 ? Math.PI / 2 : 0;
+          drawImageRotated(linkImage, x, y, h * 0.58, h, angle + twist, 0.95);
+        }
+      }
+
+      function drawChainLinksAlongLine(start, end, spacing, size, alpha = 0.94, phase = 0) {
+        const dx = end.x - start.x;
+        const dy = end.y - start.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance < 2) return;
+        const count = Math.max(1, Math.ceil(distance / spacing));
+        const baseAngle = Math.atan2(dy, dx) - Math.PI / 2;
+        for (let i = 0; i <= count; i++) {
+          const t = i / count;
+          const x = lerp(start.x, end.x, t);
+          const y = lerp(start.y, end.y, t);
+          const twist = (i + phase) % 2 ? Math.PI / 2 : 0;
+          drawChainLink(x, y, size, baseAngle + twist, alpha);
+        }
+      }
+
+      function drawWinchAndFeed() {
+        const wheel = getWinch();
+        const origin = getOrigin();
+        const r = winchRadius * SHIP_SCALE;
+
+        ctx.save();
+        ctx.translate(wheel.x, wheel.y);
+        ctx.rotate(state.wheelAngle);
+
+        ctx.strokeStyle = "#171717";
+        ctx.globalAlpha = 0.78;
+        ctx.lineWidth = 4 * SHIP_SCALE;
+        ctx.beginPath();
+        ctx.arc(0, 0, r * 0.45, 0, Math.PI * 2);
+        ctx.stroke();
+        for (let i = 0; i < 6; i++) {
+          const a = i * Math.PI / 3;
+          ctx.beginPath();
+          ctx.moveTo(Math.cos(a) * r * 0.16, Math.sin(a) * r * 0.16);
+          ctx.lineTo(Math.cos(a) * r * 0.72, Math.sin(a) * r * 0.72);
+          ctx.stroke();
+        }
+
+        for (let i = 0; i < 10; i++) {
+          const a = state.wheelAngle * 0.25 + i * Math.PI / 5;
+          const x = Math.cos(a) * r * 0.82;
+          const y = Math.sin(a) * r * 0.82;
+          drawChainLink(x, y, 30 * SHIP_SCALE, a, 0.92);
+        }
+        ctx.restore();
+
+        const exitAngle = Math.PI * 0.78;
+        const exit = {
+          x: wheel.x + Math.cos(exitAngle) * r * 0.86,
+          y: wheel.y + Math.sin(exitAngle) * r * 0.86
+        };
+        const guide = {
+          x: lerp(exit.x, origin.x, 0.54),
+          y: lerp(exit.y, origin.y, 0.54) + 7 * SHIP_SCALE
+        };
+
+        ctx.save();
+        ctx.strokeStyle = "rgba(18, 20, 24, 0.22)";
+        ctx.lineWidth = 5 * SHIP_SCALE;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(exit.x, exit.y);
+        ctx.lineTo(guide.x, guide.y);
+        ctx.lineTo(origin.x, origin.y);
+        ctx.stroke();
+        ctx.restore();
+
+        drawChainLinksAlongLine(exit, guide, 14 * SHIP_SCALE, 33 * SHIP_SCALE, 0.95, 0);
+        drawChainLinksAlongLine(guide, origin, 14 * SHIP_SCALE, 33 * SHIP_SCALE, 0.95, 1);
+      }
+
+      function drawAnchor() {
+        const img = images.anchor;
+        const h = 166 * SHIP_SCALE;
+        const w = img.width * h / img.height;
+        const x = state.anchorRing.x;
+        const y = state.anchorRing.y;
+        const holeY = h * 0.12;
+
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(state.anchorAngle + state.anchorSpin * 0.05);
+        ctx.drawImage(img, -w * 0.5, -holeY, w, h);
+        const open = Math.max(state.hookOpen, state.snagged ? 0.45 : 0);
+        if (open > 0) {
+          ctx.strokeStyle = "#171717";
+          ctx.lineWidth = 4 * SHIP_SCALE;
+          ctx.lineCap = "round";
+          ctx.globalAlpha = 0.88;
+          const clawY = h * 0.72;
+          const clawSpread = (18 + open * 24) * SHIP_SCALE;
+          ctx.beginPath();
+          ctx.moveTo(-w * 0.18, clawY);
+          ctx.quadraticCurveTo(-w * 0.42 - clawSpread, clawY - 16 * SHIP_SCALE, -w * 0.44 - clawSpread, clawY - 44 * SHIP_SCALE);
+          ctx.moveTo(w * 0.18, clawY);
+          ctx.quadraticCurveTo(w * 0.42 + clawSpread, clawY - 16 * SHIP_SCALE, w * 0.44 + clawSpread, clawY - 44 * SHIP_SCALE);
+          ctx.stroke();
+        }
+        ctx.restore();
+
+        if (state.phase === "snagged") {
+          ctx.save();
+          ctx.globalAlpha = state.shock * 0.35;
+          ctx.strokeStyle = "#b9503f";
+          ctx.lineWidth = 4 * SHIP_SCALE;
+          for (let i = 0; i < 5; i++) {
+            const r = (28 + i * 16 + (1 - state.shock) * 30) * SHIP_SCALE;
+            ctx.beginPath();
+            ctx.arc(x, y + h * 0.68, r, -0.2, Math.PI + 0.25);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
+      }
+
+      function drawScene() {
+        fillViewportBackdrop();
+        ctx.clearRect(0, 0, WORLD.w, WORLD.h);
+        drawSourcedParallaxBackdrop();
+        drawWaterUnderlay();
+        drawParallaxMotionCues();
+        drawSeabed();
+        drawAnchorGouges();
+        drawFish();
+        drawShipWake();
+        ctx.save();
+        const pivot = getShipPivot();
+        ctx.translate(pivot.x + state.shipOffsetX, pivot.y + state.shipOffsetY);
+        ctx.rotate(state.shipRoll);
+        ctx.drawImage(
+          images.background,
+          shipOffsetBase.x - pivot.x,
+          shipOffsetBase.y - pivot.y,
+          WORLD.w * SHIP_SCALE,
+          WORLD.h * SHIP_SCALE
+        );
+        ctx.restore();
+        drawAnchor();
+        drawSandPuffs();
+        drawHitBursts();
+        drawWinchAndFeed();
+        drawChain();
+        drawWaterOverlay();
+      }
+
+      function updateHud() {
+        phaseText.textContent = phaseLabel[state.phase] || state.phase;
+        linkText.textContent = `${Math.max(0, state.points.length - 1)}/${maxLinks}`;
+        frictionText.textContent = `${Math.round(state.friction * 100)}%`;
+        hitText.textContent = state.hitLabel;
+        shipSpeedText.textContent = `${Math.round(state.shipSpeed * 100)}%`;
+        smoothnessText.textContent = `${Math.round(state.stopSmoothness * 100)}%`;
+        document.documentElement.dataset.phase = state.phase;
+        document.documentElement.dataset.links = String(Math.max(0, state.points.length - 1));
+        document.documentElement.dataset.totalLinks = String(maxLinks);
+        document.documentElement.dataset.tension = String(Math.round(state.tension * 100));
+        document.documentElement.dataset.friction = String(Math.round(state.friction * 100));
+        document.documentElement.dataset.hit = state.hitLabel;
+        document.documentElement.dataset.shipSpeed = String(Math.round(state.shipSpeed * 100));
+        document.documentElement.dataset.stopSmoothness = String(Math.round(state.stopSmoothness * 100));
+        document.documentElement.dataset.brakeForce = String(Math.round(state.brakeForce * 100));
+        document.documentElement.dataset.payoutAggression = String(Math.round(state.payoutAggression * 100));
+        document.documentElement.dataset.shipTravel = String(Math.round(state.shipTravelX));
+        document.documentElement.dataset.wheelSpeed = String(Math.round(Math.abs(state.wheelVelocity) / 2.4 * 100));
+        document.documentElement.dataset.release = String(Math.round(state.release * 100));
+        document.documentElement.dataset.bury = String(Math.round(state.bury * 100));
+        document.documentElement.dataset.gouges = String(state.gouges.length);
+        document.documentElement.dataset.ready = state.ready ? "true" : "false";
+        document.documentElement.dataset.lastKey = state.lastKey;
+
+        keyButtons.forEach((button) => {
+          button.classList.toggle("active", state.keyFlash > 0 && button.dataset.key?.toUpperCase() === state.lastKey);
+        });
+      }
+
+      function update(now) {
+        const dt = Math.min((now - state.last) / 1000 || 0, 0.033);
+        state.last = now;
+        if (state.ready) {
+          updateMotion(dt);
+          solveChain(dt);
+          drawScene();
+          updateHud();
+        }
+        requestAnimationFrame(update);
+      }
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(window.innerWidth * dpr);
+        canvas.height = Math.round(window.innerHeight * dpr);
+        canvas.style.width = `${window.innerWidth}px`;
+        canvas.style.height = `${window.innerHeight}px`;
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+        const scale = Math.min(window.innerWidth / WORLD.w, window.innerHeight / WORLD.h);
+        const ox = (window.innerWidth - WORLD.w * scale) / 2;
+        const oy = (window.innerHeight - WORLD.h * scale) / 2;
+        ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * ox, dpr * oy);
+      }
+
+      throwBtn.addEventListener("click", toggleDemo);
+      resetBtn.addEventListener("click", resetChain);
+      keyButtons.forEach((button) => {
+        button.addEventListener("pointerdown", (event) => {
+          event.preventDefault();
+          pulseKey(button.dataset.key);
+        });
+      });
+      window.addEventListener("keydown", (event) => {
+        const key = event.key.toLowerCase();
+        if (["a", "w", "d", "s"].includes(key)) {
+          event.preventDefault();
+          pulseKey(key);
+        }
+      });
+      window.addEventListener("resize", resize);
+
+      window.chainThrowDebug = {
+        startDemo: toggleDemo,
+        pulseKey,
+        reset: resetChain,
+        getStats: () => ({
+          phase: state.phase,
+          links: Math.max(0, state.points.length - 1),
+          totalLinks: maxLinks,
+          tension: Math.round(state.tension * 100),
+          friction: Math.round(state.friction * 100),
+          frictionPeak: Math.round(state.frictionPeak * 100),
+          hit: state.hitLabel,
+          shipSpeed: Math.round(state.shipSpeed * 100),
+          smoothness: Math.round(state.stopSmoothness * 100),
+          brakeForce: Math.round(state.brakeForce * 100),
+          payoutAggression: Math.round(state.payoutAggression * 100),
+          biteImpact: Math.round(state.biteImpact * 100),
+          shipTravel: Math.round(state.shipTravelX),
+          wheelSpeed: Math.round(Math.abs(state.wheelVelocity) / 2.4 * 100),
+          release: Math.round(state.release * 100),
+          bury: Math.round(state.bury * 100),
+          gouges: state.gouges.length,
+          anchorContact: state.anchorContact,
+          lastKey: state.lastKey,
+          ready: state.ready
+        })
+      };
+
+      Promise.all([
+        loadImage("background", assetPaths.background),
+        loadImage("anchor", assetPaths.anchor),
+        loadImage("link", assetPaths.link),
+        loadImage("pixelCloudFar", assetPaths.pixelCloudFar),
+        loadImage("pixelCloudNear", assetPaths.pixelCloudNear),
+        loadImage("pixelHorizon", assetPaths.pixelHorizon),
+        loadImage("pixelWaterFar", assetPaths.pixelWaterFar),
+        loadImage("pixelWaterMid", assetPaths.pixelWaterMid),
+        loadImage("pixelWaterNear", assetPaths.pixelWaterNear)
+      ]).then(() => {
+        state.ready = true;
+        resize();
+        resetChain();
+        if (new URLSearchParams(window.location.search).get("demo") === "1") {
+          toggleDemo();
+        }
+        requestAnimationFrame((now) => {
+          state.last = now;
+          requestAnimationFrame(update);
+        });
+      }).catch((error) => {
+        document.body.innerHTML = `<main class="app"><section class="title"><strong>素材加载失败</strong><span>${error.message}</span></section></main>`;
+        throw error;
+      });
+    </script>
+  </body>
+</html>

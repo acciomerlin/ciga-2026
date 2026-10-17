@@ -1,0 +1,316 @@
+[gd_scene format=3 uid="uid://cfpexbvemhj5h"]
+
+[ext_resource type="Texture2D" uid="uid://lmfm81aoivja" path="res://assets/background2.png" id="1_y4dr7"]
+[ext_resource type="Texture2D" uid="uid://cpq5jglo1spud" path="res://assets/background.png" id="2_didp7"]
+[ext_resource type="Texture2D" uid="uid://r8r0ls4sj05b" path="res://assets/live_room.png" id="3_2a60c"]
+[ext_resource type="Texture2D" uid="uid://cswsg35unc5eh" path="res://assets/cross_hand.png" id="4_4iphx"]
+[ext_resource type="Texture2D" uid="uid://b4btbtltjbne2" path="res://assets/dialog_frame.png" id="4_yymuf"]
+[ext_resource type="Texture2D" uid="uid://cfcbigk54esee" path="res://assets/tv_frame.png" id="5_jgkgd"]
+[ext_resource type="Texture2D" uid="uid://x2oiyfp5fbk2" path="res://assets/earth.png" id="5_rqhku"]
+[ext_resource type="Texture2D" uid="uid://d167eldlda5rr" path="res://assets/dialogue.png" id="6_didp7"]
+[ext_resource type="Script" uid="uid://cmvonm20d01fx" path="res://Scripts/Level1.gd" id="7_6r38b"]
+[ext_resource type="Script" uid="uid://bgogaun0as4gk" path="res://Scripts/Typewriter.gd" id="8_4r58w"]
+[ext_resource type="Texture2D" uid="uid://do1hnu2km1rcv" path="res://assets/correct.png" id="8_jgkgd"]
+[ext_resource type="Texture2D" uid="uid://bj52dpc12lm7f" path="res://assets/wrong.png" id="9_bs12r"]
+[ext_resource type="Texture2D" uid="uid://257jpqhdfquw" path="res://assets/clock_dot.png" id="12_d1mwp"]
+[ext_resource type="Texture2D" uid="uid://bucpvpa5tbkkw" path="res://assets/clock_hour.png" id="13_bdr3p"]
+[ext_resource type="Texture2D" uid="uid://butyyv18qnbpd" path="res://assets/clock_plate.png" id="13_u1b78"]
+[ext_resource type="Texture2D" uid="uid://bjylwnt05upij" path="res://assets/clock_minit.png" id="14_wwu6c"]
+[ext_resource type="Texture2D" uid="uid://bgp8a77tnjqho" path="res://assets/confirm_button.png" id="16_wwu6c"]
+[ext_resource type="FontFile" path="res://fonts/NotoSansSC.ttf" id="1_font"]
+[ext_resource type="FontFile" path="res://fonts/NotoColorEmoji.ttf" id="2_emoji_font"]
+
+[node name="Level1" type="Node2D" unique_id=958875577]
+script = ExtResource("7_6r38b")
+
+[node name="TV" type="Node2D" parent="." unique_id=19568138]
+position = Vector2(-171, 3)
+
+[node name="fixed" type="Node2D" parent="TV" unique_id=1445570060]
+position = Vector2(603, 466.00003)
+scale = Vector2(0.41034484, 0.41034484)
+
+[node name="Background2" type="Sprite2D" parent="TV/fixed" unique_id=647100160]
+position = Vector2(358.2353, -353.36145)
+scale = Vector2(1.8253512, 1.5397682)
+texture = ExtResource("1_y4dr7")
+
+[node name="Background" type="Sprite2D" parent="TV/fixed" unique_id=1485063568]
+position = Vector2(-4.8737793, -355.79846)
+scale = Vector2(1.5361644, 1.6014408)
+texture = ExtResource("2_didp7")
+metadata/_edit_lock_ = true
+
+[node name="BroadcastLogFrame" type="Sprite2D" parent="TV" unique_id=1697426648]
+position = Vector2(1144.3701, 321.49988)
+rotation = 1.5707964
+scale = Vector2(0.30111983, 0.27845755)
+texture = ExtResource("4_yymuf")
+
+[node name="BroadcastLog" type="RichTextLabel" parent="TV" unique_id=687924631]
+offset_left = 1017.0
+offset_top = 99.0
+offset_right = 1276.0
+offset_bottom = 552.0
+theme_override_colors/default_color = Color(0.30980393, 0.28627452, 0.2509804, 1)
+theme_override_fonts/normal_font = ExtResource("1_font")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+
+[node name="LiveRoom" type="Sprite2D" parent="TV" unique_id=1075200436]
+position = Vector2(603, 333)
+scale = Vector2(0.62428564, 0.6242857)
+texture = ExtResource("3_2a60c")
+
+[node name="CrossHand" type="Sprite2D" parent="TV" unique_id=1724506100]
+visible = false
+position = Vector2(603, 333)
+scale = Vector2(0.624, 0.624)
+texture = ExtResource("4_4iphx")
+
+[node name="Earth" type="Sprite2D" parent="TV" unique_id=928210044]
+position = Vector2(555.00006, 283.00003)
+scale = Vector2(0.26913875, 0.26913875)
+texture = ExtResource("5_rqhku")
+
+[node name="Dialogue" type="Sprite2D" parent="TV" unique_id=1594151806]
+position = Vector2(549, 235)
+scale = Vector2(0.64126396, 0.64126396)
+texture = ExtResource("6_didp7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TV/Dialogue" unique_id=1299900859]
+offset_left = -243.26959
+offset_top = -93.565216
+offset_right = 249.5072
+offset_bottom = 95.12463
+theme_override_colors/default_color = Color(0.30937794, 0.2925795, 0.26608893, 1)
+theme_override_fonts/normal_font = ExtResource("1_font")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+
+[node name="typewriter" type="Node" parent="TV/Dialogue/RichTextLabel" unique_id=2118059080]
+script = ExtResource("8_4r58w")
+
+[node name="Cards" type="Node2D" parent="TV" unique_id=436724952]
+visible = false
+
+[node name="Correct" type="Sprite2D" parent="TV/Cards" unique_id=217748164]
+position = Vector2(462, 452)
+rotation = -0.15533431
+scale = Vector2(0.2684013, 0.26840132)
+texture = ExtResource("8_jgkgd")
+
+[node name="Wrong" type="Sprite2D" parent="TV/Cards" unique_id=1423231969]
+position = Vector2(644.00006, 451.99997)
+rotation = 0.23212878
+scale = Vector2(0.268, 0.268)
+texture = ExtResource("9_bs12r")
+
+[node name="TvFrame" type="Sprite2D" parent="TV" unique_id=1477359832]
+position = Vector2(607, 308.99997)
+scale = Vector2(0.5879808, 0.5879808)
+texture = ExtResource("5_jgkgd")
+
+[node name="Clock" type="Node2D" parent="TV" unique_id=1511831146]
+visible = false
+position = Vector2(568, 415)
+
+[node name="ClockPlate" type="Sprite2D" parent="TV/Clock" unique_id=51794466]
+position = Vector2(-14.0000305, -11.999995)
+scale = Vector2(0.30066282, 0.30066282)
+texture = ExtResource("13_u1b78")
+
+[node name="ClockHour" type="Sprite2D" parent="TV/Clock" unique_id=1890078801]
+position = Vector2(-11, -12)
+rotation = -0.3874631
+scale = Vector2(0.11669188, 0.11669188)
+texture = ExtResource("13_bdr3p")
+
+[node name="ClockMinit" type="Sprite2D" parent="TV/Clock" unique_id=2127277375]
+position = Vector2(-10.888916, -12.111328)
+rotation = 1.5707964
+scale = Vector2(0.13056028, 0.13056028)
+texture = ExtResource("14_wwu6c")
+
+[node name="ClockDot" type="Sprite2D" parent="TV/Clock" unique_id=1155580770]
+position = Vector2(-11, -11.5)
+scale = Vector2(0.14843749, 0.14746092)
+texture = ExtResource("12_d1mwp")
+
+[node name="ConfirmButton" type="Button" parent="TV" unique_id=1184067890]
+visible = false
+offset_left = 481.0
+offset_top = 502.0
+offset_right = 639.0
+offset_bottom = 544.0
+theme_override_fonts/font = ExtResource("1_font")
+text = "确认修改"
+
+[node name="Confirmbutton" type="Sprite2D" parent="TV" unique_id=426785140]
+visible = false
+position = Vector2(556, 517)
+scale = Vector2(0.15822777, 0.15822777)
+texture = ExtResource("16_wwu6c")
+
+[node name="AnswerInput" type="LineEdit" parent="TV" unique_id=813902704]
+visible = false
+offset_left = 416.0
+offset_top = 375.0
+offset_right = 676.0
+offset_bottom = 424.0
+theme_override_fonts/font = ExtResource("1_font")
+text = "本站点的负责人是拼命学二郎。"
+
+[node name="BigEmoji" type="Label" parent="TV" unique_id=991104516]
+visible = false
+offset_left = 488.0
+offset_top = 142.0
+offset_right = 620.0
+offset_bottom = 274.0
+theme_override_fonts/font = ExtResource("2_emoji_font")
+theme_override_font_sizes/font_size = 96
+text = "🐱"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BigEmojiName" type="Label" parent="TV" unique_id=211904622]
+visible = false
+offset_left = 464.0
+offset_top = 257.0
+offset_right = 644.0
+offset_bottom = 305.0
+theme_override_colors/font_color = Color(0.30692267, 0.3069227, 0.3069227, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 34
+text = "CAT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EmojiLibraryGrid" type="GridContainer" parent="TV" unique_id=1137424925]
+visible = false
+offset_left = 375.0
+offset_top = 321.0
+offset_right = 735.0
+offset_bottom = 485.0
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 10
+columns = 6
+
+[node name="CatButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=1790819429]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "🐱"
+
+[node name="AnchorButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=405050267]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "⚓"
+
+[node name="StarButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=1920786678]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "⭐"
+
+[node name="DogButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=1874715020]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "🐶"
+
+[node name="FireButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=953044785]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "🔥"
+
+[node name="HeartButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=698027417]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "❤️"
+
+[node name="GameButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=329269862]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "🎮"
+
+[node name="RocketButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=2102133335]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "🚀"
+
+[node name="TrophyButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=1382820847]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "🏆"
+
+[node name="SunButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=1763640023]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "☀️"
+
+[node name="MoonButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=772877394]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "🌙"
+
+[node name="WaveButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=2138374260]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "🌊"
+
+[node name="MapButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=370021421]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "🗺️"
+
+[node name="LightButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=2140398537]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "💡"
+
+[node name="NewsButton" type="Button" parent="TV/EmojiLibraryGrid" unique_id=510216796]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "📰"
+
+[node name="EmojiLibrary" type="HBoxContainer" parent="TV" unique_id=1865377309]
+visible = false
+offset_left = 438.0
+offset_top = 438.0
+offset_right = 704.0
+offset_bottom = 496.0
+theme_override_constants/separation = 18
+
+[node name="CatButton" type="Button" parent="TV/EmojiLibrary" unique_id=1919773418]
+custom_minimum_size = Vector2(70, 56)
+layout_mode = 2
+text = "🐱"
+
+[node name="AnchorButton" type="Button" parent="TV/EmojiLibrary" unique_id=633993232]
+custom_minimum_size = Vector2(70, 56)
+layout_mode = 2
+text = "⚓"
+
+[node name="StarButton" type="Button" parent="TV/EmojiLibrary" unique_id=1890450011]
+custom_minimum_size = Vector2(70, 56)
+layout_mode = 2
+text = "⭐"
+
+[node name="summary" type="RichTextLabel" parent="TV" unique_id=1422598200]
+offset_left = 292.0
+offset_top = 142.0
+offset_right = 880.0
+offset_bottom = 496.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.27752772, 0.27752772, 0.27752772, 1)
+theme_override_fonts/normal_font = ExtResource("1_font")
+theme_override_font_sizes/normal_font_size = 26
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TV" unique_id=48007520]
+offset_left = 1101.0
+offset_top = 37.0
+offset_right = 1211.0
+offset_bottom = 76.0
+theme_override_colors/default_color = Color(0.3118496, 0.31184962, 0.3118496, 1)
+theme_override_fonts/normal_font = ExtResource("1_font")
+theme_override_font_sizes/normal_font_size = 26
+text = "播报历史
+"

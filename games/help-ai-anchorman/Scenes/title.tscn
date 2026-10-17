@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://w0it80yeyi6s"]
+
+[ext_resource type="Texture2D" uid="uid://lmfm81aoivja" path="res://assets/background2.png" id="1_2qdx2"]
+[ext_resource type="Texture2D" uid="uid://cpq5jglo1spud" path="res://assets/background.png" id="2_3eqdi"]
+[ext_resource type="Texture2D" uid="uid://cfcbigk54esee" path="res://assets/tv_frame.png" id="3_yu0ss"]
+[ext_resource type="Texture2D" uid="uid://eykhekdmowks" path="res://assets/anchorman.png" id="4_6aagf"]
+[ext_resource type="Texture2D" uid="uid://x2oiyfp5fbk2" path="res://assets/earth.png" id="5_kyk5u"]
+[ext_resource type="Texture2D" uid="uid://p34j08t7o8je" path="res://assets/startbutton.png" id="6_cwqts"]
+[ext_resource type="Script" uid="uid://bkwmkdaaq762t" path="res://Scripts/Title.gd" id="7_gn65m"]
+[ext_resource type="Texture2D" uid="uid://bs6f6myyxdgmi" path="res://assets/5d0d5a81364ee925e6415753a63f6503.png" id="8_yu0ss"]
+
+[node name="Node2D" type="Node2D" unique_id=532490284]
+script = ExtResource("7_gn65m")
+
+[node name="fixed" type="Node2D" parent="." unique_id=1877806257]
+position = Vector2(603, 466.00003)
+scale = Vector2(0.41034484, 0.41034484)
+
+[node name="Background2" type="Sprite2D" parent="fixed" unique_id=616309102]
+position = Vector2(-66.40735, -347.26917)
+scale = Vector2(1.8253512, 1.5397682)
+texture = ExtResource("1_2qdx2")
+
+[node name="Background" type="Sprite2D" parent="fixed" unique_id=223507417]
+position = Vector2(-4.8737793, -355.79846)
+scale = Vector2(1.5361644, 1.6014408)
+texture = ExtResource("2_3eqdi")
+
+[node name="TvFrame" type="Sprite2D" parent="fixed" unique_id=1161552757]
+position = Vector2(9.747925, -382.60516)
+scale = Vector2(1.4328943, 1.4328943)
+texture = ExtResource("3_yu0ss")
+
+[node name="Anchorman" type="Sprite2D" parent="." unique_id=1257155287]
+position = Vector2(604.16907, 415.8125)
+scale = Vector2(0.37235165, 0.37235165)
+texture = ExtResource("4_6aagf")
+
+[node name="Earth" type="Sprite2D" parent="." unique_id=351170973]
+position = Vector2(588, 262)
+scale = Vector2(0.25917068, 0.25917068)
+texture = ExtResource("5_kyk5u")
+
+[node name="Startbutton" type="Sprite2D" parent="." unique_id=1489467344]
+position = Vector2(588, 466.00003)
+scale = Vector2(0.41034484, 0.41034484)
+texture = ExtResource("6_cwqts")
+
+[node name="5d0d5a81364Ee925e6415753a63f6503" type="Sprite2D" parent="." unique_id=803523136]
+position = Vector2(573.22766, 207.25002)
+scale = Vector2(0.5762925, 0.60535705)
+texture = ExtResource("8_yu0ss")

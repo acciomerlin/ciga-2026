@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Matter.js 抛锚冲击验证</title>
+    <style>
+      :root {
+        --paper: #f7f4ea;
+        --ink: #161616;
+        --muted: #67625a;
+        --accent: #ba4a36;
+        --sea: #9ad5db;
+        --panel: rgba(255, 252, 240, 0.92);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: linear-gradient(135deg, #20272a, #393332);
+        color: var(--ink);
+        font-family: "Trebuchet MS", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+
+      main {
+        width: 100vw;
+        height: 100vh;
+        padding: 16px;
+      }
+
+      .stage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border: 3px solid var(--ink);
+        border-radius: 8px;
+        background:
+          linear-gradient(rgba(20, 20, 20, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(20, 20, 20, 0.045) 1px, transparent 1px),
+          var(--paper);
+        background-size: 28px 28px;
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.24);
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .hud,
+      .controls {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        pointer-events: none;
+      }
+
+      .hud {
+        top: 14px;
+        left: 14px;
+        right: 14px;
+        justify-content: space-between;
+      }
+
+      .controls {
+        left: 14px;
+        bottom: 14px;
+        pointer-events: auto;
+      }
+
+      .panel {
+        min-height: 44px;
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 8px 12px;
+        box-shadow: 4px 4px 0 rgba(22, 22, 22, 0.13);
+      }
+
+      .title {
+        display: grid;
+        gap: 1px;
+      }
+
+      .title strong {
+        font-size: clamp(18px, 2.1vw, 28px);
+        line-height: 1;
+      }
+
+      .title span,
+      .metric span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .metrics {
+        display: flex;
+        gap: 8px;
+      }
+
+      .metric {
+        min-width: 108px;
+        display: grid;
+        gap: 2px;
+      }
+
+      .metric strong {
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      button {
+        height: 48px;
+        min-width: 104px;
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        background: #fffaf0;
+        box-shadow: 4px 4px 0 rgba(22, 22, 22, 0.16);
+        color: var(--ink);
+        cursor: pointer;
+        font: 800 15px/1 "Trebuchet MS", "PingFang SC", sans-serif;
+      }
+
+      button.primary {
+        min-width: 132px;
+        background: var(--accent);
+        color: #fffaf0;
+      }
+
+      button:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 rgba(22, 22, 22, 0.18);
+      }
+
+      .note {
+        max-width: 440px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.3;
+      }
+
+      @media (max-width: 760px) {
+        main {
+          padding: 8px;
+        }
+
+        .hud {
+          align-items: flex-start;
+        }
+
+        .metrics {
+          display: none;
+        }
+
+        .controls {
+          right: 14px;
+          flex-wrap: wrap;
+        }
+
+        .note {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="stage">
+        <canvas id="world" width="960" height="540"></canvas>
+        <div class="hud">
+          <div class="panel title">
+            <strong>Matter.js 冲击验证</strong>
+            <span>花瓶碎裂 / 船体回弹 / 火柴人摔倒</span>
+          </div>
+          <div class="metrics">
+            <div class="panel metric">
+              <span>冲击强度</span>
+              <strong id="shockText">0%</strong>
+            </div>
+            <div class="panel metric">
+              <span>碎片数</span>
+              <strong id="shardsText">0</strong>
+            </div>
+            <div class="panel metric">
+              <span>人物倾角</span>
+              <strong id="tiltText">0°</strong>
+            </div>
+          </div>
+        </div>
+        <div class="controls">
+          <button id="impactBtn" class="primary" type="button">抛锚冲击</button>
+          <button id="resetBtn" type="button">重置</button>
+          <div class="panel note">验证策略：流体冲击先用阻尼弹簧曲线模拟，物品和人物用 Matter.js 刚体/约束承接冲量。</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./vendor/matter.min.js"></script>
+    <script>
+      const canvas = document.getElementById("world");
+      const ctx = canvas.getContext("2d");
+      const shockText = document.getElementById("shockText");
+      const shardsText = document.getElementById("shardsText");
+      const tiltText = document.getElementById("tiltText");
+      const impactBtn = document.getElementById("impactBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      if (!window.Matter) {
+        document.body.innerHTML = "<main><section class='stage'><div class='panel'>Matter.js 没有加载成功。</div></section></main>";
+        throw new Error("Matter.js did not load.");
+      }
+
+      const W = 960;
+      const H = 540;
+      const {
+        Engine,
+        World,
+        Bodies,
+        Body,
+        Constraint,
+        Composite,
+        Events,
+        Vector
+      } = Matter;
+
+      let engine;
+      let runnerFrame = 0;
+      let lastTime = 0;
+      let shipShock = 0;
+      let shockClock = 99;
+      let shockImpulse = 0;
+      let vaseBody = null;
+      let shards = [];
+      let person = {};
+      let intactVase = true;
+
+      const room = {
+        x: 128,
+        y: 112,
+        w: 704,
+        h: 300
+      };
+
+      function setupWorld() {
+        if (runnerFrame) cancelAnimationFrame(runnerFrame);
+        engine = Engine.create();
+        engine.gravity.y = 1.05;
+        engine.positionIterations = 8;
+        engine.velocityIterations = 6;
+        shards = [];
+        intactVase = true;
+        shipShock = 0;
+        shockClock = 99;
+        shockImpulse = 0;
+
+        const walls = [
+          Bodies.rectangle(W / 2, H + 40, W + 200, 80, { isStatic: true }),
+          Bodies.rectangle(room.x + room.w / 2, room.y + room.h + 8, room.w, 16, { isStatic: true }),
+          Bodies.rectangle(room.x - 8, room.y + room.h / 2, 16, room.h, { isStatic: true }),
+          Bodies.rectangle(room.x + room.w + 8, room.y + room.h / 2, 16, room.h, { isStatic: true }),
+          Bodies.rectangle(room.x + 320, room.y + room.h / 2, 14, room.h, { isStatic: true })
+        ];
+
+        const table = Bodies.rectangle(room.x + 520, room.y + 242, 152, 16, {
+          isStatic: true,
+          friction: 0.8,
+          renderType: "table"
+        });
+
+        vaseBody = Bodies.rectangle(room.x + 615, room.y + 202, 24, 56, {
+          restitution: 0.22,
+          friction: 0.72,
+          density: 0.002,
+          label: "vase",
+          renderType: "vase"
+        });
+
+        person = makeStickRagdoll(room.x + 238, room.y + 232);
+
+        World.add(engine.world, [...walls, table, vaseBody, ...Object.values(person.bodies), ...person.constraints]);
+
+        Events.on(engine, "collisionStart", (event) => {
+          if (!intactVase) return;
+          for (const pair of event.pairs) {
+            if (pair.bodyA === vaseBody || pair.bodyB === vaseBody) {
+              const speed = Vector.magnitude(vaseBody.velocity);
+              if (speed > 8 || shockImpulse > 0.55) breakVase();
+            }
+          }
+        });
+
+        lastTime = performance.now();
+        runnerFrame = requestAnimationFrame(tick);
+      }
+
+      function makeStickRagdoll(x, y) {
+        const head = Bodies.circle(x, y - 54, 15, { density: 0.001, restitution: 0.15, renderType: "head" });
+        const torso = Bodies.rectangle(x, y - 18, 16, 52, { density: 0.0022, friction: 0.82, renderType: "torso" });
+        const leftLeg = Bodies.rectangle(x - 8, y + 28, 10, 44, { density: 0.0014, friction: 0.9, renderType: "limb" });
+        const rightLeg = Bodies.rectangle(x + 12, y + 28, 10, 44, { density: 0.0014, friction: 0.9, renderType: "limb" });
+        const arm = Bodies.rectangle(x + 22, y - 18, 38, 8, { density: 0.001, friction: 0.8, renderType: "limb" });
+
+        const constraints = [
+          Constraint.create({ bodyA: head, bodyB: torso, pointA: { x: 0, y: 15 }, pointB: { x: 0, y: -28 }, stiffness: 0.72, length: 2 }),
+          Constraint.create({ bodyA: torso, bodyB: leftLeg, pointA: { x: -5, y: 24 }, pointB: { x: 0, y: -20 }, stiffness: 0.8, length: 2 }),
+          Constraint.create({ bodyA: torso, bodyB: rightLeg, pointA: { x: 6, y: 24 }, pointB: { x: 0, y: -20 }, stiffness: 0.8, length: 2 }),
+          Constraint.create({ bodyA: torso, bodyB: arm, pointA: { x: 8, y: -16 }, pointB: { x: -18, y: 0 }, stiffness: 0.82, length: 1 })
+        ];
+
+        return { bodies: { head, torso, leftLeg, rightLeg, arm }, constraints };
+      }
+
+      function triggerImpact() {
+        shockClock = 0;
+        shockImpulse = 1;
+        shipShock = 1;
+
+        Body.applyForce(vaseBody, vaseBody.position, { x: -0.082, y: -0.038 });
+        Body.setAngularVelocity(vaseBody, -0.42);
+
+        const torso = person.bodies.torso;
+        Body.applyForce(torso, torso.position, { x: -0.125, y: -0.035 });
+        Body.setAngularVelocity(torso, -0.44);
+        Body.applyForce(person.bodies.head, person.bodies.head.position, { x: -0.038, y: -0.012 });
+
+        setTimeout(() => {
+          if (intactVase) breakVase();
+        }, 140);
+      }
+
+      function breakVase() {
+        intactVase = false;
+        World.remove(engine.world, vaseBody);
+        const base = vaseBody.position;
+        const shardDefs = [
+          [-18, -18, 11, 20, -0.8],
+          [-4, -22, 9, 24, -0.35],
+          [12, -16, 12, 18, 0.55],
+          [-16, 4, 15, 10, 0.25],
+          [3, 6, 11, 14, -0.2],
+          [17, 6, 9, 12, 0.9],
+          [-2, 20, 18, 8, 0.05]
+        ];
+
+        shards = shardDefs.map(([dx, dy, sw, sh, angle], i) => {
+          const shard = Bodies.rectangle(base.x + dx, base.y + dy, sw, sh, {
+            restitution: 0.36,
+            friction: 0.62,
+            density: 0.0012,
+            angle,
+            renderType: "shard"
+          });
+          Body.setVelocity(shard, {
+            x: -5.5 + i * 1.1,
+            y: -7.5 + (i % 3) * 1.6
+          });
+          Body.setAngularVelocity(shard, -0.42 + i * 0.16);
+          return shard;
+        });
+        World.add(engine.world, shards);
+      }
+
+      function tick(now) {
+        const dt = Math.min(1000 / 30, now - lastTime);
+        lastTime = now;
+        Engine.update(engine, dt);
+        updateShock(dt / 1000);
+        draw();
+        runnerFrame = requestAnimationFrame(tick);
+      }
+
+      function updateShock(dt) {
+        shockClock += dt;
+        if (shockClock < 3.2) {
+          shipShock = Math.exp(-shockClock * 1.3) * Math.sin(shockClock * 14);
+          shockImpulse = Math.max(0, shockImpulse - dt * 0.48);
+        } else {
+          shipShock *= 0.86;
+          shockImpulse = 0;
+        }
+
+        const torsoAngle = Math.round((person.bodies.torso.angle * 180) / Math.PI);
+        shockText.textContent = `${Math.round(Math.abs(shipShock) * 100)}%`;
+        shardsText.textContent = String(shards.length);
+        tiltText.textContent = `${torsoAngle}°`;
+        document.documentElement.dataset.shards = String(shards.length);
+        document.documentElement.dataset.shock = String(Math.round(Math.abs(shipShock) * 100));
+        document.documentElement.dataset.tilt = String(torsoAngle);
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        drawBackground();
+        ctx.save();
+        const shipX = shipShock * 22;
+        const shipY = Math.sin(shockClock * 9) * Math.abs(shipShock) * 5;
+        ctx.translate(shipX, shipY);
+        drawShipShell();
+        drawRooms();
+        drawPhysicsBodies();
+        ctx.restore();
+        drawWater();
+      }
+
+      function drawBackground() {
+        ctx.fillStyle = "#f7f4ea";
+        ctx.fillRect(0, 0, W, H);
+        ctx.strokeStyle = "rgba(22,22,22,0.06)";
+        ctx.lineWidth = 1;
+        for (let x = 0; x < W; x += 28) {
+          line(x, 0, x, H);
+        }
+        for (let y = 0; y < H; y += 28) {
+          line(0, y, W, y);
+        }
+      }
+
+      function drawShipShell() {
+        ctx.fillStyle = "rgba(255, 250, 240, 0.88)";
+        ctx.strokeStyle = "#161616";
+        ctx.lineWidth = 5;
+        ctx.lineJoin = "round";
+        ctx.beginPath();
+        ctx.moveTo(58, 364);
+        ctx.lineTo(122, 110);
+        ctx.lineTo(800, 112);
+        ctx.lineTo(884, 210);
+        ctx.lineTo(900, 380);
+        ctx.lineTo(816, 438);
+        ctx.lineTo(162, 438);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.lineWidth = 4;
+        line(118, 112, 92, 92);
+        line(92, 92, 206, 92);
+        line(206, 92, 230, 112);
+        roundRect(322, 44, 184, 70, 8);
+        roundRect(86, 78, 64, 46, 5);
+        line(94, 132, 214, 132);
+        line(98, 132, 98, 96);
+        line(152, 132, 152, 96);
+      }
+
+      function drawRooms() {
+        ctx.lineWidth = 4;
+        roundRect(room.x, room.y, room.w, room.h, 10);
+        line(room.x + 320, room.y, room.x + 320, room.y + room.h);
+        line(room.x, room.y + 160, room.x + room.w, room.y + 160);
+
+        drawAnchorDeck();
+        drawTvRoom();
+        drawBanquetRoom();
+        drawCargoRoom();
+        drawEngineRoom();
+      }
+
+      function drawAnchorDeck() {
+        ctx.lineWidth = 4;
+        roundRect(88, 134, 82, 46, 8);
+        circle(112, 158, 18);
+        line(112, 176, 78, 230);
+        for (let i = 0; i < 8; i += 1) {
+          circle(80 - i * 7, 230 + i * 20, 5);
+        }
+        drawAnchor(32, 404, 1.15, -0.1);
+        drawStick(182, 160, 0.55, true);
+      }
+
+      function drawTvRoom() {
+        roundRect(410, 150, 158, 70, 6);
+        roundRect(430, 230, 102, 28, 5);
+        roundRect(368, 252, 48, 36, 8);
+        roundRect(548, 252, 48, 36, 8);
+        roundRect(448, 268, 62, 20, 4);
+        drawStick(390, 260, 0.42, false);
+        drawStick(488, 262, 0.42, false);
+        drawStick(572, 260, 0.42, false);
+        line(508, 278, 522, 274);
+        circle(524, 273, 2);
+      }
+
+      function drawBanquetRoom() {
+        roundRect(672, 250, 120, 30, 5);
+        roughCake(700, 222);
+        for (let i = 0; i < 6; i += 1) {
+          drawGlass(738 + (i % 3) * 15, 228 - Math.floor(i / 3) * 16);
+        }
+        drawStick(812, 246, 0.54, false);
+        roundRect(835, 230, 22, 42, 10);
+        line(840, 224, 858, 206);
+        line(848, 220, 865, 208);
+        for (let i = 0; i < 5; i += 1) {
+          circle(850 + i * 10, 286 + (i % 2) * 7, 4);
+        }
+      }
+
+      function drawCargoRoom() {
+        for (let i = 0; i < 5; i += 1) {
+          const x = 166 + (i % 3) * 54;
+          const y = 342 + Math.floor(i / 3) * 42;
+          roundRect(x, y, 48, 38, 2);
+          line(x + 5, y + 5, x + 43, y + 33);
+          line(x + 43, y + 5, x + 5, y + 33);
+        }
+        roundRect(332, 352, 88, 54, 6);
+        line(342, 350, 410, 326);
+        for (let i = 0; i < 10; i += 1) {
+          circle(350 + i * 7, 350 + Math.sin(i) * 8, 4);
+        }
+      }
+
+      function drawEngineRoom() {
+        roundRect(604, 340, 146, 74, 8);
+        for (let i = 0; i < 3; i += 1) roundRect(626 + i * 36, 365, 24, 24, 5);
+        line(650, 340, 650, 310);
+        line(650, 310, 748, 310);
+        line(748, 310, 748, 340);
+        line(730, 382, 808, 382);
+        circle(810, 382, 17);
+        drawStick(574, 376, 0.56, false);
+      }
+
+      function drawPhysicsBodies() {
+        const bodies = Composite.allBodies(engine.world);
+        for (const body of bodies) {
+          if (body.isStatic) continue;
+          ctx.save();
+          ctx.translate(body.position.x, body.position.y);
+          ctx.rotate(body.angle);
+          if (body.renderType === "head") {
+            circle(0, 0, body.circleRadius);
+          } else if (body.renderType === "torso") {
+            line(0, -25, 0, 25);
+          } else if (body.renderType === "limb") {
+            const b = body.bounds;
+            const h = b.max.y - b.min.y;
+            line(0, -h / 2, 0, h / 2);
+          } else if (body.renderType === "vase" && intactVase) {
+            drawVase(0, 0, false);
+          } else if (body.renderType === "shard") {
+            ctx.fillStyle = "rgba(186,74,54,0.16)";
+            ctx.strokeStyle = "#ba4a36";
+            ctx.lineWidth = 2;
+            const vertices = body.vertices;
+            ctx.beginPath();
+            vertices.forEach((v, i) => {
+              const x = v.x - body.position.x;
+              const y = v.y - body.position.y;
+              if (i === 0) ctx.moveTo(x, y);
+              else ctx.lineTo(x, y);
+            });
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
+      }
+
+      function drawWater() {
+        ctx.fillStyle = "rgba(154, 213, 219, 0.28)";
+        ctx.fillRect(0, 446, W, H - 446);
+        ctx.strokeStyle = "#161616";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (let x = 0; x <= W; x += 16) {
+          const y = 446 + Math.sin(x * 0.025 + performance.now() * 0.004) * 8 + Math.abs(shipShock) * Math.sin(x * 0.05) * 8;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+
+      function line(x1, y1, x2, y2) {
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+      }
+
+      function roundRect(x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.roundRect(x, y, w, h, r);
+        ctx.stroke();
+      }
+
+      function circle(x, y, r) {
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      function drawStick(x, y, scale = 1, hat = false) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(scale, scale);
+        circle(0, -42, 14);
+        line(0, -28, 0, 18);
+        line(0, -10, -18, 10);
+        line(0, -10, 18, 8);
+        line(0, 18, -14, 48);
+        line(0, 18, 14, 48);
+        if (hat) {
+          line(-17, -58, 17, -58);
+          roundRect(-12, -72, 24, 14, 3);
+        }
+        ctx.restore();
+      }
+
+      function drawAnchor(x, y, s, a) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(a);
+        ctx.scale(s, s);
+        line(0, -26, 0, 24);
+        line(-18, -14, 18, -14);
+        circle(0, -32, 7);
+        ctx.beginPath();
+        ctx.arc(0, 8, 28, 0.1 * Math.PI, 0.9 * Math.PI);
+        ctx.stroke();
+        line(-26, 17, -38, 4);
+        line(26, 17, 38, 4);
+        ctx.restore();
+      }
+
+      function drawVase(x, y) {
+        ctx.beginPath();
+        ctx.moveTo(x - 9, y + 25);
+        ctx.bezierCurveTo(x - 30, y + 4, x - 13, y - 32, x - 2, y - 24);
+        ctx.bezierCurveTo(x + 17, y - 34, x + 31, y + 5, x + 9, y + 25);
+        ctx.closePath();
+        ctx.stroke();
+      }
+
+      function roughCake(x, y) {
+        roundRect(x - 24, y + 8, 48, 18, 4);
+        roundRect(x - 16, y - 10, 32, 18, 4);
+        line(x - 6, y - 12, x - 6, y - 24);
+        line(x + 7, y - 12, x + 7, y - 22);
+      }
+
+      function drawGlass(x, y) {
+        line(x - 7, y - 8, x + 7, y - 8);
+        line(x - 5, y - 8, x, y + 4);
+        line(x + 5, y - 8, x, y + 4);
+        line(x, y + 4, x, y + 14);
+        line(x - 6, y + 14, x + 6, y + 14);
+      }
+
+      impactBtn.addEventListener("click", triggerImpact);
+      resetBtn.addEventListener("click", setupWorld);
+      setupWorld();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three.js 抛锚冲击验证</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #1d1a16;
+        --paper: #eee9dc;
+        --line: rgba(29, 26, 22, 0.82);
+        --panel: rgba(255, 250, 239, 0.9);
+        --accent: #bf4b38;
+        --water: #77b8c8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .app {
+        position: fixed;
+        inset: 0;
+        min-width: 320px;
+        min-height: 420px;
+        background:
+          linear-gradient(rgba(45, 39, 31, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(45, 39, 31, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, #f4f0e7 0%, #e8f3f1 100%);
+        background-size: 38px 38px, 38px 38px, 100% 100%;
+      }
+
+      #scene {
+        position: absolute;
+        inset: 0;
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .title,
+      .meters,
+      .controls,
+      .note {
+        position: absolute;
+        z-index: 2;
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 3px 4px 0 rgba(29, 26, 22, 0.17);
+        backdrop-filter: blur(8px);
+      }
+
+      .title {
+        top: 20px;
+        left: 20px;
+        padding: 12px 14px;
+        line-height: 1.05;
+      }
+
+      .title strong {
+        display: block;
+        font-size: clamp(20px, 2.1vw, 30px);
+        letter-spacing: 0;
+      }
+
+      .title span {
+        display: block;
+        margin-top: 7px;
+        font-size: 13px;
+        color: rgba(29, 26, 22, 0.72);
+      }
+
+      .meters {
+        top: 22px;
+        right: 22px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(84px, 1fr));
+        gap: 8px;
+        padding: 8px;
+      }
+
+      .meter {
+        min-width: 84px;
+        padding: 8px 10px;
+        border: 1px solid rgba(29, 26, 22, 0.65);
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.45);
+      }
+
+      .meter span {
+        display: block;
+        font-size: 11px;
+        color: rgba(29, 26, 22, 0.68);
+      }
+
+      .meter strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .controls {
+        left: 22px;
+        bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+      }
+
+      button {
+        appearance: none;
+        min-width: 112px;
+        height: 48px;
+        border: 2px solid var(--ink);
+        border-radius: 7px;
+        background: #f7f0e4;
+        color: var(--ink);
+        font: 800 15px/1 ui-sans-serif, system-ui, sans-serif;
+        cursor: pointer;
+        box-shadow: 2px 3px 0 rgba(29, 26, 22, 0.18);
+      }
+
+      button.primary {
+        background: var(--accent);
+        color: #fff7ed;
+      }
+
+      button:active {
+        transform: translate(1px, 2px);
+        box-shadow: 1px 1px 0 rgba(29, 26, 22, 0.2);
+      }
+
+      .note {
+        right: 22px;
+        bottom: 22px;
+        max-width: min(420px, calc(100vw - 44px));
+        padding: 12px 14px;
+        font-size: 13px;
+        color: rgba(29, 26, 22, 0.72);
+      }
+
+      @media (max-width: 760px) {
+        .title {
+          top: 10px;
+          left: 10px;
+          padding: 9px 10px;
+        }
+
+        .title span {
+          display: none;
+        }
+
+        .meters {
+          top: auto;
+          right: 10px;
+          bottom: 76px;
+          grid-template-columns: repeat(3, 1fr);
+          width: calc(100vw - 20px);
+        }
+
+        .meter {
+          min-width: 0;
+          padding: 7px;
+        }
+
+        .meter strong {
+          font-size: 18px;
+        }
+
+        .controls {
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
+        }
+
+        button {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .note {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <div id="scene" aria-label="Three.js 抛锚冲击验证场景"></div>
+      <section class="title">
+        <strong>Three.js 冲击验证</strong>
+        <span>3D 船体回弹 / 空间碎片 / 火柴人摔倒</span>
+      </section>
+      <section class="meters" aria-label="状态面板">
+        <div class="meter">
+          <span>冲击强度</span>
+          <strong id="shockText">0%</strong>
+        </div>
+        <div class="meter">
+          <span>碎片数</span>
+          <strong id="shardsText">0</strong>
+        </div>
+        <div class="meter">
+          <span>人物倾角</span>
+          <strong id="tiltText">0°</strong>
+        </div>
+      </section>
+      <section class="controls">
+        <button id="impactBtn" class="primary" type="button">抛锚冲击</button>
+        <button id="resetBtn" type="button">重置</button>
+      </section>
+      <div class="note">验证策略：Three.js 负责 2.5D 表现，冲击/碎片/摔倒先用轻量自定义动力学，之后可替换为 Rapier 刚体。</div>
+    </main>
+
+    <script type="module">
+      import * as THREE from "./vendor/three.module.js";
+
+      const sceneHost = document.getElementById("scene");
+      const shockText = document.getElementById("shockText");
+      const shardsText = document.getElementById("shardsText");
+      const tiltText = document.getElementById("tiltText");
+      const impactBtn = document.getElementById("impactBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      const palette = {
+        ink: 0x1d1a16,
+        hull: 0xf7f0df,
+        hullSide: 0xd9d0be,
+        room: 0xfffbef,
+        glass: 0xaed8e5,
+        water: 0x77b8c8,
+        accent: 0xbf4b38,
+        gold: 0xd9ae45,
+        shadow: 0x857a6a
+      };
+
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: false,
+        preserveDrawingBuffer: true
+      });
+      renderer.setClearColor(0xf2eee4, 1);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      sceneHost.appendChild(renderer.domElement);
+
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0xf2eee4, 36, 76);
+
+      const camera = new THREE.PerspectiveCamera(33, 1, 0.1, 100);
+      camera.position.set(0, 3.4, 17.5);
+      camera.lookAt(0, 0.1, 0);
+
+      const keyLight = new THREE.DirectionalLight(0xffffff, 2.3);
+      keyLight.position.set(-5, 8, 7);
+      keyLight.castShadow = true;
+      scene.add(keyLight);
+      scene.add(new THREE.HemisphereLight(0xeaf7ff, 0x8e7d66, 2.1));
+
+      const root = new THREE.Group();
+      const ship = new THREE.Group();
+      const water = new THREE.Group();
+      const effects = new THREE.Group();
+      root.add(water, ship, effects);
+      scene.add(root);
+
+      let clock = new THREE.Clock();
+      let shock = 0;
+      let shockPhase = 0;
+      let score = 0;
+      let vaseIntact = true;
+      let vaseGroup;
+      let ragdoll;
+      let ragdollState;
+      let anchorDrop = 0;
+      let targetAnchorDrop = 0;
+      let shards = [];
+      let splashes = [];
+      let waves = [];
+      let tableProps = [];
+      let waterLine;
+      let waterLinePositions;
+      let hullFace;
+      let animationFrame = 0;
+
+      const boxGeoCache = new Map();
+      const matCache = new Map();
+
+      function mat(color, roughness = 0.75, metalness = 0.02) {
+        const key = `${color}-${roughness}-${metalness}`;
+        if (!matCache.has(key)) {
+          matCache.set(key, new THREE.MeshStandardMaterial({
+            color,
+            roughness,
+            metalness,
+            flatShading: true
+          }));
+        }
+        return matCache.get(key);
+      }
+
+      function lineMat(color = palette.ink, opacity = 1) {
+        return new THREE.LineBasicMaterial({
+          color,
+          transparent: opacity < 1,
+          opacity
+        });
+      }
+
+      function box(w, h, d, color, x, y, z, cast = true) {
+        const key = `${w}-${h}-${d}`;
+        if (!boxGeoCache.has(key)) boxGeoCache.set(key, new THREE.BoxGeometry(w, h, d));
+        const mesh = new THREE.Mesh(boxGeoCache.get(key), mat(color));
+        mesh.position.set(x, y, z);
+        mesh.castShadow = cast;
+        mesh.receiveShadow = true;
+        return mesh;
+      }
+
+      function edgeBox(w, h, d, color, x, y, z, edgeColor = palette.ink) {
+        const group = new THREE.Group();
+        const body = box(w, h, d, color, 0, 0, 0);
+        const edges = new THREE.LineSegments(
+          new THREE.EdgesGeometry(body.geometry),
+          lineMat(edgeColor, 0.86)
+        );
+        group.add(body, edges);
+        group.position.set(x, y, z);
+        return group;
+      }
+
+      function cylinderBetween(a, b, radius, color, radial = 8) {
+        const start = new THREE.Vector3(a[0], a[1], a[2]);
+        const end = new THREE.Vector3(b[0], b[1], b[2]);
+        const mid = start.clone().add(end).multiplyScalar(0.5);
+        const dir = end.clone().sub(start);
+        const mesh = new THREE.Mesh(
+          new THREE.CylinderGeometry(radius, radius, dir.length(), radial),
+          mat(color, 0.7, 0)
+        );
+        mesh.position.copy(mid);
+        mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.normalize());
+        mesh.castShadow = true;
+        return mesh;
+      }
+
+      function makeTextLabel(text, x, y, z, size = 0.22) {
+        const canvas = document.createElement("canvas");
+        canvas.width = 512;
+        canvas.height = 160;
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "rgba(255,250,238,0.86)";
+        ctx.strokeStyle = "#1d1a16";
+        ctx.lineWidth = 8;
+        ctx.roundRect(20, 28, 472, 100, 20);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = "#1d1a16";
+        ctx.font = "700 54px system-ui, sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(text, 256, 80);
+        const texture = new THREE.CanvasTexture(canvas);
+        const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture, transparent: true }));
+        sprite.position.set(x, y, z);
+        sprite.scale.set(size * 4.1, size * 1.28, 1);
+        return sprite;
+      }
+
+      function makeHull() {
+        const shape = new THREE.Shape();
+        shape.moveTo(-6.8, -0.9);
+        shape.lineTo(-5.85, 0.35);
+        shape.lineTo(4.95, 0.35);
+        shape.lineTo(5.88, -0.55);
+        shape.lineTo(5.62, -1.35);
+        shape.lineTo(-5.3, -1.42);
+        shape.lineTo(-6.8, -0.9);
+
+        const geo = new THREE.ExtrudeGeometry(shape, {
+          depth: 1.28,
+          bevelEnabled: true,
+          bevelThickness: 0.035,
+          bevelSize: 0.035,
+          bevelSegments: 1
+        });
+        geo.center();
+        hullFace = new THREE.Mesh(geo, mat(palette.hull, 0.88, 0.02));
+        hullFace.position.set(0, -0.32, -0.1);
+        hullFace.castShadow = true;
+        hullFace.receiveShadow = true;
+
+        const edges = new THREE.LineSegments(new THREE.EdgesGeometry(geo), lineMat(palette.ink, 0.88));
+        edges.position.copy(hullFace.position);
+
+        ship.add(hullFace, edges);
+
+        ship.add(edgeBox(8.4, 0.72, 1.05, palette.room, -0.8, 0.65, -0.1));
+        ship.add(edgeBox(4.8, 0.7, 1.05, palette.room, -1.4, 1.43, -0.1));
+        ship.add(edgeBox(2.8, 0.64, 1.05, palette.room, -0.2, 2.2, -0.1));
+        ship.add(edgeBox(1.15, 0.62, 1.05, palette.room, -5.33, 1.04, -0.1));
+
+        const rails = new THREE.Group();
+        for (let i = 0; i < 19; i++) {
+          const x = -5.6 + i * 0.55;
+          rails.add(cylinderBetween([x, 1.03, 0.52], [x, 1.28, 0.52], 0.012, palette.ink, 6));
+        }
+        rails.add(cylinderBetween([-5.7, 1.27, 0.52], [4.5, 1.27, 0.52], 0.014, palette.ink, 6));
+        ship.add(rails);
+
+        ship.add(makeTextLabel("TV LOUNGE", -0.35, 1.47, 0.67, 0.16));
+        ship.add(makeTextLabel("BANQUET", 3.25, 0.98, 0.67, 0.16));
+        ship.add(makeTextLabel("CHAIN LOCKER", -4.85, -0.48, 0.67, 0.13));
+      }
+
+      function makeWater() {
+        const plane = new THREE.Mesh(
+          new THREE.PlaneGeometry(18, 4, 1, 1),
+          new THREE.MeshBasicMaterial({ color: palette.water, transparent: true, opacity: 0.18 })
+        );
+        plane.position.set(0, -2.05, -0.2);
+        water.add(plane);
+
+        const points = [];
+        const count = 90;
+        for (let i = 0; i < count; i++) {
+          const x = -9 + (18 * i) / (count - 1);
+          points.push(x, -1.4, 0.72);
+        }
+        waterLinePositions = new Float32Array(points);
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute("position", new THREE.BufferAttribute(waterLinePositions, 3));
+        waterLine = new THREE.Line(geo, lineMat(0x29545e, 0.9));
+        water.add(waterLine);
+      }
+
+      function makeAnchor() {
+        const anchor = new THREE.Group();
+        anchor.name = "anchor";
+        anchor.position.set(-6.45, -1.25, 0.72);
+        anchor.add(cylinderBetween([0, 0.55, 0], [0, -0.45, 0], 0.025, palette.ink, 8));
+        anchor.add(cylinderBetween([-0.42, -0.36, 0], [0.42, -0.36, 0], 0.025, palette.ink, 8));
+        anchor.add(cylinderBetween([-0.42, -0.36, 0], [-0.64, -0.1, 0], 0.025, palette.ink, 8));
+        anchor.add(cylinderBetween([0.42, -0.36, 0], [0.64, -0.1, 0], 0.025, palette.ink, 8));
+        anchor.add(new THREE.Mesh(new THREE.TorusGeometry(0.14, 0.018, 6, 18), mat(palette.ink)));
+
+        const chain = new THREE.Group();
+        chain.name = "chain";
+        for (let i = 0; i < 12; i++) {
+          const link = new THREE.Mesh(new THREE.TorusGeometry(0.09, 0.016, 6, 16), mat(palette.ink));
+          link.position.set(-5.72 - i * 0.08, 0.18 - i * 0.16, 0.73);
+          link.rotation.z = i % 2 ? Math.PI / 2 : 0;
+          chain.add(link);
+        }
+
+        ship.add(chain);
+        water.add(anchor);
+        return anchor;
+      }
+
+      let anchorMesh = null;
+
+      function makeFurniture() {
+        const tvRoom = new THREE.Group();
+        tvRoom.add(edgeBox(1.1, 0.36, 0.38, 0xe8dfce, -0.8, 1.22, 0.38));
+        tvRoom.add(edgeBox(1.1, 0.56, 0.08, 0x24211e, -0.82, 1.72, 0.39));
+        tvRoom.add(edgeBox(0.5, 0.25, 0.36, 0xe5ccb0, -1.6, 1.1, 0.35));
+        tvRoom.add(edgeBox(0.5, 0.25, 0.36, 0xe5ccb0, 0.0, 1.1, 0.35));
+        ship.add(tvRoom);
+
+        const banquet = new THREE.Group();
+        banquet.add(edgeBox(1.75, 0.18, 0.48, 0xd8a75a, 3.35, 0.45, 0.41));
+        banquet.add(edgeBox(0.72, 0.42, 0.42, 0xfff4d2, 3.0, 0.81, 0.42));
+        banquet.add(edgeBox(0.48, 0.24, 0.48, 0xffffff, 3.0, 1.14, 0.42));
+        for (let i = 0; i < 5; i++) {
+          const glass = new THREE.Group();
+          glass.add(cylinderBetween([0, 0, 0], [0, 0.38, 0], 0.025, 0xdff6ff, 10));
+          glass.add(new THREE.Mesh(new THREE.ConeGeometry(0.08, 0.16, 12), mat(0xdff6ff, 0.15, 0)));
+          glass.position.set(3.58 + i * 0.2, 0.68, 0.43);
+          tableProps.push(glass);
+          banquet.add(glass);
+        }
+        vaseGroup = new THREE.Group();
+        const points = [
+          new THREE.Vector2(0.06, 0),
+          new THREE.Vector2(0.16, 0.08),
+          new THREE.Vector2(0.12, 0.32),
+          new THREE.Vector2(0.2, 0.46),
+          new THREE.Vector2(0.08, 0.6)
+        ];
+        const vase = new THREE.Mesh(new THREE.LatheGeometry(points, 16), mat(0xffffff, 0.5, 0.02));
+        vase.castShadow = true;
+        vaseGroup.add(vase);
+        vaseGroup.position.set(4.38, 0.67, 0.43);
+        banquet.add(vaseGroup);
+        ship.add(banquet);
+
+        const cargo = new THREE.Group();
+        for (let r = 0; r < 2; r++) {
+          for (let c = 0; c < 4; c++) {
+            cargo.add(edgeBox(0.52, 0.38, 0.44, 0xc8b797, -4.9 + c * 0.58, -0.86 + r * 0.42, 0.38));
+          }
+        }
+        ship.add(cargo);
+
+        const engine = new THREE.Group();
+        engine.add(edgeBox(1.2, 0.48, 0.55, 0xb6b0a3, 1.3, -0.86, 0.36));
+        engine.add(cylinderBetween([1.9, -0.82, 0.36], [2.55, -0.82, 0.36], 0.08, palette.shadow, 14));
+        ship.add(engine);
+      }
+
+      function makeStickman(x, y, z, scale = 1, color = palette.ink) {
+        const group = new THREE.Group();
+        group.position.set(x, y, z);
+        const head = new THREE.Mesh(new THREE.SphereGeometry(0.11 * scale, 16, 12), mat(color));
+        head.position.y = 0.64 * scale;
+        const body = cylinderBetween([0, 0.17 * scale, 0], [0, 0.51 * scale, 0], 0.018 * scale, color, 8);
+        const arm1 = cylinderBetween([0, 0.41 * scale, 0], [-0.18 * scale, 0.28 * scale, 0], 0.014 * scale, color, 8);
+        const arm2 = cylinderBetween([0, 0.41 * scale, 0], [0.18 * scale, 0.28 * scale, 0], 0.014 * scale, color, 8);
+        const leg1 = cylinderBetween([0, 0.18 * scale, 0], [-0.16 * scale, 0, 0], 0.015 * scale, color, 8);
+        const leg2 = cylinderBetween([0, 0.18 * scale, 0], [0.16 * scale, 0, 0], 0.015 * scale, color, 8);
+        group.add(head, body, arm1, arm2, leg1, leg2);
+        return group;
+      }
+
+      function makeRagdoll(x, y, z) {
+        const group = new THREE.Group();
+        group.position.set(x, y, z);
+        const torso = cylinderBetween([0, 0.18, 0], [0, 0.62, 0], 0.035, palette.ink, 10);
+        const head = new THREE.Mesh(new THREE.SphereGeometry(0.14, 20, 14), mat(palette.ink));
+        head.position.y = 0.82;
+
+        const leftArm = cylinderBetween([0, 0.56, 0], [-0.27, 0.34, 0.02], 0.025, palette.ink, 8);
+        const rightArm = cylinderBetween([0, 0.56, 0], [0.32, 0.38, 0.02], 0.025, palette.ink, 8);
+        const leftLeg = cylinderBetween([0, 0.2, 0], [-0.2, 0, 0], 0.026, palette.ink, 8);
+        const rightLeg = cylinderBetween([0, 0.2, 0], [0.22, 0.01, 0], 0.026, palette.ink, 8);
+
+        group.add(torso, head, leftArm, rightArm, leftLeg, rightLeg);
+        group.userData = { leftArm, rightArm, leftLeg, rightLeg };
+        ship.add(group);
+        return group;
+      }
+
+      function makePeople() {
+        ship.add(makeStickman(-5.28, 1.06, 0.55, 0.9));
+        ship.add(makeStickman(-1.58, 1.05, 0.55, 0.76));
+        ship.add(makeStickman(-0.05, 1.05, 0.55, 0.76));
+        ship.add(makeStickman(3.82, 0.44, 0.55, 0.78));
+        ragdoll = makeRagdoll(4.65, 0.36, 0.56);
+      }
+
+      function spawnShard(position, velocity, color) {
+        const geometry = Math.random() > 0.4
+          ? new THREE.TetrahedronGeometry(0.075 + Math.random() * 0.055, 0)
+          : new THREE.BoxGeometry(0.1, 0.025 + Math.random() * 0.055, 0.08);
+        const mesh = new THREE.Mesh(geometry, mat(color, 0.55, 0.01));
+        mesh.position.copy(position);
+        mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+        mesh.castShadow = true;
+        ship.add(mesh);
+        shards.push({
+          mesh,
+          velocity,
+          spin: new THREE.Vector3(
+            (Math.random() - 0.5) * 8,
+            (Math.random() - 0.5) * 10,
+            (Math.random() - 0.5) * 8
+          )
+        });
+      }
+
+      function breakVase() {
+        if (!vaseIntact) return;
+        vaseIntact = false;
+        vaseGroup.visible = false;
+        const origin = new THREE.Vector3(4.38, 0.86, 0.43);
+        for (let i = 0; i < 30; i++) {
+          const outward = new THREE.Vector3(
+            -1.0 - Math.random() * 1.2,
+            1.5 + Math.random() * 2.2,
+            (Math.random() - 0.5) * 1.8
+          );
+          spawnShard(
+            origin.clone().add(new THREE.Vector3((Math.random() - 0.5) * 0.18, Math.random() * 0.1, (Math.random() - 0.5) * 0.18)),
+            outward.multiplyScalar(1.1 + Math.random() * 0.9),
+            Math.random() > 0.35 ? 0xffffff : 0xdfe9ef
+          );
+        }
+        score += 30;
+      }
+
+      function spawnSplash() {
+        for (let i = 0; i < 34; i++) {
+          const mesh = new THREE.Mesh(
+            new THREE.SphereGeometry(0.035 + Math.random() * 0.04, 8, 6),
+            mat(0xdff7ff, 0.25, 0)
+          );
+          mesh.position.set(-6.15 + Math.random() * 0.45, -1.28 + Math.random() * 0.2, 0.55 + (Math.random() - 0.5) * 0.25);
+          effects.add(mesh);
+          splashes.push({
+            mesh,
+            life: 0.9 + Math.random() * 0.55,
+            maxLife: 1.45,
+            velocity: new THREE.Vector3(
+              0.8 + Math.random() * 2.1,
+              1.5 + Math.random() * 1.4,
+              (Math.random() - 0.5) * 1.5
+            )
+          });
+        }
+
+        for (let i = 0; i < 3; i++) {
+          const ring = new THREE.Mesh(
+            new THREE.TorusGeometry(0.2 + i * 0.18, 0.018, 8, 48),
+            new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.72 })
+          );
+          ring.position.set(-6.1, -1.36, 0.68);
+          ring.rotation.x = Math.PI / 2;
+          effects.add(ring);
+          waves.push({ ring, life: 0, speed: 1.4 + i * 0.6 });
+        }
+      }
+
+      function triggerImpact() {
+        shock = 1;
+        shockPhase = 0;
+        targetAnchorDrop = 1;
+        ragdollState.angularVelocity -= 6.2;
+        ragdollState.falling = true;
+        spawnSplash();
+        breakVase();
+        tableProps.forEach((prop, index) => {
+          prop.userData.tip = 0.8 + index * 0.12;
+        });
+      }
+
+      function setupScene() {
+        while (ship.children.length) ship.remove(ship.children[0]);
+        while (water.children.length) water.remove(water.children[0]);
+        while (effects.children.length) effects.remove(effects.children[0]);
+        shards = [];
+        splashes = [];
+        waves = [];
+        tableProps = [];
+        shock = 0;
+        shockPhase = 0;
+        anchorDrop = 0;
+        targetAnchorDrop = 0;
+        score = 0;
+        vaseIntact = true;
+        ragdollState = {
+          angle: 0,
+          angularVelocity: 0,
+          falling: false,
+          bounce: 0
+        };
+
+        makeWater();
+        makeHull();
+        makeFurniture();
+        makePeople();
+        anchorMesh = makeAnchor();
+        updateMeters();
+      }
+
+      function updateWater(time) {
+        if (!waterLinePositions) return;
+        for (let i = 0; i < waterLinePositions.length / 3; i++) {
+          const idx = i * 3;
+          const x = waterLinePositions[idx];
+          waterLinePositions[idx + 1] = -1.42
+            + Math.sin(time * 1.8 + x * 2.2) * 0.055
+            + Math.sin(time * 2.9 + x * 1.2) * 0.035
+            + shock * Math.sin(time * 10 + x * 4.5) * 0.045;
+        }
+        waterLine.geometry.attributes.position.needsUpdate = true;
+      }
+
+      function updateShards(dt) {
+        for (const shard of shards) {
+          shard.velocity.y -= 4.8 * dt;
+          shard.velocity.multiplyScalar(0.995);
+          shard.mesh.position.addScaledVector(shard.velocity, dt);
+          shard.mesh.rotation.x += shard.spin.x * dt;
+          shard.mesh.rotation.y += shard.spin.y * dt;
+          shard.mesh.rotation.z += shard.spin.z * dt;
+          if (shard.mesh.position.y < 0.41) {
+            shard.mesh.position.y = 0.41;
+            shard.velocity.y *= -0.36;
+            shard.velocity.x *= 0.72;
+            shard.velocity.z *= 0.72;
+            shard.spin.multiplyScalar(0.78);
+          }
+        }
+      }
+
+      function updateRagdoll(dt) {
+        if (!ragdoll || !ragdollState) return;
+        if (ragdollState.falling) {
+          ragdollState.angularVelocity -= 3.2 * dt;
+          ragdollState.angularVelocity *= 0.985;
+          ragdollState.angle += ragdollState.angularVelocity * dt;
+          if (ragdollState.angle < -1.82) {
+            ragdollState.angle = -1.82;
+            ragdollState.angularVelocity = Math.abs(ragdollState.angularVelocity) * 0.22;
+            ragdollState.bounce = 1;
+          }
+        } else {
+          ragdollState.angle += (0 - ragdollState.angle) * Math.min(dt * 6, 1);
+        }
+
+        ragdoll.rotation.z = ragdollState.angle;
+        ragdoll.userData.leftArm.rotation.z = Math.sin(performance.now() * 0.009) * 0.3 * shock;
+        ragdoll.userData.rightArm.rotation.z = -Math.sin(performance.now() * 0.011) * 0.45 * shock;
+      }
+
+      function updateSplashes(dt) {
+        for (let i = splashes.length - 1; i >= 0; i--) {
+          const p = splashes[i];
+          p.life -= dt;
+          p.velocity.y -= 3.8 * dt;
+          p.mesh.position.addScaledVector(p.velocity, dt);
+          p.mesh.material.opacity = Math.max(0, p.life / p.maxLife);
+          p.mesh.scale.multiplyScalar(1 + dt * 0.22);
+          if (p.life <= 0) {
+            effects.remove(p.mesh);
+            splashes.splice(i, 1);
+          }
+        }
+
+        for (let i = waves.length - 1; i >= 0; i--) {
+          const wave = waves[i];
+          wave.life += dt;
+          const s = 1 + wave.life * wave.speed * 2.2;
+          wave.ring.scale.setScalar(s);
+          wave.ring.material.opacity = Math.max(0, 0.7 - wave.life * 0.85);
+          if (wave.life > 1.0) {
+            effects.remove(wave.ring);
+            waves.splice(i, 1);
+          }
+        }
+      }
+
+      function updateShip(dt) {
+        shockPhase += dt * 13;
+        shock *= Math.pow(0.17, dt);
+        const snap = Math.sin(shockPhase) * shock;
+        ship.rotation.z = snap * 0.07 - shock * 0.035;
+        ship.position.x = -shock * 0.22 + Math.sin(shockPhase * 1.4) * shock * 0.08;
+        ship.position.y = Math.abs(snap) * 0.07;
+        camera.position.x = Math.sin(shockPhase * 2.1) * shock * 0.08;
+        camera.position.y = 3.4 + Math.cos(shockPhase * 1.7) * shock * 0.055;
+        camera.lookAt(0, 0.1, 0);
+
+        anchorDrop += (targetAnchorDrop - anchorDrop) * Math.min(dt * 5.5, 1);
+        if (anchorMesh) {
+          anchorMesh.position.x = -6.45 - anchorDrop * 0.4;
+          anchorMesh.position.y = -1.25 - anchorDrop * 0.72;
+          anchorMesh.rotation.z = Math.sin(shockPhase) * shock * 0.24 - anchorDrop * 0.55;
+        }
+
+        tableProps.forEach((prop) => {
+          const tip = prop.userData.tip || 0;
+          if (tip > 0) {
+            prop.userData.tip = Math.max(0, tip - dt);
+            prop.rotation.z = -Math.sin((1 - tip) * 4.2) * 0.65;
+          }
+        });
+      }
+
+      function updateMeters() {
+        const shockPct = Math.round(shock * 100);
+        const tilt = Math.round(THREE.MathUtils.radToDeg(ragdollState?.angle || 0));
+        shockText.textContent = `${shockPct}%`;
+        shardsText.textContent = String(shards.length);
+        tiltText.textContent = `${tilt}°`;
+        document.documentElement.dataset.shards = String(shards.length);
+        document.documentElement.dataset.shock = String(shockPct);
+        document.documentElement.dataset.tilt = String(tilt);
+        document.documentElement.dataset.frame = String(animationFrame);
+      }
+
+      function resize() {
+        const width = sceneHost.clientWidth;
+        const height = sceneHost.clientHeight;
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        const narrow = width < 760;
+        camera.position.z = narrow ? 34 : 17.5;
+        root.scale.setScalar(narrow ? 0.68 : 1);
+      }
+
+      function samplePixels() {
+        const gl = renderer.getContext();
+        const width = renderer.domElement.width;
+        const height = renderer.domElement.height;
+        const px = new Uint8Array(4);
+        let samples = 0;
+        let nonBackground = 0;
+        for (let x = 0; x < 32; x++) {
+          for (let y = 0; y < 18; y++) {
+            const sx = Math.floor((x + 0.5) * width / 32);
+            const sy = Math.floor((y + 0.5) * height / 18);
+            gl.readPixels(sx, sy, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+            samples += 1;
+            const diff = Math.abs(px[0] - 242) + Math.abs(px[1] - 238) + Math.abs(px[2] - 228);
+            if (px[3] > 0 && diff > 38) nonBackground += 1;
+          }
+        }
+        return { samples, nonBackground, width, height };
+      }
+
+      function animate() {
+        animationFrame += 1;
+        const dt = Math.min(clock.getDelta(), 0.033);
+        const time = clock.elapsedTime;
+        updateShip(dt);
+        updateWater(time);
+        updateShards(dt);
+        updateRagdoll(dt);
+        updateSplashes(dt);
+        updateMeters();
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+
+      impactBtn.addEventListener("click", triggerImpact);
+      resetBtn.addEventListener("click", setupScene);
+      window.addEventListener("resize", resize);
+
+      window.__threePOC = {
+        triggerImpact,
+        reset: setupScene,
+        samplePixels,
+        getStats: () => ({
+          shock: document.documentElement.dataset.shock,
+          shards: document.documentElement.dataset.shards,
+          tilt: document.documentElement.dataset.tilt,
+          frame: document.documentElement.dataset.frame
+        })
+      };
+
+      setupScene();
+      resize();
+      animate();
+    </script>
+  </body>
+</html>

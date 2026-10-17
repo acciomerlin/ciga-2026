@@ -1,0 +1,4152 @@
+{
+  "schema": 1,
+  "originals_untouched": true,
+  "original_summary": {
+    "ciga": {
+      "files": 2556,
+      "bytes": 969807840,
+      "allocated": 977465344,
+      "categories": {
+        "cache": 31780252,
+        "export": 174264530,
+        "git-history": 566231654,
+        "source": 197531404
+      }
+    },
+    "ciga_2": {
+      "files": 78,
+      "bytes": 38741567,
+      "allocated": 38948864,
+      "categories": {
+        "cache": 20492,
+        "git-history": 9930150,
+        "source": 28790925
+      }
+    },
+    "ciga-3": {
+      "files": 345,
+      "bytes": 153844979,
+      "allocated": 154738688,
+      "categories": {
+        "cache": 32738615,
+        "export": 66150687,
+        "source": 54955677
+      }
+    }
+  },
+  "excluded_bytes_by_reason": {
+    "cache": 64539359,
+    "replaced-ignore-config": 46,
+    "export": 240415217,
+    "git-history": 576161804,
+    "generated-web-export": 1017722,
+    "unrelated-personal-document": 691334,
+    "replaced-system-font": 25880072
+  },
+  "records": [
+    {
+      "source": "ciga/.gitignore",
+      "bytes": 46,
+      "sha256": "6caa3c308dbe51fb1d9415e2668fb637ce31596f938b3b3ebe93609941759270",
+      "excluded": "replaced-ignore-config"
+    },
+    {
+      "source": "ciga/README_GAME1_INTEGRATION.md",
+      "destination": "docs/history/README_GAME1_INTEGRATION.md",
+      "bytes": 2831,
+      "sha256": "07a4865c0114e5cb91b0022c5ff938144fa60109ff84b13838701c3bb276c355",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/anchor-plus3.css",
+      "destination": "web/anchor-plus3.css",
+      "bytes": 16519,
+      "sha256": "26ae1f80817aeb79f0652972a38edccd27970db5201b807d9608450db4bbec39",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/anchor-plus3.html",
+      "destination": "web/anchor-plus3.html",
+      "bytes": 4006,
+      "sha256": "203b9ea68645b68593afe9df5c2a1795cada8c95ec4d0eafe3f2564b857403ed",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/game.js",
+      "destination": "web/game.js",
+      "bytes": 64906,
+      "sha256": "a5f04b4883597db8aee86e84873260eeba987a9c69921ab66ca3055b3fb3b6d3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/index.html",
+      "destination": "web/index.html",
+      "bytes": 3383,
+      "sha256": "9076788f2288a2544075b505c44e3f71bf658bcc17d4a38603842a770380bdb0",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/perspective.css",
+      "destination": "web/perspective.css",
+      "bytes": 3272,
+      "sha256": "a30630f6387ee0ca854ffba346951a742cb9b8e7c8a0947a92013da950254bba",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/perspective.html",
+      "destination": "web/perspective.html",
+      "bytes": 1211,
+      "sha256": "fbf32bc8aed8ff6212741aa9b894665371df56961fe50c291fa606ef62e953ea",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/perspective.js",
+      "destination": "web/perspective.js",
+      "bytes": 15448,
+      "sha256": "43fa21aefef99da818013412f55ebd2f330b01a093849fce087d1f802f261c89",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/styles.css",
+      "destination": "web/styles.css",
+      "bytes": 14565,
+      "sha256": "9581276bedfe007bfe6b67998bc5e2f980d487e010265342d3b09a2c0a67bee6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/three-anchor.css",
+      "destination": "web/three-anchor.css",
+      "bytes": 3495,
+      "sha256": "41098c63e6069a8e242d5ef3820960ff391dd84880594b033ccf6394c90b0a56",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/three-anchor.html",
+      "destination": "web/three-anchor.html",
+      "bytes": 1731,
+      "sha256": "05ebee293e276dbbac79007c64bdf5a70f62c30443e9e4bfaa07cb8444cfb4e2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/three-anchor.js",
+      "destination": "web/three-anchor.js",
+      "bytes": 50297,
+      "sha256": "604d5708472aad05f3e61b95825d9b84c55000b475b157f4bd1fb1ad7ad3f3c4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/admin.html",
+      "destination": "web/anchorman/admin.html",
+      "bytes": 44935,
+      "sha256": "d4a54175860ca98df090f390b7ae7786732c86c676edd3869863f2c2ca063996",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/index.html",
+      "destination": "web/anchorman/index.html",
+      "bytes": 42895,
+      "sha256": "de797409e01bd150b893a404afa1afbcbaa57fb3018a375586b3a7c03c7a4693",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/anchorman.png",
+      "destination": "web/anchorman/assets/anchorman.png",
+      "bytes": 399526,
+      "sha256": "e842f6d98d393b4997331f3201387ce47e51a1ad7f021591ebe42194e4880eae",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/anchorman2.png",
+      "destination": "web/anchorman/assets/anchorman2.png",
+      "bytes": 974741,
+      "sha256": "71598819ab09b7423cc8898058a1acf67da8de10f7aa42eeaebc9019f7af3af1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/background.png",
+      "destination": "web/anchorman/assets/background.png",
+      "bytes": 6721,
+      "sha256": "2f69457428f505f5f203bf6ba2ab6ea283a22270ded81aabab369196358f6f95",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/background2.png",
+      "destination": "web/anchorman/assets/background2.png",
+      "bytes": 8561,
+      "sha256": "f35d2b62fe21964cb6f35a80829c7016ef4a956f46b092cdd15de6a588b295da",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/board.png",
+      "destination": "web/anchorman/assets/board.png",
+      "bytes": 105359,
+      "sha256": "4940d02708266b4c289f84f5c469562cc134a79aaa17b4bd0950c2a2f2f8b2b7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/boarder.png",
+      "destination": "web/anchorman/assets/boarder.png",
+      "bytes": 120556,
+      "sha256": "df4340eb47a3471eb973270bbe75c5c8e9e98a2aef0e5dad7e8f5001e836746b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/border.png",
+      "destination": "web/anchorman/assets/border.png",
+      "bytes": 33471,
+      "sha256": "7b8ba4ba500208824788f82805522f2637dcaf819c1b8cf38207ad461181227e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/clock_dot.png",
+      "destination": "web/anchorman/assets/clock_dot.png",
+      "bytes": 9764,
+      "sha256": "e371981549a217240d0eeb34c5d35a9b3b3160d807436bcc88b2af8bcb9063b7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/clock_hour.png",
+      "destination": "web/anchorman/assets/clock_hour.png",
+      "bytes": 27109,
+      "sha256": "8348c3230cf6d3b5bbb574ab4290b423409815c7fa3f7be2bf6698167665867a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/clock_minit.png",
+      "destination": "web/anchorman/assets/clock_minit.png",
+      "bytes": 23962,
+      "sha256": "a1ed02c9d309ddf17d0927f447e9367c25567faa88b3fc29dc4ac2fde3147df7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/clock_plate.png",
+      "destination": "web/anchorman/assets/clock_plate.png",
+      "bytes": 143079,
+      "sha256": "72d46981bf8cb4b058cc982770dd966ac0b8140a5a413fde6133a269a4cad6a2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/comic1.png",
+      "destination": "web/anchorman/assets/comic1.png",
+      "bytes": 467212,
+      "sha256": "8a847cbb2b53cf5dc53000d8e640d172f71a43a7d5a9eb57d107607be62214e6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/comic2.png",
+      "destination": "web/anchorman/assets/comic2.png",
+      "bytes": 1719127,
+      "sha256": "4effa2581ec1dadaa51ffc2ee260ddab24277ab9bfc140dab6117dad8c597f1b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/comic3.png",
+      "destination": "web/anchorman/assets/comic3.png",
+      "bytes": 1354800,
+      "sha256": "454ba2e77885a239f39c79da2e023a84d06bcb8736a553503be3da48f36fc850",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/comic4.png",
+      "destination": "web/anchorman/assets/comic4.png",
+      "bytes": 742798,
+      "sha256": "a2c94b1b71f2341b53eca12f10ae10373f452d41f4c3059f68d6ccb32a017d06",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/confirm_button.png",
+      "destination": "web/anchorman/assets/confirm_button.png",
+      "bytes": 276197,
+      "sha256": "03475ec9e4e1a9dbddbd66c9e317d309228ec0035e04d77b0611ee91e418a855",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/correct.png",
+      "destination": "web/anchorman/assets/correct.png",
+      "bytes": 403912,
+      "sha256": "7a494650e1085c9e2a8601dd3690d2f8a61276edce9b1cde134967ddb2881acb",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/cross_hand.png",
+      "destination": "web/anchorman/assets/cross_hand.png",
+      "bytes": 218431,
+      "sha256": "68219ab6770de7983b7d2f71841ff853f0ed099ec434eb6db8b4fdf006e76a46",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/dialogue.png",
+      "destination": "web/anchorman/assets/dialogue.png",
+      "bytes": 153347,
+      "sha256": "c31e1fdc45e095b26aad791819c3d71242c81a516374f6a9a1184e435efb6ae5",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/earth.png",
+      "destination": "web/anchorman/assets/earth.png",
+      "bytes": 2189378,
+      "sha256": "396f133ff603ee18ecf740c9c328e9731ef5afceae61bb293983539f6dc3edcd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/live_room.png",
+      "destination": "web/anchorman/assets/live_room.png",
+      "bytes": 188542,
+      "sha256": "338448f3619cd6ae77fe568979d9d0882be28e359d437dc82487bab7cb7b30c1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/startbutton.png",
+      "destination": "web/anchorman/assets/startbutton.png",
+      "bytes": 103185,
+      "sha256": "9c9a590b2f1a20dc8b9eddc554a0b5939e22ecbcaab44996ad3b460a0c94a1e1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/title.png",
+      "destination": "web/anchorman/assets/title.png",
+      "bytes": 1081455,
+      "sha256": "07d14926475464bcab1cb324f9436416d87deec3e26863927eb3480c814d46e3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/assets/wrong.png",
+      "destination": "web/anchorman/assets/wrong.png",
+      "bytes": 401685,
+      "sha256": "df6013e39ea5bf1bea9feb8a9cc455a890b87908078c15f3fa0caae87eeb348b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/.editorconfig",
+      "destination": "games/help-ai-anchorman/.editorconfig",
+      "bytes": 33,
+      "sha256": "3b2c749c8a940905a08f727d8be9017c9568a12421c0aee7e37e9543b3751b1b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/.gitattributes",
+      "destination": "games/help-ai-anchorman/.gitattributes",
+      "bytes": 80,
+      "sha256": "21b01a606c9f85f18bb9230245f00ab104df7409cbb2fe9423f6751ca72ba754",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/.gitignore",
+      "destination": "games/help-ai-anchorman/.gitignore",
+      "bytes": 46,
+      "sha256": "d6194b1a176268740a0b7f153bd4926908b4a0955a9a311181c0200b4329bc94",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/README.md",
+      "destination": "games/help-ai-anchorman/README.md",
+      "bytes": 1282,
+      "sha256": "4815811fbacfcf64d489257e741aba08a0a59ab85a7a29334a0d4182184e010c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/export_presets.cfg",
+      "destination": "games/help-ai-anchorman/export_presets.cfg",
+      "bytes": 1442,
+      "sha256": "eca0d50bface2a33a5d0c369532ee26bf5f37d9a2ea84e30b9f4aca6bcc59a36",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/help_ai_anchorman.apple-touch-icon.png",
+      "bytes": 11939,
+      "sha256": "071ccd3c3619e62c9e27995cf1afde427bb1b630767801a0fe1ac33505b2f221",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/help_ai_anchorman.apple-touch-icon.png.import",
+      "bytes": 1006,
+      "sha256": "12f4e6052a630a6d893b85b0af5fe53a5b191bd048aed281a1d55a2d50b5cda3",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/help_ai_anchorman.audio.position.worklet.js",
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/help_ai_anchorman.audio.worklet.js",
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/help_ai_anchorman.html",
+      "bytes": 7533,
+      "sha256": "2904277d609d1f6470aac30376b0bdfd9f11c396e42c2279d415b90b419c83d1",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/help_ai_anchorman.icon.png",
+      "bytes": 5765,
+      "sha256": "662f81d7672001a6f5f928532493267c226624757de3b5fa2908f6e5923964b7",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/help_ai_anchorman.icon.png.import",
+      "bytes": 969,
+      "sha256": "42cc3f57460d92a6657c827cf2f42f86dbcf8dc209172ed1698e8b14b914b812",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/help_ai_anchorman.js",
+      "bytes": 279815,
+      "sha256": "68586d6daafc93c6e697b3fb258976874aa7459b8931165ebb1dc3c9614cc42c",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/help_ai_anchorman.png",
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/help_ai_anchorman.png.import",
+      "bytes": 954,
+      "sha256": "261968d6fb2f1bc3f1c10dde2fd2138fee71b9969da6080a2c72324898320520",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/icon.svg",
+      "destination": "games/help-ai-anchorman/icon.svg",
+      "bytes": 995,
+      "sha256": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/icon.svg.import",
+      "destination": "games/help-ai-anchorman/icon.svg.import",
+      "bytes": 1013,
+      "sha256": "a096ea2adc1bb4e7a5ef89b50e152ea7eee03b1b4ac3752c6948d53038ceefe0",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/project.godot",
+      "destination": "games/help-ai-anchorman/project.godot",
+      "bytes": 683,
+      "sha256": "f6376dac365d008c45ee45da15630e2b06846b658b244ee3eee12b4bcd85fd1c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/run_web.ps1",
+      "destination": "games/help-ai-anchorman/run_web.ps1",
+      "bytes": 2085,
+      "sha256": "b47d17179275574e94e85d85d1cd5e5229305b800fe33f5490786fb077682494",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scenes/comic.tscn",
+      "destination": "games/help-ai-anchorman/Scenes/comic.tscn",
+      "bytes": 4032,
+      "sha256": "ab98d90ccfe91150bd9911b0c13ee87ad0a7232f8219171745d513c438a4ff22",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scenes/level1.tscn",
+      "destination": "games/help-ai-anchorman/Scenes/level1.tscn",
+      "bytes": 11657,
+      "sha256": "230e6d26b1f33dccc949de0efee65f22cb5d2ca17da4ab0c4c21f1f1c5782142",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scenes/title.tscn",
+      "destination": "games/help-ai-anchorman/Scenes/title.tscn",
+      "bytes": 2444,
+      "sha256": "949ff250012d5137a9c453c63e3ee90435d41d16df336877e5e4ec005e34300d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scripts/Comic.gd",
+      "destination": "games/help-ai-anchorman/Scripts/Comic.gd",
+      "bytes": 1922,
+      "sha256": "2e58ed9f838c68acf2668a03a85487cabec84050cc06b4776dd5819361707bc2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scripts/Comic.gd.uid",
+      "destination": "games/help-ai-anchorman/Scripts/Comic.gd.uid",
+      "bytes": 20,
+      "sha256": "23eaa07d176e0fb40925bffd0bd60076c77951d84a53ae9d3d51f5aa2117feb7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scripts/Level1.gd",
+      "destination": "games/help-ai-anchorman/Scripts/Level1.gd",
+      "bytes": 28691,
+      "sha256": "bf3d197cd390486c0f230e9fc3d28b2594c0b2abf2817bfd8af3e2b3763a3fa6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scripts/Level1.gd.uid",
+      "destination": "games/help-ai-anchorman/Scripts/Level1.gd.uid",
+      "bytes": 20,
+      "sha256": "1c49386c482b14d39cf729e0169b30150f473ad54b27500c68a60ed156bdfc31",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scripts/Title.gd",
+      "destination": "games/help-ai-anchorman/Scripts/Title.gd",
+      "bytes": 2066,
+      "sha256": "e621f92687433d96e18a48fd4d59e4ec51a7a3a8c8a9f86cc32d94b0b26d4dba",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scripts/Title.gd.uid",
+      "destination": "games/help-ai-anchorman/Scripts/Title.gd.uid",
+      "bytes": 20,
+      "sha256": "5c560b83663e8490746c7a9dfb6dcbe42156ebb1e2469ddbaa6d8bc049989941",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scripts/Typewriter.gd",
+      "destination": "games/help-ai-anchorman/Scripts/Typewriter.gd",
+      "bytes": 2576,
+      "sha256": "10e883e97b9d96de2f1b32bdf3d18a5c8585e0e3c35351563f7c11579e520997",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scripts/Typewriter.gd.uid",
+      "destination": "games/help-ai-anchorman/Scripts/Typewriter.gd.uid",
+      "bytes": 20,
+      "sha256": "6d19ec6feffcbf163290b57e8d94457557ddf686bcfcb8862aaa66bf20e6d25e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scripts/rich_text_label.gd",
+      "destination": "games/help-ai-anchorman/Scripts/rich_text_label.gd",
+      "bytes": 22,
+      "sha256": "1a0dd88fd66dc52392ec5ee391e9bad3231d760a15c39001dceef952cb1b8cb9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/Scripts/rich_text_label.gd.uid",
+      "destination": "games/help-ai-anchorman/Scripts/rich_text_label.gd.uid",
+      "bytes": 20,
+      "sha256": "113c99022d7706c419c5a2c2f5b450bc7de2d1f29d8a28a4a1bba41c2f3aacbc",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/5d0d5a81364ee925e6415753a63f6503.png",
+      "destination": "games/help-ai-anchorman/assets/5d0d5a81364ee925e6415753a63f6503.png",
+      "bytes": 149568,
+      "sha256": "f06b381b50353210833160cd4364ad7f71b9cb29ccd60ea539eb8660b1973669",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/5d0d5a81364ee925e6415753a63f6503.png.import",
+      "destination": "games/help-ai-anchorman/assets/5d0d5a81364ee925e6415753a63f6503.png.import",
+      "bytes": 1007,
+      "sha256": "edfebf4f431c8b98e2169a7de1a069159ce28d52c81c2f6267deef6cea3bcb8e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/anchorman.png",
+      "destination": "games/help-ai-anchorman/assets/anchorman.png",
+      "bytes": 399526,
+      "sha256": "e842f6d98d393b4997331f3201387ce47e51a1ad7f021591ebe42194e4880eae",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/anchorman.png.import",
+      "destination": "games/help-ai-anchorman/assets/anchorman.png.import",
+      "bytes": 937,
+      "sha256": "62cfdfe9d0958a7bad2c00965fe62a583ee59bbe7d3304f923e447cb72c160c9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/anchorman2.png",
+      "destination": "games/help-ai-anchorman/assets/anchorman2.png",
+      "bytes": 974741,
+      "sha256": "71598819ab09b7423cc8898058a1acf67da8de10f7aa42eeaebc9019f7af3af1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/anchorman2.png.import",
+      "destination": "games/help-ai-anchorman/assets/anchorman2.png.import",
+      "bytes": 940,
+      "sha256": "468bdbab5bc8ab7bc8e90ea438760a9371106a303004ad7506e2dc2a8b1ac70f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/background.png",
+      "destination": "games/help-ai-anchorman/assets/background.png",
+      "bytes": 6721,
+      "sha256": "2f69457428f505f5f203bf6ba2ab6ea283a22270ded81aabab369196358f6f95",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/background.png.import",
+      "destination": "games/help-ai-anchorman/assets/background.png.import",
+      "bytes": 941,
+      "sha256": "63b0e3de19884f81fb4dba91d74ed95282bfbc6ef38e8591ec3cfde105a2fc20",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/background2.png",
+      "destination": "games/help-ai-anchorman/assets/background2.png",
+      "bytes": 8561,
+      "sha256": "f35d2b62fe21964cb6f35a80829c7016ef4a956f46b092cdd15de6a588b295da",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/background2.png.import",
+      "destination": "games/help-ai-anchorman/assets/background2.png.import",
+      "bytes": 943,
+      "sha256": "809447b6e27c76845fc0da4e63a87562b4587f759066951079558c5924826ea1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/boarder.png",
+      "destination": "games/help-ai-anchorman/assets/boarder.png",
+      "bytes": 120556,
+      "sha256": "df4340eb47a3471eb973270bbe75c5c8e9e98a2aef0e5dad7e8f5001e836746b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/boarder.png.import",
+      "destination": "games/help-ai-anchorman/assets/boarder.png.import",
+      "bytes": 931,
+      "sha256": "78336ee14e970a200c6528123d123d0fd6078ef0772ca6bd88b5135f4a85130a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/bottom.png",
+      "destination": "games/help-ai-anchorman/assets/bottom.png",
+      "bytes": 5157,
+      "sha256": "21210c6c03f08cd3efb2f52a7f7cef11958bd7409d9282c986cd1665367c171a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/bottom.png.import",
+      "destination": "games/help-ai-anchorman/assets/bottom.png.import",
+      "bytes": 929,
+      "sha256": "f9de81e1d2c34e1c83598e33f5b863119b04f570bbf01e202b073200a84edc60",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/clock_dot.png",
+      "destination": "games/help-ai-anchorman/assets/clock_dot.png",
+      "bytes": 9764,
+      "sha256": "e371981549a217240d0eeb34c5d35a9b3b3160d807436bcc88b2af8bcb9063b7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/clock_dot.png.import",
+      "destination": "games/help-ai-anchorman/assets/clock_dot.png.import",
+      "bytes": 937,
+      "sha256": "75e09fcb16bfe12e7afd971e13bec80a367c7522434dfcd5908efaac67bf6509",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/clock_hour.png",
+      "destination": "games/help-ai-anchorman/assets/clock_hour.png",
+      "bytes": 27109,
+      "sha256": "8348c3230cf6d3b5bbb574ab4290b423409815c7fa3f7be2bf6698167665867a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/clock_hour.png.import",
+      "destination": "games/help-ai-anchorman/assets/clock_hour.png.import",
+      "bytes": 941,
+      "sha256": "c983bfd4bfc8ed0ed7e9942312bb3f94c3f48610fb35f114a581dbeb9b694681",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/clock_minit.png",
+      "destination": "games/help-ai-anchorman/assets/clock_minit.png",
+      "bytes": 23962,
+      "sha256": "a1ed02c9d309ddf17d0927f447e9367c25567faa88b3fc29dc4ac2fde3147df7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/clock_minit.png.import",
+      "destination": "games/help-ai-anchorman/assets/clock_minit.png.import",
+      "bytes": 944,
+      "sha256": "92e9cccce969eb34accaa8e0acff9ab5b00f5e943288a38fa41bd279a210d235",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/clock_plate.png",
+      "destination": "games/help-ai-anchorman/assets/clock_plate.png",
+      "bytes": 143079,
+      "sha256": "72d46981bf8cb4b058cc982770dd966ac0b8140a5a413fde6133a269a4cad6a2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/clock_plate.png.import",
+      "destination": "games/help-ai-anchorman/assets/clock_plate.png.import",
+      "bytes": 944,
+      "sha256": "40bc923cfc7fc540eb7546ab7310c14f8d3cd45b8378c7b3ac4e95098441088d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/comic-frame-transparent.png",
+      "destination": "games/help-ai-anchorman/assets/comic-frame-transparent.png",
+      "bytes": 8740,
+      "sha256": "4c045892fe38d604af9278230c1b107236683fefc7758ff8d9fe14aeb3a7f93d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/comic-frame-transparent.png.import",
+      "destination": "games/help-ai-anchorman/assets/comic-frame-transparent.png.import",
+      "bytes": 980,
+      "sha256": "7e22c94be578660bd6ee1427ff364e9fca08bebf6066d0ffdcbd58883aa1f3de",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/comic1.png",
+      "destination": "games/help-ai-anchorman/assets/comic1.png",
+      "bytes": 467212,
+      "sha256": "8a847cbb2b53cf5dc53000d8e640d172f71a43a7d5a9eb57d107607be62214e6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/comic1.png.import",
+      "destination": "games/help-ai-anchorman/assets/comic1.png.import",
+      "bytes": 929,
+      "sha256": "24ea44c24b117ff834a07675caea1c4167455b52a3fed1030bc4eefa6e5c1ad4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/comic2.png",
+      "destination": "games/help-ai-anchorman/assets/comic2.png",
+      "bytes": 1274998,
+      "sha256": "9c673f8670659c18b1714bcbfb4886cefaba2df5cfec644f9a38fd58975c67aa",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/comic2.png.import",
+      "destination": "games/help-ai-anchorman/assets/comic2.png.import",
+      "bytes": 929,
+      "sha256": "a0a881ade07b66fa39e16586bac191ae1796bf6ab0331ee08b929af466e9a0d6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/comic3.png",
+      "destination": "games/help-ai-anchorman/assets/comic3.png",
+      "bytes": 2033425,
+      "sha256": "3b67fd217d8e7a49ee513dd08936e9d2b68250db4144d2233d0b878e846fc931",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/comic3.png.import",
+      "destination": "games/help-ai-anchorman/assets/comic3.png.import",
+      "bytes": 929,
+      "sha256": "0086d43aea950834023999350b1871b994f0ec781470f72404e88cbe6ef8187e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/comic4.png",
+      "destination": "games/help-ai-anchorman/assets/comic4.png",
+      "bytes": 742798,
+      "sha256": "a2c94b1b71f2341b53eca12f10ae10373f452d41f4c3059f68d6ccb32a017d06",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/comic4.png.import",
+      "destination": "games/help-ai-anchorman/assets/comic4.png.import",
+      "bytes": 928,
+      "sha256": "fe2fcd42ceb38643011ac73c2b28875bcfe6b12cfe4ce78e7f607524507d1d7f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/confirm_button.png",
+      "destination": "games/help-ai-anchorman/assets/confirm_button.png",
+      "bytes": 276197,
+      "sha256": "03475ec9e4e1a9dbddbd66c9e317d309228ec0035e04d77b0611ee91e418a855",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/confirm_button.png.import",
+      "destination": "games/help-ai-anchorman/assets/confirm_button.png.import",
+      "bytes": 953,
+      "sha256": "3ccff525ce20c49bee849323d6c505219f372c84ccf0393bb8f54f7aeabc109f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/correct.png",
+      "destination": "games/help-ai-anchorman/assets/correct.png",
+      "bytes": 403912,
+      "sha256": "7a494650e1085c9e2a8601dd3690d2f8a61276edce9b1cde134967ddb2881acb",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/correct.png.import",
+      "destination": "games/help-ai-anchorman/assets/correct.png.import",
+      "bytes": 932,
+      "sha256": "331ea30e2ee3e2245a6ee27b004ea072af51574af1bdb94ad9b1b113f766f681",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/cross_hand.png",
+      "destination": "games/help-ai-anchorman/assets/cross_hand.png",
+      "bytes": 218431,
+      "sha256": "68219ab6770de7983b7d2f71841ff853f0ed099ec434eb6db8b4fdf006e76a46",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/cross_hand.png.import",
+      "destination": "games/help-ai-anchorman/assets/cross_hand.png.import",
+      "bytes": 941,
+      "sha256": "0b6eaca4c87857cba4f355796165d634fbe17a3c9182bbd838ece54ad12dca42",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/dialog_frame.png",
+      "destination": "games/help-ai-anchorman/assets/dialog_frame.png",
+      "bytes": 22592,
+      "sha256": "03a95bd709ce1d3e2d4c973d502cb7a4cb80c152537ca4900d9753a89173d7cf",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/dialog_frame.png.import",
+      "destination": "games/help-ai-anchorman/assets/dialog_frame.png.import",
+      "bytes": 947,
+      "sha256": "ced7b48f14dade204438459ac9938a2e689cc38e1c24008c4fdc9ef2ab8d23e9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/dialogue.png",
+      "destination": "games/help-ai-anchorman/assets/dialogue.png",
+      "bytes": 153347,
+      "sha256": "c31e1fdc45e095b26aad791819c3d71242c81a516374f6a9a1184e435efb6ae5",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/dialogue.png.import",
+      "destination": "games/help-ai-anchorman/assets/dialogue.png.import",
+      "bytes": 935,
+      "sha256": "45bc0f85cd3a484710ff575cf780ad97fce7836bb231233f6c62ce41174b7794",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/earth.png",
+      "destination": "games/help-ai-anchorman/assets/earth.png",
+      "bytes": 2189378,
+      "sha256": "396f133ff603ee18ecf740c9c328e9731ef5afceae61bb293983539f6dc3edcd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/earth.png.import",
+      "destination": "games/help-ai-anchorman/assets/earth.png.import",
+      "bytes": 925,
+      "sha256": "29d7a3568dbbac214b2d36b66a75c6b669f933d83785f1bf1552d4f8623c9999",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/live_room.png",
+      "destination": "games/help-ai-anchorman/assets/live_room.png",
+      "bytes": 188542,
+      "sha256": "338448f3619cd6ae77fe568979d9d0882be28e359d437dc82487bab7cb7b30c1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/live_room.png.import",
+      "destination": "games/help-ai-anchorman/assets/live_room.png.import",
+      "bytes": 937,
+      "sha256": "28446d8a63b779ab17ee2a1d01f5c7adb9bf0be3834d55e6837556a89c58b998",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/startbutton.png",
+      "destination": "games/help-ai-anchorman/assets/startbutton.png",
+      "bytes": 103185,
+      "sha256": "9c9a590b2f1a20dc8b9eddc554a0b5939e22ecbcaab44996ad3b460a0c94a1e1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/startbutton.png.import",
+      "destination": "games/help-ai-anchorman/assets/startbutton.png.import",
+      "bytes": 943,
+      "sha256": "2b264f8b881b28591557c449d682dd5e1f674e09d081a4aa50f8c055ab370abd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/tit.png",
+      "destination": "games/help-ai-anchorman/assets/tit.png",
+      "bytes": 148411,
+      "sha256": "10203ad591ffbb783536ad0bb8f3dcf14c5a0dfcc208e5a7ed6f4252a847d7aa",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/tit.png.import",
+      "destination": "games/help-ai-anchorman/assets/tit.png.import",
+      "bytes": 920,
+      "sha256": "ae885ce67612728e6055295348f300c3358f0f8e097ce773d998b63c23d8833c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/title.png",
+      "destination": "games/help-ai-anchorman/assets/title.png",
+      "bytes": 1081455,
+      "sha256": "07d14926475464bcab1cb324f9436416d87deec3e26863927eb3480c814d46e3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/title.png.import",
+      "destination": "games/help-ai-anchorman/assets/title.png.import",
+      "bytes": 926,
+      "sha256": "32090cd85dbb3fb4d0f783e4c7bee825c2a5ba016c7eae60bd155928f183ed5a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/tv_frame.png",
+      "destination": "games/help-ai-anchorman/assets/tv_frame.png",
+      "bytes": 22035,
+      "sha256": "dda9ddc4012b82ce623d6f4d88050a8e41f46ce67f1a1df53ef3e17349883b0e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/tv_frame.png.import",
+      "destination": "games/help-ai-anchorman/assets/tv_frame.png.import",
+      "bytes": 935,
+      "sha256": "c1d6a283ad8d0f64057c8e9702f1f417bd5710e92433488b648d502681ebb564",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/wrong.png",
+      "destination": "games/help-ai-anchorman/assets/wrong.png",
+      "bytes": 401685,
+      "sha256": "df6013e39ea5bf1bea9feb8a9cc455a890b87908078c15f3fa0caae87eeb348b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/assets/wrong.png.import",
+      "destination": "games/help-ai-anchorman/assets/wrong.png.import",
+      "bytes": 926,
+      "sha256": "d79adcf1584e94a593a83e8060033ba4177b97cf6fcdf1b4f32f20fa29940c23",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/fonts/NotoColorEmoji.ttf",
+      "destination": "games/help-ai-anchorman/fonts/NotoColorEmoji.ttf",
+      "bytes": 10673480,
+      "sha256": "72a635cb3d2f3524c51620cdde406b217204e8a6a06c6a096ff8ed4b5fd6e27b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/fonts/NotoColorEmoji.ttf.import",
+      "destination": "games/help-ai-anchorman/fonts/NotoColorEmoji.ttf.import",
+      "bytes": 773,
+      "sha256": "3981aca201b428d69cfd9cc63a3b84f47308115e7b9a6400ae6b384ccf0daa2b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/fonts/NotoSansSC.ttf",
+      "destination": "games/help-ai-anchorman/fonts/NotoSansSC.ttf",
+      "bytes": 17772852,
+      "sha256": "b1736bb633392cfc59b50d97c353d234111bd1721c9c83eaf643eaab9392e7f9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/fonts/NotoSansSC.ttf.import",
+      "destination": "games/help-ai-anchorman/fonts/NotoSansSC.ttf.import",
+      "bytes": 761,
+      "sha256": "e5175563d9ecfc19d2224f75ebd54ccf10e7925085d4a46822b5be5f9dc02863",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/help-ai-anchorman/fonts/default_font.tres",
+      "destination": "games/help-ai-anchorman/fonts/default_font.tres",
+      "bytes": 355,
+      "sha256": "78155f30c6f47b2bb41f72d57075392cf2437f2eee63d84467e59e43284be384",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/.editorconfig",
+      "destination": "games/throw-anchor/.editorconfig",
+      "bytes": 33,
+      "sha256": "3b2c749c8a940905a08f727d8be9017c9568a12421c0aee7e37e9543b3751b1b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/.gitattributes",
+      "destination": "games/throw-anchor/.gitattributes",
+      "bytes": 80,
+      "sha256": "21b01a606c9f85f18bb9230245f00ab104df7409cbb2fe9423f6751ca72ba754",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/.gitignore",
+      "destination": "games/throw-anchor/.gitignore",
+      "bytes": 46,
+      "sha256": "d6194b1a176268740a0b7f153bd4926908b4a0955a9a311181c0200b4329bc94",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/project.godot",
+      "destination": "games/throw-anchor/project.godot",
+      "bytes": 3349,
+      "sha256": "203eb241b3f10a24fc7ca726990176504fd2c8eefbc32d0db414bcf59c6daf20",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/tool-paddle.mtl",
+      "destination": "games/throw-anchor/tool-paddle.mtl",
+      "bytes": 92,
+      "sha256": "f9ca32dc5d7a99d9e00f9d437ee263ae6f5bc1123526c3ccc286eb393dd1bb48",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/arts/duck_boat.png",
+      "destination": "games/throw-anchor/arts/duck_boat.png",
+      "bytes": 712655,
+      "sha256": "22d5552298c2773971db5d62caa006a1d033fa0630c82a61e6b0bcb59250d06d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/arts/duck_boat.png.import",
+      "destination": "games/throw-anchor/arts/duck_boat.png.import",
+      "bytes": 936,
+      "sha256": "11b7c43cf642aa4418db781a30f441f9aa7f47ee8679cc54d0d857d3476f9d76",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/docs/anchor_runner_architecture.md",
+      "destination": "games/throw-anchor/docs/anchor_runner_architecture.md",
+      "bytes": 3608,
+      "sha256": "0a7f7840623e89d1dfc1b2bc152b0361efaf55f5dde381222d5b5923d55fd0bd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/scenes/Main.tscn",
+      "destination": "games/throw-anchor/scenes/Main.tscn",
+      "bytes": 408,
+      "sha256": "7678a9e5ff01466a9d294aff769098393f98ab72714accd6a9ab6dde83375272",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/scripts/main.gd",
+      "destination": "games/throw-anchor/scripts/main.gd",
+      "bytes": 18211,
+      "sha256": "b70450ca3f6910fac879464cae940828cbca012faf51b93a70c507959fec33fd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/Psalm404-CiGA2026/抛个锚/scripts/main.gd.uid",
+      "destination": "games/throw-anchor/scripts/main.gd.uid",
+      "bytes": 20,
+      "sha256": "2f627f4402c7b785e434666c8b58638e6c3255192498c2ca848bd45c9e94d211",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/anchor-river-whitebox-(4.3)/README.md",
+      "destination": "prototypes/anchor-river-whitebox-4.3/README.md",
+      "bytes": 646,
+      "sha256": "14c0a7dedcb281bcdb8b051f2ce60ee1b4ef0bc0934a313a861ca6cd2049cec3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/anchor-river-whitebox-(4.3)/project.godot",
+      "destination": "prototypes/anchor-river-whitebox-4.3/project.godot",
+      "bytes": 291,
+      "sha256": "71793ff4b6ca7b8ba461418fbdfd3810f4e62401ad6cab5f614198a62135cd15",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/anchor-river-whitebox-(4.3)/scenes/main.tscn",
+      "destination": "prototypes/anchor-river-whitebox-4.3/scenes/main.tscn",
+      "bytes": 169,
+      "sha256": "de0f5724b781c4471c7e5ce7332e27a780a74bd812591ea27a6224cdd1b41bdb",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/anchor-river-whitebox-(4.3)/scripts/Main.gd",
+      "destination": "prototypes/anchor-river-whitebox-4.3/scripts/Main.gd",
+      "bytes": 19433,
+      "sha256": "63944a168f5fbe587824c285326821eeeadeb38fa6200f2da0dbb69c8cab8e68",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/anchorshackeshacke-game1/anchorshackeshacke.apple-touch-icon.png",
+      "bytes": 11939,
+      "sha256": "071ccd3c3619e62c9e27995cf1afde427bb1b630767801a0fe1ac33505b2f221",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/anchorshackeshacke-game1/anchorshackeshacke.audio.position.worklet.js",
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/anchorshackeshacke-game1/anchorshackeshacke.audio.worklet.js",
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/anchorshackeshacke-game1/anchorshackeshacke.html",
+      "bytes": 5541,
+      "sha256": "ee7e8bd6cc2fb1ab07c3b8a9358a21bab25713bb67db3ce4bac5e9a3039632cf",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/anchorshackeshacke-game1/anchorshackeshacke.icon.png",
+      "bytes": 5765,
+      "sha256": "662f81d7672001a6f5f928532493267c226624757de3b5fa2908f6e5923964b7",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/anchorshackeshacke-game1/anchorshackeshacke.js",
+      "bytes": 279815,
+      "sha256": "68586d6daafc93c6e697b3fb258976874aa7459b8931165ebb1dc3c9614cc42c",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/anchorshackeshacke-game1/anchorshackeshacke.png",
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/anchorshackeshacke-game1/index.html",
+      "bytes": 5541,
+      "sha256": "ee7e8bd6cc2fb1ab07c3b8a9358a21bab25713bb67db3ce4bac5e9a3039632cf",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga/assets/anchor-pin-key.png",
+      "destination": "web/assets/anchor-pin-key.png",
+      "bytes": 1043390,
+      "sha256": "0f3c3d1678d3544fb49fc8af0a71790fa438992bba3901cf11f807c73a262984",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/anchor-pin.png",
+      "destination": "web/assets/anchor-pin.png",
+      "bytes": 211299,
+      "sha256": "45927d9d78a98976acb5949d6c59977db48226aad85dbfb27a6e0c6d06471c11",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/beer-bottle-collage-key.png",
+      "destination": "web/assets/beer-bottle-collage-key.png",
+      "bytes": 1651452,
+      "sha256": "e84243f9c8fa1a00007f569fad584a7b4c2e1d1cd297b0308094303d663aa1e7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/beer-bottle-collage-rough-pixel.png",
+      "destination": "web/assets/beer-bottle-collage-rough-pixel.png",
+      "bytes": 95002,
+      "sha256": "a625c1378995c8acc89220b7c933f30660a8dc91dc897dfa7c2b4cf9ab4fadcf",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/beer-bottle-collage.png",
+      "destination": "web/assets/beer-bottle-collage.png",
+      "bytes": 1010053,
+      "sha256": "c00945659c87ab92c6e840f8a0486c1db7c3307442b6425c14bd1ba3774e2978",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-collage-sheet.png",
+      "destination": "web/assets/dreamcore-collage-sheet.png",
+      "bytes": 460568,
+      "sha256": "42221be05bf7f4de60f3365d8df5122d24daa46dbb59a2e1f254f9de0e01f6f3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-field-texture.png",
+      "destination": "web/assets/dreamcore-field-texture.png",
+      "bytes": 1159330,
+      "sha256": "7da061946028491607b1900e4333b5b05f7484ae915b2dba6d2271baa7b0df24",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-river-texture.png",
+      "destination": "web/assets/dreamcore-river-texture.png",
+      "bytes": 692108,
+      "sha256": "e89a729cff51dae938b22cee59924351814dc8db77ef3be9b727ed448c515767",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-sources.json",
+      "destination": "web/assets/dreamcore-sources.json",
+      "bytes": 6837,
+      "sha256": "f9bfaf79ca0087130341c44cce411be415b02c8b3d49c39ec5a7544c41a73588",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/duck-boat-oblique-collage.png",
+      "destination": "web/assets/duck-boat-oblique-collage.png",
+      "bytes": 712655,
+      "sha256": "22d5552298c2773971db5d62caa006a1d033fa0630c82a61e6b0bcb59250d06d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-bank-texture.png",
+      "destination": "web/assets/generation-80s-bank-texture.png",
+      "bytes": 4361679,
+      "sha256": "52b034927d3a0f9111012f508994abe5f2fdd528550460fb3367351b6d0db857",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-cutouts.png",
+      "destination": "web/assets/generation-80s-cutouts.png",
+      "bytes": 2199306,
+      "sha256": "9f881e8ad18a4aa041d78588ccd38d70cdfc553db44daa6f0769f8dc3ee8e8be",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-river-texture.png",
+      "destination": "web/assets/generation-80s-river-texture.png",
+      "bytes": 72695,
+      "sha256": "ba5b9df3f46526db4b0276957dc659d51022f95b494b1d47d01b18743464b088",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-sources.json",
+      "destination": "web/assets/generation-80s-sources.json",
+      "bytes": 3049,
+      "sha256": "7ae57fc938c89af86934a8bc5e6fcf4ec34f50fa820cf16933438c48fbfdd0a2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-bank-texture.png",
+      "destination": "web/assets/generation-90s-bank-texture.png",
+      "bytes": 3865941,
+      "sha256": "19405de7e803c877d834c201960d433df42ae1a694ff36da1bc627debea61a8f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-cutouts.png",
+      "destination": "web/assets/generation-90s-cutouts.png",
+      "bytes": 2845683,
+      "sha256": "541e18c3625e62e5712a765d8f0fe7b820591be2544d465e7037fa5f57d3c1a8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-river-texture.png",
+      "destination": "web/assets/generation-90s-river-texture.png",
+      "bytes": 69845,
+      "sha256": "bf7cb158c2b87679dff08e8aab204538299618207b48c2c8c103d65772a6c7c9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-sources.json",
+      "destination": "web/assets/generation-90s-sources.json",
+      "bytes": 4052,
+      "sha256": "b2d14800f852f4cfbff9e4182c5e3c89f0fdf44d60513294764b1dd992ed884e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-bank-texture-v2.png",
+      "destination": "web/assets/generation-stone-age-bank-texture-v2.png",
+      "bytes": 3588551,
+      "sha256": "67fa277cb790b54d67d978a6b23ed0c6f9ac447ec2d89ea4b903d615c051b9ad",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-bank-texture.png",
+      "destination": "web/assets/generation-stone-age-bank-texture.png",
+      "bytes": 3115739,
+      "sha256": "aa84e5fa7fb80a133d2e29eeab5f82a3402c37296322feef2b068b086ccd0177",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-cutouts.png",
+      "destination": "web/assets/generation-stone-age-cutouts.png",
+      "bytes": 1244418,
+      "sha256": "d146c5af28bdded6b8af1ee597d6ec291bd1b2e2d0b5938b2fe8863dee5bb21a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-patch-texture.png",
+      "destination": "web/assets/generation-stone-age-patch-texture.png",
+      "bytes": 3115739,
+      "sha256": "aa84e5fa7fb80a133d2e29eeab5f82a3402c37296322feef2b068b086ccd0177",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-river-texture-v2.png",
+      "destination": "web/assets/generation-stone-age-river-texture-v2.png",
+      "bytes": 2648012,
+      "sha256": "1808ec8f5bfd8c317088e1471656c626fa7947015903e2a621630c5fd6e13a7a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-river-texture.png",
+      "destination": "web/assets/generation-stone-age-river-texture.png",
+      "bytes": 62721,
+      "sha256": "185c75a67062f8007516e7f851459a6c9f9a05b4a840bd964cc1bb90b55fa218",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-sources.json",
+      "destination": "web/assets/generation-stone-age-sources.json",
+      "bytes": 2188,
+      "sha256": "9a03110344e96410db47a0b511a678e4da64e8bd2fafc0f0a2920ccba5110c53",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/heart.png",
+      "destination": "web/assets/heart.png",
+      "bytes": 201,
+      "sha256": "ba9e7356113ce58107687edfc7dd17668361759af71c10e32fee70e93750909a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-era-cutouts.png",
+      "destination": "web/assets/history-era-cutouts.png",
+      "bytes": 895722,
+      "sha256": "fe77d90823feffad570feda7649784198c034b037aaf484fa4d31fd9927667d0",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-sources.json",
+      "destination": "web/assets/history-sources.json",
+      "bytes": 5560,
+      "sha256": "91dd4ad39a389f41a6e8782daab6b3950fa7d16da7220ef2ec9bdee630c408b8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/obstacles-collage-sheet-key.png",
+      "destination": "web/assets/obstacles-collage-sheet-key.png",
+      "bytes": 1894801,
+      "sha256": "03c689320823ed89e5a1e8c6a97536a6b423ba31b1467226fa0fe7ffde469ea9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/obstacles-collage-sheet.png",
+      "destination": "web/assets/obstacles-collage-sheet.png",
+      "bytes": 1353244,
+      "sha256": "b319ae48e1bb10032c077f9150a73b7b398d63097e9a0ca9ea323966532f11de",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/paper-bank-texture.png",
+      "destination": "web/assets/paper-bank-texture.png",
+      "bytes": 3530711,
+      "sha256": "baf71c4816053abbfcaf8833ce7cc0db2dc1f34757f170be53421d0d47ab25ee",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/paper-boat-oblique-clean-key.png",
+      "destination": "web/assets/paper-boat-oblique-clean-key.png",
+      "bytes": 1346562,
+      "sha256": "9d874f83fc493cbe191f231d8a74efe67007f4ee3386a0498df4dabefcf754f5",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/paper-boat-oblique-clean.png",
+      "destination": "web/assets/paper-boat-oblique-clean.png",
+      "bytes": 617106,
+      "sha256": "d1906c74c7d7fe8354536e0b7a9d29b00972af49d4d5ce1569b7bae7dec344ac",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/paper-boat-oblique-key.png",
+      "destination": "web/assets/paper-boat-oblique-key.png",
+      "bytes": 1228171,
+      "sha256": "4c24e8266b426436589df63cd88a78e42770e513c67e83b524ad0ba25f48afcb",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/paper-boat-oblique.png",
+      "destination": "web/assets/paper-boat-oblique.png",
+      "bytes": 477827,
+      "sha256": "3ed1275f138094bba994221c88f038518ad08255cf9d4669902887ddb7f848c0",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/river-paper-texture.png",
+      "destination": "web/assets/river-paper-texture.png",
+      "bytes": 2487169,
+      "sha256": "dcf642761d32305bd10fee36cd7571619d2e0944891af6e391b9f2b08aca3bfa",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/shield-bead-key.png",
+      "destination": "web/assets/shield-bead-key.png",
+      "bytes": 1455815,
+      "sha256": "8192b62bb984bd3d72e93ebd5d5b4993da1548aa3fee5900d1e0637a9c83a3ff",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/shield-bead.png",
+      "destination": "web/assets/shield-bead.png",
+      "bytes": 858399,
+      "sha256": "c76a97e9e6b296fada6fd1e70924783839f2095ff39e50542d1d36b49b8a198c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/stone-age-anchor.png",
+      "destination": "web/assets/stone-age-anchor.png",
+      "bytes": 278509,
+      "sha256": "50003beb93fe49d2d70ac39774b6f06b50a76e95b6894fea870abf256fa1455c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/stone-age-boat-collage.png",
+      "destination": "web/assets/stone-age-boat-collage.png",
+      "bytes": 173115,
+      "sha256": "c638334702f3e0c3d470167f573025890117834669a55dec694b5c282868d64c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/stone-age-shield-bronze.png",
+      "destination": "web/assets/stone-age-shield-bronze.png",
+      "bytes": 299062,
+      "sha256": "e21e66219e9732fbfdf214c92ef4a67c46a4494f6b794ea4969885f173a286b5",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/anchor-plus3/background.png",
+      "destination": "web/assets/anchor-plus3/background.png",
+      "bytes": 1191002,
+      "sha256": "8b3c1ed4d2dc382f7fbcd0188fd64f5d5f23f4cbf8f2b405657041b7ce8094ed",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/anchor-plus3/meme-1.png",
+      "destination": "web/assets/anchor-plus3/meme-1.png",
+      "bytes": 176730,
+      "sha256": "d73190e6245fb688da79e02e39f0e550a3b6c5b5cba7d64d6314de7f1fb9a1a4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/anchor-plus3/meme-2.png",
+      "destination": "web/assets/anchor-plus3/meme-2.png",
+      "bytes": 255716,
+      "sha256": "633362782dabdd2c7552c019e2403f53ffaef58c08204876d8a647ae4c1563b6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/anchor-plus3/meme-3.png",
+      "destination": "web/assets/anchor-plus3/meme-3.png",
+      "bytes": 229255,
+      "sha256": "7b140768f558d3c4701cec6f9110f937f41e4f1ce2735c30fac42383e2e53228",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-00.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-00.png",
+      "bytes": 15606,
+      "sha256": "4556d883a813a26ac2684031ba3e11f9cdbcb8725aa06984406191138f88dfeb",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-01.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-01.png",
+      "bytes": 26595,
+      "sha256": "900cfd5f67d7e7e4a19262dc1e603f5e1ce673e2987b4f3d33f01ce38babefa3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-02.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-02.png",
+      "bytes": 22724,
+      "sha256": "d5be77191b333d4de2ac5a2c8c4e20c2f2e0a44bfb0b45ab0e9fc39e1eeaf806",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-03.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-03.png",
+      "bytes": 20398,
+      "sha256": "2d82a0048f1a8904bcbbd6c22d4b4884e00aad7ff5ee087df5de137a2a0d61c8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-04.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-04.png",
+      "bytes": 25896,
+      "sha256": "91cabfa5aa9d1aac31c9e3df57b8e5897119e8caf2f2fa15c36a319c29b6d7a4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-05.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-05.png",
+      "bytes": 19882,
+      "sha256": "70932f6994f791d96640e5af216c70d70ab3605594ac4c41f7415b726ce68cf7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-06.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-06.png",
+      "bytes": 19552,
+      "sha256": "15b5c10847f133a3ef634afc71f4dc9bdd3d4c97ca2edc619743286c70db8ca0",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-07.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-07.png",
+      "bytes": 16341,
+      "sha256": "654d43c10fc4921405cef580f7555285b25bc2cfdcf5f2d6d2ef390b1e060c36",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-08.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-08.png",
+      "bytes": 26411,
+      "sha256": "f80d6f3c3b3106da653f3c750c69b97f3d8f7569b5a12dff5850a0696fe7fe20",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-09.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-09.png",
+      "bytes": 13269,
+      "sha256": "dffe85f4e73d3fdda73799193fdd32f3ac386d41e763d762dba04c0a79d5c924",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-10.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-10.png",
+      "bytes": 27729,
+      "sha256": "6d881e68e70545bfd210f5642b93b67e6655e0e6c74c258ef3d33abf2ef887b6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-11.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-11.png",
+      "bytes": 19009,
+      "sha256": "90978eda6703a0c829cb3c958159f5179f32a22473c78ef3a4cc923da1dfd10b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-12.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-12.png",
+      "bytes": 13151,
+      "sha256": "3bbd867da1958851e07a4d029ad9129ec51821b35fcdf3d6b92a71d870560fe0",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-13.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-13.png",
+      "bytes": 16850,
+      "sha256": "9e272498b245096c19f1ceb60a2c7711fce3b6a8be0c3843058d33cd60352ead",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-14.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-14.png",
+      "bytes": 19612,
+      "sha256": "3d72f687980a64ec007b30a77ce16bfb824537f012378d0ff6c587fe5b98ce36",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-15.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-15.png",
+      "bytes": 20749,
+      "sha256": "e3239558a854c544f84fe8378915d766e1f804c29fb473ea86fa21ee36761eb2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-16.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-16.png",
+      "bytes": 17659,
+      "sha256": "d80bfdba2d32456e12f90b08c42fc1be3014a57ae715e6c37df1fee7b9ecd721",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-17.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-17.png",
+      "bytes": 11397,
+      "sha256": "74ab7ee7f90ad624532dd1245739aca8f53200f9536e09236218399fc7ece744",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-18.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-18.png",
+      "bytes": 18490,
+      "sha256": "9f2f40721ce9913de13b1885690426c64c54c25b5d1f04e080755181f537ba65",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-19.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-19.png",
+      "bytes": 15961,
+      "sha256": "560fca80fe1c70e4b64c0c2d2a5e44eebbe32fe4c8ee474676fc5cdb1ee513f4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-20.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-20.png",
+      "bytes": 17649,
+      "sha256": "6791df0b4b3a5366aae855aedc8c6b32bf5ef7e48725cc95cc7e59433d47a399",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-21.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-21.png",
+      "bytes": 21364,
+      "sha256": "55dcaed59e7504a2034f8c2f3a74ee3b111eb038750d407523abc5148bd7e72e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-22.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-22.png",
+      "bytes": 18595,
+      "sha256": "dd1db1452db10e16a620416a21e771ab7f59fadc852125043db37b15d28baa2a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/dreamcore-pins/dreamcore-23.png",
+      "destination": "web/assets/dreamcore-pins/dreamcore-23.png",
+      "bytes": 10599,
+      "sha256": "ba3d9889b75dd7853eb886e81aabb1de9912840e203930c99ce61dd8db58e5b2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/00s-bank-texture.png",
+      "destination": "web/assets/era-complete/00s-bank-texture.png",
+      "bytes": 906340,
+      "sha256": "49426d31e16bf21d46987669dfbc4f7a36417fc38312f5ee19be57e44136b1bd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/00s-cutouts.png",
+      "destination": "web/assets/era-complete/00s-cutouts.png",
+      "bytes": 497792,
+      "sha256": "35082d952a04e3d900d83b987528f2a1e11f3c7625ead0262df561ad1199b430",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/00s-river-texture.png",
+      "destination": "web/assets/era-complete/00s-river-texture.png",
+      "bytes": 339846,
+      "sha256": "3ec409fea9b37d5582020e39240cca4172937a83b10c89f24346e4c2474f1532",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/10s-bank-texture.png",
+      "destination": "web/assets/era-complete/10s-bank-texture.png",
+      "bytes": 803961,
+      "sha256": "b2c0e63f16b02db7bcd2a9d573413bece201bd58a770225b8459ccc39d7a12ba",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/10s-cutouts.png",
+      "destination": "web/assets/era-complete/10s-cutouts.png",
+      "bytes": 378993,
+      "sha256": "93144364ded8ef01903d0b76e4b5fb8846ee5324a9ce1e051169705847bf8908",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/10s-river-texture.png",
+      "destination": "web/assets/era-complete/10s-river-texture.png",
+      "bytes": 371904,
+      "sha256": "d7e32d7ed2c9955a0b6a8ea5ba04834d628ae43491930ac4da50fd7dcfd35faf",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/20s-bank-texture.png",
+      "destination": "web/assets/era-complete/20s-bank-texture.png",
+      "bytes": 864846,
+      "sha256": "05d43f9284dfacd6209cdaac5da6d3387b640971cd5cce22b8a5cac80cfa2951",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/20s-cutouts.png",
+      "destination": "web/assets/era-complete/20s-cutouts.png",
+      "bytes": 407222,
+      "sha256": "470ccd4e797e7cf447c7d830b93853710088f5544f4de7da9251ced434696a13",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/20s-river-texture.png",
+      "destination": "web/assets/era-complete/20s-river-texture.png",
+      "bytes": 245155,
+      "sha256": "68902c1a50c737a838830df35dcefde5528b4ef4fa821173235eabd19482a75c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/80s-bank-texture.png",
+      "destination": "web/assets/era-complete/80s-bank-texture.png",
+      "bytes": 830904,
+      "sha256": "f1ac88b317a1492c29d96ed0888d4a26412f2d47463d65cdc10c433f3d339c60",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/80s-cutouts.png",
+      "destination": "web/assets/era-complete/80s-cutouts.png",
+      "bytes": 424554,
+      "sha256": "1877a439dbe61ca2d174269047f978dfce59670d179cbc19dced27092b2ed883",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/80s-river-texture.png",
+      "destination": "web/assets/era-complete/80s-river-texture.png",
+      "bytes": 301667,
+      "sha256": "aa3522c345cc4d24ee85c24653d364b873882a30ec7c3191480a62d6bc2a5927",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/90s-bank-texture.png",
+      "destination": "web/assets/era-complete/90s-bank-texture.png",
+      "bytes": 777975,
+      "sha256": "a14944a42ae83b64bfaa3f15dd610a7b8a6aec73718cf4df56111de753b5722d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/90s-cutouts.png",
+      "destination": "web/assets/era-complete/90s-cutouts.png",
+      "bytes": 456815,
+      "sha256": "b12c0e8484085de5661c7c045c9f9eb2119cc549dde5a02953dcea47f04fe618",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/90s-river-texture.png",
+      "destination": "web/assets/era-complete/90s-river-texture.png",
+      "bytes": 394072,
+      "sha256": "42c5133f459d75ffc419bac674b5e491c573c964c788f0d9796bd9e434795c77",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/future-bank-texture.png",
+      "destination": "web/assets/era-complete/future-bank-texture.png",
+      "bytes": 792566,
+      "sha256": "a13c7fb2259f7020d1e4e6d1377f822f532dfd386d4a0fd766e632ae29c66a77",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/future-cutouts.png",
+      "destination": "web/assets/era-complete/future-cutouts.png",
+      "bytes": 412092,
+      "sha256": "2e384ce842618ebb84dea4bec2674ac245227e0635ebe90048cc6c08c8667c6d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/future-river-texture.png",
+      "destination": "web/assets/era-complete/future-river-texture.png",
+      "bytes": 321874,
+      "sha256": "9b2ed5db314b18ba68e19ee937e955905691e3b882bcf16387183b0324e9ee88",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/manifest.json",
+      "destination": "web/assets/era-complete/manifest.json",
+      "bytes": 13692,
+      "sha256": "24da308d7fed9d7f1bc87e10f6ce8d544a80d5f432fee9c63d3ee1093f1339c1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/ming-bank-texture.png",
+      "destination": "web/assets/era-complete/ming-bank-texture.png",
+      "bytes": 930088,
+      "sha256": "b528b6cc7762459d6aacca2c60725094eb0a8f3b6524b42bc3406aea736d5f80",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/ming-cutouts.png",
+      "destination": "web/assets/era-complete/ming-cutouts.png",
+      "bytes": 515919,
+      "sha256": "20cf0049fd9d092d06eb19f6f5509d4523b025b393df155fd35a8cb3c3c33c1b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/ming-river-texture.png",
+      "destination": "web/assets/era-complete/ming-river-texture.png",
+      "bytes": 350303,
+      "sha256": "977ce040c3790c33355b331b53d83389b31d703fb5c2b0f04c5817e438fe912f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/prc-50-70-bank-texture.png",
+      "destination": "web/assets/era-complete/prc-50-70-bank-texture.png",
+      "bytes": 834308,
+      "sha256": "4cc3ffbeab4d4ce7f58f2b47c17c963e7680a1d49cc631e64bffdb63f1048119",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/prc-50-70-cutouts.png",
+      "destination": "web/assets/era-complete/prc-50-70-cutouts.png",
+      "bytes": 411278,
+      "sha256": "1999c3ab882741442d03b34c919173ac7f66a406f5a4e96960bbf4e90774e813",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/prc-50-70-river-texture.png",
+      "destination": "web/assets/era-complete/prc-50-70-river-texture.png",
+      "bytes": 323663,
+      "sha256": "bd5542626f692d635643f01d30630c3f7c31ff1217931810c4d753c9a91bba69",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/qin-han-three-bank-texture.png",
+      "destination": "web/assets/era-complete/qin-han-three-bank-texture.png",
+      "bytes": 947015,
+      "sha256": "4ed358242ed59bce64d211530b561d001b7db02654003b465fcf83083914cd46",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/qin-han-three-cutouts.png",
+      "destination": "web/assets/era-complete/qin-han-three-cutouts.png",
+      "bytes": 578327,
+      "sha256": "370d60b0aade9de0f79561a21ac8da39094679705e817ac8c9955fb48c68de88",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/qin-han-three-river-texture.png",
+      "destination": "web/assets/era-complete/qin-han-three-river-texture.png",
+      "bytes": 382118,
+      "sha256": "ed59a6b828341bd82f3fd4b7aaa557b1b9336d623a5e676e0d350a9c67d5ea4a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/qing-bank-texture.png",
+      "destination": "web/assets/era-complete/qing-bank-texture.png",
+      "bytes": 871224,
+      "sha256": "91bba0cc4ab0cb24a5690aced43191af9681dd809dcf764b3908abbcfcd49a1a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/qing-cutouts.png",
+      "destination": "web/assets/era-complete/qing-cutouts.png",
+      "bytes": 519691,
+      "sha256": "ee3f82caf2d51fea37101200e8206035cc4c0965afd0c51e428c8824f32473c3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/qing-river-texture.png",
+      "destination": "web/assets/era-complete/qing-river-texture.png",
+      "bytes": 396051,
+      "sha256": "469db188eb03f043d510c94c97287084e3f4a068446fb9fa729ffcb3ef7a675a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/republic-bank-texture.png",
+      "destination": "web/assets/era-complete/republic-bank-texture.png",
+      "bytes": 1078381,
+      "sha256": "a43df6298b052813879c69a871333b80545016bbcba741d9b5b4242591ac7afd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/republic-cutouts.png",
+      "destination": "web/assets/era-complete/republic-cutouts.png",
+      "bytes": 519061,
+      "sha256": "813394b727a160b49d016849dd25af1801dd2235728388dfb48596fc16b997cc",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/republic-river-texture.png",
+      "destination": "web/assets/era-complete/republic-river-texture.png",
+      "bytes": 274292,
+      "sha256": "fdead922d7b03235abbe0e46c2abe3b4335268aeaa267d1077409be7d194546f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/song-bank-texture.png",
+      "destination": "web/assets/era-complete/song-bank-texture.png",
+      "bytes": 1007783,
+      "sha256": "2cd8f3bf941a945e00ab28977df95f91540760402c63c75f761cc9999e1be06d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/song-cutouts.png",
+      "destination": "web/assets/era-complete/song-cutouts.png",
+      "bytes": 641773,
+      "sha256": "669d192ff47fa205fb1afdff6700c7f8029347443b56a86262ce4052e12c3999",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/song-river-texture.png",
+      "destination": "web/assets/era-complete/song-river-texture.png",
+      "bytes": 380975,
+      "sha256": "898831fc6b905828a97014c50f3e1f36f41fc602ee503d8eb608a2f63a71455f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/spring-autumn-warring-bank-texture.png",
+      "destination": "web/assets/era-complete/spring-autumn-warring-bank-texture.png",
+      "bytes": 804066,
+      "sha256": "f0c36678f82d557410710935bb962cbf2f3ae4526f60d1be4cfdddd9e8e518b4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/spring-autumn-warring-cutouts.png",
+      "destination": "web/assets/era-complete/spring-autumn-warring-cutouts.png",
+      "bytes": 475356,
+      "sha256": "b55522a5b7dcf34a731068c6cdc33f61b97a878240b824aa93c4cab0e60144b2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/spring-autumn-warring-river-texture.png",
+      "destination": "web/assets/era-complete/spring-autumn-warring-river-texture.png",
+      "bytes": 268563,
+      "sha256": "6dffe1025f3d3e819e31ff0bf9b4576b579fcb14f3ce7dc9dcff3cf0b01a2431",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/stone-age-bank-texture.png",
+      "destination": "web/assets/era-complete/stone-age-bank-texture.png",
+      "bytes": 958151,
+      "sha256": "a96b7ff54f5b6296b65ee85cef1063166f6b02a4ddcd2c49cf66f6433aea7c5b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/stone-age-cutouts.png",
+      "destination": "web/assets/era-complete/stone-age-cutouts.png",
+      "bytes": 540902,
+      "sha256": "7b6ea71bacb39dd8f426127bbd86e580f8e27fe33e16532d11da8145ecb1d420",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/stone-age-river-texture.png",
+      "destination": "web/assets/era-complete/stone-age-river-texture.png",
+      "bytes": 316523,
+      "sha256": "c10eb3a568891a44edfa2e5f5a898a1d70fa04477093a8ce01f2db53d0853cba",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/tang-bank-texture.png",
+      "destination": "web/assets/era-complete/tang-bank-texture.png",
+      "bytes": 1126599,
+      "sha256": "c92282b8f635cdb1773c99bc5928665e2e82de49f32570602cdffa9892efa5cf",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/tang-cutouts.png",
+      "destination": "web/assets/era-complete/tang-cutouts.png",
+      "bytes": 617897,
+      "sha256": "ea1cbf29b5c510793eb531d5ecd620a19a34e6d3090ea73ab73cfb9a70cc3c40",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/tang-river-texture.png",
+      "destination": "web/assets/era-complete/tang-river-texture.png",
+      "bytes": 368825,
+      "sha256": "7471c6c1a0fef8b20e9c4d94cf086881a470e7b65017750ebdb496f99f746b0a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/xia-shang-zhou-bank-texture.png",
+      "destination": "web/assets/era-complete/xia-shang-zhou-bank-texture.png",
+      "bytes": 959953,
+      "sha256": "8578605b0b8351eaffb0ad6b05cb3a6c4b3c5f3f866eaa2a8bbad0619120ff28",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/xia-shang-zhou-cutouts.png",
+      "destination": "web/assets/era-complete/xia-shang-zhou-cutouts.png",
+      "bytes": 566397,
+      "sha256": "001aed8f191f1ccb7d926eb41d44f838ef3898cc020a641603b9b1c2aea16d9f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/xia-shang-zhou-river-texture.png",
+      "destination": "web/assets/era-complete/xia-shang-zhou-river-texture.png",
+      "bytes": 354533,
+      "sha256": "0283d53f56e19b870122c700dbc7a5e948dc521a85a6312c0e6c273c9e24a2bf",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/yuan-bank-texture.png",
+      "destination": "web/assets/era-complete/yuan-bank-texture.png",
+      "bytes": 865685,
+      "sha256": "d775efb1ea8e27038253acd8555ec040b3b74234cfdd1701d572c6cb0ace4105",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/yuan-cutouts.png",
+      "destination": "web/assets/era-complete/yuan-cutouts.png",
+      "bytes": 492637,
+      "sha256": "7cb5cb19eb2b01eff3b16ecc1ecea0f37e16d664fee0c6c44b86095a88eaf753",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/yuan-river-texture.png",
+      "destination": "web/assets/era-complete/yuan-river-texture.png",
+      "bytes": 344941,
+      "sha256": "c003765e976a51f69f3d7b8b3928224e95cdce122be5ec0518b6fcdd922129d3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/00s/00-internet_cafe_China.jpg",
+      "destination": "web/assets/era-complete/sources/00s/00-internet_cafe_China.jpg",
+      "bytes": 22631,
+      "sha256": "93804af0e5bf4795f55f1d7a3d83aed28e3725824b5ff74faa6859767d26ec97",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/00s/01-MP3_player.jpg",
+      "destination": "web/assets/era-complete/sources/00s/01-MP3_player.jpg",
+      "bytes": 140720,
+      "sha256": "897fa92305f8631e09978f763059b2da81c0a246969809ecb3dd57b0c07328e9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/qin-han-three/00-Terracotta_Army_Qin.jpg",
+      "destination": "web/assets/era-complete/sources/qin-han-three/00-Terracotta_Army_Qin.jpg",
+      "bytes": 177030,
+      "sha256": "c4ce15e86b57f5fdae80518092c677842423e38847c8da8034521a3d50352275",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/qin-han-three/02-Qin_dynasty_weight.jpg",
+      "destination": "web/assets/era-complete/sources/qin-han-three/02-Qin_dynasty_weight.jpg",
+      "bytes": 223813,
+      "sha256": "9d926caf2ce882471f8866350e78bd1e3c1ab1f22d081b2a7685a8ec3e3467f9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/song/00-Song_dynasty_printed_book.jpg",
+      "destination": "web/assets/era-complete/sources/song/00-Song_dynasty_printed_book.jpg",
+      "bytes": 162523,
+      "sha256": "4a612c9c39fe1015b2164ba4e4ebcc2a88357a4dc4bae602181d7e78469817c3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/song/01-Jiaozi_banknote_Song.jpg",
+      "destination": "web/assets/era-complete/sources/song/01-Jiaozi_banknote_Song.jpg",
+      "bytes": 234330,
+      "sha256": "1d9c968aea30237570aef4b838a7c5536dc340980c4b7f85195e2e9b6e043f80",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/song/02-Song_dynasty_porcelain.jpg",
+      "destination": "web/assets/era-complete/sources/song/02-Song_dynasty_porcelain.jpg",
+      "bytes": 147607,
+      "sha256": "7f8e8c0a1ca23ad707e72ca4870bfdd9127615dd0f021fe323675e24775bef0a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/spring-autumn-warring/00-Warring_States_bamboo_slips.jpg",
+      "destination": "web/assets/era-complete/sources/spring-autumn-warring/00-Warring_States_bamboo_slips.jpg",
+      "bytes": 92374,
+      "sha256": "5e4a7c1cd7bcdbe7d768a2952ee3e53bdc5e0bd15a2c1ff18a7c6bc7ccebd65b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/spring-autumn-warring/01-Chinese_tiger_tally.jpg",
+      "destination": "web/assets/era-complete/sources/spring-autumn-warring/01-Chinese_tiger_tally.jpg",
+      "bytes": 92758,
+      "sha256": "d765b40a3bb341533d532116944aa2f731b23c945efb3c1b032949b5da1f2c84",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/spring-autumn-warring/02-Sword_of_Goujian.jpg",
+      "destination": "web/assets/era-complete/sources/spring-autumn-warring/02-Sword_of_Goujian.jpg",
+      "bytes": 53082,
+      "sha256": "7858b281d9f0dff14faae39d9a28ef31eff19fd7437bd37299692d5c6766db9a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/stone-age/00-Chinese_prehistoric_rock_art.jpg",
+      "destination": "web/assets/era-complete/sources/stone-age/00-Chinese_prehistoric_rock_art.jpg",
+      "bytes": 144613,
+      "sha256": "dea070c7bb3acd35c7ed0607917f17b80f192ea9644e089a576e362c377b9093",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/stone-age/01-Neolithic_stone_axe_China.jpg",
+      "destination": "web/assets/era-complete/sources/stone-age/01-Neolithic_stone_axe_China.jpg",
+      "bytes": 116897,
+      "sha256": "432a60f2aa215ae9171e06ca5eea6622ae72d50d2ff17e9eea624298928321a3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/tang/00-Diamond_Sutra_Tang_dynasty.jpg",
+      "destination": "web/assets/era-complete/sources/tang/00-Diamond_Sutra_Tang_dynasty.jpg",
+      "bytes": 176201,
+      "sha256": "fd7a1440cec17c64bd9b9db75b69dd4b34de54d5e809f7db86a3216aefcbf325",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/tang/01-Dunhuang_manuscript.jpg",
+      "destination": "web/assets/era-complete/sources/tang/01-Dunhuang_manuscript.jpg",
+      "bytes": 343771,
+      "sha256": "93c8ce5a8667cbe0c10dee0c11fc1654ca0dc80ddfc6425ccad7fc20bc11c737",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/era-complete/sources/yuan/01-Yuan_dynasty_paiza.jpg",
+      "destination": "web/assets/era-complete/sources/yuan/01-Yuan_dynasty_paiza.jpg",
+      "bytes": 384855,
+      "sha256": "9b692e1f182a9aa18a40372966e7980c5f1c62cae00e2ab4280ff88d1f49e907",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-items/00-fashion_boombox.png",
+      "destination": "web/assets/generation-80s-items/00-fashion_boombox.png",
+      "bytes": 250392,
+      "sha256": "4edd6b8a9ff1c772263779d43480788058f16a28cb197851cb873991279f077a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-items/01-bicycle_street.png",
+      "destination": "web/assets/generation-80s-items/01-bicycle_street.png",
+      "bytes": 265501,
+      "sha256": "b063bd47217ae31b12d78dd6e48f08c07c8bd11af8de515fb87de2ee3c8d321b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-items/02-disco_poster.png",
+      "destination": "web/assets/generation-80s-items/02-disco_poster.png",
+      "bytes": 253885,
+      "sha256": "0d3f614d02393b25cdee1ef9de1e24180c5e9879f3bda3ece4866ced3983e65b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-items/03-aviator_sunglasses.png",
+      "destination": "web/assets/generation-80s-items/03-aviator_sunglasses.png",
+      "bytes": 162638,
+      "sha256": "adcdb1dd6f822245501c8f42a9b190cb4cb427b777d3caaf1ae2bab7af593bd1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-items/04-cinema_street.png",
+      "destination": "web/assets/generation-80s-items/04-cinema_street.png",
+      "bytes": 298296,
+      "sha256": "a346d79524ad730104d90fdb7ec8bdeefdb80398f128d352dea9c347fe365298",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-items/05-radio_cassette.png",
+      "destination": "web/assets/generation-80s-items/05-radio_cassette.png",
+      "bytes": 169573,
+      "sha256": "782ec3309c8b1bdc06ae597de8376fd00509ea38d9d309e901bb9336786656a8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-items/06-cassette_tape.png",
+      "destination": "web/assets/generation-80s-items/06-cassette_tape.png",
+      "bytes": 216986,
+      "sha256": "d788433ccbaffd2609bc8dfb7c6b4bd7f7eea5c6972debed609a188199b55381",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-items/07-breakdance_stage.png",
+      "destination": "web/assets/generation-80s-items/07-breakdance_stage.png",
+      "bytes": 227682,
+      "sha256": "7676f41827234d3ec66d80586e6583be9685806b7b957b624eef7c5b904134ca",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-80s-items/08-hk_movie_poster.png",
+      "destination": "web/assets/generation-80s-items/08-hk_movie_poster.png",
+      "bytes": 322283,
+      "sha256": "8a5ee0cee84f4b5aef5b7cbc2f720d68c584a2b0b369febaaa76bd184f84d465",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/00-bp_pager.png",
+      "destination": "web/assets/generation-90s-items/00-bp_pager.png",
+      "bytes": 232213,
+      "sha256": "9ca2020b456f45ff31c91386240846c666383d0c88ca76514d02316eeaaffa37",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/01-bb_phone_storefront.png",
+      "destination": "web/assets/generation-90s-items/01-bb_phone_storefront.png",
+      "bytes": 139412,
+      "sha256": "1e1bd3f03db727141ec698d78515fe0b6e530aec999ef989dd587586849623d4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/02-vcd_discs.png",
+      "destination": "web/assets/generation-90s-items/02-vcd_discs.png",
+      "bytes": 304388,
+      "sha256": "08fcfa5d22a7e06aca6753f5581a76fe6b6fb91436d1456975eb7163946859a6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/03-portable_vcd_player.png",
+      "destination": "web/assets/generation-90s-items/03-portable_vcd_player.png",
+      "bytes": 259414,
+      "sha256": "dad08c9001cc1ee25b7055c0477645e9071c6860d6fe5b6239f963f9cc791e18",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/04-cd_album_grid.png",
+      "destination": "web/assets/generation-90s-items/04-cd_album_grid.png",
+      "bytes": 287173,
+      "sha256": "4c4cbf0b8f13a665753563bd2daffd5923a27d035856bc31a411601b232ccec5",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/05-learning_computer_box.png",
+      "destination": "web/assets/generation-90s-items/05-learning_computer_box.png",
+      "bytes": 239987,
+      "sha256": "24fee81e5691c167bdb65574d7ef7e578c593b72119f80605758f0744eb1eec1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/06-learning_keyboard_console.png",
+      "destination": "web/assets/generation-90s-items/06-learning_keyboard_console.png",
+      "bytes": 176944,
+      "sha256": "1ff55612f991c1310fac8040fb7727bddf3c6a10efdf2a872cd8521474212134",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/07-xiaobawang_console.png",
+      "destination": "web/assets/generation-90s-items/07-xiaobawang_console.png",
+      "bytes": 200317,
+      "sha256": "663ccd60864933d88778789f5d04efb4e0d65dbe51e789fa4e27ac66a74b5958",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/08-arcade_cabinets.png",
+      "destination": "web/assets/generation-90s-items/08-arcade_cabinets.png",
+      "bytes": 289380,
+      "sha256": "329e52876694cf7c2e8b511f2ec449789af3f2c7ec3b79b75d52a67d064568a7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/09-arcade_hall.png",
+      "destination": "web/assets/generation-90s-items/09-arcade_hall.png",
+      "bytes": 242697,
+      "sha256": "9b69911f3c34d8428874b976170a618d6927596f705134fd54a6b84e4c47ee33",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/10-public_phone_booth.png",
+      "destination": "web/assets/generation-90s-items/10-public_phone_booth.png",
+      "bytes": 221077,
+      "sha256": "4b34f9f56b498059931aae7db3de9cabcb34647cc6e5bc2e169ae23616d663c9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-90s-items/11-ic_card_phone.png",
+      "destination": "web/assets/generation-90s-items/11-ic_card_phone.png",
+      "bytes": 182168,
+      "sha256": "55e0bfab6e0346b2c39534a8c647148bf0802d0eb01235a3e5335bf74c43b89a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/80s-aviator-sunglasses.png",
+      "destination": "web/assets/generation-reference/80s/80s-aviator-sunglasses.png",
+      "bytes": 218068,
+      "sha256": "41346a351599ca157702dab6ec0a16f405893c9272ee9c7972237ee07a5b8fa9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/80s-bicycle-street-fashion.png",
+      "destination": "web/assets/generation-reference/80s/80s-bicycle-street-fashion.png",
+      "bytes": 354724,
+      "sha256": "ab0f71f5b57d01ac33c0078b416a81dd3977f7c35b387453abab195ba9670afe",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/80s-breakdance-stage.png",
+      "destination": "web/assets/generation-reference/80s/80s-breakdance-stage.png",
+      "bytes": 273774,
+      "sha256": "d96a262c5cefab1d3ce78f5ed8d603d2c59a61ee50d8bf6b96e27c5ae9f0c645",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/80s-cassette-tape.png",
+      "destination": "web/assets/generation-reference/80s/80s-cassette-tape.png",
+      "bytes": 58296,
+      "sha256": "69853d39f23958b39672e6ca089d25df29af3ce1c966e4a5af6fa51edb33df08",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/80s-cinema-street-poster.png",
+      "destination": "web/assets/generation-reference/80s/80s-cinema-street-poster.png",
+      "bytes": 1475238,
+      "sha256": "207d89791a393c4401a07e9d84ae15043c46bf8ad059c16291262b84c96493dc",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/80s-culture-weekly-reference.png",
+      "destination": "web/assets/generation-reference/80s/80s-culture-weekly-reference.png",
+      "bytes": 207940,
+      "sha256": "ffa184c223895c3a2c4be845a4623c4782ec196614e341efec083033276f4d94",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/80s-disco-poster.png",
+      "destination": "web/assets/generation-reference/80s/80s-disco-poster.png",
+      "bytes": 98606,
+      "sha256": "05006ae67f187753671184fe497fe64ae0a2cb6f45d188f4fc8ab5a461a018d8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/80s-fashion-boombox-couple.png",
+      "destination": "web/assets/generation-reference/80s/80s-fashion-boombox-couple.png",
+      "bytes": 570129,
+      "sha256": "b9765420f60c5e2225ab17b003a3a39cb637ac091f942a723f6c8ae981a7b944",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/80s-hongkong-movie-poster.png",
+      "destination": "web/assets/generation-reference/80s/80s-hongkong-movie-poster.png",
+      "bytes": 308258,
+      "sha256": "58d72dc1d967939be70c063037264d5372facc2ca68c6bbc095aa6782b50c8dd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/80s-radio-cassette-player.png",
+      "destination": "web/assets/generation-reference/80s/80s-radio-cassette-player.png",
+      "bytes": 135731,
+      "sha256": "2c6a2c636863f7ed19a19e2500d6c6f7eb911cd0dd532ce854d217dd87f3df3c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/80s/manifest.json",
+      "destination": "web/assets/generation-reference/80s/manifest.json",
+      "bytes": 3082,
+      "sha256": "028d3dc14bf681d7553bab6f246a120fe9f9d9d74683d6dafd79098384c1ba62",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-arcade-cabinets.png",
+      "destination": "web/assets/generation-reference/90s/90s-arcade-cabinets.png",
+      "bytes": 369649,
+      "sha256": "0814723f09dddd5d39b3eb2aa7de249f36562926e17d47b8ecca22203d957112",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-arcade-hall.png",
+      "destination": "web/assets/generation-reference/90s/90s-arcade-hall.png",
+      "bytes": 340480,
+      "sha256": "74d0a890d4f2373bcc5abfa553d077c13a0723ec11d64e7de9fde415d54a0da8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-bb-phone-storefront.png",
+      "destination": "web/assets/generation-reference/90s/90s-bb-phone-storefront.png",
+      "bytes": 129870,
+      "sha256": "44026cff922cc6317e7581e0d359bf1ca90f15691321a711e3a3f3114f68650b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-bp-pager.png",
+      "destination": "web/assets/generation-reference/90s/90s-bp-pager.png",
+      "bytes": 144066,
+      "sha256": "6ded18a89199e8f721e4e6c240e3a81fe19d0d95707844e75e87157005cdd9a8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-cd-album-grid.png",
+      "destination": "web/assets/generation-reference/90s/90s-cd-album-grid.png",
+      "bytes": 367513,
+      "sha256": "55be1e623fbc338b5fa04bc76aa0ef875b85204336e885b37e9b83961a81d3a4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-ic-card-phone.png",
+      "destination": "web/assets/generation-reference/90s/90s-ic-card-phone.png",
+      "bytes": 78514,
+      "sha256": "b31a437ab4dcec4a9d56c853a892ba5b5ecdddd2b76b3d1843590fe8c420a6d4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-learning-computer-box.png",
+      "destination": "web/assets/generation-reference/90s/90s-learning-computer-box.png",
+      "bytes": 236607,
+      "sha256": "e5ebe09eab57a36a67e5a757997b08ed64282a5e88f297635638dbafc2753540",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-learning-keyboard-console.png",
+      "destination": "web/assets/generation-reference/90s/90s-learning-keyboard-console.png",
+      "bytes": 139397,
+      "sha256": "4b49e85aed6f876f7f92088c4ef0c1fe5f87b2f821c9c7318417888119c968bf",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-portable-vcd-player.png",
+      "destination": "web/assets/generation-reference/90s/90s-portable-vcd-player.png",
+      "bytes": 90214,
+      "sha256": "882e34e5276785a89d9c358250a7d32b4ec27d3671c263b728850e6b12863845",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-public-phone-booth.png",
+      "destination": "web/assets/generation-reference/90s/90s-public-phone-booth.png",
+      "bytes": 426527,
+      "sha256": "59238eb736f2cd297e4a2657cd4c3bb2d6064aa1b012ae8e83279b5f273aff20",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-vcd-discs.png",
+      "destination": "web/assets/generation-reference/90s/90s-vcd-discs.png",
+      "bytes": 356128,
+      "sha256": "2cbcf009470e9004ff34cf60f7621dc7c4d9e885ecebf33aa5b3e53005158a80",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/90s-xiaobawang-console.png",
+      "destination": "web/assets/generation-reference/90s/90s-xiaobawang-console.png",
+      "bytes": 195783,
+      "sha256": "e1863cf20897082bb10cde0e12a19eda3d58514e12362bc9a7ef1772b3d7256e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/90s/manifest.json",
+      "destination": "web/assets/generation-reference/90s/manifest.json",
+      "bytes": 3841,
+      "sha256": "2eedac2f1d62347b4ad901c25795975bc9f838561295fc616bdf5fd7f00c14c4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/stone-age/manifest.json",
+      "destination": "web/assets/generation-reference/stone-age/manifest.json",
+      "bytes": 1617,
+      "sha256": "00f44d3a58f36eee2531c473d29a77df42aebeb3e046b6f6292203eae421fdb1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/stone-age/stone-cave-fire.png",
+      "destination": "web/assets/generation-reference/stone-age/stone-cave-fire.png",
+      "bytes": 87043,
+      "sha256": "36518ce7a5acb7f830d00352b1e475336b60101b81cdaf6cf5aa4d499c4f89f0",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/stone-age/stone-handled-axes.png",
+      "destination": "web/assets/generation-reference/stone-age/stone-handled-axes.png",
+      "bytes": 101337,
+      "sha256": "0e6f6a61615a624bf499729e5e6c026e5ec710160ac9b738693888d7ef1776d2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/stone-age/stone-perforated-axe.png",
+      "destination": "web/assets/generation-reference/stone-age/stone-perforated-axe.png",
+      "bytes": 247420,
+      "sha256": "1d25b91991dc19acb341a421983350517223b5404f91531ea2f28482f8dd04b6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/stone-age/stone-rock-art-bank.png",
+      "destination": "web/assets/generation-reference/stone-age/stone-rock-art-bank.png",
+      "bytes": 350443,
+      "sha256": "77d54481cd4c64a6d465dd4eaf41a3f0f99b0f05a52c35aaef38a6dcfe1b8bfe",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-reference/stone-age/stone-tool-fragments.png",
+      "destination": "web/assets/generation-reference/stone-age/stone-tool-fragments.png",
+      "bytes": 220838,
+      "sha256": "b0922b800917391c165c64c453d9246c1ab7c0d89ea72b615b5be3a1abdf05ad",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-items/00-rock_art_slab.png",
+      "destination": "web/assets/generation-stone-age-items/00-rock_art_slab.png",
+      "bytes": 332432,
+      "sha256": "b6fd20e2f2c932241b5f6193a5aeed2d20cd0626565d6a2720a0912c697fdcfc",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-items/01-cave_fire.png",
+      "destination": "web/assets/generation-stone-age-items/01-cave_fire.png",
+      "bytes": 247670,
+      "sha256": "1cd3bb854f11b7691266eba86ca42ad94a3c60e9c84b69976de457e05577dc96",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-items/02-perforated_stone_axe.png",
+      "destination": "web/assets/generation-stone-age-items/02-perforated_stone_axe.png",
+      "bytes": 357327,
+      "sha256": "fc51153d926b7b81c8a71c725565d4afe7e57195e20fb8ca1a3a4d92ed90fcbd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-items/03-handled_stone_axes.png",
+      "destination": "web/assets/generation-stone-age-items/03-handled_stone_axes.png",
+      "bytes": 55903,
+      "sha256": "e552a7b3e12b40e2f7cae43c48d3fec99797f9a4de6360d09f26bed6caeddb60",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/generation-stone-age-items/04-stone_tool_fragments.png",
+      "destination": "web/assets/generation-stone-age-items/04-stone_tool_fragments.png",
+      "bytes": 210603,
+      "sha256": "db2442bb7283f8f62fe4937f991905bc1ea94e6aae877557319a3a6da5f75354",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/sources.json",
+      "destination": "web/assets/history-reference-library/sources.json",
+      "bytes": 26441,
+      "sha256": "a846818258ebd9f0f59c22af4aced7f9f368b5c0fc8c5a084892c72c993d5002",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/obstacles/obstacle_bronze_ding.jpg",
+      "destination": "web/assets/history-reference-library/obstacles/obstacle_bronze_ding.jpg",
+      "bytes": 1444181,
+      "sha256": "324e0fb5e14779400300142504766ab65b3617189c38b89e7269c11bf58d9669",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/obstacles/obstacle_hufu_tiger_tally.jpg",
+      "destination": "web/assets/history-reference-library/obstacles/obstacle_hufu_tiger_tally.jpg",
+      "bytes": 666134,
+      "sha256": "a95ebc8d61c71fb01bda2a54fcd13ab89d9280b885e6ad21f7eeb7e3d1a9ecf5",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/obstacles/obstacle_ming_banknote.jpg",
+      "destination": "web/assets/history-reference-library/obstacles/obstacle_ming_banknote.jpg",
+      "bytes": 925777,
+      "sha256": "686179cfea0f0d5770975908d014ccec31e3830953c16158d00db9cdc2afef7e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/obstacles/obstacle_tang_sancai_camel.jpg",
+      "destination": "web/assets/history-reference-library/obstacles/obstacle_tang_sancai_camel.jpg",
+      "bytes": 1187875,
+      "sha256": "6a96a8ae1ea2fe7918c1c537986a3748d8d0a5786abd3d42715b9e8feff9375a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/obstacles/obstacle_yuan_paiza.jpg",
+      "destination": "web/assets/history-reference-library/obstacles/obstacle_yuan_paiza.jpg",
+      "bytes": 1885200,
+      "sha256": "19b53a5e4a6f699e25c24971ca5de93c7c50787f3a423314630ad48438bb4d01",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_diamond_sutra_print.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_diamond_sutra_print.jpg",
+      "bytes": 982634,
+      "sha256": "cf7d1ada6833723f207c761450b732314344cde8b45a164ba399578859ecad21",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_dunhuang_scroll.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_dunhuang_scroll.jpg",
+      "bytes": 2235535,
+      "sha256": "feff927615cbed4762b6d2d3a823a16d91db0307efb14ab357ee5f3854715e49",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_han_paper_manuscript.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_han_paper_manuscript.jpg",
+      "bytes": 385621,
+      "sha256": "77c5db61fd71955f22b5ad50e2e88c9e89821c151481b457e75fff2ef7ec84cf",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_jurchen_script.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_jurchen_script.jpg",
+      "bytes": 6759246,
+      "sha256": "769eae6776e842f7d597a1a5f04fc3e2d3a140717c5a35f825094c7454b5a0b9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_khitan_script.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_khitan_script.jpg",
+      "bytes": 677502,
+      "sha256": "2e3bf7114ba7978743eac70b48121e08a6e7789857b4eaecab11c99d6a031cc1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_ming_print.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_ming_print.jpg",
+      "bytes": 667078,
+      "sha256": "4d66bb6e5d808e17530c8140671e6a7dc23a9491aef013df7e767fdd580701ee",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_phagspa_script.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_phagspa_script.jpg",
+      "bytes": 571766,
+      "sha256": "0071a0b762fa0947e5d3e19ff3f27ece09e9fd0db904f42c06707b38a6195ac4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_qing_memorial.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_qing_memorial.jpg",
+      "bytes": 127129,
+      "sha256": "3b7bbb1ddba540aff352826167d9bffe85dbab82a07f8c27bc83eda3446030ff",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_republic_newspaper.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_republic_newspaper.jpg",
+      "bytes": 3148415,
+      "sha256": "4742a537e52c2ee4e2f4542f3614c25a6b3d411cc554313f78e7fd33a323e229",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_shang_oracle_bone.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_shang_oracle_bone.jpg",
+      "bytes": 1050433,
+      "sha256": "ebc8335b624b8979f82cb046dcf1f06e78550bcf22aa59b6fd8ef77940870265",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_song_printed_book.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_song_printed_book.jpg",
+      "bytes": 4167656,
+      "sha256": "d2c303a12c93805fd7a2a343826f64057bba8730d647070e798a93de84aa9ea7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_warring_bamboo_slips.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_warring_bamboo_slips.jpg",
+      "bytes": 1630221,
+      "sha256": "a6a15618f993714a4b9d457efb439ac2cd58ad215bcb0a88f8e6f1822224f661",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/riverbanks/riverbank_zhou_bronze_inscription.jpg",
+      "destination": "web/assets/history-reference-library/riverbanks/riverbank_zhou_bronze_inscription.jpg",
+      "bytes": 998304,
+      "sha256": "a0c15b2986b5f750ed41f072a4276e3d99b1ae37ccd4c34640c1e4d362745f2c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/transitions/transition_ming_qing_manchu_chinese.svg",
+      "destination": "web/assets/history-reference-library/transitions/transition_ming_qing_manchu_chinese.svg",
+      "bytes": 17736,
+      "sha256": "22ab9035346ecc42c236c0c8d2b5e1104b420c87babc7a3c92ce09ce73e1d461",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/transitions/transition_qin_han_seal.jpg",
+      "destination": "web/assets/history-reference-library/transitions/transition_qin_han_seal.jpg",
+      "bytes": 9838782,
+      "sha256": "09e88fb750e682e9efc851e7fae3cafd4fe1feea0e6ee4240a4bc9e06aab4c5d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/transitions/transition_qin_weight.jpg",
+      "destination": "web/assets/history-reference-library/transitions/transition_qin_weight.jpg",
+      "bytes": 588734,
+      "sha256": "7fd2a4922d10372950cdde2a7c26f4d3522afcfbc63354d6dc7f34d8b2a7b579",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/transitions/transition_qing_republic_queue.jpg",
+      "destination": "web/assets/history-reference-library/transitions/transition_qing_republic_queue.jpg",
+      "bytes": 2562183,
+      "sha256": "e4823cd0cfc0022767f5cefd6520fd1ef702cd727041feecb78676978565b81b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/transitions/transition_republic_prc_document.jpg",
+      "destination": "web/assets/history-reference-library/transitions/transition_republic_prc_document.jpg",
+      "bytes": 256042,
+      "sha256": "5196a8b3cb15444a45457f5959766b6f4cec1659c7a8e4fc633dbeb9c58ad99b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/history-reference-library/transitions/transition_song_yuan_banknote.jpg",
+      "destination": "web/assets/history-reference-library/transitions/transition_song_yuan_banknote.jpg",
+      "bytes": 27405,
+      "sha256": "6c783f12a28adc8885de554242fed923005b5d25866b14ca5dd73c053061e1f9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/bronze_ritual_vessel.png",
+      "destination": "web/assets/object-items/bronze_ritual_vessel.png",
+      "bytes": 252509,
+      "sha256": "e7544b7c832b880e4d145d3a2809c8f3e4aae21a6c0b2f4950a683150a4c8728",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/bronze_sword.png",
+      "destination": "web/assets/object-items/bronze_sword.png",
+      "bytes": 62839,
+      "sha256": "a6d1bb6469a5bf90ebe4b91941338e87613eec392b2c9f9a157f7cb91a821d9e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/qin_general_statue.png",
+      "destination": "web/assets/object-items/qin_general_statue.png",
+      "bytes": 141819,
+      "sha256": "63ab848910e09fcc4d3127e76c4b8dadb03d11e44ebd6e13da99f3dc4977f1f9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/qin_lacquer_plate.png",
+      "destination": "web/assets/object-items/qin_lacquer_plate.png",
+      "bytes": 86762,
+      "sha256": "cc7fd208453d1ee2a062e5302283c1310196221faabccee003acabf5989cef99",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/qin_terracotta_column.png",
+      "destination": "web/assets/object-items/qin_terracotta_column.png",
+      "bytes": 139734,
+      "sha256": "cdf4838ab408e24cb26f4c70315d933e09a4a236e492ec0e3f1c6bd741155628",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/song_banknote.png",
+      "destination": "web/assets/object-items/song_banknote.png",
+      "bytes": 350943,
+      "sha256": "18a5ca171ae510bfe7cdc5da8f31cf30562a46647b3cc1d6040928c6feffd799",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/song_porcelain_cutout.png",
+      "destination": "web/assets/object-items/song_porcelain_cutout.png",
+      "bytes": 105651,
+      "sha256": "3bfd258232f7cdaaf29c99be4b37e66348e781eadd009938945383d40e4488aa",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/song_porcelain_vase.png",
+      "destination": "web/assets/object-items/song_porcelain_vase.png",
+      "bytes": 159378,
+      "sha256": "8be35ee98b7c450a3ea72b0d4b60d7cc5d0f2f4154a1c07c5149ab4aa2b29481",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/song_porcelain_vase_masked.png",
+      "destination": "web/assets/object-items/song_porcelain_vase_masked.png",
+      "bytes": 159109,
+      "sha256": "c1c4c513f444a330f6c0b59b8d3d3caf4e99a8df791f35e9003e3c350c5b491f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/tang_camel_cutout.png",
+      "destination": "web/assets/object-items/tang_camel_cutout.png",
+      "bytes": 61258,
+      "sha256": "8f7865693a5bb0511c9b344f2cd6cf5a9c70d2e70e60dcf44002339c49be919a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/tang_lady_figurine.png",
+      "destination": "web/assets/object-items/tang_lady_figurine.png",
+      "bytes": 230651,
+      "sha256": "46c3b63f240cbea2f49558ff3b8dc2571d1093e8ed24b7fe411a13c8cd8a5a45",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/tang_landscape_cutout.png",
+      "destination": "web/assets/object-items/tang_landscape_cutout.png",
+      "bytes": 109852,
+      "sha256": "28c55e2150fa0f86b682f7361fa40f20c630500785fc8007076b358dc2878ecd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/tang_phoenix_plate.png",
+      "destination": "web/assets/object-items/tang_phoenix_plate.png",
+      "bytes": 153990,
+      "sha256": "47dde29fcc6fb7b853c3e46d25ef125bbc15b6a93ceb7d19d65044223a71cffe",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/tang_phoenix_plate_masked.png",
+      "destination": "web/assets/object-items/tang_phoenix_plate_masked.png",
+      "bytes": 178319,
+      "sha256": "d9491e5f87491d7af81334019972b3c530f01bfc25e7a02a91ae52e1f9157820",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/assets/object-items/tang_sancai_camel.png",
+      "destination": "web/assets/object-items/tang_sancai_camel.png",
+      "bytes": 218646,
+      "sha256": "14c02b6163bde9f7749156278b6173ff7f521977bc43498ad5ce4afb7daded0d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/godot_anchor_3d/README.md",
+      "destination": "prototypes/godot-anchor-3d/README.md",
+      "bytes": 646,
+      "sha256": "14c0a7dedcb281bcdb8b051f2ce60ee1b4ef0bc0934a313a861ca6cd2049cec3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/godot_anchor_3d/project.godot",
+      "destination": "prototypes/godot-anchor-3d/project.godot",
+      "bytes": 604,
+      "sha256": "f04d7917e1d3b48cac1315955a96e046496aa0a9d6bc0d0edb51dfc227a0aea4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/godot_anchor_3d/scenes/main.tscn",
+      "destination": "prototypes/godot-anchor-3d/scenes/main.tscn",
+      "bytes": 169,
+      "sha256": "de0f5724b781c4471c7e5ce7332e27a780a74bd812591ea27a6224cdd1b41bdb",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/godot_anchor_3d/scripts/Main.gd",
+      "destination": "prototypes/godot-anchor-3d/scripts/Main.gd",
+      "bytes": 18541,
+      "sha256": "2786fb3fb54ebbb0ae3e04ce5b02e1ea8ad05d7e325592309a5a4fef85308c5a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga/godot_anchor_3d/scripts/Main.gd.uid",
+      "destination": "prototypes/godot-anchor-3d/scripts/Main.gd.uid",
+      "bytes": 19,
+      "sha256": "5b1182c3c93fa807d951bb0ce595533798dd3cc4fe55906c3fd83d4f1b77e4f7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/admin.html",
+      "destination": "archive/anchorman-h5-v1/admin.html",
+      "bytes": 21923,
+      "sha256": "acc1b37662ff19530359a5eef8ad837ed37d7a71a67dfd58edd07b858cd3b43b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/index.html",
+      "destination": "archive/anchorman-h5-v1/index.html",
+      "bytes": 20926,
+      "sha256": "4df316fe1daf7ad15241dc72402bf5541b02f6e5d6e6dd309bb0b8d05a80fd3c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/assets/anchorman.png",
+      "destination": "archive/anchorman-h5-v1/assets/anchorman.png",
+      "bytes": 400504,
+      "sha256": "415651203476beb5e526d32e3399fcecbb593402241d0369a1edadb4779ee91f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/assets/background.png",
+      "destination": "archive/anchorman-h5-v1/assets/background.png",
+      "bytes": 14709,
+      "sha256": "49b6c66f7b4034014554776d3754d24379e23f342fc3afa42edce6f6e44fe5cd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/assets/comic1.png",
+      "destination": "archive/anchorman-h5-v1/assets/comic1.png",
+      "bytes": 1606101,
+      "sha256": "0cc5cd55271a61041f638ec477fce0dc294a0c37a7dcd9fc40dd1ffe9b6a70fe",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/assets/comic2.png",
+      "destination": "archive/anchorman-h5-v1/assets/comic2.png",
+      "bytes": 1719127,
+      "sha256": "4effa2581ec1dadaa51ffc2ee260ddab24277ab9bfc140dab6117dad8c597f1b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/assets/comic3.png",
+      "destination": "archive/anchorman-h5-v1/assets/comic3.png",
+      "bytes": 1354800,
+      "sha256": "454ba2e77885a239f39c79da2e023a84d06bcb8736a553503be3da48f36fc850",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/assets/comic4.png",
+      "destination": "archive/anchorman-h5-v1/assets/comic4.png",
+      "bytes": 742798,
+      "sha256": "a2c94b1b71f2341b53eca12f10ae10373f452d41f4c3059f68d6ccb32a017d06",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/assets/earth.png",
+      "destination": "archive/anchorman-h5-v1/assets/earth.png",
+      "bytes": 2189378,
+      "sha256": "396f133ff603ee18ecf740c9c328e9731ef5afceae61bb293983539f6dc3edcd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/assets/startbutton.png",
+      "destination": "archive/anchorman-h5-v1/assets/startbutton.png",
+      "bytes": 103185,
+      "sha256": "9c9a590b2f1a20dc8b9eddc554a0b5939e22ecbcaab44996ad3b460a0c94a1e1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/assets/title.png",
+      "destination": "archive/anchorman-h5-v1/assets/title.png",
+      "bytes": 1081455,
+      "sha256": "07d14926475464bcab1cb324f9436416d87deec3e26863927eb3480c814d46e3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/.editorconfig",
+      "destination": "games/throw-anchor/.editorconfig",
+      "bytes": 33,
+      "sha256": "3b2c749c8a940905a08f727d8be9017c9568a12421c0aee7e37e9543b3751b1b",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/.gitattributes",
+      "destination": "games/throw-anchor/.gitattributes",
+      "bytes": 80,
+      "sha256": "21b01a606c9f85f18bb9230245f00ab104df7409cbb2fe9423f6751ca72ba754",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/.gitignore",
+      "destination": "games/throw-anchor/.gitignore",
+      "bytes": 46,
+      "sha256": "d6194b1a176268740a0b7f153bd4926908b4a0955a9a311181c0200b4329bc94",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/project.godot",
+      "destination": "games/throw-anchor/project.godot",
+      "bytes": 3349,
+      "sha256": "203eb241b3f10a24fc7ca726990176504fd2c8eefbc32d0db414bcf59c6daf20",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/tool-paddle.mtl",
+      "destination": "games/throw-anchor/tool-paddle.mtl",
+      "bytes": 92,
+      "sha256": "f9ca32dc5d7a99d9e00f9d437ee263ae6f5bc1123526c3ccc286eb393dd1bb48",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/arts/duck_boat.png",
+      "destination": "games/throw-anchor/arts/duck_boat.png",
+      "bytes": 712655,
+      "sha256": "22d5552298c2773971db5d62caa006a1d033fa0630c82a61e6b0bcb59250d06d",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/arts/duck_boat.png.import",
+      "destination": "games/throw-anchor/arts/duck_boat.png.import",
+      "bytes": 936,
+      "sha256": "11b7c43cf642aa4418db781a30f441f9aa7f47ee8679cc54d0d857d3476f9d76",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/docs/anchor_runner_architecture.md",
+      "destination": "games/throw-anchor/docs/anchor_runner_architecture.md",
+      "bytes": 3608,
+      "sha256": "0a7f7840623e89d1dfc1b2bc152b0361efaf55f5dde381222d5b5923d55fd0bd",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/scenes/Main.tscn",
+      "destination": "games/throw-anchor/scenes/Main.tscn",
+      "bytes": 408,
+      "sha256": "7678a9e5ff01466a9d294aff769098393f98ab72714accd6a9ab6dde83375272",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/scripts/main.gd",
+      "destination": "games/throw-anchor/scripts/main.gd",
+      "bytes": 18211,
+      "sha256": "b70450ca3f6910fac879464cae940828cbca012faf51b93a70c507959fec33fd",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/CiGA2026/抛个锚/scripts/main.gd.uid",
+      "destination": "games/throw-anchor/scripts/main.gd.uid",
+      "bytes": 20,
+      "sha256": "2f627f4402c7b785e434666c8b58638e6c3255192498c2ca848bd45c9e94d211",
+      "action": "merged-identical"
+    },
+    {
+      "source": "ciga_2/output/earth_complete_chromakey.png",
+      "destination": "art/anchorman-iterations/earth_complete_chromakey.png",
+      "bytes": 2238874,
+      "sha256": "e8900dcee9ad404ed30254369f644d7768662a8b8fad623aa8e0ba70704e6362",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/earth_complete_transparent.png",
+      "destination": "art/anchorman-iterations/earth_complete_transparent.png",
+      "bytes": 2189378,
+      "sha256": "396f133ff603ee18ecf740c9c328e9731ef5afceae61bb293983539f6dc3edcd",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/first-character-closed-eyes-side-mouth-raised-hands-v2.png",
+      "destination": "art/anchorman-iterations/first-character-closed-eyes-side-mouth-raised-hands-v2.png",
+      "bytes": 2081684,
+      "sha256": "9829a569e6e3564ac9c7e90e723e711b003a8958089f28e1bc06f20013ae19dc",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/first-character-closed-eyes-side-mouth-raised-hands.png",
+      "destination": "art/anchorman-iterations/first-character-closed-eyes-side-mouth-raised-hands.png",
+      "bytes": 2086143,
+      "sha256": "2937afa35a923d58a9442defc12c93e40ec075d7cb632f730f12b13935b629df",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/first-character-expression-and-hands-edited.png",
+      "destination": "art/anchorman-iterations/first-character-expression-and-hands-edited.png",
+      "bytes": 1869261,
+      "sha256": "a0230ee5340f5eeb7a9ac552c21c52dbf69079afb9c350f09328743dde979fc2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/first-character-expression-edited.png",
+      "destination": "art/anchorman-iterations/first-character-expression-edited.png",
+      "bytes": 1848523,
+      "sha256": "179248f5faf5f8468ae232562a3731b637a3d77f27e9fb162cbcb59d27415d56",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/first-character-prayer-hands-cover-mouth.png",
+      "destination": "art/anchorman-iterations/first-character-prayer-hands-cover-mouth.png",
+      "bytes": 1772049,
+      "sha256": "c77871cf67af8cb9e744510da0f770dfbce4708b2d9be29d1a8fb37ee1e9ff0f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/first-character-raised-hands-open-mouth-no-nose.png",
+      "destination": "art/anchorman-iterations/first-character-raised-hands-open-mouth-no-nose.png",
+      "bytes": 1918274,
+      "sha256": "9db45b2f6d4d4e4f09968beaabe8da5c2f2e0c5d3369068452a0446a641b5b06",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/extracted_text_assets/help_ai_anchorman_text_fullsize_transparent.png",
+      "destination": "art/anchorman-iterations/extracted_text_assets/help_ai_anchorman_text_fullsize_transparent.png",
+      "bytes": 368169,
+      "sha256": "09903c0562865bd75ecd611f6facb7b01d968b7692e863df396466b3a35bec1a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/extracted_text_assets/help_ai_anchorman_text_fullsize_transparent_clean.png",
+      "destination": "art/anchorman-iterations/extracted_text_assets/help_ai_anchorman_text_fullsize_transparent_clean.png",
+      "bytes": 152069,
+      "sha256": "9a4a0cd57c8d61c7c8153afdf70de3f9c0f3cb53768013585106c34ae265e4ee",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/extracted_text_assets/help_ai_anchorman_text_preview_dark_bg.jpg",
+      "destination": "art/anchorman-iterations/extracted_text_assets/help_ai_anchorman_text_preview_dark_bg.jpg",
+      "bytes": 67196,
+      "sha256": "f471e5227c39bd57d9641f8b0f66f44d13add5cf1ea77229091311d33a800677",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/extracted_text_assets/help_ai_anchorman_text_preview_dark_bg_clean.jpg",
+      "destination": "art/anchorman-iterations/extracted_text_assets/help_ai_anchorman_text_preview_dark_bg_clean.jpg",
+      "bytes": 69549,
+      "sha256": "b49945413e7cbf7583b2bbb68282d40a04b7908f55cf47ab29261bc027524c5f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/extracted_text_assets/help_ai_anchorman_text_preview_light_bg.jpg",
+      "destination": "art/anchorman-iterations/extracted_text_assets/help_ai_anchorman_text_preview_light_bg.jpg",
+      "bytes": 65633,
+      "sha256": "39de2229ed9c000fb8bbbaf305e11f237d09f7d041d28e56e72509ad8574af3a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/extracted_text_assets/help_ai_anchorman_text_preview_light_bg_clean.jpg",
+      "destination": "art/anchorman-iterations/extracted_text_assets/help_ai_anchorman_text_preview_light_bg_clean.jpg",
+      "bytes": 64959,
+      "sha256": "505ba2b836a5223d696c0a75c4feff782486ad49058b182a1d7b94b13fdad1cc",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/extracted_text_assets/help_ai_anchorman_text_transparent.png",
+      "destination": "art/anchorman-iterations/extracted_text_assets/help_ai_anchorman_text_transparent.png",
+      "bytes": 325507,
+      "sha256": "4bb78e10d5e3da7a7836649e4bf25436c5882ef0bf6a00d74a97da3cbd513b84",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/extracted_text_assets/help_ai_anchorman_text_transparent_clean.png",
+      "destination": "art/anchorman-iterations/extracted_text_assets/help_ai_anchorman_text_transparent_clean.png",
+      "bytes": 149568,
+      "sha256": "f06b381b50353210833160cd4364ad7f71b9cb29ccd60ea539eb8660b1973669",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/game_clock_assets/clock_assets_metadata.json",
+      "destination": "art/anchorman-iterations/game_clock_assets/clock_assets_metadata.json",
+      "bytes": 725,
+      "sha256": "4f8bbf374472c47351670fa6375aa34951b3dbc654e261e1e829011da479b441",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/game_clock_assets/clock_center_pin_1024.png",
+      "destination": "art/anchorman-iterations/game_clock_assets/clock_center_pin_1024.png",
+      "bytes": 9764,
+      "sha256": "e371981549a217240d0eeb34c5d35a9b3b3160d807436bcc88b2af8bcb9063b7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/game_clock_assets/clock_face_1024.png",
+      "destination": "art/anchorman-iterations/game_clock_assets/clock_face_1024.png",
+      "bytes": 328601,
+      "sha256": "fc9698d4d0842e4c5220fcec8b75f2f45300f0898a3578eabee99ccde06610d0",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/game_clock_assets/clock_hour_hand_1024_pivot_center.png",
+      "destination": "art/anchorman-iterations/game_clock_assets/clock_hour_hand_1024_pivot_center.png",
+      "bytes": 27109,
+      "sha256": "8348c3230cf6d3b5bbb574ab4290b423409815c7fa3f7be2bf6698167665867a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/game_clock_assets/clock_minute_hand_1024_pivot_center.png",
+      "destination": "art/anchorman-iterations/game_clock_assets/clock_minute_hand_1024_pivot_center.png",
+      "bytes": 23962,
+      "sha256": "a1ed02c9d309ddf17d0927f447e9367c25567faa88b3fc29dc4ac2fde3147df7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/game_clock_assets/clock_preview_10_10.png",
+      "destination": "art/anchorman-iterations/game_clock_assets/clock_preview_10_10.png",
+      "bytes": 395587,
+      "sha256": "419e8b50309cc83328bd52fb075b2a6313d62058da1ab61872d190bfc4f08a7e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/game_clock_assets/clock_preview_10_10_on_light_bg.png",
+      "destination": "art/anchorman-iterations/game_clock_assets/clock_preview_10_10_on_light_bg.png",
+      "bytes": 271688,
+      "sha256": "4369584aea13ed871fc08bce1113bf0e9efd0dafc711636186146a53ca9c54fa",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/game_frame_assets/hand_drawn_square_frame_1024.png",
+      "destination": "art/anchorman-iterations/game_frame_assets/hand_drawn_square_frame_1024.png",
+      "bytes": 268309,
+      "sha256": "3ad8d649f5a9c6cedafa5485dd25296604f6ebac43668d253e562cd1b035f731",
+      "action": "copied"
+    },
+    {
+      "source": "ciga_2/output/game_frame_assets/hand_drawn_square_frame_1024_preview.png",
+      "destination": "art/anchorman-iterations/game_frame_assets/hand_drawn_square_frame_1024_preview.png",
+      "bytes": 204000,
+      "sha256": "00065944559986ee14cb6c9e8d82179649d34d5670c4b78fdd24079430c161fe",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/chain-throw-test.html",
+      "destination": "prototypes/ship-web/chain-throw-test.html",
+      "bytes": 68557,
+      "sha256": "53668b7d89a9eb147f1a4edb244b7f5d63b392e8f28de6e3a7f902671d5d9fb8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-cutaway-bg-blank-ai-v2.png",
+      "destination": "prototypes/ship-web/cruise-cutaway-bg-blank-ai-v2.png",
+      "bytes": 945782,
+      "sha256": "e3e25b11e03c008cb4f943b121270e39efaaa58a8bc251a1cf72eb8c40afdb0e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-cutaway-bg-blank-ai-v3.png",
+      "destination": "prototypes/ship-web/cruise-cutaway-bg-blank-ai-v3.png",
+      "bytes": 972257,
+      "sha256": "46e2b63c8308c38c72ad83383eecd14498aefec6028e1616547377ab3b5f263c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-cutaway-bg-blank-ai.png",
+      "destination": "prototypes/ship-web/cruise-cutaway-bg-blank-ai.png",
+      "bytes": 937825,
+      "sha256": "264b3c32942ee4cbc295dc79102417f72c841ffc70f7ce77490a807e905b77d4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-cutaway-bg-blank-transparent.png",
+      "destination": "prototypes/ship-web/cruise-cutaway-bg-blank-transparent.png",
+      "bytes": 681009,
+      "sha256": "4c99805d9cc196762c2fe94c32444a447ee18b6e6d9ab85583ed1ef688eaab5e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-cutaway-blank-slots-v2.png",
+      "destination": "prototypes/ship-web/cruise-cutaway-blank-slots-v2.png",
+      "bytes": 689698,
+      "sha256": "6724ee1606bb49023d332a3f31aeb03c4a91b43b194465b7f7e73b1df5658ae3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-cutaway-blank-slots.png",
+      "destination": "prototypes/ship-web/cruise-cutaway-blank-slots.png",
+      "bytes": 519766,
+      "sha256": "5089e0ec54be67d1194f8cb160f120b164f89377a49d823347376886c9297755",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-cutaway-scientific-bw.png",
+      "destination": "prototypes/ship-web/cruise-cutaway-scientific-bw.png",
+      "bytes": 1195282,
+      "sha256": "73eb73b83c8c2ebef2d0a2d055ec3fe88510a8071ad2c0fe7e3fc02638bfa415",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-cutaway-slot-map-v2.json",
+      "destination": "prototypes/ship-web/cruise-cutaway-slot-map-v2.json",
+      "bytes": 3531,
+      "sha256": "1c9df9553cf12f6bd718a1913fff2b98451fc231b63634593aa199f416b3797a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-cutaway-slot-map.json",
+      "destination": "prototypes/ship-web/cruise-cutaway-slot-map.json",
+      "bytes": 3704,
+      "sha256": "5e4bd554b7c9a6d567b4e445f4ede3cbddb55c36b55adca5ddea1d52f8b2ea8c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-cutaway-taptik-style.png",
+      "destination": "prototypes/ship-web/cruise-cutaway-taptik-style.png",
+      "bytes": 1910378,
+      "sha256": "ec0bb291d43a6a0ab180493b699e12998e538026d5e400191fe966b26f1ad155",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/cruise-stickman-concept.png",
+      "destination": "prototypes/ship-web/cruise-stickman-concept.png",
+      "bytes": 2380548,
+      "sha256": "b9b383784ce4e6f396d59f221977cde9392569d05a2f68a263ba6b679595a41d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/ferry-cutaway-minimal-bw-draft.png",
+      "destination": "prototypes/ship-web/ferry-cutaway-minimal-bw-draft.png",
+      "bytes": 1107904,
+      "sha256": "49b64910c72d2344df7c207af4026167764a6d75980bb530ce2d4282ff83ca68",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/ferry-cutaway-minimal-bw.png",
+      "destination": "prototypes/ship-web/ferry-cutaway-minimal-bw.png",
+      "bytes": 1187978,
+      "sha256": "0bcfc784c3b7400213fe949d0b8717fd33920a2b0a59040e7acc114a5da5e35c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/ferry-cutaway-tv-deck-captain-bw.png",
+      "destination": "prototypes/ship-web/ferry-cutaway-tv-deck-captain-bw.png",
+      "bytes": 1108512,
+      "sha256": "a431f3c7caa8d436c5591fa88c658f560389c875684346068dafd38db8dd7c1d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/index.html",
+      "destination": "prototypes/ship-web/index.html",
+      "bytes": 46506,
+      "sha256": "89b2b51ebf03a981711108e4063c7018a7ffa7d88cdd499033524f20c714dc41",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/physics-matter-test.html",
+      "destination": "prototypes/ship-web/physics-matter-test.html",
+      "bytes": 20054,
+      "sha256": "f156ed68845a006d9950ce376fcdefd3a9a4ec99345aaec80e225a366b286527",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/physics-three-test.html",
+      "destination": "prototypes/ship-web/physics-three-test.html",
+      "bytes": 29369,
+      "sha256": "b650eeeb7026dfec33632eb4987607d2aa7cfe38713a1da504998053b556f473",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/prototype-hud-crop.png",
+      "destination": "prototypes/ship-web/prototype-hud-crop.png",
+      "bytes": 16618,
+      "sha256": "08bdad53a88bff049ab6724dd251a19217235f86771f2fa2237d4d2a0b4a442f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/prototype-preview-mobile.png",
+      "destination": "prototypes/ship-web/prototype-preview-mobile.png",
+      "bytes": 50979,
+      "sha256": "d1a7362bad1ca77647465f6ec0af72c83ff088d08b1bcaff8fcf82df765cdf8d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/prototype-preview.png",
+      "destination": "prototypes/ship-web/prototype-preview.png",
+      "bytes": 60684,
+      "sha256": "7d5136353de1103c1bcc1b24680fe140ac99bf6b6376b5a8f4789828c770888b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/.editorconfig",
+      "destination": "games/anchorshackeshacke/.editorconfig",
+      "bytes": 33,
+      "sha256": "3b2c749c8a940905a08f727d8be9017c9568a12421c0aee7e37e9543b3751b1b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/.gitattributes",
+      "destination": "games/anchorshackeshacke/.gitattributes",
+      "bytes": 80,
+      "sha256": "21b01a606c9f85f18bb9230245f00ab104df7409cbb2fe9423f6751ca72ba754",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/.gitignore",
+      "destination": "games/anchorshackeshacke/.gitignore",
+      "bytes": 46,
+      "sha256": "d6194b1a176268740a0b7f153bd4926908b4a0955a9a311181c0200b4329bc94",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/anchorshackeshacke.apple-touch-icon.png",
+      "bytes": 11939,
+      "sha256": "071ccd3c3619e62c9e27995cf1afde427bb1b630767801a0fe1ac33505b2f221",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/anchorshackeshacke.apple-touch-icon.png.import",
+      "bytes": 1008,
+      "sha256": "d1ad2ddf7b8ab3909756b915c67749a27cb54476dec1eb7e2e57beec692f6c3c",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/anchorshackeshacke.audio.position.worklet.js",
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/anchorshackeshacke.audio.worklet.js",
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/anchorshackeshacke.html",
+      "bytes": 5541,
+      "sha256": "ee7e8bd6cc2fb1ab07c3b8a9358a21bab25713bb67db3ce4bac5e9a3039632cf",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/anchorshackeshacke.icon.png",
+      "bytes": 5765,
+      "sha256": "662f81d7672001a6f5f928532493267c226624757de3b5fa2908f6e5923964b7",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/anchorshackeshacke.icon.png.import",
+      "bytes": 972,
+      "sha256": "5877a0957cad26f990ab48acd97bbc45e750d2ca81041a4f89a3558882b315af",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/anchorshackeshacke.js",
+      "bytes": 279815,
+      "sha256": "68586d6daafc93c6e697b3fb258976874aa7459b8931165ebb1dc3c9614cc42c",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/anchorshackeshacke.png",
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/anchorshackeshacke.png.import",
+      "bytes": 958,
+      "sha256": "233576fa0930e391f01e9e94ead0daaedc64cfc5014a0d94d66af392479f4f24",
+      "excluded": "generated-web-export"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/export_presets.cfg",
+      "destination": "games/anchorshackeshacke/export_presets.cfg",
+      "bytes": 1339,
+      "sha256": "18e261affb415efdeec8c8609911438cd3c6a1e6a3117e01534785074d814ec2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/icon.svg",
+      "destination": "games/anchorshackeshacke/icon.svg",
+      "bytes": 995,
+      "sha256": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/icon.svg.import",
+      "destination": "games/anchorshackeshacke/icon.svg.import",
+      "bytes": 1012,
+      "sha256": "556d7d04eb95d51c3e8949aaffe81a1fe73d6a0ec49a26b4a4c44cf6b96a2017",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/project.godot",
+      "destination": "games/anchorshackeshacke/project.godot",
+      "bytes": 800,
+      "sha256": "eb6e9c1d6583f853f88fcfac0aae3f7cf9b7ee1093285395ba8ec16537079927",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/Preview_143 (1).png",
+      "destination": "games/anchorshackeshacke/assets/Preview_143 (1).png",
+      "bytes": 25211,
+      "sha256": "ff8ad2883eef4e95a5b4b91c1df8afe2ec2f48442e5350e2e1539649d805bd41",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/Preview_143 (1).png.import",
+      "destination": "games/anchorshackeshacke/assets/Preview_143 (1).png.import",
+      "bytes": 956,
+      "sha256": "31b8a2ef91236c8a5c48004339674235c9f2fe84674d7c4570b8e01aa54559e4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/hku offer.pdf",
+      "bytes": 691334,
+      "sha256": "bef16b40c303bc44b4278a95688bdb61b2e6ec8b6044d8fb1f6001c6ab5124c0",
+      "excluded": "unrelated-personal-document"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/anchor/chain-link.png",
+      "destination": "games/anchorshackeshacke/assets/anchor/chain-link.png",
+      "bytes": 460603,
+      "sha256": "1c07536e890673e3c72a87f3e3d092135d73cdf38fbd3499750926f4249e02c9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/anchor/chain-link.png.import",
+      "destination": "games/anchorshackeshacke/assets/anchor/chain-link.png.import",
+      "bytes": 948,
+      "sha256": "29f1808f286279fdffeee0c2db81e7cee0287055c6a0fecce1897c69470130ae",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/anchor/toy-anchor.png",
+      "destination": "games/anchorshackeshacke/assets/anchor/toy-anchor.png",
+      "bytes": 506909,
+      "sha256": "ff63b535979f95f1dcdb8d2d3c88907c0a571129276f9c5da68bd42b7c2cb5a7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/anchor/toy-anchor.png.import",
+      "destination": "games/anchorshackeshacke/assets/anchor/toy-anchor.png.import",
+      "bytes": 948,
+      "sha256": "418a88555d2f8502609498d016b8e275f11bbeb6359238f3f4384233af004ab6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/fonts/HiraginoSansGB.ttc",
+      "bytes": 25879292,
+      "sha256": "4b450afb2c61d7529fe05647316e9fc3137ea703a664bded5bca895a5c30748c",
+      "excluded": "replaced-system-font"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/fonts/HiraginoSansGB.ttc.import",
+      "bytes": 780,
+      "sha256": "dfc92131330f5cd15bd848c879273a15e078a172449eb27e727daf434de6f52c",
+      "excluded": "replaced-system-font"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/cloud-line-far.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/cloud-line-far.png",
+      "bytes": 44994,
+      "sha256": "7e4b98ebfbc1aff05d7ad8fe9cc4412e47dcc5f355d517737a29d06a74d54996",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/cloud-line-far.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/cloud-line-far.png.import",
+      "bytes": 962,
+      "sha256": "2ddf1206725023acd761917f2b5e188d7cdd6823f758bb2c00cf3d620c507bb9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/cloud-line-mid.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/cloud-line-mid.png",
+      "bytes": 36657,
+      "sha256": "1cea03077479f723786039772086935fbb727bd595bb79dc91ca7852d99158dc",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/cloud-line-mid.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/cloud-line-mid.png.import",
+      "bytes": 962,
+      "sha256": "819f5fbe0f9c7a7d55fcceb282a4fde149c7275dca73e66438c2d0bde5a79af8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/cloud-outline-band.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/cloud-outline-band.png",
+      "bytes": 10311,
+      "sha256": "6b433b591d72e4c38b4c63a192994933b8a955a673a0b63b6f2a6593691db515",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/cloud-outline-band.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/cloud-outline-band.png.import",
+      "bytes": 974,
+      "sha256": "0dfdfbc2e5b12923397629ab4e32c4c8b92f27542a0b4d6fab3e69cf6dc7a904",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/hill-outline-near.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/hill-outline-near.png",
+      "bytes": 9702,
+      "sha256": "82b00ad4bb2346fd789d0c1de10d99a5ddda30cc3f0fe421ebed6b7f45ddb77f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/hill-outline-near.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/hill-outline-near.png.import",
+      "bytes": 971,
+      "sha256": "c08f62d2202b1555f695d2efa630d4057bd581b408775710524bb0a21ade17c3",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/mountain-outline-far.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/mountain-outline-far.png",
+      "bytes": 13011,
+      "sha256": "92cd329ddbf9a05d86a253a851ed884eeef7c291fc06bd6c9052eed23382dfcb",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/mountain-outline-far.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/mountain-outline-far.png.import",
+      "bytes": 979,
+      "sha256": "17c67d727b0fe921a372de0fa6659dcf332eef819bb572242e50cd17a009016e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-cloud-far.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-cloud-far.png",
+      "bytes": 1759,
+      "sha256": "e57b103f44196777ba0b0e3f3f85a9048bb5b3a9adec176ba322a5dc925bc90c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-cloud-far.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-cloud-far.png.import",
+      "bytes": 979,
+      "sha256": "9bc4cd2aa8a19fe5081f64d940497deee456e74e1a1e4d9f20ef1cf5eddc4473",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-cloud-near.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-cloud-near.png",
+      "bytes": 2011,
+      "sha256": "46558b095a3176593be5d0edc399e41451255e7e2266c1c390074554d813538d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-cloud-near.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-cloud-near.png.import",
+      "bytes": 982,
+      "sha256": "a533524ab2a05712eb8a3493d91d7b511cdacaaa32fc1486cdfd65444feb2849",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-horizon.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-horizon.png",
+      "bytes": 1789,
+      "sha256": "b821fcec7ee1c54350da14ee8ade9f9625e20d7eb27e94fe6f3d2ac868178c96",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-horizon.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-horizon.png.import",
+      "bytes": 974,
+      "sha256": "1499eb8412a76a30aa9e6cbc205152f712c005eef67ed71e47fb6a40ca9f6b9b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-water-far.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-water-far.png",
+      "bytes": 3347,
+      "sha256": "8efe03aecdbb935d9b06179cee2c18528308541f4a387cbb75866803b3851b92",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-water-far.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-water-far.png.import",
+      "bytes": 980,
+      "sha256": "32a261f5d88ba1137d7b417323a9902165f473cb210869d7877529ebd0f3cc23",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-water-mid.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-water-mid.png",
+      "bytes": 3741,
+      "sha256": "aa46d933a200ca04da817440524bd0b14139373a9c761f296ba1960669918a50",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-water-mid.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-water-mid.png.import",
+      "bytes": 979,
+      "sha256": "de32b326027b4733a73928b4f502604df0e62f0a446d100ab21d8b3a3ac82ee1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-water-near.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-water-near.png",
+      "bytes": 1308,
+      "sha256": "bf642042e0bd50aa6966df506af22b33062660dec486e4827c8c615c26166280",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/preview143-water-near.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/preview143-water-near.png.import",
+      "bytes": 983,
+      "sha256": "aa3ad4f7a8e37c9b9c56b6d578b7bd8779b2d0ac1fb0285684b0e0aa6c9ba420",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/pixel_ocean_sky/1.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/pixel_ocean_sky/1.png",
+      "bytes": 6269,
+      "sha256": "b23ac811d8470b2ff5443b979ee297123d1f2fc5e947eafd3cbe49ab5071fa65",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/pixel_ocean_sky/1.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/pixel_ocean_sky/1.png.import",
+      "bytes": 939,
+      "sha256": "9691c0e24ad917062abe2052db097ec6470b533899847dde4ec49b2d24cd5ca6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/pixel_ocean_sky/2.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/pixel_ocean_sky/2.png",
+      "bytes": 4169,
+      "sha256": "87b2a2046fb1e99420b062b08b3b57a0d25fdf30bc1041653bd4da388c2aef79",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/pixel_ocean_sky/2.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/pixel_ocean_sky/2.png.import",
+      "bytes": 939,
+      "sha256": "3382d567ce19dc948becb74339915ac8664571769aebdcbab01ee81363eae7e7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/pixel_ocean_sky/3.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/pixel_ocean_sky/3.png",
+      "bytes": 13122,
+      "sha256": "319b2cd2753678f68e6e3d4bed6bce9931a14d659dcf07a26b52c4537222157b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/pixel_ocean_sky/3.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/pixel_ocean_sky/3.png.import",
+      "bytes": 939,
+      "sha256": "29c05e71bfec99fd83b78c35e109c40145c159c68cebd5808308a5a284d45fd2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/pixel_ocean_sky/4.png",
+      "destination": "games/anchorshackeshacke/assets/parallax/pixel_ocean_sky/4.png",
+      "bytes": 47048,
+      "sha256": "583110d143c18fad97122d98b5cc6fb5cb4d9b47896426816bfd29bb81881faf",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/parallax/pixel_ocean_sky/4.png.import",
+      "destination": "games/anchorshackeshacke/assets/parallax/pixel_ocean_sky/4.png.import",
+      "bytes": 939,
+      "sha256": "e9747f0f01a91894633b933a7bcd4e1351d4c859543e9eac70bb0f629558ef18",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/sand/32x32_Sand_Desert_Dune.ase",
+      "destination": "games/anchorshackeshacke/assets/sand/32x32_Sand_Desert_Dune.ase",
+      "bytes": 4230,
+      "sha256": "712da8e37263cac9f25bad8b7ec7d201014579197e9a139d47b30fe1a91b2c1f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/sand/sand_dune.png",
+      "destination": "games/anchorshackeshacke/assets/sand/sand_dune.png",
+      "bytes": 647,
+      "sha256": "5fb03e59bb2e785602aa926083ad6a982b50a89217e8d4e8e8459d8e5af84b6f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/sand/sand_dune.png.import",
+      "destination": "games/anchorshackeshacke/assets/sand/sand_dune.png.import",
+      "bytes": 943,
+      "sha256": "a1c1c940ad9db4a23d1dd19a97e23cb705564e6578a30d2bcb12a4258f929e66",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/cruise-cutaway-bg-blank-transparent.png",
+      "destination": "games/anchorshackeshacke/assets/ship/cruise-cutaway-bg-blank-transparent.png",
+      "bytes": 681009,
+      "sha256": "4c99805d9cc196762c2fe94c32444a447ee18b6e6d9ab85583ed1ef688eaab5e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/cruise-cutaway-bg-blank-transparent.png.import",
+      "destination": "games/anchorshackeshacke/assets/ship/cruise-cutaway-bg-blank-transparent.png.import",
+      "bytes": 1020,
+      "sha256": "20c48879f783f2a889993b3e171584e3f0e0778eb1d6f52703200599a86a6f60",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/cruise_hull_polygon.json",
+      "destination": "games/anchorshackeshacke/assets/ship/cruise_hull_polygon.json",
+      "bytes": 1462,
+      "sha256": "a38f9740d0b4870ca7917290ace958f965a7b563b2268a316df416dd8e73cca7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-fail-alpha.png",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-fail-alpha.png",
+      "bytes": 423127,
+      "sha256": "c559d4b3b05e8c624e8f9d65dbf400eac15e3c3a886a292585fdb03bd6036608",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-fail-alpha.png.import",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-fail-alpha.png.import",
+      "bytes": 1001,
+      "sha256": "41adfcaa15cb4169b7d7aa01ac9ddef40ee4ce132435e2ee1bf27b033016bf57",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-fail.png",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-fail.png",
+      "bytes": 383369,
+      "sha256": "b3fbaeaf83f8397431f2e99f8a23eb1e2768ba613a83f070d666c29c846acd86",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-fail.png.import",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-fail.png.import",
+      "bytes": 984,
+      "sha256": "065de52a620aebb0b202263619e5ea7f29e3bd3764f8978359dcfc97e37f95a4",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-normal-alpha.png",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-normal-alpha.png",
+      "bytes": 409312,
+      "sha256": "9c49883c06da9d9be55a7f716f2529e6fd0ceb42d1b378a619109581ac9ff8d6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-normal-alpha.png.import",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-normal-alpha.png.import",
+      "bytes": 1007,
+      "sha256": "5d9a7b14c07b2fe1c3adfc64fd019a359402f9e08956808129b986028b54af14",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-normal.png",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-normal.png",
+      "bytes": 370946,
+      "sha256": "7132571fa8ec3ef539efe111f370ad008b9f6077b075a7a31d24c975fedfe096",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-normal.png.import",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-normal.png.import",
+      "bytes": 990,
+      "sha256": "d3679a01364dfe9f62209e31d1b6f162ea66bfc36b8861e28e597f5f83059753",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-sick-alpha.png",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-sick-alpha.png",
+      "bytes": 414278,
+      "sha256": "183efb4232776be45cca9bab50bf64b7b0d289843adf3efbdd0aa9f5ccec4550",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-sick-alpha.png.import",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-sick-alpha.png.import",
+      "bytes": 1001,
+      "sha256": "776ccaca30fa0a082d0ff0910cb7cb0f83512e531dae99ebd4aeb81cbcd346c1",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-sick.png",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-sick.png",
+      "bytes": 374974,
+      "sha256": "83c305c1bfad785d56b6b9f24ffc9ab141504f72e245c7e67f1bf78a593c5c6d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-sick.png.import",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-sick.png.import",
+      "bytes": 984,
+      "sha256": "0d0d74c4766483ad873afe3abdb7fb70e0e5458fac67ef2a93167c137b163658",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-success-alpha.png",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-success-alpha.png",
+      "bytes": 432311,
+      "sha256": "3aac7429bcb0cabcc01c56fbdac7781ad5d4d1b7014c008f04bec552d1bbb218",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-success-alpha.png.import",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-success-alpha.png.import",
+      "bytes": 1011,
+      "sha256": "b1f0dee994e61b8fdd9b4b0c688eec73eab538981f6df77e80a27fda085a54a2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-success.png",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-success.png",
+      "bytes": 390324,
+      "sha256": "764f0719f34825153220914c6873965f48f0ae124b6df62a4afd0b847b843f07",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/assets/ship/generated_states/cruise-state-success.png.import",
+      "destination": "games/anchorshackeshacke/assets/ship/generated_states/cruise-state-success.png.import",
+      "bytes": 992,
+      "sha256": "83237b55443922fa910878420c55efa9ebb96f0106b2672dece34633397a050a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scenes/Ocean.png",
+      "destination": "games/anchorshackeshacke/scenes/Ocean.png",
+      "bytes": 6876,
+      "sha256": "4d367ba0c415fcf49958e4adc18d4696c56fcf09d9054a2843d5c4516e9a86d6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scenes/Ocean.png.import",
+      "destination": "games/anchorshackeshacke/scenes/Ocean.png.import",
+      "bytes": 926,
+      "sha256": "55a3f950e6947fc02c2266b292ddb4c97a3e9c180edd57d26e602c8e40ede4db",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scenes/main.tscn",
+      "destination": "games/anchorshackeshacke/scenes/main.tscn",
+      "bytes": 2452,
+      "sha256": "91d8cf1f2977d16c46a279a2a3b009090a12951686476fcd280b759f56f84f5e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/AnchorSystem.gd",
+      "destination": "games/anchorshackeshacke/scripts/AnchorSystem.gd",
+      "bytes": 31227,
+      "sha256": "615a631bec61c72b3035ca6303e2cbbcc7295d6ade3da1ebba51e1b586ee21aa",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/AnchorSystem.gd.uid",
+      "destination": "games/anchorshackeshacke/scripts/AnchorSystem.gd.uid",
+      "bytes": 19,
+      "sha256": "b85760ec7de3ffecd209d4640c31d607dcf3322c58d2bc87f21ad4c7ac960653",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/ParallaxBackground.gd",
+      "destination": "games/anchorshackeshacke/scripts/ParallaxBackground.gd",
+      "bytes": 3342,
+      "sha256": "e8bc3f1d41d6ef2da082b7d69cf6ff77e527ef44035f86f6bb91c403743e3dfa",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/ParallaxBackground.gd.uid",
+      "destination": "games/anchorshackeshacke/scripts/ParallaxBackground.gd.uid",
+      "bytes": 20,
+      "sha256": "35019eba28c0f544655062cfd46d0cb97af33f2961630df5d2a2f2a1b424f71e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/PlayerShip.gd",
+      "destination": "games/anchorshackeshacke/scripts/PlayerShip.gd",
+      "bytes": 7977,
+      "sha256": "28d2e9a51915c23588be54c2b1e845302ba689e434434f8137f4cfd950edc248",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/PlayerShip.gd.uid",
+      "destination": "games/anchorshackeshacke/scripts/PlayerShip.gd.uid",
+      "bytes": 20,
+      "sha256": "a6eb33e92c0d7ceaa84a18b54959246916e62e89ac6dae09dcac3b67bfb16007",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/RunnerGame.gd",
+      "destination": "games/anchorshackeshacke/scripts/RunnerGame.gd",
+      "bytes": 9324,
+      "sha256": "888d0399bc9ed70ee6de5fd062b5cd2dae00a566ec6d8fd89d71d216cb78f977",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/RunnerGame.gd.uid",
+      "destination": "games/anchorshackeshacke/scripts/RunnerGame.gd.uid",
+      "bytes": 20,
+      "sha256": "074db5357515bd6cc33e428dbc323e99b67ff138b5deaef246ec73bd0f15b514",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/SandLayer.gd",
+      "destination": "games/anchorshackeshacke/scripts/SandLayer.gd",
+      "bytes": 12177,
+      "sha256": "15904d7c1b096968e8634a687e7e9be0c4bc9d2430b1ac87c83d742cfdee9b46",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/SandLayer.gd.uid",
+      "destination": "games/anchorshackeshacke/scripts/SandLayer.gd.uid",
+      "bytes": 20,
+      "sha256": "3d4ea9a2bc7e4a70de73c9e53d12a4aa4e93c0c6d6d5cf164649ca8db9417aa8",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/ShipHullBody.gd",
+      "destination": "games/anchorshackeshacke/scripts/ShipHullBody.gd",
+      "bytes": 2857,
+      "sha256": "3ac7d5d5ef6a46b4fe23df89794f5d9a9f1677d2c1503c1473f8d81bde82d2ee",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/ShipHullBody.gd.uid",
+      "destination": "games/anchorshackeshacke/scripts/ShipHullBody.gd.uid",
+      "bytes": 20,
+      "sha256": "44bc424474dedb1451ed427c12d4a2fe5af0f90c183443e1bc797a2497d23296",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/ShipVisual.gd",
+      "destination": "games/anchorshackeshacke/scripts/ShipVisual.gd",
+      "bytes": 2419,
+      "sha256": "e6e62baad14699311c74ebe9ba9d552828134a2781d5d2d28dc5d900f4c39969",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/ShipVisual.gd.uid",
+      "destination": "games/anchorshackeshacke/scripts/ShipVisual.gd.uid",
+      "bytes": 20,
+      "sha256": "d71ffb37c656f356e0b4f4835711f783156e9cfd0ff5f971dddf168736fd4133",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/SicknessGame.gd",
+      "destination": "games/anchorshackeshacke/scripts/SicknessGame.gd",
+      "bytes": 20532,
+      "sha256": "1498bff3e8a310ff3f329fa1e39d4ebd421712265f812312dd1b9cb18983ac9d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/SicknessGame.gd.uid",
+      "destination": "games/anchorshackeshacke/scripts/SicknessGame.gd.uid",
+      "bytes": 19,
+      "sha256": "7f256bec13a42da67ab07b7529e7e98a0d3c75a0a87df0fb9bc85b593602abe6",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/WaterOverlay.gd",
+      "destination": "games/anchorshackeshacke/scripts/WaterOverlay.gd",
+      "bytes": 1193,
+      "sha256": "3c8ce804dafc30925ebe843555a2be32b1e6275fe607c369e194ed9de11dcb8b",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/WaterOverlay.gd.uid",
+      "destination": "games/anchorshackeshacke/scripts/WaterOverlay.gd.uid",
+      "bytes": 20,
+      "sha256": "701624342d1637cc52316ad97c5962560e116c523c7c6cb402eb3afac9af6800",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/WinchVisual.gd",
+      "destination": "games/anchorshackeshacke/scripts/WinchVisual.gd",
+      "bytes": 1587,
+      "sha256": "289474d64276c09b008c430bcd54a6ccd96ab7fbc7ae7245b0ed5bde73d65052",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/anchorshackeshacke/scripts/WinchVisual.gd.uid",
+      "destination": "games/anchorshackeshacke/scripts/WinchVisual.gd.uid",
+      "bytes": 20,
+      "sha256": "0724255e677e850dcc78349ff0d6b84b3c62769ef0053ccd10682ac2f4a5a61e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/anchor-gouge-lowpoly.png",
+      "destination": "prototypes/ship-web/assets/anchor-gouge-lowpoly.png",
+      "bytes": 71242,
+      "sha256": "b4aacd94028f1552f489b511719d7eaf267bf16cfd3cd478ff23af770749ebaa",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/anchor-placement-preview.png",
+      "destination": "prototypes/ship-web/assets/anchor-placement-preview.png",
+      "bytes": 987650,
+      "sha256": "fc59d82f4655a4b962b7669548fa145bfd3373a8cfbdaf3a9706db633a396d9e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/chain-link-preview.png",
+      "destination": "prototypes/ship-web/assets/chain-link-preview.png",
+      "bytes": 462668,
+      "sha256": "88126390b4e2557a0b99f82cb7ebf79a492039aecf66a4f417706d9bfc45bdc9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/chain-link-raw-alpha.png",
+      "destination": "prototypes/ship-web/assets/chain-link-raw-alpha.png",
+      "bytes": 513938,
+      "sha256": "85d9cd6dcb2518643f8f1cabf4c60396e665feb08549d41c57c7f3e10b59931a",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/chain-link.png",
+      "destination": "prototypes/ship-web/assets/chain-link.png",
+      "bytes": 460603,
+      "sha256": "1c07536e890673e3c72a87f3e3d092135d73cdf38fbd3499750926f4249e02c9",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/coffee-table-clear-preview.png",
+      "destination": "prototypes/ship-web/assets/coffee-table-clear-preview.png",
+      "bytes": 11985,
+      "sha256": "f07d3fbcf665e01d0f38ec52ceaab91cf3d2cc542f2175e2b13519d1145102a7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/coffee-table-clear.png",
+      "destination": "prototypes/ship-web/assets/coffee-table-clear.png",
+      "bytes": 10215,
+      "sha256": "fc6d36a9a9e45646e90822d6df65ec4175a1a779742a242243915fe3590bb480",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/sandy-seabed-lowpoly-deep.png",
+      "destination": "prototypes/ship-web/assets/sandy-seabed-lowpoly-deep.png",
+      "bytes": 971528,
+      "sha256": "16d15f2fadce641aa7939cf2c12753602c1905d51fdcda611774d82ac4728ffc",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/sandy-seabed-lowpoly.png",
+      "destination": "prototypes/ship-web/assets/sandy-seabed-lowpoly.png",
+      "bytes": 421048,
+      "sha256": "08b9ccaaf8fb643bc981be1cdb2eb9e41c2b600e51eee939402b9ec75a62ede2",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/sandy-seabed-strip.png",
+      "destination": "prototypes/ship-web/assets/sandy-seabed-strip.png",
+      "bytes": 480533,
+      "sha256": "7535b97585b7610cdc4ba9a72d71db292314e5ebfd90bbb0e4cb2cba37ae8f29",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/toy-anchor-trimmed.png",
+      "destination": "prototypes/ship-web/assets/toy-anchor-trimmed.png",
+      "bytes": 485749,
+      "sha256": "2df2130c136ee80de5b563ad159f0dbfab46a3eb55ff4285cdb7f39c6d0b3bac",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/toy-anchor.png",
+      "destination": "prototypes/ship-web/assets/toy-anchor.png",
+      "bytes": 506909,
+      "sha256": "ff63b535979f95f1dcdb8d2d3c88907c0a571129276f9c5da68bd42b7c2cb5a7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/tv-clear-preview.png",
+      "destination": "prototypes/ship-web/assets/tv-clear-preview.png",
+      "bytes": 16421,
+      "sha256": "9c59e786fc26c23f997d1c52d2f07452ea347a0de166b352040578f38a887704",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/tv-clear.png",
+      "destination": "prototypes/ship-web/assets/tv-clear.png",
+      "bytes": 13377,
+      "sha256": "039607a11560bbb80dbb48a796d7cdead7682c253374a4d306216d65210aa8e7",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/tv-table-placement-preview-v2.png",
+      "destination": "prototypes/ship-web/assets/tv-table-placement-preview-v2.png",
+      "bytes": 979231,
+      "sha256": "8cd9f43f3639fc5d8cdb03afa51a03279d7de51a724e91253e602eab2637465e",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/tv-table-placement-preview.png",
+      "destination": "prototypes/ship-web/assets/tv-table-placement-preview.png",
+      "bytes": 996348,
+      "sha256": "d78c671340872e12391ecaa1a2ddfa6cc5c3ac4f8fe200cbf07182935c8aa68c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/cloud-line-far.png",
+      "destination": "prototypes/ship-web/assets/parallax/cloud-line-far.png",
+      "bytes": 44994,
+      "sha256": "7e4b98ebfbc1aff05d7ad8fe9cc4412e47dcc5f355d517737a29d06a74d54996",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/cloud-line-mid.png",
+      "destination": "prototypes/ship-web/assets/parallax/cloud-line-mid.png",
+      "bytes": 36657,
+      "sha256": "1cea03077479f723786039772086935fbb727bd595bb79dc91ca7852d99158dc",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/cloud-outline-band.png",
+      "destination": "prototypes/ship-web/assets/parallax/cloud-outline-band.png",
+      "bytes": 10311,
+      "sha256": "6b433b591d72e4c38b4c63a192994933b8a955a673a0b63b6f2a6593691db515",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/hill-outline-near.png",
+      "destination": "prototypes/ship-web/assets/parallax/hill-outline-near.png",
+      "bytes": 9702,
+      "sha256": "82b00ad4bb2346fd789d0c1de10d99a5ddda30cc3f0fe421ebed6b7f45ddb77f",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/mountain-outline-far.png",
+      "destination": "prototypes/ship-web/assets/parallax/mountain-outline-far.png",
+      "bytes": 13011,
+      "sha256": "92cd329ddbf9a05d86a253a851ed884eeef7c291fc06bd6c9052eed23382dfcb",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/preview143-cloud-far.png",
+      "destination": "prototypes/ship-web/assets/parallax/preview143-cloud-far.png",
+      "bytes": 1759,
+      "sha256": "e57b103f44196777ba0b0e3f3f85a9048bb5b3a9adec176ba322a5dc925bc90c",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/preview143-cloud-near.png",
+      "destination": "prototypes/ship-web/assets/parallax/preview143-cloud-near.png",
+      "bytes": 2011,
+      "sha256": "46558b095a3176593be5d0edc399e41451255e7e2266c1c390074554d813538d",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/preview143-horizon.png",
+      "destination": "prototypes/ship-web/assets/parallax/preview143-horizon.png",
+      "bytes": 1789,
+      "sha256": "b821fcec7ee1c54350da14ee8ade9f9625e20d7eb27e94fe6f3d2ac868178c96",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/preview143-water-far.png",
+      "destination": "prototypes/ship-web/assets/parallax/preview143-water-far.png",
+      "bytes": 3347,
+      "sha256": "8efe03aecdbb935d9b06179cee2c18528308541f4a387cbb75866803b3851b92",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/preview143-water-mid.png",
+      "destination": "prototypes/ship-web/assets/parallax/preview143-water-mid.png",
+      "bytes": 3741,
+      "sha256": "aa46d933a200ca04da817440524bd0b14139373a9c761f296ba1960669918a50",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/assets/parallax/preview143-water-near.png",
+      "destination": "prototypes/ship-web/assets/parallax/preview143-water-near.png",
+      "bytes": 1308,
+      "sha256": "bf642042e0bd50aa6966df506af22b33062660dec486e4827c8c615c26166280",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/vendor/matter.min.js",
+      "destination": "prototypes/ship-web/vendor/matter.min.js",
+      "bytes": 83476,
+      "sha256": "72d30be0f579eb02ce1e0b6f9d359a4f392e6837e5a26ba8be5dbee7f88e24ae",
+      "action": "copied"
+    },
+    {
+      "source": "ciga-3/vendor/three.module.js",
+      "destination": "prototypes/ship-web/vendor/three.module.js",
+      "bytes": 1295459,
+      "sha256": "5289ca2dfde8572bd7715b9fa2ca929db12bae87e9a2cb53e431662df7039506",
+      "action": "copied"
+    }
+  ],
+  "added_assets": [
+    {
+      "destination": "games/anchorshackeshacke/assets/fonts/NotoSansSC.ttf",
+      "source": "games/help-ai-anchorman/fonts/NotoSansSC.ttf"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+# Reproducible Godot/editor state
+.godot/
+.import/
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+
+# Exported games and release archives belong outside source control
+/dist/
+/build/
+/releases/
+*.pck
+*.wasm
+*.zip
+*.exe
+*.dmg
+*.apk
+
+# Credentials and private documents are not game assets
+.env
+.env.*
+!.env.example
+.godot/export_credentials.cfg
+*.pem
+*.key
+*.p12
+*.pfx
+*.pdf
+HiraginoSansGB.ttc*

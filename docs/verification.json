@@ -1,0 +1,60 @@
+{
+  "original_content_changes": [],
+  "http_checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/web/anchor-plus3.html",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/web/index.html",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/web/anchorman/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/archive/anchorman-h5-v1/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/prototypes/ship-web/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/dist/anchorshackeshacke/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/dist/help-ai-anchorman/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/dist/anchorshackeshacke/index.wasm",
+      "status": 200,
+      "content_type": "application/wasm"
+    },
+    {
+      "path": "/dist/help-ai-anchorman/index.pck",
+      "status": 200,
+      "content_type": "application/octet-stream"
+    }
+  ],
+  "runtime_errors": {
+    "ciga-anchorman-reimport.log": [],
+    "ciga-ship-runtime.log": [],
+    "ciga-anchorman-runtime.log": []
+  }
+}

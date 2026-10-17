@@ -1,0 +1,158 @@
+[
+  {
+    "key": "stone",
+    "era": "石器",
+    "title": "File:Neolithic pottery basin, Yangshao Culture, Shaanxi, 1955.JPG",
+    "caption": "新石器彩陶盆",
+    "crop": [
+      0.08,
+      0.08,
+      0.92,
+      0.92
+    ],
+    "page": "https://commons.wikimedia.org/wiki/File:Neolithic_pottery_basin,_Yangshao_Culture,_Shaanxi,_1955.JPG",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Neolithic_pottery_basin%2C_Yangshao_Culture%2C_Shaanxi%2C_1955.JPG/960px-Neolithic_pottery_basin%2C_Yangshao_Culture%2C_Shaanxi%2C_1955.JPG",
+    "artist": "Prof. Gary Lee Todd",
+    "license_short": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "key": "bronze",
+    "era": "青铜",
+    "title": "File:HouMuWuDingFullView.jpg",
+    "caption": "后母戊鼎",
+    "crop": [
+      0.1,
+      0.02,
+      0.9,
+      0.96
+    ],
+    "page": "https://commons.wikimedia.org/wiki/File:HouMuWuDingFullView.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/HouMuWuDingFullView.jpg/960px-HouMuWuDingFullView.jpg",
+    "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Mlogic\" title=\"User:Mlogic\">Mlogic</a>",
+    "license_short": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "key": "qinhan",
+    "era": "秦汉",
+    "title": "File:Terracotta Army 5-crop.jpg",
+    "caption": "跪射俑",
+    "crop": [
+      0.06,
+      0.02,
+      0.94,
+      0.98
+    ],
+    "page": "https://commons.wikimedia.org/wiki/File:Terracotta_Army_5-crop.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Terracotta_Army_5-crop.jpg/960px-Terracotta_Army_5-crop.jpg",
+    "artist": "Camphora",
+    "license_short": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0"
+  },
+  {
+    "key": "tangsong",
+    "era": "唐宋",
+    "title": "File:Jingangjing.jpg",
+    "caption": "金刚经版画",
+    "crop": [
+      0.04,
+      0.16,
+      0.96,
+      0.84
+    ],
+    "page": "https://commons.wikimedia.org/wiki/File:Jingangjing.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Jingangjing.jpg/960px-Jingangjing.jpg",
+    "artist": "The colophon, at the inner end, reads: Reverently [caused to be] made for universal free distribution by Wang Jie on behalf of his two parents on the 13th of the 4th moon of the 9th year of Xiantong [i.e. 11th May, CE 868 ].",
+    "license_short": "Public domain",
+    "license_url": null
+  },
+  {
+    "key": "mingqing",
+    "era": "明清",
+    "title": "File:Chinese - Vase - Walters 491889 - Profile.jpg",
+    "caption": "青花瓷瓶",
+    "crop": [
+      0.16,
+      0.02,
+      0.84,
+      0.98
+    ],
+    "page": "https://commons.wikimedia.org/wiki/File:Chinese_-_Vase_-_Walters_491889_-_Profile.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Chinese_-_Vase_-_Walters_491889_-_Profile.jpg",
+    "artist": "<div class=\"fn value\">\n<span lang=\"en\">Anonymous</span> (<a href=\"https://en.wikipedia.org/wiki/en:China_(region)\" class=\"extiw\" title=\"w:en:China (region)\"><span title=\"cultural region, ancient civilization, and nation in East Asia; mostly refers to the People's Republic of China in political situation and rarely refers to the Republic of China\">China</span></a>)<span style=\"display:none\">Unknown author</span></div>",
+    "license_short": "Public domain",
+    "license_url": null
+  },
+  {
+    "key": "modern",
+    "era": "近现代",
+    "title": "File:HP1001 steam locomotive in Tangshan.jpg",
+    "caption": "蒸汽机车",
+    "crop": [
+      0.02,
+      0.18,
+      0.98,
+      0.82
+    ],
+    "page": "https://commons.wikimedia.org/wiki/File:HP1001_steam_locomotive_in_Tangshan.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/HP1001_steam_locomotive_in_Tangshan.jpg",
+    "artist": "Unknown author<span style=\"display: none;\">Unknown author</span>",
+    "license_short": "Public domain",
+    "license_url": null
+  },
+  {
+    "key": "future_6",
+    "era": "当代屏幕",
+    "title": "Procedural collage symbol generated locally",
+    "caption": "当代屏幕",
+    "page": null,
+    "license_short": "Original procedural asset",
+    "license_url": null
+  },
+  {
+    "key": "future_7",
+    "era": "近未来无人机",
+    "title": "Procedural collage symbol generated locally",
+    "caption": "近未来无人机",
+    "page": null,
+    "license_short": "Original procedural asset",
+    "license_url": null
+  },
+  {
+    "key": "future_8",
+    "era": "赛博义眼",
+    "title": "Procedural collage symbol generated locally",
+    "caption": "赛博义眼",
+    "page": null,
+    "license_short": "Original procedural asset",
+    "license_url": null
+  },
+  {
+    "key": "future_9",
+    "era": "星际飞船",
+    "title": "Procedural collage symbol generated locally",
+    "caption": "星际飞船",
+    "page": null,
+    "license_short": "Original procedural asset",
+    "license_url": null
+  },
+  {
+    "key": "future_10",
+    "era": "后人类晶体",
+    "title": "Procedural collage symbol generated locally",
+    "caption": "后人类晶体",
+    "page": null,
+    "license_short": "Original procedural asset",
+    "license_url": null
+  },
+  {
+    "key": "future_11",
+    "era": "时间乱流",
+    "title": "Procedural collage symbol generated locally",
+    "caption": "时间乱流",
+    "page": null,
+    "license_short": "Original procedural asset",
+    "license_url": null
+  }
+]

@@ -1,0 +1,228 @@
+{
+  "image_size": [
+    1774,
+    887
+  ],
+  "slots": [
+    {
+      "id": "anchor",
+      "layer": "outside",
+      "type": "anchor",
+      "box": [
+        0,
+        745,
+        145,
+        935
+      ]
+    },
+    {
+      "id": "outer_anchor_chain",
+      "layer": "outside",
+      "type": "anchor_chain",
+      "box": [
+        45,
+        440,
+        132,
+        845
+      ]
+    },
+    {
+      "id": "bow_winch",
+      "layer": "upper_deck",
+      "type": "anchor_rig",
+      "box": [
+        130,
+        322,
+        255,
+        420
+      ]
+    },
+    {
+      "id": "deck_sailor",
+      "layer": "upper_deck",
+      "type": "character",
+      "box": [
+        278,
+        218,
+        372,
+        420
+      ]
+    },
+    {
+      "id": "bridge_captain",
+      "layer": "top",
+      "type": "character",
+      "box": [
+        585,
+        140,
+        670,
+        300
+      ]
+    },
+    {
+      "id": "bridge_helm_optional",
+      "layer": "top",
+      "type": "prop",
+      "box": [
+        660,
+        175,
+        730,
+        292
+      ]
+    },
+    {
+      "id": "tv_room_plant",
+      "layer": "middle",
+      "type": "fragile_prop",
+      "box": [
+        495,
+        360,
+        562,
+        530
+      ]
+    },
+    {
+      "id": "tv_room_left_guest_chair",
+      "layer": "middle",
+      "type": "character_furniture",
+      "box": [
+        570,
+        365,
+        705,
+        530
+      ]
+    },
+    {
+      "id": "tv_screen_inner",
+      "layer": "middle",
+      "type": "breakable_prop",
+      "box": [
+        710,
+        332,
+        930,
+        418
+      ]
+    },
+    {
+      "id": "tv_room_center_guest_table",
+      "layer": "middle",
+      "type": "character_furniture",
+      "box": [
+        705,
+        398,
+        925,
+        535
+      ]
+    },
+    {
+      "id": "tv_room_right_guest_chair",
+      "layer": "middle",
+      "type": "character_furniture",
+      "box": [
+        935,
+        370,
+        1065,
+        530
+      ]
+    },
+    {
+      "id": "banquet_cake",
+      "layer": "middle",
+      "type": "fragile_prop",
+      "box": [
+        1195,
+        360,
+        1280,
+        455
+      ]
+    },
+    {
+      "id": "banquet_champagne_tower",
+      "layer": "middle",
+      "type": "fragile_prop",
+      "box": [
+        1288,
+        336,
+        1375,
+        455
+      ]
+    },
+    {
+      "id": "banquet_guest",
+      "layer": "middle",
+      "type": "character",
+      "box": [
+        1400,
+        305,
+        1510,
+        530
+      ]
+    },
+    {
+      "id": "banquet_vase_and_shards",
+      "layer": "middle",
+      "type": "fragile_prop",
+      "box": [
+        1510,
+        335,
+        1642,
+        535
+      ]
+    },
+    {
+      "id": "chain_locker_chest",
+      "layer": "lower",
+      "type": "prop",
+      "box": [
+        282,
+        660,
+        428,
+        792
+      ]
+    },
+    {
+      "id": "cargo_crates",
+      "layer": "lower",
+      "type": "prop_stack",
+      "box": [
+        480,
+        610,
+        660,
+        770
+      ]
+    },
+    {
+      "id": "treasure_chest",
+      "layer": "lower",
+      "type": "valuable_prop",
+      "box": [
+        650,
+        628,
+        902,
+        795
+      ]
+    },
+    {
+      "id": "loose_coins_sack",
+      "layer": "lower",
+      "type": "small_props",
+      "box": [
+        598,
+        735,
+        930,
+        830
+      ]
+    },
+    {
+      "id": "engineer",
+      "layer": "lower",
+      "type": "character",
+      "box": [
+        972,
+        585,
+        1095,
+        810
+      ]
+    }
+  ]
+}

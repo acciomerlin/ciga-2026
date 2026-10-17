@@ -1,0 +1,1195 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help AI Anchorman 后台</title>
+  <style>
+    :root {
+      --bg: #f4f1eb;
+      --panel: #fffdf8;
+      --soft: #fbf4ec;
+      --text: #18202b;
+      --muted: #687587;
+      --line: #d9cfc0;
+      --accent: #4f8ec7;
+      --accent-2: #de8a3a;
+      --ink: #202631;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(222, 138, 58, 0.13), transparent 28%),
+        radial-gradient(circle at 92% 4%, rgba(79, 142, 199, 0.14), transparent 26%),
+        var(--bg);
+    }
+
+    .shell {
+      width: min(1220px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0;
+    }
+
+    header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 30px;
+      line-height: 1.15;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+
+    h3 {
+      font-size: 15px;
+    }
+
+    .sub {
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 2px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: 0 14px 36px rgba(62, 51, 39, 0.1);
+    }
+
+    .control-panel {
+      overflow: hidden;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-bottom: 2px solid var(--line);
+      background: #fff7ea;
+      overflow-x: auto;
+    }
+
+    .tab-button {
+      appearance: none;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--text);
+      background: #fffdf8;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 4px 0 rgba(97, 127, 157, 0.12);
+    }
+
+    .tab-button.is-active {
+      color: #fff;
+      border-color: #3d75a8;
+      background: var(--accent);
+    }
+
+    .tab-panel {
+      display: none;
+      gap: 18px;
+      padding: 18px;
+    }
+
+    .tab-panel.is-active {
+      display: grid;
+    }
+
+    .section {
+      display: grid;
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.78);
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .component {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .level-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .level-card {
+      display: grid;
+      gap: 12px;
+      padding: 14px;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      background: #fffaf0;
+    }
+
+    .level-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .level-card-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--text);
+      background: #fff;
+      font: inherit;
+      padding: 9px 10px;
+    }
+
+    .group {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-weight: 800;
+    }
+
+    .row-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    input[type="color"] {
+      width: 56px;
+      height: 38px;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    textarea,
+    input[type="number"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--text);
+      background: #fff;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+      padding: 12px;
+      line-height: 1.65;
+    }
+
+    input[type="number"] {
+      padding: 9px 10px;
+    }
+
+    .inline {
+      display: grid;
+      grid-template-columns: 1fr 92px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .switch-row input {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 14px 18px 18px;
+    }
+
+    button,
+    a.button {
+      appearance: none;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: #fff;
+      background: var(--accent);
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button.secondary,
+    a.secondary {
+      color: var(--text);
+      border-color: var(--line);
+      background: #fff;
+    }
+
+    .preview {
+      position: sticky;
+      top: 16px;
+      overflow: hidden;
+      background: var(--ink);
+      color: #f4f7fb;
+    }
+
+    .preview-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      background: #273140;
+      font-size: 13px;
+    }
+
+    .preview-body {
+      min-height: 330px;
+      padding: 16px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .toast {
+      min-height: 24px;
+      color: var(--accent);
+      font-weight: 800;
+      padding: 0 18px 16px;
+    }
+
+    @media (max-width: 960px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .layout,
+      .component-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preview {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <h1>Help AI Anchorman 后台</h1>
+        <p class="sub">分区调节标题、过场漫画和正式关卡。修改会热更新到已经打开的主页面。</p>
+      </div>
+      <a class="button secondary" href="index.html" target="_blank" rel="noreferrer">打开主页面</a>
+    </header>
+
+    <div class="layout">
+      <section class="panel control-panel" aria-label="页面设置">
+        <nav class="tabs" aria-label="设置分类">
+          <button class="tab-button is-active" type="button" data-tab="title">标题首页</button>
+          <button class="tab-button" type="button" data-tab="transition">过场动画</button>
+          <button class="tab-button" type="button" data-tab="level">正式关卡</button>
+          <button class="tab-button" type="button" data-tab="global">全局设置</button>
+        </nav>
+
+        <div class="tab-panel is-active" id="tab-title">
+          <div class="section">
+            <h2>标题和首页元素</h2>
+            <div class="component-grid" id="titleGrid"></div>
+          </div>
+          <div class="section">
+            <h2>标题样式</h2>
+            <div class="component-grid">
+              <div class="component">
+                <div class="group">
+                  <label for="titleMainColor">普通字母颜色</label>
+                  <input id="titleMainColor" type="color">
+                </div>
+                <div class="group">
+                  <label for="titleAnchorColor">ANCHOR 颜色</label>
+                  <input id="titleAnchorColor" type="color">
+                </div>
+              </div>
+              <div class="component">
+                <div class="group">
+                  <label for="titleMotion">标题动效幅度：<span id="titleMotionValue">7</span></label>
+                  <div class="inline">
+                    <input id="titleMotion" type="range" min="1" max="24" step="1">
+                    <input id="titleMotionNumber" type="number" min="1" max="24" step="1">
+                  </div>
+                </div>
+                <div class="hint">数值越大，字母的手绘晃动越明显。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-transition">
+          <div class="section">
+            <h2>过场漫画布局</h2>
+            <div class="component-grid" id="transitionGrid"></div>
+          </div>
+          <div class="section">
+            <h2>过场字幕</h2>
+            <div class="group">
+              <label for="comicText1">comic1 字幕</label>
+              <textarea id="comicText1"></textarea>
+            </div>
+            <div class="group">
+              <label for="comicText2">comic2 字幕</label>
+              <textarea id="comicText2"></textarea>
+            </div>
+            <div class="group">
+              <label for="comicText3">comic3 字幕</label>
+              <textarea id="comicText3"></textarea>
+            </div>
+            <div class="group">
+              <label for="comicText4">comic4 字幕</label>
+              <textarea id="comicText4"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-level">
+          <div class="section">
+            <h2>正式关卡布局</h2>
+            <div class="component-grid" id="levelGrid"></div>
+            <div class="hint">“对话文字区域”控制文字在 dialogue 图片内部的位置和尺寸。</div>
+          </div>
+          <div class="section">
+            <h2>正式关卡通用文字</h2>
+            <div class="component-grid">
+              <div class="component">
+                <div class="group">
+                  <label for="dialogTextColor">普通文字颜色</label>
+                  <input id="dialogTextColor" type="color">
+                </div>
+                <div class="group">
+                  <label for="dialogHighlightColor">高亮文字颜色</label>
+                  <input id="dialogHighlightColor" type="color">
+                </div>
+              </div>
+              <div class="component">
+                <div class="group">
+                  <label for="dialogFontSize">对话文字字号：<span id="dialogFontSizeValue">24</span> px</label>
+                  <div class="inline">
+                    <input id="dialogFontSize" type="range" min="12" max="52" step="1">
+                    <input id="dialogFontSizeNumber" type="number" min="12" max="52" step="1">
+                  </div>
+                </div>
+                <div class="group">
+                  <label for="dialogHighlightText">需要高亮的文字</label>
+                  <textarea id="dialogHighlightText"></textarea>
+                </div>
+                <div class="group">
+                  <label for="dialogShakeText">需要抖动的文字</label>
+                  <textarea id="dialogShakeText"></textarea>
+                </div>
+                <div class="hint">从已有对话中填写完整片段。命中后会按单字分别抖动，文字刚打出来就开始抖；多段用 | 分隔。</div>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <h2>关卡列表</h2>
+            <div class="level-list" id="levelList"></div>
+            <button id="addLevelBtn" class="secondary" type="button">添加关卡</button>
+            <div class="hint">每张卡就是一个新关卡。wrong 红圈区域格式为 x,y,w,h，坐标相对于 dialogue 图片的百分比。</div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-global">
+          <div class="section">
+            <h2>电视窗口</h2>
+            <div class="component-grid" id="globalGrid"></div>
+          </div>
+          <div class="section">
+            <h2>打字和光标</h2>
+            <div class="component-grid">
+              <div class="component">
+                <div class="group">
+                  <label for="speed">打字速度：<span id="speedValue">42</span> ms / 字</label>
+                  <div class="inline">
+                    <input id="speed" type="range" min="8" max="160" step="1">
+                    <input id="speedNumber" type="number" min="8" max="160" step="1">
+                  </div>
+                </div>
+                <div class="group">
+                  <label for="fontSize">过场字幕字号：<span id="fontSizeValue">24</span> px</label>
+                  <div class="inline">
+                    <input id="fontSize" type="range" min="16" max="44" step="1">
+                    <input id="fontSizeNumber" type="number" min="16" max="44" step="1">
+                  </div>
+                </div>
+              </div>
+              <div class="component">
+                <div class="group">
+                  <label for="accent">光标颜色</label>
+                  <input id="accent" type="color">
+                </div>
+                <label class="switch-row" for="cursor">
+                  <span>
+                    <strong>显示打字光标</strong>
+                    <span class="hint">关闭后不会显示闪烁竖线。</span>
+                  </span>
+                  <input id="cursor" type="checkbox">
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="saveBtn" type="button">保存设置</button>
+          <button id="resetBtn" class="secondary" type="button">恢复默认</button>
+        </div>
+        <div class="toast" id="toast" role="status"></div>
+      </section>
+
+      <aside class="panel preview" aria-label="文字预览">
+        <div class="preview-head">
+          <strong>文字预览</strong>
+          <span id="previewMeta">42ms</span>
+        </div>
+        <div class="preview-body" id="previewBody"></div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const defaultSettings = {
+      speed: 42,
+      fontSize: 24,
+      cursor: true,
+      accent: "#111827",
+      titleMainColor: "#de8a3a",
+      titleAnchorColor: "#4f8ec7",
+      titleMotion: 7,
+      comicTexts: [
+        "“这简直是人工智障！”",
+        "愚蠢的AI 播报员在新闻联播里经常会把事实说跑偏，让观众听得一头雾水。",
+        "面对频繁出现的大模型幻觉问题，严谨的新闻事实校对员再也忍不下去了！",
+        "把新闻里的错误一一纠正，还大家一档真实可靠、清清楚楚的新闻联播吧~"
+      ],
+      dialogText: "各位观众晚上好，欢迎收看今天的 AI 新闻联播。",
+      dialogTexts: ["各位观众晚上好，欢迎收看今天的 AI 新闻联播。"],
+      dialogFontSize: 24,
+      dialogTextColor: "#253142",
+      dialogHighlightText: "AI 新闻联播",
+      dialogHighlightColor: "#d94b37",
+      dialogShakeText: "最新消息，绝无假货",
+      dialogSigns: ["none"],
+      wrongRegions: [[]],
+      levels: [
+        {
+          text: "各位观众晚上好，欢迎收看今天的 AI 新闻联播。",
+          sign: "none",
+          signX: 18,
+          signY: 58,
+          signW: 22,
+          signRotate: -4,
+          wrongRegions: [],
+          showSigns: false,
+          correctX: 18,
+          correctY: 58,
+          correctW: 22,
+          correctRotate: -4,
+          wrongX: 38,
+          wrongY: 58,
+          wrongW: 22,
+          wrongRotate: 4,
+          wrongWords: ""
+        }
+      ],
+      layout: {
+        title: { x: 50, y: 15.2, scale: 1 },
+        earth: { x: 50, y: 4.6, w: 50 },
+        anchor: { x: 82, y: 100, w: 30 },
+        button: { x: 50, y: 82, w: 25 },
+        tv: { x: 50, y: 50, w: 82, h: 72 },
+        comicFrame: { x: 50, y: 6, w: 72, h: 58 },
+        comic1: { x: 50, y: 50, w: 88 },
+        comic2: { x: 50, y: 50, w: 88 },
+        comic3: { x: 50, y: 50, w: 88 },
+        comic4: { x: 50, y: 50, w: 88 },
+        caption: { x: 50, y: 72, w: 78, h: 22 },
+        liveRoom: { x: 50, y: 50, w: 100, h: 100 },
+        dialogue: { x: 68, y: 16, w: 38 },
+        dialogTextBox: { x: 9, y: 17, w: 82, h: 58 }
+      }
+    };
+
+    const configKey = "help-ai-anchorman-settings";
+    const componentDefs = [
+      { key: "title", group: "title", name: "标题", sizeKey: "scale", sizeLabel: "缩放", min: 0.3, max: 2.8, step: 0.01 },
+      { key: "earth", group: "title", name: "地球", sizeKey: "w", sizeLabel: "宽度", min: 10, max: 180, step: 1 },
+      { key: "anchor", group: "title", name: "播报员", sizeKey: "w", sizeLabel: "宽度", min: 8, max: 140, step: 1 },
+      { key: "button", group: "title", name: "开始按钮", sizeKey: "w", sizeLabel: "宽度", min: 8, max: 100, step: 1 },
+      { key: "comicFrame", group: "transition", name: "漫画框", sizes: [
+        { key: "w", label: "宽度", min: 24, max: 100, step: 1 },
+        { key: "h", label: "高度", min: 18, max: 74, step: 1 }
+      ] },
+      { key: "comic1", group: "transition", name: "comic1 图片", sizeKey: "w", sizeLabel: "宽度", min: 18, max: 160, step: 1 },
+      { key: "comic2", group: "transition", name: "comic2 图片", sizeKey: "w", sizeLabel: "宽度", min: 18, max: 160, step: 1 },
+      { key: "comic3", group: "transition", name: "comic3 图片", sizeKey: "w", sizeLabel: "宽度", min: 18, max: 160, step: 1 },
+      { key: "comic4", group: "transition", name: "comic4 图片", sizeKey: "w", sizeLabel: "宽度", min: 18, max: 160, step: 1 },
+      { key: "caption", group: "transition", name: "字幕框", sizes: [
+        { key: "w", label: "宽度", min: 20, max: 100, step: 1 },
+        { key: "h", label: "高度", min: 10, max: 46, step: 1 }
+      ] },
+      { key: "liveRoom", group: "level", name: "直播间背景", sizes: [
+        { key: "w", label: "宽度", min: 40, max: 160, step: 1 },
+        { key: "h", label: "高度", min: 40, max: 160, step: 1 }
+      ] },
+      { key: "dialogue", group: "level", name: "对话框图片", sizeKey: "w", sizeLabel: "宽度", min: 16, max: 100, step: 1 },
+      { key: "dialogTextBox", group: "level", name: "对话文字区域", sizes: [
+        { key: "w", label: "宽度", min: 20, max: 100, step: 1 },
+        { key: "h", label: "高度", min: 12, max: 100, step: 1 }
+      ] },
+      { key: "tv", group: "global", name: "电视窗口", sizes: [
+        { key: "w", label: "宽度", min: 45, max: 98, step: 1 },
+        { key: "h", label: "高度", min: 38, max: 92, step: 1 }
+      ] }
+    ];
+
+    const groupTargets = {
+      title: document.getElementById("titleGrid"),
+      transition: document.getElementById("transitionGrid"),
+      level: document.getElementById("levelGrid"),
+      global: document.getElementById("globalGrid")
+    };
+
+    const fields = {
+      speed: document.getElementById("speed"),
+      speedNumber: document.getElementById("speedNumber"),
+      fontSize: document.getElementById("fontSize"),
+      fontSizeNumber: document.getElementById("fontSizeNumber"),
+      accent: document.getElementById("accent"),
+      cursor: document.getElementById("cursor"),
+      titleMainColor: document.getElementById("titleMainColor"),
+      titleAnchorColor: document.getElementById("titleAnchorColor"),
+      titleMotion: document.getElementById("titleMotion"),
+      titleMotionNumber: document.getElementById("titleMotionNumber"),
+      dialogFontSize: document.getElementById("dialogFontSize"),
+      dialogFontSizeNumber: document.getElementById("dialogFontSizeNumber"),
+      dialogTextColor: document.getElementById("dialogTextColor"),
+      dialogHighlightText: document.getElementById("dialogHighlightText"),
+      dialogHighlightColor: document.getElementById("dialogHighlightColor"),
+      dialogShakeText: document.getElementById("dialogShakeText"),
+      comicTexts: [
+        document.getElementById("comicText1"),
+        document.getElementById("comicText2"),
+        document.getElementById("comicText3"),
+        document.getElementById("comicText4")
+      ]
+    };
+
+    const speedValue = document.getElementById("speedValue");
+    const fontSizeValue = document.getElementById("fontSizeValue");
+    const dialogFontSizeValue = document.getElementById("dialogFontSizeValue");
+    const previewBody = document.getElementById("previewBody");
+    const previewMeta = document.getElementById("previewMeta");
+    const titleMotionValue = document.getElementById("titleMotionValue");
+    const toast = document.getElementById("toast");
+    const levelList = document.getElementById("levelList");
+    const configChannel = "BroadcastChannel" in window ? new BroadcastChannel("help-ai-anchorman") : null;
+    const layoutInputs = {};
+    let hotUpdateTimer = null;
+
+    function mergeSettings(saved) {
+      return {
+        ...defaultSettings,
+        ...saved,
+        comicTexts: Array.from({ length: 4 }, (_, index) => {
+          return saved && saved.comicTexts && saved.comicTexts[index] !== undefined ? saved.comicTexts[index] : defaultSettings.comicTexts[index];
+        }),
+        dialogTexts: normalizeDialogTexts(saved),
+        dialogFontSize: saved && saved.dialogFontSize !== undefined ? saved.dialogFontSize : defaultSettings.dialogFontSize,
+        dialogShakeText: saved && saved.dialogShakeText !== undefined ? saved.dialogShakeText : defaultSettings.dialogShakeText,
+        dialogSigns: normalizeDialogSigns(saved),
+        wrongRegions: normalizeWrongRegions(saved),
+        levels: normalizeLevels(saved),
+        layout: {
+          title: { ...defaultSettings.layout.title, ...(saved && saved.layout && saved.layout.title) },
+          earth: { ...defaultSettings.layout.earth, ...(saved && saved.layout && saved.layout.earth) },
+          anchor: { ...defaultSettings.layout.anchor, ...(saved && saved.layout && saved.layout.anchor) },
+          button: { ...defaultSettings.layout.button, ...(saved && saved.layout && saved.layout.button) },
+          tv: { ...defaultSettings.layout.tv, ...(saved && saved.layout && saved.layout.tv) },
+          comicFrame: { ...defaultSettings.layout.comicFrame, ...(saved && saved.layout && saved.layout.comicFrame) },
+          comic1: { ...defaultSettings.layout.comic1, ...(saved && saved.layout && (saved.layout.comic1 || saved.layout.comics && saved.layout.comics[0])) },
+          comic2: { ...defaultSettings.layout.comic2, ...(saved && saved.layout && (saved.layout.comic2 || saved.layout.comics && saved.layout.comics[1])) },
+          comic3: { ...defaultSettings.layout.comic3, ...(saved && saved.layout && (saved.layout.comic3 || saved.layout.comics && saved.layout.comics[2])) },
+          comic4: { ...defaultSettings.layout.comic4, ...(saved && saved.layout && (saved.layout.comic4 || saved.layout.comics && saved.layout.comics[3])) },
+          caption: { ...defaultSettings.layout.caption, ...(saved && saved.layout && saved.layout.caption) },
+          liveRoom: { ...defaultSettings.layout.liveRoom, ...(saved && saved.layout && saved.layout.liveRoom) },
+          dialogue: { ...defaultSettings.layout.dialogue, ...(saved && saved.layout && saved.layout.dialogue) },
+          dialogTextBox: { ...defaultSettings.layout.dialogTextBox, ...(saved && saved.layout && saved.layout.dialogTextBox) }
+        }
+      };
+    }
+
+    function loadSettings() {
+      try {
+        return mergeSettings(JSON.parse(localStorage.getItem(configKey)));
+      } catch (error) {
+        return mergeSettings(null);
+      }
+    }
+
+    function normalizeDialogTexts(saved) {
+      if (saved && Array.isArray(saved.dialogTexts) && saved.dialogTexts.length) {
+        return saved.dialogTexts.map((text) => String(text));
+      }
+      if (saved && saved.dialogText !== undefined) {
+        const legacyTexts = String(saved.dialogText).split(/\n\s*\n/).map((text) => text.trim()).filter(Boolean);
+        return legacyTexts.length ? legacyTexts : defaultSettings.dialogTexts;
+      }
+      return defaultSettings.dialogTexts;
+    }
+
+    function normalizeDialogSigns(saved) {
+      const count = normalizeDialogTexts(saved).length;
+      const source = saved && Array.isArray(saved.dialogSigns) ? saved.dialogSigns : defaultSettings.dialogSigns;
+      return Array.from({ length: count }, (_, index) => {
+        const value = String(source[index] || "none").trim().toLowerCase();
+        return ["none", "correct", "wrong"].includes(value) ? value : "none";
+      });
+    }
+
+    function normalizeWrongRegions(saved) {
+      const count = normalizeDialogTexts(saved).length;
+      const source = saved && Array.isArray(saved.wrongRegions) ? saved.wrongRegions : defaultSettings.wrongRegions;
+      return Array.from({ length: count }, (_, index) => {
+        if (!Array.isArray(source[index])) return [];
+        return source[index].map((region) => ({
+          x: Number(region.x) || 50,
+          y: Number(region.y) || 50,
+          w: Number(region.w) || 12,
+          h: Number(region.h) || 8
+        }));
+      });
+    }
+
+    function sanitizeSign(value) {
+      const sign = String(value || "none").trim().toLowerCase();
+      return ["none", "correct", "wrong"].includes(sign) ? sign : "none";
+    }
+
+    function normalizeLevels(saved) {
+      if (saved && Array.isArray(saved.levels) && saved.levels.length) {
+        return saved.levels.map((level) => ({
+          text: String(level.text || ""),
+          sign: sanitizeSign(level.sign),
+          signX: Number(level.signX) || 18,
+          signY: Number(level.signY) || 58,
+          signW: Number(level.signW) || 22,
+          signRotate: Number(level.signRotate) || 0,
+          showSigns: level.showSigns !== undefined ? Boolean(level.showSigns) : sanitizeSign(level.sign) !== "none",
+          correctX: Number(level.correctX) || Number(level.signX) || 18,
+          correctY: Number(level.correctY) || Number(level.signY) || 58,
+          correctW: Number(level.correctW) || Number(level.signW) || 22,
+          correctRotate: Number(level.correctRotate) || -4,
+          wrongX: Number(level.wrongX) || 38,
+          wrongY: Number(level.wrongY) || Number(level.signY) || 58,
+          wrongW: Number(level.wrongW) || Number(level.signW) || 22,
+          wrongRotate: Number(level.wrongRotate) || 4,
+          wrongWords: String(level.wrongWords || ""),
+          wrongRegions: Array.isArray(level.wrongRegions) ? level.wrongRegions.map((region) => ({
+            x: Number(region.x) || 50,
+            y: Number(region.y) || 50,
+            w: Number(region.w) || 12,
+            h: Number(region.h) || 8
+          })) : []
+        }));
+      }
+      const texts = normalizeDialogTexts(saved);
+      const signs = normalizeDialogSigns(saved);
+      const regions = normalizeWrongRegions(saved);
+      return texts.map((text, index) => ({
+        text,
+        sign: signs[index] || "none",
+        signX: 18,
+        signY: 58,
+        signW: 22,
+        signRotate: -4,
+        showSigns: (signs[index] || "none") !== "none",
+        correctX: 18,
+        correctY: 58,
+        correctW: 22,
+        correctRotate: -4,
+        wrongX: 38,
+        wrongY: 58,
+        wrongW: 22,
+        wrongRotate: 4,
+        wrongWords: "",
+        wrongRegions: regions[index] || []
+      }));
+    }
+
+    function parseDialogTexts(value) {
+      return String(value || "").split(/\n\s*\n/).map((text) => text.trim()).filter(Boolean);
+    }
+
+    function parseDialogSigns(value, count) {
+      const lines = String(value || "").split(/\r?\n/);
+      return Array.from({ length: count }, (_, index) => {
+        const sign = String(lines[index] || "none").trim().toLowerCase();
+        return ["none", "correct", "wrong"].includes(sign) ? sign : "none";
+      });
+    }
+
+    function parseWrongRegions(value, count) {
+      const blocks = String(value || "").split(/\n\s*\n/);
+      return Array.from({ length: count }, (_, index) => {
+        const block = blocks[index] || "";
+        return block.split(/\r?\n/).map((line) => {
+          const [x, y, w, h] = line.split(",").map((part) => Number(part.trim()));
+          if ([x, y, w, h].some((num) => Number.isNaN(num))) return null;
+          return { x, y, w, h };
+        }).filter(Boolean);
+      });
+    }
+
+    function formatWrongRegions(regions) {
+      return regions.map((group) => {
+        return (group || []).map((region) => `${region.x},${region.y},${region.w},${region.h}`).join("\n");
+      }).join("\n\n");
+    }
+
+    function parseRegionLines(value) {
+      return String(value || "").split(/\r?\n/).map((line) => {
+        const [x, y, w, h] = line.split(",").map((part) => Number(part.trim()));
+        if ([x, y, w, h].some((num) => Number.isNaN(num))) return null;
+        return { x, y, w, h };
+      }).filter(Boolean);
+    }
+
+    function formatRegionLines(regions) {
+      return (regions || []).map((region) => `${region.x},${region.y},${region.w},${region.h}`).join("\n");
+    }
+
+    function createBlankLevel() {
+      return {
+        text: "新的对话",
+        sign: "none",
+        signX: 18,
+        signY: 58,
+        signW: 22,
+        signRotate: -4,
+        showSigns: false,
+        correctX: 18,
+        correctY: 58,
+        correctW: 22,
+        correctRotate: -4,
+        wrongX: 38,
+        wrongY: 58,
+        wrongW: 22,
+        wrongRotate: 4,
+        wrongWords: "",
+        wrongRegions: []
+      };
+    }
+
+    function levelCardHtml(level, index) {
+      return `
+        <div class="level-card" data-level-index="${index}">
+          <div class="level-card-head">
+            <h3>关卡 ${index + 1}</h3>
+            <div class="inline">
+              <button class="secondary insert-level-after" type="button">在此后添加</button>
+              <button class="secondary remove-level" type="button">删除</button>
+            </div>
+          </div>
+          <div class="group">
+            <label>对话文字</label>
+            <textarea class="level-text">${level.text}</textarea>
+          </div>
+          <div class="level-card-fields">
+            <div class="group">
+              <label>木牌类型</label>
+              <select class="level-show-signs">
+                <option value="false"${level.showSigns ? "" : " selected"}>全部不显示</option>
+                <option value="true"${level.showSigns ? " selected" : ""}>correct 和 wrong 都显示</option>
+              </select>
+            </div>
+            <div class="group">
+              <label>错误区域 x,y,w,h</label>
+              <textarea class="level-wrong-words">${level.wrongWords || ""}</textarea>
+            </div>
+            ${numberInput("signX", "木牌 X", level.signX, 0, 100, 0.5)}
+            ${numberInput("signY", "木牌 Y", level.signY, 0, 110, 0.5)}
+            ${numberInput("signW", "木牌宽度", level.signW, 8, 70, 1)}
+            ${numberInput("signRotate", "木牌倾斜", level.signRotate, -45, 45, 1)}
+            ${numberInput("correctX", "correct X", level.correctX, 0, 100, 0.5)}
+            ${numberInput("correctY", "correct Y", level.correctY, 0, 110, 0.5)}
+            ${numberInput("correctW", "correct 宽度", level.correctW, 8, 70, 1)}
+            ${numberInput("correctRotate", "correct 倾斜", level.correctRotate, -45, 45, 1)}
+            ${numberInput("wrongX", "wrong X", level.wrongX, 0, 100, 0.5)}
+            ${numberInput("wrongY", "wrong Y", level.wrongY, 0, 110, 0.5)}
+            ${numberInput("wrongW", "wrong 宽度", level.wrongW, 8, 70, 1)}
+            ${numberInput("wrongRotate", "wrong 倾斜", level.wrongRotate, -45, 45, 1)}
+          </div>
+        </div>
+      `;
+    }
+
+    function numberInput(key, label, value, min, max, step) {
+      return `
+        <div class="group">
+          <label>${label}</label>
+          <input class="level-number" data-key="${key}" type="number" min="${min}" max="${max}" step="${step}" value="${value}">
+        </div>
+      `;
+    }
+
+    function renderLevelCards(levels) {
+      levelList.innerHTML = levels.map(levelCardHtml).join("");
+      levelList.querySelectorAll(".level-show-signs").forEach((field) => {
+        field.closest(".group").querySelector("label").textContent = "木牌显示";
+      });
+      levelList.querySelectorAll(".level-wrong-words").forEach((field) => {
+        field.closest(".group").querySelector("label").textContent = "错误字/词";
+      });
+      ["signX", "signY", "signW", "signRotate"].forEach((key) => {
+        levelList.querySelectorAll(`[data-key="${key}"]`).forEach((field) => {
+          field.closest(".group").style.display = "none";
+        });
+      });
+      levelList.querySelectorAll("textarea, select, input").forEach((field) => {
+        field.addEventListener("input", updateAndPublish);
+        field.addEventListener("change", updateAndPublish);
+      });
+      levelList.querySelectorAll(".remove-level").forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".level-card");
+          card.remove();
+          if (!levelList.querySelector(".level-card")) {
+            renderLevelCards(defaultSettings.levels);
+          }
+          updateAndPublish();
+        });
+      });
+      levelList.querySelectorAll(".insert-level-after").forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".level-card");
+          const index = Array.from(levelList.querySelectorAll(".level-card")).indexOf(card);
+          const levels = readLevels();
+          levels.splice(index + 1, 0, createBlankLevel());
+          renderLevelCards(levels);
+          updateAndPublish();
+        });
+      });
+    }
+
+    function readLevels() {
+      return Array.from(levelList.querySelectorAll(".level-card")).map((card) => ({
+        text: card.querySelector(".level-text").value,
+        sign: card.querySelector(".level-show-signs").value === "true" ? "wrong" : "none",
+        showSigns: card.querySelector(".level-show-signs").value === "true",
+        signX: Number(card.querySelector('[data-key="signX"]').value),
+        signY: Number(card.querySelector('[data-key="signY"]').value),
+        signW: Number(card.querySelector('[data-key="signW"]').value),
+        signRotate: Number(card.querySelector('[data-key="signRotate"]').value),
+        correctX: Number(card.querySelector('[data-key="correctX"]').value),
+        correctY: Number(card.querySelector('[data-key="correctY"]').value),
+        correctW: Number(card.querySelector('[data-key="correctW"]').value),
+        correctRotate: Number(card.querySelector('[data-key="correctRotate"]').value),
+        wrongX: Number(card.querySelector('[data-key="wrongX"]').value),
+        wrongY: Number(card.querySelector('[data-key="wrongY"]').value),
+        wrongW: Number(card.querySelector('[data-key="wrongW"]').value),
+        wrongRotate: Number(card.querySelector('[data-key="wrongRotate"]').value),
+        wrongWords: card.querySelector(".level-wrong-words").value,
+        wrongRegions: []
+      }));
+    }
+
+    function controlHtml(component, prop, label, min, max, step) {
+      const id = `${component}-${prop}`;
+      return `
+        <div class="group">
+          <div class="row-label"><span>${label}</span><span id="${id}-value"></span></div>
+          <div class="inline">
+            <input id="${id}" data-component="${component}" data-prop="${prop}" type="range" min="${min}" max="${max}" step="${step}">
+            <input id="${id}-number" data-component="${component}" data-prop="${prop}" type="number" min="${min}" max="${max}" step="${step}">
+          </div>
+        </div>
+      `;
+    }
+
+    function getSizeDefs(def) {
+      if (def.sizes) return def.sizes;
+      return [{ key: def.sizeKey, label: def.sizeLabel, min: def.min, max: def.max, step: def.step }];
+    }
+
+    function buildLayoutControls() {
+      Object.keys(groupTargets).forEach((group) => {
+        groupTargets[group].innerHTML = componentDefs
+          .filter((def) => def.group === group)
+          .map((def) => `
+            <div class="component">
+              <h3>${def.name}</h3>
+              ${controlHtml(def.key, "x", "X 位置", 0, 100, 0.5)}
+              ${controlHtml(def.key, "y", "Y 位置", 0, 110, 0.5)}
+              ${getSizeDefs(def).map((size) => controlHtml(def.key, size.key, size.label, size.min, size.max, size.step)).join("")}
+            </div>
+          `).join("");
+      });
+
+      componentDefs.forEach((def) => {
+        ["x", "y", ...getSizeDefs(def).map((size) => size.key)].forEach((prop) => {
+          const id = `${def.key}-${prop}`;
+          layoutInputs[id] = {
+            range: document.getElementById(id),
+            number: document.getElementById(`${id}-number`),
+            value: document.getElementById(`${id}-value`)
+          };
+          [layoutInputs[id].range, layoutInputs[id].number].forEach((input) => {
+            input.addEventListener("input", () => {
+              const peer = input === layoutInputs[id].range ? layoutInputs[id].number : layoutInputs[id].range;
+              peer.value = input.value;
+              updateAndPublish();
+            });
+          });
+        });
+      });
+    }
+
+    function readLayout() {
+      const layout = {};
+      componentDefs.forEach((def) => {
+        layout[def.key] = {
+          x: Number(layoutInputs[`${def.key}-x`].range.value),
+          y: Number(layoutInputs[`${def.key}-y`].range.value)
+        };
+        getSizeDefs(def).forEach((size) => {
+          layout[def.key][size.key] = Number(layoutInputs[`${def.key}-${size.key}`].range.value);
+        });
+      });
+      return layout;
+    }
+
+    function readForm() {
+      const levels = readLevels();
+      return {
+        speed: Number(fields.speed.value),
+        fontSize: Number(fields.fontSize.value),
+        cursor: fields.cursor.checked,
+        accent: fields.accent.value,
+        titleMainColor: fields.titleMainColor.value,
+        titleAnchorColor: fields.titleAnchorColor.value,
+        titleMotion: Number(fields.titleMotion.value),
+        dialogText: levels.map((level) => level.text).join("\n\n"),
+        dialogTexts: levels.map((level) => level.text),
+        levels,
+        dialogFontSize: Number(fields.dialogFontSize.value),
+        dialogTextColor: fields.dialogTextColor.value,
+        dialogHighlightText: fields.dialogHighlightText.value,
+        dialogHighlightColor: fields.dialogHighlightColor.value,
+        dialogShakeText: fields.dialogShakeText.value,
+        dialogSigns: levels.map((level) => level.sign),
+        wrongRegions: levels.map((level) => level.wrongRegions),
+        comicTexts: fields.comicTexts.map((field) => field.value),
+        layout: readLayout()
+      };
+    }
+
+    function writeLayout(settings) {
+      componentDefs.forEach((def) => {
+        const values = settings.layout[def.key];
+        ["x", "y", ...getSizeDefs(def).map((size) => size.key)].forEach((prop) => {
+          const id = `${def.key}-${prop}`;
+          layoutInputs[id].range.value = values[prop];
+          layoutInputs[id].number.value = values[prop];
+          layoutInputs[id].value.textContent = prop === "scale" ? values[prop].toFixed(2) : `${values[prop]}%`;
+        });
+      });
+    }
+
+    function writeForm(settings) {
+      fields.speed.value = settings.speed;
+      fields.speedNumber.value = settings.speed;
+      fields.fontSize.value = settings.fontSize;
+      fields.fontSizeNumber.value = settings.fontSize;
+      fields.accent.value = settings.accent;
+      fields.cursor.checked = settings.cursor;
+      fields.titleMainColor.value = settings.titleMainColor;
+      fields.titleAnchorColor.value = settings.titleAnchorColor;
+      fields.titleMotion.value = settings.titleMotion;
+      fields.titleMotionNumber.value = settings.titleMotion;
+      fields.dialogFontSize.value = settings.dialogFontSize;
+      fields.dialogFontSizeNumber.value = settings.dialogFontSize;
+      fields.dialogTextColor.value = settings.dialogTextColor;
+      fields.dialogHighlightText.value = settings.dialogHighlightText;
+      fields.dialogHighlightColor.value = settings.dialogHighlightColor;
+      fields.dialogShakeText.value = settings.dialogShakeText;
+      renderLevelCards(settings.levels);
+      fields.comicTexts.forEach((field, index) => {
+        field.value = settings.comicTexts[index];
+      });
+      writeLayout(settings);
+      renderPreview();
+    }
+
+    function renderPreview() {
+      const settings = readForm();
+      speedValue.textContent = settings.speed;
+      fontSizeValue.textContent = settings.fontSize;
+      dialogFontSizeValue.textContent = settings.dialogFontSize;
+      titleMotionValue.textContent = settings.titleMotion;
+      previewMeta.textContent = `${settings.speed}ms`;
+      previewBody.textContent = `${settings.comicTexts.map((text, index) => `comic${index + 1}: ${text}`).join("\n\n")}\n\n正式关卡:\n${settings.levels.map((level, index) => `${index + 1}. [${level.sign}] ${level.text}`).join("\n\n")}\n\n高亮: ${settings.dialogHighlightText || "无"}\n抖动: ${settings.dialogShakeText || "无"}`;
+      previewBody.style.fontSize = `${Math.min(settings.fontSize, 26)}px`;
+      document.documentElement.style.setProperty("--accent", settings.accent);
+      writeLayout(settings);
+    }
+
+    function publishSettings(showSavedMessage = false) {
+      localStorage.setItem(configKey, JSON.stringify(readForm()));
+      if (configChannel) configChannel.postMessage("settings-updated");
+      if (showSavedMessage) {
+        toast.textContent = "已保存，主页面会同步读取新设置。";
+        setTimeout(() => {
+          toast.textContent = "";
+        }, 2200);
+      }
+    }
+
+    function hotUpdate() {
+      clearTimeout(hotUpdateTimer);
+      hotUpdateTimer = setTimeout(() => {
+        publishSettings(false);
+      }, 40);
+    }
+
+    function updateAndPublish() {
+      renderPreview();
+      hotUpdate();
+    }
+
+    function syncPair(source, target) {
+      target.value = source.value;
+      updateAndPublish();
+    }
+
+    function setupTabs() {
+      document.querySelectorAll(".tab-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll(".tab-button").forEach((item) => item.classList.remove("is-active"));
+          document.querySelectorAll(".tab-panel").forEach((item) => item.classList.remove("is-active"));
+          button.classList.add("is-active");
+          document.getElementById(`tab-${button.dataset.tab}`).classList.add("is-active");
+        });
+      });
+    }
+
+    setupTabs();
+    buildLayoutControls();
+    fields.speed.addEventListener("input", () => syncPair(fields.speed, fields.speedNumber));
+    fields.speedNumber.addEventListener("input", () => syncPair(fields.speedNumber, fields.speed));
+    fields.fontSize.addEventListener("input", () => syncPair(fields.fontSize, fields.fontSizeNumber));
+    fields.fontSizeNumber.addEventListener("input", () => syncPair(fields.fontSizeNumber, fields.fontSize));
+    fields.dialogFontSize.addEventListener("input", () => syncPair(fields.dialogFontSize, fields.dialogFontSizeNumber));
+    fields.dialogFontSizeNumber.addEventListener("input", () => syncPair(fields.dialogFontSizeNumber, fields.dialogFontSize));
+    fields.titleMotion.addEventListener("input", () => syncPair(fields.titleMotion, fields.titleMotionNumber));
+    fields.titleMotionNumber.addEventListener("input", () => syncPair(fields.titleMotionNumber, fields.titleMotion));
+    [fields.accent, fields.cursor, fields.titleMainColor, fields.titleAnchorColor, fields.dialogTextColor, fields.dialogHighlightText, fields.dialogHighlightColor, fields.dialogShakeText, ...fields.comicTexts].forEach((field) => {
+      field.addEventListener("input", updateAndPublish);
+      field.addEventListener("change", updateAndPublish);
+    });
+
+    document.getElementById("addLevelBtn").addEventListener("click", () => {
+      const levels = readLevels();
+      levels.push(createBlankLevel());
+      renderLevelCards(levels);
+      updateAndPublish();
+    });
+
+    document.getElementById("saveBtn").addEventListener("click", () => {
+      publishSettings(true);
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      localStorage.removeItem(configKey);
+      writeForm(defaultSettings);
+      if (configChannel) configChannel.postMessage("settings-updated");
+      toast.textContent = "已恢复默认设置。";
+      setTimeout(() => {
+        toast.textContent = "";
+      }, 2200);
+    });
+
+    writeForm(loadSettings());
+  </script>
+</body>
+</html>

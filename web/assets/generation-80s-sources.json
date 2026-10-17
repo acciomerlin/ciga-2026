@@ -1,0 +1,94 @@
+{
+  "sheet": "assets/generation-80s-cutouts.png",
+  "bankTexture": "assets/generation-80s-bank-texture.png",
+  "riverTexture": "assets/generation-80s-river-texture.png",
+  "columns": 3,
+  "rows": 3,
+  "items": [
+    {
+      "file": "80s-fashion-boombox-couple.png",
+      "id": "fashion_boombox",
+      "label": "喇叭裤",
+      "mode": "photo",
+      "note": "开放初期的洋气穿搭",
+      "index": 0,
+      "sprite": "assets/generation-80s-items/00-fashion_boombox.png"
+    },
+    {
+      "file": "80s-bicycle-street-fashion.png",
+      "id": "bicycle_street",
+      "label": "自行车潮",
+      "mode": "photo",
+      "note": "街头流动的集体生活",
+      "index": 1,
+      "sprite": "assets/generation-80s-items/01-bicycle_street.png"
+    },
+    {
+      "file": "80s-disco-poster.png",
+      "id": "disco_poster",
+      "label": "迪斯科",
+      "mode": "photo",
+      "note": "上一代眼里的不正经",
+      "index": 2,
+      "sprite": "assets/generation-80s-items/02-disco_poster.png"
+    },
+    {
+      "file": "80s-aviator-sunglasses.png",
+      "id": "aviator_sunglasses",
+      "label": "蛤蟆镜",
+      "mode": "whitecut",
+      "note": "过分招摇的酷",
+      "crop_bottom": true,
+      "index": 3,
+      "sprite": "assets/generation-80s-items/03-aviator_sunglasses.png"
+    },
+    {
+      "file": "80s-cinema-street-poster.png",
+      "id": "cinema_street",
+      "label": "录像厅",
+      "mode": "photo",
+      "note": "港台流行文化入口",
+      "index": 4,
+      "sprite": "assets/generation-80s-items/04-cinema_street.png"
+    },
+    {
+      "file": "80s-radio-cassette-player.png",
+      "id": "radio_cassette",
+      "label": "收录机",
+      "mode": "whitecut",
+      "note": "把流行歌带回家",
+      "index": 5,
+      "sprite": "assets/generation-80s-items/05-radio_cassette.png"
+    },
+    {
+      "file": "80s-cassette-tape.png",
+      "id": "cassette_tape",
+      "label": "磁带",
+      "mode": "whitecut",
+      "note": "可以反复倒带的青春",
+      "index": 6,
+      "sprite": "assets/generation-80s-items/06-cassette_tape.png"
+    },
+    {
+      "file": "80s-breakdance-stage.png",
+      "id": "breakdance_stage",
+      "label": "霹雳舞",
+      "mode": "photo",
+      "note": "身体先学会了新潮",
+      "index": 7,
+      "sprite": "assets/generation-80s-items/07-breakdance_stage.png"
+    },
+    {
+      "file": "80s-hongkong-movie-poster.png",
+      "id": "hk_movie_poster",
+      "label": "港片海报",
+      "mode": "photo",
+      "note": "彩色幻想贴上墙",
+      "index": 8,
+      "sprite": "assets/generation-80s-items/08-hk_movie_poster.png"
+    }
+  ],
+  "note": "No-frame low-poly cutouts generated from user-provided 80s references. Floating labels are rendered in-game, not baked into sprites.",
+  "bankTextureConcept": "80年代河岸：以用户提供的《文化周刊》版面为主叠图，内部混入80年代低多边形物件拼贴。",
+  "bankTextureReference": "assets/generation-reference/80s/80s-culture-weekly-reference.png"
+}

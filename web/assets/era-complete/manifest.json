@@ -1,0 +1,474 @@
+[
+  {
+    "id": "stone-age",
+    "name": "石器时代",
+    "records": [
+      {
+        "path": "assets/generation-stone-age-items/00-rock_art_slab.png",
+        "local": true
+      },
+      {
+        "path": "assets/generation-stone-age-items/02-perforated_stone_axe.png",
+        "local": true
+      },
+      {
+        "path": "assets/generation-stone-age-items/04-stone_tool_fragments.png",
+        "local": true
+      },
+      {
+        "path": "assets/era-complete/sources/stone-age/00-Chinese_prehistoric_rock_art.jpg",
+        "query": "Chinese prehistoric rock art",
+        "page": "File:Prehistoric America (IA cu31924088416924).pdf",
+        "url": "https://commons.wikimedia.org/wiki/File:Prehistoric_America_(IA_cu31924088416924).pdf"
+      },
+      {
+        "path": "assets/era-complete/sources/stone-age/01-Neolithic_stone_axe_China.jpg",
+        "query": "Neolithic stone axe China",
+        "page": "File:Neolithic Longshan Culture Stone Axe or Shovel.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Neolithic_Longshan_Culture_Stone_Axe_or_Shovel.jpg"
+      }
+    ]
+  },
+  {
+    "id": "xia-shang-zhou",
+    "name": "夏商周",
+    "records": [
+      {
+        "path": "/var/folders/jg/cn1b6xx50zvf16k_krq3863h0000gn/T/codex-clipboard-9fc15833-8661-49b3-b82c-7a3f31b92c0d.png",
+        "local": true
+      },
+      {
+        "path": "/var/folders/jg/cn1b6xx50zvf16k_krq3863h0000gn/T/codex-clipboard-6e3c5625-5bcc-4478-b207-9f81a1d71b84.png",
+        "local": true
+      },
+      {
+        "path": "/var/folders/jg/cn1b6xx50zvf16k_krq3863h0000gn/T/codex-clipboard-df73c442-50db-4101-a733-269a2bbe68bb.png",
+        "local": true
+      },
+      {
+        "path": "/var/folders/jg/cn1b6xx50zvf16k_krq3863h0000gn/T/codex-clipboard-ad5b3aa1-87ef-4a17-a3fd-8a0ce162d428.png",
+        "local": true
+      },
+      {
+        "path": "/var/folders/jg/cn1b6xx50zvf16k_krq3863h0000gn/T/codex-clipboard-d7d2bc46-634d-4283-81f1-70e27749f6e2.png",
+        "local": true
+      }
+    ]
+  },
+  {
+    "id": "spring-autumn-warring",
+    "name": "春秋战国",
+    "records": [
+      {
+        "path": "assets/history-reference-library/riverbanks/riverbank_warring_bamboo_slips.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-reference-library/obstacles/obstacle_hufu_tiger_tally.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/era-complete/sources/spring-autumn-warring/00-Warring_States_bamboo_slips.jpg",
+        "query": "Warring States bamboo slips",
+        "page": "File:Ancient Chinese Writing on Warring States Bamboo Slips 1.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Ancient_Chinese_Writing_on_Warring_States_Bamboo_Slips_1.jpg"
+      },
+      {
+        "path": "assets/era-complete/sources/spring-autumn-warring/01-Chinese_tiger_tally.jpg",
+        "query": "Chinese tiger tally",
+        "page": "File:20251026 Tiger-shaped Bronze Tallies.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:20251026_Tiger-shaped_Bronze_Tallies.jpg"
+      },
+      {
+        "path": "assets/era-complete/sources/spring-autumn-warring/02-Sword_of_Goujian.jpg",
+        "query": "Sword of Goujian",
+        "page": "File:20230208 Bronze sword used by King Goujian of Yue 01.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:20230208_Bronze_sword_used_by_King_Goujian_of_Yue_01.jpg"
+      }
+    ]
+  },
+  {
+    "id": "qin-han-three",
+    "name": "秦汉三国",
+    "records": [
+      {
+        "path": "assets/history-reference-library/riverbanks/riverbank_han_paper_manuscript.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-reference-library/transitions/transition_qin_han_seal.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-reference-library/transitions/transition_qin_weight.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/era-complete/sources/qin-han-three/00-Terracotta_Army_Qin.jpg",
+        "query": "Terracotta Army Qin",
+        "page": "File:Qin Shihuang Terracotta Army, Pit 1.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Qin_Shihuang_Terracotta_Army,_Pit_1.jpg"
+      },
+      {
+        "path": "assets/era-complete/sources/qin-han-three/02-Qin_dynasty_weight.jpg",
+        "query": "Qin dynasty weight",
+        "page": "File:Bronze weight, Qin dynasty, Nanjing Museum.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Bronze_weight,_Qin_dynasty,_Nanjing_Museum.jpg"
+      }
+    ]
+  },
+  {
+    "id": "tang",
+    "name": "唐",
+    "records": [
+      {
+        "path": "assets/history-reference-library/riverbanks/riverbank_diamond_sutra_print.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-reference-library/riverbanks/riverbank_dunhuang_scroll.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-reference-library/obstacles/obstacle_tang_sancai_camel.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/era-complete/sources/tang/00-Diamond_Sutra_Tang_dynasty.jpg",
+        "query": "Diamond Sutra Tang dynasty",
+        "page": "File:20160510 China 6248 Dunhuang sRGB (29368989884).jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:20160510_China_6248_Dunhuang_sRGB_(29368989884).jpg"
+      },
+      {
+        "path": "assets/era-complete/sources/tang/01-Dunhuang_manuscript.jpg",
+        "query": "Dunhuang manuscript",
+        "page": "File:British Library Dunhuang Go Manual.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:British_Library_Dunhuang_Go_Manual.jpg"
+      }
+    ]
+  },
+  {
+    "id": "song",
+    "name": "宋",
+    "records": [
+      {
+        "path": "assets/history-reference-library/riverbanks/riverbank_song_printed_book.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-reference-library/transitions/transition_song_yuan_banknote.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/era-complete/sources/song/00-Song_dynasty_printed_book.jpg",
+        "query": "Song dynasty printed book",
+        "page": "File:Chain drive, Su Song's book of 1092.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Chain_drive,_Su_Song%27s_book_of_1092.jpg"
+      },
+      {
+        "path": "assets/era-complete/sources/song/01-Jiaozi_banknote_Song.jpg",
+        "query": "Jiaozi banknote Song",
+        "page": "File:Jiao zi.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Jiao_zi.jpg"
+      },
+      {
+        "path": "assets/era-complete/sources/song/02-Song_dynasty_porcelain.jpg",
+        "query": "Song dynasty porcelain",
+        "page": "File:Chinese jar, Southern Song dynasty, porcelain with celadon glaze, HAA.JPG",
+        "url": "https://commons.wikimedia.org/wiki/File:Chinese_jar,_Southern_Song_dynasty,_porcelain_with_celadon_glaze,_HAA.JPG"
+      }
+    ]
+  },
+  {
+    "id": "yuan",
+    "name": "元",
+    "records": [
+      {
+        "path": "assets/history-reference-library/riverbanks/riverbank_phagspa_script.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-reference-library/obstacles/obstacle_yuan_paiza.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/era-complete/sources/yuan/01-Yuan_dynasty_paiza.jpg",
+        "query": "Yuan dynasty paiza",
+        "page": "File:Minusinskaya paiza.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Minusinskaya_paiza.jpg"
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      }
+    ]
+  },
+  {
+    "id": "ming",
+    "name": "明",
+    "records": [
+      {
+        "path": "assets/history-reference-library/riverbanks/riverbank_ming_print.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-reference-library/obstacles/obstacle_ming_banknote.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      }
+    ]
+  },
+  {
+    "id": "qing",
+    "name": "清",
+    "records": [
+      {
+        "path": "assets/history-reference-library/riverbanks/riverbank_qing_memorial.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-reference-library/riverbanks/riverbank_jurchen_script.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      }
+    ]
+  },
+  {
+    "id": "republic",
+    "name": "民国",
+    "records": [
+      {
+        "path": "assets/history-reference-library/riverbanks/riverbank_republic_newspaper.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-reference-library/transitions/transition_republic_prc_document.jpg",
+        "local": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      }
+    ]
+  },
+  {
+    "id": "prc-50-70",
+    "name": "50-70年代",
+    "records": [
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      }
+    ]
+  },
+  {
+    "id": "80s",
+    "name": "80年代",
+    "records": [
+      {
+        "path": "assets/generation-80s-items/00-fashion_boombox.png",
+        "local": true
+      },
+      {
+        "path": "assets/generation-80s-items/01-bicycle_street.png",
+        "local": true
+      },
+      {
+        "path": "assets/generation-80s-items/02-disco_poster.png",
+        "local": true
+      },
+      {
+        "path": "assets/generation-80s-items/05-radio_cassette.png",
+        "local": true
+      },
+      {
+        "path": "assets/generation-80s-items/06-cassette_tape.png",
+        "local": true
+      }
+    ]
+  },
+  {
+    "id": "90s",
+    "name": "90年代",
+    "records": [
+      {
+        "path": "assets/generation-90s-items/00-bp_pager.png",
+        "local": true
+      },
+      {
+        "path": "assets/generation-90s-items/02-vcd_discs.png",
+        "local": true
+      },
+      {
+        "path": "assets/generation-90s-items/07-xiaobawang_console.png",
+        "local": true
+      },
+      {
+        "path": "assets/generation-90s-items/08-arcade_cabinets.png",
+        "local": true
+      },
+      {
+        "path": "assets/generation-90s-items/11-ic_card_phone.png",
+        "local": true
+      }
+    ]
+  },
+  {
+    "id": "00s",
+    "name": "00年代",
+    "records": [
+      {
+        "path": "assets/era-complete/sources/00s/00-internet_cafe_China.jpg",
+        "query": "internet cafe China",
+        "page": "File:Korea Internet cafe.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Korea_Internet_cafe.jpg"
+      },
+      {
+        "path": "assets/era-complete/sources/00s/01-MP3_player.jpg",
+        "query": "MP3 player",
+        "page": "File:Medion MP3 player-0284.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Medion_MP3_player-0284.jpg"
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      }
+    ]
+  },
+  {
+    "id": "10s",
+    "name": "10年代",
+    "records": [
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      }
+    ]
+  },
+  {
+    "id": "20s",
+    "name": "20年代",
+    "records": [
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      }
+    ]
+  },
+  {
+    "id": "future",
+    "name": "未来幻想",
+    "records": [
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      },
+      {
+        "path": "assets/history-era-cutouts.png",
+        "fallback": true
+      }
+    ]
+  }
+]

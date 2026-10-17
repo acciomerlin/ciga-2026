@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perspective Anchor Prototype</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./perspective.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <canvas id="game" aria-label="Perspective anchor runner prototype"></canvas>
+      <section class="hud" aria-label="game status">
+        <div>
+          <span>DISTANCE</span>
+          <strong id="distance">0.00 km</strong>
+        </div>
+        <div>
+          <span>ANCHOR</span>
+          <strong id="anchorState">READY</strong>
+        </div>
+      </section>
+      <section class="controls" aria-label="controls">
+        <kbd>A</kbd><span>左侧抛链</span>
+        <kbd>D</kbd><span>右侧抛链</span>
+        <kbd>Space</kbd><span>松链 / 重开</span>
+      </section>
+      <div id="overlay" class="overlay is-hidden">
+        <h1>Perspective Anchor</h1>
+        <p id="result">撞上障碍了。</p>
+        <button id="restart" type="button">再来一次</button>
+      </div>
+    </main>
+    <script src="./perspective.js"></script>
+  </body>
+</html>

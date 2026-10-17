@@ -1,0 +1,59 @@
+{
+  "sheet": "assets/generation-stone-age-cutouts.png",
+  "bankTexture": "assets/generation-stone-age-bank-texture-v2.png",
+  "bankPatchTexture": "assets/generation-stone-age-patch-texture.png",
+  "riverTexture": "assets/generation-stone-age-river-texture-v2.png",
+  "boat": "assets/stone-age-boat-collage.png",
+  "anchor": "assets/stone-age-anchor.png",
+  "shield": "assets/stone-age-shield-bronze.png",
+  "columns": 3,
+  "rows": 2,
+  "items": [
+    {
+      "file": "stone-rock-art-bank.png",
+      "id": "rock_art_slab",
+      "label": "岩画石壁",
+      "note": "兽形记号留在石壁上",
+      "mode": "ragged",
+      "index": 0,
+      "sprite": "assets/generation-stone-age-items/00-rock_art_slab.png"
+    },
+    {
+      "file": "stone-cave-fire.png",
+      "id": "cave_fire",
+      "label": "洞穴火堆",
+      "note": "火光从石壁缝里亮起来",
+      "mode": "ragged",
+      "index": 1,
+      "sprite": "assets/generation-stone-age-items/01-cave_fire.png"
+    },
+    {
+      "file": "stone-perforated-axe.png",
+      "id": "perforated_stone_axe",
+      "label": "穿孔石斧",
+      "note": "石头第一次有了孔",
+      "mode": "stone_bg",
+      "index": 2,
+      "sprite": "assets/generation-stone-age-items/02-perforated_stone_axe.png"
+    },
+    {
+      "file": "stone-handled-axes.png",
+      "id": "handled_stone_axes",
+      "label": "石斧",
+      "note": "绑上木柄就变成工具",
+      "mode": "white_bg",
+      "index": 3,
+      "sprite": "assets/generation-stone-age-items/03-handled_stone_axes.png"
+    },
+    {
+      "file": "stone-tool-fragments.png",
+      "id": "stone_tool_fragments",
+      "label": "石器碎片",
+      "note": "被打制出来的边缘",
+      "mode": "dark_bg",
+      "index": 4,
+      "sprite": "assets/generation-stone-age-items/04-stone_tool_fragments.png"
+    }
+  ],
+  "note": "石器时代物件来自用户提供的岩画、洞穴、穿孔石器、石斧、石器碎片图；青铜复活护盾从旧青铜鼎素材重新扣出。河岸/河面 v2 是 imagegen 生成的安静底材质，用户素材拼贴只作为岸边 patch 和障碍物使用。辅助只使用直线/裁切痕，不绘制想象图标。"
+}

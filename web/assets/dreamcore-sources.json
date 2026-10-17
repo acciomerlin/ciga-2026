@@ -1,0 +1,175 @@
+{
+  "source_board": "https://www.pinterest.com/jadelinlin041/%E6%A2%A6%E6%A0%B8%E7%B4%A0%E6%9D%90/",
+  "downloaded_at": "2026-07-03T13:55:42Z",
+  "note": "Prototype transparent PNG sprites generated from Pinterest board images for local game jam validation. Background removal is heuristic.",
+  "used_images": [
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-00.png",
+      "file": "0f715d515f818e06b8fbc8c79a0c8e01.jpg",
+      "width": 1080,
+      "height": 1920,
+      "source_url_guess": "https://i.pinimg.com/originals/0f/71/5d/0f715d515f818e06b8fbc8c79a0c8e01.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-01.png",
+      "file": "a462c223635fdc42ebdfccc324de5b99.jpg",
+      "width": 720,
+      "height": 900,
+      "source_url_guess": "https://i.pinimg.com/originals/a4/62/c2/a462c223635fdc42ebdfccc324de5b99.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-02.png",
+      "file": "22c75ccaa626024a74f2ce9c583a2c28.jpg",
+      "width": 736,
+      "height": 920,
+      "source_url_guess": "https://i.pinimg.com/originals/22/c7/5c/22c75ccaa626024a74f2ce9c583a2c28.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-03.png",
+      "file": "d88d2e8a6641743c2ca392fbb87b14c6.jpg",
+      "width": 720,
+      "height": 1280,
+      "source_url_guess": "https://i.pinimg.com/originals/d8/8d/2e/d88d2e8a6641743c2ca392fbb87b14c6.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-04.png",
+      "file": "25fb1d98ad9be3755d3f716c5b952ff4.jpg",
+      "width": 750,
+      "height": 1124,
+      "source_url_guess": "https://i.pinimg.com/originals/25/fb/1d/25fb1d98ad9be3755d3f716c5b952ff4.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-05.png",
+      "file": "f959a1b422b0056cffccb53d898b1a51.jpg",
+      "width": 675,
+      "height": 1200,
+      "source_url_guess": "https://i.pinimg.com/originals/f9/59/a1/f959a1b422b0056cffccb53d898b1a51.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-06.png",
+      "file": "e4dd40c764ec10dea021e093e165bebe.jpg",
+      "width": 675,
+      "height": 900,
+      "source_url_guess": "https://i.pinimg.com/originals/e4/dd/40/e4dd40c764ec10dea021e093e165bebe.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-07.png",
+      "file": "43fe08405637401f85543438c982c8fd.jpg",
+      "width": 515,
+      "height": 516,
+      "source_url_guess": "https://i.pinimg.com/originals/43/fe/08/43fe08405637401f85543438c982c8fd.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-08.png",
+      "file": "688c94caace047247db736d364dce1ba.jpg",
+      "width": 626,
+      "height": 626,
+      "source_url_guess": "https://i.pinimg.com/originals/68/8c/94/688c94caace047247db736d364dce1ba.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-09.png",
+      "file": "42ce13975ec97a51750a0fdfac1504c2.png",
+      "width": 400,
+      "height": 318,
+      "source_url_guess": "https://i.pinimg.com/originals/42/ce/13/42ce13975ec97a51750a0fdfac1504c2.png"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-10.png",
+      "file": "8d9a27b357f434aab67d17bc7b8fc634.jpg",
+      "width": 1080,
+      "height": 1920,
+      "source_url_guess": "https://i.pinimg.com/originals/8d/9a/27/8d9a27b357f434aab67d17bc7b8fc634.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-11.png",
+      "file": "12cb61267038c3eb96ee8d9e2c3ac00b.jpg",
+      "width": 653,
+      "height": 754,
+      "source_url_guess": "https://i.pinimg.com/originals/12/cb/61/12cb61267038c3eb96ee8d9e2c3ac00b.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-12.png",
+      "file": "91cb4e44c6e751af23755d614f779c90.jpg",
+      "width": 1000,
+      "height": 2287,
+      "source_url_guess": "https://i.pinimg.com/originals/91/cb/4e/91cb4e44c6e751af23755d614f779c90.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-13.png",
+      "file": "c63c663b3997501492224c916da9b7cc.jpg",
+      "width": 682,
+      "height": 1023,
+      "source_url_guess": "https://i.pinimg.com/originals/c6/3c/66/c63c663b3997501492224c916da9b7cc.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-14.png",
+      "file": "04f031c1e143e3790f680282c2987f24.jpg",
+      "width": 1080,
+      "height": 1920,
+      "source_url_guess": "https://i.pinimg.com/originals/04/f0/31/04f031c1e143e3790f680282c2987f24.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-15.png",
+      "file": "0f72a73e67a9bb0ce881ad33435d76e1.jpg",
+      "width": 675,
+      "height": 1200,
+      "source_url_guess": "https://i.pinimg.com/originals/0f/72/a7/0f72a73e67a9bb0ce881ad33435d76e1.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-16.png",
+      "file": "b3566604e472ab014d9abcd23a766186.jpg",
+      "width": 650,
+      "height": 496,
+      "source_url_guess": "https://i.pinimg.com/originals/b3/56/66/b3566604e472ab014d9abcd23a766186.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-17.png",
+      "file": "1afe001b515b801d3d162c5d6ea9fdec.jpg",
+      "width": 600,
+      "height": 600,
+      "source_url_guess": "https://i.pinimg.com/originals/1a/fe/00/1afe001b515b801d3d162c5d6ea9fdec.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-18.png",
+      "file": "47a5127ea0ad0de27d66aac2680c4b0b.jpg",
+      "width": 736,
+      "height": 1104,
+      "source_url_guess": "https://i.pinimg.com/originals/47/a5/12/47a5127ea0ad0de27d66aac2680c4b0b.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-19.png",
+      "file": "2c2492b92161250d1db5bc8c4e38898b.jpg",
+      "width": 735,
+      "height": 1004,
+      "source_url_guess": "https://i.pinimg.com/originals/2c/24/92/2c2492b92161250d1db5bc8c4e38898b.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-20.png",
+      "file": "ac1d522d8233fe3b1047390ef5eaf13d.jpg",
+      "width": 240,
+      "height": 320,
+      "source_url_guess": "https://i.pinimg.com/originals/ac/1d/52/ac1d522d8233fe3b1047390ef5eaf13d.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-21.png",
+      "file": "1a1072eef0fe7d7baa43f3ae7ccb0c20.jpg",
+      "width": 800,
+      "height": 544,
+      "source_url_guess": "https://i.pinimg.com/originals/1a/10/72/1a1072eef0fe7d7baa43f3ae7ccb0c20.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-22.png",
+      "file": "16755904a34bd42c8e892fb6d0418ce7.jpg",
+      "width": 645,
+      "height": 860,
+      "source_url_guess": "https://i.pinimg.com/originals/16/75/59/16755904a34bd42c8e892fb6d0418ce7.jpg"
+    },
+    {
+      "sprite": "assets/dreamcore-pins/dreamcore-23.png",
+      "file": "8972f039ebdf7e85a5794b3f2bc9472f.jpg",
+      "width": 840,
+      "height": 1680,
+      "source_url_guess": "https://i.pinimg.com/originals/89/72/f0/8972f039ebdf7e85a5794b3f2bc9472f.jpg"
+    }
+  ]
+}

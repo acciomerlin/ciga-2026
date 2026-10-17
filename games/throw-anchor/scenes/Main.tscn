@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://biuxt3jxj83mx"]
+
+[ext_resource type="Script" uid="uid://d0wmtvdx64q8t" path="res://scripts/main.gd" id="1_main"]
+
+[node name="Main" type="Node2D" unique_id=1136742027]
+script = ExtResource("1_main")
+river_half_width = 800.0
+charge_seconds = 0.5
+default_start_speed = 500.0
+boat_sprite_longest_side = 300.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1414010045]

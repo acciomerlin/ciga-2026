@@ -1,0 +1,11 @@
+[gd_resource type="FontFile" format=3 load_steps=3]
+
+[ext_resource type="FontData" path="res://fonts/NotoSansSC.ttf" id="1_main"]
+[ext_resource type="FontData" path="res://fonts/NotoColorEmoji.ttf" id="2_emoji"]
+
+[resource]
+fallbacks = [ExtResource("2_emoji")]
+cache/size = 2048
+cache/zoner_size = 1024
+data/encoding = 1
+data/font = ExtResource("1_main")

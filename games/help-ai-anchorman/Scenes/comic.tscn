@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://crff3sqxj5kvk"]
+
+[ext_resource type="Texture2D" uid="uid://lmfm81aoivja" path="res://assets/background2.png" id="1_7jhq8"]
+[ext_resource type="Texture2D" uid="uid://cpq5jglo1spud" path="res://assets/background.png" id="2_rreli"]
+[ext_resource type="Texture2D" uid="uid://bl2c7ismhpmx1" path="res://assets/comic1.png" id="3_e0onh"]
+[ext_resource type="Texture2D" uid="uid://cfcbigk54esee" path="res://assets/tv_frame.png" id="4_d3chl"]
+[ext_resource type="Texture2D" uid="uid://bh52gvafp75lx" path="res://assets/bottom.png" id="5_j5wrg"]
+[ext_resource type="Script" uid="uid://drhp20gkr14qs" path="res://Scripts/rich_text_label.gd" id="6_uqiod"]
+[ext_resource type="Script" uid="uid://bgogaun0as4gk" path="res://Scripts/Typewriter.gd" id="7_j5wrg"]
+[ext_resource type="Texture2D" uid="uid://chm03pdeuth6h" path="res://assets/comic2.png" id="8_kquld"]
+[ext_resource type="Texture2D" uid="uid://bdretqt1ixmvl" path="res://assets/comic3.png" id="9_dk12i"]
+[ext_resource type="Texture2D" uid="uid://l2ywxlw1sm5c" path="res://assets/comic4.png" id="10_g77f0"]
+[ext_resource type="Texture2D" uid="uid://bmxyvlsr1mjoc" path="res://assets/comic-frame-transparent.png" id="11_kquld"]
+[ext_resource type="Script" uid="uid://dplsn5rnet60l" path="res://Scripts/Comic.gd" id="12_58k33"]
+[ext_resource type="FontFile" path="res://fonts/NotoSansSC.ttf" id="13_font"]
+
+[node name="Comic" type="Node2D" unique_id=1331039313]
+script = ExtResource("12_58k33")
+
+[node name="fixed" type="Node2D" parent="." unique_id=107895476]
+position = Vector2(603, 466.00003)
+scale = Vector2(0.41034484, 0.41034484)
+
+[node name="Background2" type="Sprite2D" parent="fixed" unique_id=1412951941]
+position = Vector2(-66.40735, -347.26917)
+scale = Vector2(1.8253512, 1.5397682)
+texture = ExtResource("1_7jhq8")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Sprite2D" parent="fixed" unique_id=236219458]
+position = Vector2(-4.8737793, -355.79846)
+scale = Vector2(1.5361644, 1.6014408)
+texture = ExtResource("2_rreli")
+metadata/_edit_lock_ = true
+
+[node name="TvFrame" type="Sprite2D" parent="." unique_id=369851752]
+position = Vector2(607, 308.99997)
+scale = Vector2(0.5879808, 0.5879808)
+texture = ExtResource("4_d3chl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482921145]
+
+[node name="TextureRect" type="TextureRect" parent="Sprite2D" unique_id=793048680]
+offset_left = 354.0
+offset_top = 422.0
+offset_right = 852.0
+offset_bottom = 508.0
+texture = ExtResource("5_j5wrg")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D/TextureRect" unique_id=1780311075]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 22.0
+offset_right = 456.0
+offset_bottom = 62.0
+theme_override_colors/default_color = Color(0.34407577, 0.34407574, 0.34407574, 1)
+theme_override_fonts/normal_font = ExtResource("13_font")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+script = ExtResource("6_uqiod")
+
+[node name="typewriter" type="Node" parent="Sprite2D/TextureRect/RichTextLabel" unique_id=1613189015]
+script = ExtResource("7_j5wrg")
+
+[node name="Comic2" type="Sprite2D" parent="." unique_id=1786792580]
+visible = false
+position = Vector2(600.00006, 273.00003)
+scale = Vector2(0.19416668, 0.19416668)
+texture = ExtResource("8_kquld")
+
+[node name="Comic3" type="Sprite2D" parent="." unique_id=454661906]
+visible = false
+position = Vector2(600, 264)
+scale = Vector2(0.19416663, 0.21000001)
+texture = ExtResource("9_dk12i")
+
+[node name="Comic4" type="Sprite2D" parent="." unique_id=2066411614]
+position = Vector2(600, 264.71875)
+scale = Vector2(0.346211, 0.26839796)
+texture = ExtResource("10_g77f0")
+
+[node name="Comic1" type="Sprite2D" parent="." unique_id=2132003616]
+visible = false
+position = Vector2(600, 264)
+scale = Vector2(0.41607141, 0.36285716)
+texture = ExtResource("3_e0onh")
+
+[node name="ComicFrameTransparent" type="Sprite2D" parent="." unique_id=410306445]
+position = Vector2(603, 266.99997)
+scale = Vector2(0.50874376, 0.50874376)
+texture = ExtResource("11_kquld")

@@ -1,0 +1,1332 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help AI Anchorman</title>
+  <style>
+    :root {
+      --text: #161a20;
+      --muted: #6b7280;
+      --accent: #111827;
+      --title-main-color: #de8a3a;
+      --title-anchor-color: #4f8ec7;
+      --title-motion-x: 1px;
+      --title-motion-y: 1px;
+      --title-motion-rotate: 0.4deg;
+      --font-size: 24px;
+      --title-x: 50%;
+      --title-y: 15.2%;
+      --title-scale: 1;
+      --earth-x: 50%;
+      --earth-y: 4.6%;
+      --earth-w: 50%;
+      --anchor-x: 82%;
+      --anchor-y: 100%;
+      --anchor-w: 30%;
+      --button-x: 50%;
+      --button-y: 82%;
+      --button-w: 25%;
+      --tv-x: 50%;
+      --tv-y: 50%;
+      --tv-w: 82%;
+      --tv-h: 72%;
+      --comic-frame-x: 50%;
+      --comic-frame-y: 6%;
+      --comic-frame-w: 72%;
+      --comic-frame-h: 58%;
+      --comic-image-x: 50%;
+      --comic-image-y: 50%;
+      --comic-image-w: 88%;
+      --caption-x: 50%;
+      --caption-y: 72%;
+      --caption-w: 78%;
+      --caption-h: 22%;
+      --live-room-x: 50%;
+      --live-room-y: 50%;
+      --live-room-w: 100%;
+      --live-room-h: 100%;
+      --dialog-x: 68%;
+      --dialog-y: 16%;
+      --dialog-w: 38%;
+      --dialog-text-x: 9%;
+      --dialog-text-y: 17%;
+      --dialog-text-w: 82%;
+      --dialog-text-h: 58%;
+      --dialog-font-size: 24px;
+      --dialog-text-color: #253142;
+      --dialog-highlight-color: #d94b37;
+      --correct-sign-x: 18%;
+      --correct-sign-y: 58%;
+      --correct-sign-w: 22%;
+      --correct-sign-rotate: -4deg;
+      --wrong-sign-x: 38%;
+      --wrong-sign-y: 58%;
+      --wrong-sign-w: 22%;
+      --wrong-sign-rotate: 4deg;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      color: var(--text);
+      background: #f7eddc;
+    }
+
+    .tv-frame {
+      position: fixed;
+      left: var(--tv-x);
+      top: var(--tv-y);
+      width: min(var(--tv-w), 1180px);
+      height: min(var(--tv-h), 760px);
+      padding: clamp(14px, 1.7vw, 24px);
+      border: 6px solid #617f9d;
+      border-radius: 34px 40px 30px 36px;
+      background: #fffaf0;
+      box-shadow: 0 16px 0 rgba(95, 124, 153, 0.2), 0 22px 40px rgba(77, 94, 111, 0.16);
+      transform: translate(-50%, -50%);
+    }
+
+    .tv-antenna {
+      position: absolute;
+      left: 50%;
+      top: -58px;
+      width: 170px;
+      height: 74px;
+      transform: translateX(-50%);
+      pointer-events: auto;
+      z-index: -1;
+    }
+
+    .tv-antenna::before,
+    .tv-antenna::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 6px;
+      height: 82px;
+      border-radius: 999px;
+      background: #617f9d;
+      transform-origin: 50% 100%;
+      box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.45);
+    }
+
+    .tv-antenna::before {
+      left: 48%;
+      transform: rotate(-34deg);
+    }
+
+    .tv-antenna::after {
+      right: 48%;
+      transform: rotate(34deg);
+    }
+
+    .tv-frame::after {
+      content: "";
+      position: absolute;
+      inset: clamp(14px, 1.7vw, 24px);
+      border: 3px dashed rgba(97, 127, 157, 0.36);
+      border-radius: 22px 28px 20px 24px;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .tv-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 22px 28px 20px 24px;
+      background: #c9ecfa url("assets/background.png") center / cover no-repeat;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .home,
+    .game {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .earth {
+      position: absolute;
+      left: var(--earth-x);
+      top: var(--earth-y);
+      width: var(--earth-w);
+      transform: translate(-50%, 0);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .anchorperson {
+      position: absolute;
+      left: var(--anchor-x);
+      top: var(--anchor-y);
+      width: var(--anchor-w);
+      transform: translate(-50%, -100%);
+      transform-origin: 50% 100%;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .title {
+      position: absolute;
+      left: var(--title-x);
+      top: var(--title-y);
+      display: grid;
+      gap: clamp(28px, 4.4vh, 56px);
+      width: min(78vw, 1100px);
+      margin: 0;
+      transform: translate(-50%, 0) scale(var(--title-scale));
+      transform-origin: 50% 0;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .title-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(4px, 0.7vw, 13px);
+      white-space: nowrap;
+    }
+
+    .title-letter {
+      display: inline-block;
+      color: var(--title-main-color);
+      font-family: "Comic Sans MS", "Comic Sans", "Marker Felt", "Bradley Hand ITC", cursive;
+      font-size: clamp(54px, 8.2vw, 140px);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: 0;
+      -webkit-text-stroke: clamp(1.4px, 0.26vw, 4px) #171717;
+      text-shadow: 2px 2px 0 #171717, -1px 2px 0 #171717, 1px -1px 0 #171717;
+      transform: rotate(var(--tilt, 0deg)) translateY(var(--lift, 0px));
+      animation: titleDrift 2.6s ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    .title-line:nth-child(2) .title-letter {
+      font-size: clamp(58px, 9vw, 154px);
+    }
+
+    .title-letter.anchor {
+      color: var(--title-anchor-color);
+    }
+
+    .start-button {
+      position: absolute;
+      left: var(--button-x);
+      top: var(--button-y);
+      width: var(--button-w);
+      min-width: 150px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+
+    .start-button img {
+      display: block;
+      width: 100%;
+      filter: drop-shadow(0 9px 0 rgba(71, 102, 142, 0.16));
+      transition: transform 180ms ease, filter 180ms ease;
+      transform-origin: 50% 50%;
+    }
+
+    .start-button:hover img {
+      transform: scale(1.04) rotate(-1deg);
+      filter: drop-shadow(0 12px 0 rgba(71, 102, 142, 0.18));
+    }
+
+    .start-button:active {
+      transform: translate(-50%, -50%) scale(0.96);
+    }
+
+    .game {
+      display: none;
+      cursor: pointer;
+    }
+
+    .game.is-active {
+      display: block;
+    }
+
+    .home.is-hidden {
+      display: none;
+    }
+
+    .comic-frame {
+      position: absolute;
+      left: var(--comic-frame-x);
+      top: var(--comic-frame-y);
+      width: var(--comic-frame-w);
+      height: var(--comic-frame-h);
+      max-width: calc(100% - 20px);
+      max-height: calc(100% - 20px);
+      overflow: hidden;
+      border: 4px solid #617f9d;
+      border-radius: 18px 24px 16px 22px;
+      background: #fbf4ec;
+      box-shadow: 0 8px 0 rgba(83, 119, 154, 0.15);
+      transform: translate(-50%, 0);
+      pointer-events: none;
+    }
+
+    .comic-frame::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 2px dashed rgba(97, 127, 157, 0.32);
+      border-radius: 12px 18px 11px 16px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .comic {
+      position: absolute;
+      left: var(--comic-image-x);
+      top: var(--comic-image-y);
+      width: var(--comic-image-w);
+      max-width: calc(100% - 20px);
+      max-height: calc(100% - 20px);
+      object-fit: contain;
+      transform: translate(-50%, -50%);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .caption-box {
+      position: absolute;
+      left: var(--caption-x);
+      top: var(--caption-y);
+      width: var(--caption-w);
+      height: var(--caption-h);
+      max-width: calc(100% - 20px);
+      max-height: calc(100% - 20px);
+      padding: clamp(12px, 2vw, 22px);
+      overflow: hidden;
+      border: 4px solid #617f9d;
+      border-radius: 18px 24px 16px 22px;
+      background: rgba(255, 253, 248, 0.94);
+      box-shadow: 0 8px 0 rgba(83, 119, 154, 0.15);
+      transform: translate(-50%, 0);
+    }
+
+    .caption-box::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 2px dashed rgba(97, 127, 157, 0.32);
+      border-radius: 12px 18px 11px 16px;
+      pointer-events: none;
+    }
+
+    .caption-text {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      overflow: hidden;
+      font-size: var(--font-size);
+      line-height: 1.55;
+      font-weight: 700;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 0.55em;
+      color: var(--accent);
+      animation: blink 0.8s step-end infinite;
+    }
+
+    body.cursor-off .cursor {
+      animation: none;
+      opacity: 0;
+    }
+
+    .next-tip {
+      position: absolute;
+      right: 18px;
+      bottom: 12px;
+      z-index: 2;
+      color: #617f9d;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 160ms ease;
+    }
+
+    .game.ready .next-tip {
+      opacity: 1;
+    }
+
+    .comic-stage,
+    .level-stage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .level-stage {
+      display: none;
+      cursor: default;
+    }
+
+    .game.is-level .comic-stage {
+      display: none;
+    }
+
+    .game.is-level .level-stage {
+      display: block;
+    }
+
+    .live-room {
+      position: absolute;
+      left: var(--live-room-x);
+      top: var(--live-room-y);
+      width: var(--live-room-w);
+      height: var(--live-room-h);
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .dialog-panel {
+      position: absolute;
+      left: var(--dialog-x);
+      top: var(--dialog-y);
+      width: var(--dialog-w);
+      max-width: calc(100% - 20px);
+      transform: translate(-50%, 0);
+      pointer-events: auto;
+    }
+
+    .dialog-image {
+      display: block;
+      width: 100%;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .dialog-text {
+      position: absolute;
+      left: var(--dialog-text-x);
+      top: var(--dialog-text-y);
+      width: var(--dialog-text-w);
+      height: var(--dialog-text-h);
+      overflow: hidden;
+      color: var(--dialog-text-color);
+      font-size: var(--dialog-font-size);
+      line-height: 1.45;
+      font-weight: 700;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      pointer-events: none;
+    }
+
+    .dialog-text .highlight {
+      color: var(--dialog-highlight-color);
+    }
+
+    .dialog-text .shake {
+      display: inline-block;
+      animation: wordShake 0.42s ease-in-out infinite;
+      transform-origin: 50% 60%;
+      will-change: transform;
+    }
+
+    .sign-board {
+      position: absolute;
+      user-select: none;
+      pointer-events: auto;
+      display: none;
+      z-index: 3;
+      opacity: 0;
+      transition: transform 520ms cubic-bezier(.2, 1.35, .32, 1), opacity 180ms ease, filter 160ms ease;
+      cursor: pointer;
+      will-change: transform, opacity;
+    }
+
+    .sign-board.correct-sign {
+      left: var(--correct-sign-x);
+      top: var(--correct-sign-y);
+      width: var(--correct-sign-w);
+      transform: translate(-50%, 72%) rotate(var(--correct-sign-rotate));
+    }
+
+    .sign-board.wrong-sign {
+      left: var(--wrong-sign-x);
+      top: var(--wrong-sign-y);
+      width: var(--wrong-sign-w);
+      transform: translate(-50%, 72%) rotate(var(--wrong-sign-rotate));
+    }
+
+    .error-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .sign-board.is-visible {
+      display: block;
+    }
+
+    .sign-board.is-visible.is-out {
+      opacity: 1;
+    }
+
+    .sign-board.correct-sign.is-visible.is-out {
+      transform: translate(-50%, -50%) rotate(var(--correct-sign-rotate));
+    }
+
+    .sign-board.wrong-sign.is-visible.is-out {
+      transform: translate(-50%, -50%) rotate(var(--wrong-sign-rotate));
+    }
+
+    .sign-board.correct-sign.is-visible:hover {
+      transform: translate(-50%, -50%) rotate(var(--correct-sign-rotate)) scale(1.06);
+      filter: drop-shadow(0 7px 0 rgba(92, 76, 53, 0.16));
+    }
+
+    .sign-board.wrong-sign.is-visible:hover {
+      transform: translate(-50%, -50%) rotate(var(--wrong-sign-rotate)) scale(1.06);
+      filter: drop-shadow(0 7px 0 rgba(92, 76, 53, 0.16));
+    }
+
+    .sign-board.is-picked {
+      filter: drop-shadow(0 10px 0 rgba(92, 76, 53, 0.2));
+    }
+
+    .sign-board.correct-sign.is-picked {
+      transform: translate(-50%, -68%) rotate(var(--correct-sign-rotate)) scale(1.08);
+    }
+
+    .sign-board.wrong-sign.is-picked {
+      transform: translate(-50%, -68%) rotate(var(--wrong-sign-rotate)) scale(1.08);
+    }
+
+    .sign-board.is-disabled {
+      opacity: 0.45;
+      pointer-events: none;
+      filter: grayscale(0.35);
+    }
+
+    .done-button {
+      position: absolute;
+      right: 7%;
+      bottom: 9%;
+      z-index: 6;
+      display: none;
+      border: 3px solid #617f9d;
+      border-radius: 10px;
+      padding: 8px 14px;
+      color: #263647;
+      background: #fffaf0;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 5px 0 rgba(83, 119, 154, 0.18);
+    }
+
+    .done-button.is-visible {
+      display: block;
+    }
+
+    .done-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .error-hotspot {
+      position: absolute;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      transform: translate(-50%, -50%);
+      cursor: crosshair;
+      pointer-events: auto;
+    }
+
+    .error-hotspot::after {
+      content: "";
+      position: absolute;
+      inset: -8%;
+      border: 4px solid rgba(217, 45, 45, 0.95);
+      border-radius: 48% 52% 46% 54% / 52% 46% 54% 48%;
+      opacity: 0;
+      transform: rotate(-5deg) scale(0.82);
+      transition: opacity 120ms ease, transform 120ms ease;
+      box-shadow: 0 0 0 2px rgba(255, 246, 239, 0.6);
+    }
+
+    .error-hotspot.is-found::after {
+      opacity: 1;
+      transform: rotate(-5deg) scale(1);
+    }
+
+    .admin-link {
+      position: fixed;
+      right: 18px;
+      bottom: 16px;
+      z-index: 20;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .admin-link:hover {
+      color: var(--text);
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes titleDrift {
+      0%,
+      100% {
+        transform: rotate(var(--tilt, 0deg)) translateY(var(--lift, 0px));
+      }
+      35% {
+        transform: rotate(calc(var(--tilt, 0deg) + var(--title-motion-rotate))) translateY(calc(var(--lift, 0px) - var(--title-motion-y)));
+      }
+      70% {
+        transform:
+          rotate(calc(var(--tilt, 0deg) - var(--title-motion-rotate)))
+          translateX(var(--title-motion-x))
+          translateY(calc(var(--lift, 0px) + var(--title-motion-y) * 0.55));
+      }
+    }
+
+    @keyframes wordShake {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(-1px, 1px) rotate(-1.4deg);
+      }
+      50% {
+        transform: translate(1px, -1px) rotate(1.2deg);
+      }
+      75% {
+        transform: translate(-1px, -1px) rotate(0.8deg);
+      }
+      100% {
+        transform: translate(1px, 1px) rotate(-0.8deg);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .title {
+        width: 94vw;
+        gap: 20px;
+      }
+
+      .title-letter,
+      .title-line:nth-child(2) .title-letter {
+        font-size: clamp(35px, 11vw, 92px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --font-size: 20px;
+      }
+
+      .caption-box {
+        width: min(var(--caption-w), 92%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tv-frame" aria-label="手绘电视游戏窗口">
+    <div class="tv-antenna" aria-hidden="true"></div>
+    <div class="tv-screen">
+      <main class="home" id="home" aria-label="Help AI Anchorman 游戏首页">
+        <img class="earth" src="assets/earth.png" alt="" aria-hidden="true">
+
+        <h1 class="title" aria-label="HELP AI ANCHORMAN">
+          <span class="title-line" aria-hidden="true">
+            <span class="title-letter" style="--tilt:-3.5deg; --delay:0s;">H</span>
+            <span class="title-letter" style="--tilt:2deg; --delay:.18s;">E</span>
+            <span class="title-letter" style="--tilt:-1.6deg; --delay:.34s;">L</span>
+            <span class="title-letter" style="--tilt:3deg; --delay:.08s;">P</span>
+            <span class="title-letter" style="--tilt:-2.4deg; --delay:.26s; margin-left:.36em;">A</span>
+            <span class="title-letter" style="--tilt:1.3deg; --delay:.42s;">I</span>
+          </span>
+          <span class="title-line" aria-hidden="true">
+            <span class="title-letter anchor" style="--tilt:-3deg; --delay:.10s;">A</span>
+            <span class="title-letter anchor" style="--tilt:1.8deg; --delay:.28s;">N</span>
+            <span class="title-letter anchor" style="--tilt:-2deg; --delay:.04s;">C</span>
+            <span class="title-letter anchor" style="--tilt:2.6deg; --delay:.22s;">H</span>
+            <span class="title-letter anchor" style="--tilt:-1.4deg; --delay:.38s;">O</span>
+            <span class="title-letter anchor" style="--tilt:2.2deg; --delay:.16s;">R</span>
+            <span class="title-letter" style="--tilt:-2.6deg; --delay:.30s;">M</span>
+            <span class="title-letter" style="--tilt:2.8deg; --delay:.46s;">A</span>
+            <span class="title-letter" style="--tilt:-1.8deg; --delay:.12s;">N</span>
+          </span>
+        </h1>
+
+        <button class="start-button" id="startBtn" type="button" aria-label="开始游戏">
+          <img src="assets/startbutton.png" alt="开始游戏">
+        </button>
+
+        <img class="anchorperson" src="assets/anchorman.png" alt="" aria-hidden="true">
+      </main>
+
+      <section class="game" id="game" aria-label="开场漫画">
+        <div class="comic-stage" id="comicStage">
+          <div class="comic-frame">
+            <img class="comic" id="comicImage" src="assets/comic1.png" alt="开场漫画">
+          </div>
+          <div class="caption-box">
+            <div class="caption-text" id="captionText" aria-live="polite"></div>
+            <div class="next-tip" id="nextTip">点击继续</div>
+          </div>
+        </div>
+
+        <div class="level-stage" id="levelStage" aria-label="正式关卡">
+          <img class="live-room" id="liveRoomImage" src="assets/live_room.png" alt="" aria-hidden="true">
+          <div class="dialog-panel">
+            <img class="dialog-image" src="assets/dialogue.png" alt="" aria-hidden="true">
+            <div class="dialog-text" id="dialogText" aria-live="polite"></div>
+            <div class="error-layer" id="errorLayer" aria-label="错误区域"></div>
+            <button class="done-button" id="doneButton" type="button">修改完毕</button>
+          </div>
+          <img class="sign-board correct-sign" id="correctSignBoard" src="assets/correct.png" alt="" aria-hidden="true">
+          <img class="sign-board wrong-sign" id="wrongSignBoard" src="assets/wrong.png" alt="" aria-hidden="true">
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <a class="admin-link" href="admin.html" target="_blank" rel="noreferrer">后台</a>
+
+  <script>
+    const defaultSettings = {
+      speed: 42,
+      fontSize: 24,
+      cursor: true,
+      accent: "#111827",
+      titleMainColor: "#de8a3a",
+      titleAnchorColor: "#4f8ec7",
+      titleMotion: 7,
+      comicTexts: [
+        "“这简直是人工智障！”",
+        "愚蠢的AI 播报员在新闻联播里经常会把事实说跑偏，让观众听得一头雾水。",
+        "面对频繁出现的大模型幻觉问题，严谨的新闻事实校对员再也忍不下去了！",
+        "把新闻里的错误一一纠正，还大家一档真实可靠、清清楚楚的新闻联播吧~"
+      ],
+      dialogText: "各位观众晚上好，欢迎收看今天的 AI 新闻联播。",
+      dialogTexts: ["各位观众晚上好，欢迎收看今天的 AI 新闻联播。"],
+      dialogFontSize: 24,
+      dialogTextColor: "#253142",
+      dialogHighlightText: "AI 新闻联播",
+      dialogHighlightColor: "#d94b37",
+      dialogShakeText: "最新消息，绝无假货",
+      dialogSigns: ["none"],
+      wrongRegions: [[]],
+      levels: [
+        {
+          text: "各位观众晚上好，欢迎收看今天的 AI 新闻联播。",
+          sign: "none",
+          signX: 18,
+          signY: 58,
+          signW: 22,
+          signRotate: -4,
+          wrongRegions: [],
+          showSigns: false,
+          correctX: 18,
+          correctY: 58,
+          correctW: 22,
+          correctRotate: -4,
+          wrongX: 38,
+          wrongY: 58,
+          wrongW: 22,
+          wrongRotate: 4,
+          wrongWords: ""
+        }
+      ],
+      layout: {
+        title: { x: 50, y: 15.2, scale: 1 },
+        earth: { x: 50, y: 4.6, w: 50 },
+        anchor: { x: 82, y: 100, w: 30 },
+        button: { x: 50, y: 82, w: 25 },
+        tv: { x: 50, y: 50, w: 82, h: 72 },
+        comicFrame: { x: 50, y: 6, w: 72, h: 58 },
+        comics: [
+          { x: 50, y: 50, w: 88 },
+          { x: 50, y: 50, w: 88 },
+          { x: 50, y: 50, w: 88 },
+          { x: 50, y: 50, w: 88 }
+        ],
+        caption: { x: 50, y: 72, w: 78, h: 22 },
+        liveRoom: { x: 50, y: 50, w: 100, h: 100 },
+        dialogue: { x: 68, y: 16, w: 38 },
+        dialogTextBox: { x: 9, y: 17, w: 82, h: 58 }
+      }
+    };
+
+    const configKey = "help-ai-anchorman-settings";
+    const comicSources = ["assets/comic1.png", "assets/comic2.png", "assets/comic3.png", "assets/comic4.png"];
+    const home = document.getElementById("home");
+    const game = document.getElementById("game");
+    const startBtn = document.getElementById("startBtn");
+    const comicImage = document.getElementById("comicImage");
+    const captionText = document.getElementById("captionText");
+    const liveRoomImage = document.getElementById("liveRoomImage");
+    const dialogText = document.getElementById("dialogText");
+    const correctSignBoard = document.getElementById("correctSignBoard");
+    const wrongSignBoard = document.getElementById("wrongSignBoard");
+    const errorLayer = document.getElementById("errorLayer");
+    const doneButton = document.getElementById("doneButton");
+    const configChannel = "BroadcastChannel" in window ? new BroadcastChannel("help-ai-anchorman") : null;
+    let timer = null;
+    let settings = loadSettings();
+    let settingsSnapshot = "";
+    let comicIndex = 0;
+    let charIndex = 0;
+    let dialogueIndex = 0;
+    let dialogIndex = 0;
+    let stage = "home";
+    let typingDone = false;
+    let levelChoice = null;
+    let correctionMode = false;
+
+    function mergeSettings(saved) {
+      return {
+        ...defaultSettings,
+        ...saved,
+        comicTexts: Array.from({ length: 4 }, (_, index) => {
+          return saved && saved.comicTexts && saved.comicTexts[index] !== undefined ? saved.comicTexts[index] : defaultSettings.comicTexts[index];
+        }),
+        dialogTexts: normalizeDialogTexts(saved),
+        dialogShakeText: saved && saved.dialogShakeText !== undefined ? saved.dialogShakeText : defaultSettings.dialogShakeText,
+        dialogSigns: normalizeDialogSigns(saved),
+        wrongRegions: normalizeWrongRegions(saved),
+        levels: normalizeLevels(saved),
+        layout: {
+          title: { ...defaultSettings.layout.title, ...(saved && saved.layout && saved.layout.title) },
+          earth: { ...defaultSettings.layout.earth, ...(saved && saved.layout && saved.layout.earth) },
+          anchor: { ...defaultSettings.layout.anchor, ...(saved && saved.layout && saved.layout.anchor) },
+          button: { ...defaultSettings.layout.button, ...(saved && saved.layout && saved.layout.button) },
+          tv: { ...defaultSettings.layout.tv, ...(saved && saved.layout && saved.layout.tv) },
+          comicFrame: { ...defaultSettings.layout.comicFrame, ...(saved && saved.layout && saved.layout.comicFrame) },
+          comics: Array.from({ length: 4 }, (_, index) => {
+            const namedComic = saved && saved.layout && saved.layout[`comic${index + 1}`];
+            const indexedComic = saved && saved.layout && saved.layout.comics && saved.layout.comics[index];
+            return { ...defaultSettings.layout.comics[index], ...(indexedComic || namedComic) };
+          }),
+          caption: { ...defaultSettings.layout.caption, ...(saved && saved.layout && saved.layout.caption) },
+          liveRoom: { ...defaultSettings.layout.liveRoom, ...(saved && saved.layout && saved.layout.liveRoom) },
+          dialogue: { ...defaultSettings.layout.dialogue, ...(saved && saved.layout && saved.layout.dialogue) },
+          dialogTextBox: { ...defaultSettings.layout.dialogTextBox, ...(saved && saved.layout && saved.layout.dialogTextBox) }
+        }
+      };
+    }
+
+    function loadSettings() {
+      try {
+        return mergeSettings(JSON.parse(localStorage.getItem(configKey)));
+      } catch (error) {
+        return mergeSettings(null);
+      }
+    }
+
+    function setPercent(name, value) {
+      document.documentElement.style.setProperty(name, `${value}%`);
+    }
+
+    function applyLayout() {
+      setPercent("--title-x", settings.layout.title.x);
+      setPercent("--title-y", settings.layout.title.y);
+      document.documentElement.style.setProperty("--title-scale", settings.layout.title.scale);
+      setPercent("--earth-x", settings.layout.earth.x);
+      setPercent("--earth-y", settings.layout.earth.y);
+      setPercent("--earth-w", settings.layout.earth.w);
+      setPercent("--anchor-x", settings.layout.anchor.x);
+      setPercent("--anchor-y", settings.layout.anchor.y);
+      setPercent("--anchor-w", settings.layout.anchor.w);
+      setPercent("--button-x", settings.layout.button.x);
+      setPercent("--button-y", settings.layout.button.y);
+      setPercent("--button-w", settings.layout.button.w);
+      setPercent("--tv-x", settings.layout.tv.x);
+      setPercent("--tv-y", settings.layout.tv.y);
+      setPercent("--tv-w", settings.layout.tv.w);
+      setPercent("--tv-h", settings.layout.tv.h);
+      setPercent("--comic-frame-x", settings.layout.comicFrame.x);
+      setPercent("--comic-frame-y", settings.layout.comicFrame.y);
+      setPercent("--comic-frame-w", settings.layout.comicFrame.w);
+      setPercent("--comic-frame-h", settings.layout.comicFrame.h);
+      setPercent("--caption-x", settings.layout.caption.x);
+      setPercent("--caption-y", settings.layout.caption.y);
+      setPercent("--caption-w", settings.layout.caption.w);
+      setPercent("--caption-h", settings.layout.caption.h);
+      setPercent("--live-room-x", settings.layout.liveRoom.x);
+      setPercent("--live-room-y", settings.layout.liveRoom.y);
+      setPercent("--live-room-w", settings.layout.liveRoom.w);
+      setPercent("--live-room-h", settings.layout.liveRoom.h);
+      setPercent("--dialog-x", settings.layout.dialogue.x);
+      setPercent("--dialog-y", settings.layout.dialogue.y);
+      setPercent("--dialog-w", settings.layout.dialogue.w);
+      setPercent("--dialog-text-x", settings.layout.dialogTextBox.x);
+      setPercent("--dialog-text-y", settings.layout.dialogTextBox.y);
+      setPercent("--dialog-text-w", settings.layout.dialogTextBox.w);
+      setPercent("--dialog-text-h", settings.layout.dialogTextBox.h);
+      applyComicLayout();
+    }
+
+    function applyComicLayout() {
+      const comicLayout = settings.layout.comics[comicIndex] || defaultSettings.layout.comics[comicIndex];
+      setPercent("--comic-image-x", comicLayout.x);
+      setPercent("--comic-image-y", comicLayout.y);
+      setPercent("--comic-image-w", comicLayout.w);
+    }
+
+    function applySettings() {
+      document.documentElement.style.setProperty("--font-size", `${settings.fontSize}px`);
+      document.documentElement.style.setProperty("--dialog-font-size", `${settings.dialogFontSize || settings.fontSize}px`);
+      document.documentElement.style.setProperty("--accent", settings.accent);
+      document.documentElement.style.setProperty("--title-main-color", settings.titleMainColor);
+      document.documentElement.style.setProperty("--title-anchor-color", settings.titleAnchorColor);
+      document.documentElement.style.setProperty("--dialog-text-color", settings.dialogTextColor);
+      document.documentElement.style.setProperty("--dialog-highlight-color", settings.dialogHighlightColor);
+      const titleMotion = Math.max(Number(settings.titleMotion) || 0, 3);
+      document.documentElement.style.setProperty("--title-motion-x", `${titleMotion * 0.18}px`);
+      document.documentElement.style.setProperty("--title-motion-y", `${titleMotion * 0.55}px`);
+      document.documentElement.style.setProperty("--title-motion-rotate", `${titleMotion * 0.2}deg`);
+      document.body.classList.toggle("cursor-off", !settings.cursor);
+      applyLayout();
+      settingsSnapshot = JSON.stringify(settings);
+    }
+
+    function renderCaption() {
+      const text = settings.comicTexts[comicIndex] || "";
+      captionText.innerHTML = "";
+      captionText.append(document.createTextNode(text.slice(0, charIndex)));
+      const cursor = document.createElement("span");
+      cursor.className = "cursor";
+      cursor.textContent = "|";
+      captionText.append(cursor);
+      game.classList.toggle("ready", typingDone);
+    }
+
+    function normalizeDialogTexts(saved) {
+      if (saved && Array.isArray(saved.dialogTexts) && saved.dialogTexts.length) {
+        return saved.dialogTexts.map((text) => String(text));
+      }
+      if (saved && saved.dialogText !== undefined) {
+        const legacyTexts = String(saved.dialogText).split(/\n\s*\n/).map((text) => text.trim()).filter(Boolean);
+        return legacyTexts.length ? legacyTexts : defaultSettings.dialogTexts;
+      }
+      return defaultSettings.dialogTexts;
+    }
+
+    function normalizeDialogSigns(saved) {
+      const count = normalizeDialogTexts(saved).length;
+      const source = saved && Array.isArray(saved.dialogSigns) ? saved.dialogSigns : defaultSettings.dialogSigns;
+      return Array.from({ length: count }, (_, index) => {
+        const value = String(source[index] || "none").trim().toLowerCase();
+        return ["none", "correct", "wrong"].includes(value) ? value : "none";
+      });
+    }
+
+    function normalizeWrongRegions(saved) {
+      const count = normalizeDialogTexts(saved).length;
+      const source = saved && Array.isArray(saved.wrongRegions) ? saved.wrongRegions : defaultSettings.wrongRegions;
+      return Array.from({ length: count }, (_, index) => {
+        if (!Array.isArray(source[index])) return [];
+        return source[index].map((region) => ({
+          x: Number(region.x) || 50,
+          y: Number(region.y) || 50,
+          w: Number(region.w) || 12,
+          h: Number(region.h) || 8
+        }));
+      });
+    }
+
+    function sanitizeSign(value) {
+      const sign = String(value || "none").trim().toLowerCase();
+      return ["none", "correct", "wrong"].includes(sign) ? sign : "none";
+    }
+
+    function normalizeLevels(saved) {
+      if (saved && Array.isArray(saved.levels) && saved.levels.length) {
+        return saved.levels.map((level) => ({
+          text: String(level.text || ""),
+          sign: sanitizeSign(level.sign),
+          signX: Number(level.signX) || 18,
+          signY: Number(level.signY) || 58,
+          signW: Number(level.signW) || 22,
+          signRotate: Number(level.signRotate) || 0,
+          showSigns: level.showSigns !== undefined ? Boolean(level.showSigns) : sanitizeSign(level.sign) !== "none",
+          correctX: Number(level.correctX) || Number(level.signX) || 18,
+          correctY: Number(level.correctY) || Number(level.signY) || 58,
+          correctW: Number(level.correctW) || Number(level.signW) || 22,
+          correctRotate: Number(level.correctRotate) || -4,
+          wrongX: Number(level.wrongX) || 38,
+          wrongY: Number(level.wrongY) || Number(level.signY) || 58,
+          wrongW: Number(level.wrongW) || Number(level.signW) || 22,
+          wrongRotate: Number(level.wrongRotate) || 4,
+          wrongWords: String(level.wrongWords || ""),
+          wrongRegions: Array.isArray(level.wrongRegions) ? level.wrongRegions.map((region) => ({
+            x: Number(region.x) || 50,
+            y: Number(region.y) || 50,
+            w: Number(region.w) || 12,
+            h: Number(region.h) || 8
+          })) : []
+        }));
+      }
+      const texts = normalizeDialogTexts(saved);
+      const signs = normalizeDialogSigns(saved);
+      const regions = normalizeWrongRegions(saved);
+      return texts.map((text, index) => ({
+        text,
+        sign: signs[index] || "none",
+        signX: 18,
+        signY: 58,
+        signW: 22,
+        signRotate: -4,
+        showSigns: (signs[index] || "none") !== "none",
+        correctX: 18,
+        correctY: 58,
+        correctW: 22,
+        correctRotate: -4,
+        wrongX: 38,
+        wrongY: 58,
+        wrongW: 22,
+        wrongRotate: 4,
+        wrongWords: "",
+        wrongRegions: regions[index] || []
+      }));
+    }
+
+    function splitTerms(value) {
+      return String(value || "")
+        .split("|")
+        .map((term) => term.trim())
+        .filter(Boolean);
+    }
+
+    function appendStyledRun(target, content, style) {
+      if (!style.shake) {
+        const mark = document.createElement("span");
+        mark.className = [style.highlight ? "highlight" : ""].filter(Boolean).join(" ");
+        mark.textContent = content;
+        target.append(mark);
+        return;
+      }
+      Array.from(content).forEach((char, index) => {
+        const mark = document.createElement("span");
+        mark.className = [style.highlight ? "highlight" : "", "shake"].filter(Boolean).join(" ");
+        mark.style.animationDelay = `${(index % 6) * -0.07}s`;
+        mark.textContent = char;
+        target.append(mark);
+      });
+    }
+
+    function buildCharStyles(sourceText, highlight, shake) {
+      const styles = Array.from(sourceText, () => ({ highlight: false, shake: false }));
+      [
+        ...splitTerms(highlight).map((term) => ({ term, prop: "highlight" })),
+        ...splitTerms(shake).map((term) => ({ term, prop: "shake" }))
+      ].forEach(({ term, prop }) => {
+        let start = sourceText.indexOf(term);
+        while (start !== -1) {
+          for (let offset = 0; offset < term.length; offset += 1) {
+            if (styles[start + offset]) styles[start + offset][prop] = true;
+          }
+          start = sourceText.indexOf(term, start + term.length);
+        }
+      });
+      return styles;
+    }
+
+    function appendRichText(target, sourceText, visibleCount, highlight, shake) {
+      target.innerHTML = "";
+      const chars = Array.from(sourceText).slice(0, visibleCount);
+      if (!chars.length) return;
+      const styles = buildCharStyles(sourceText, highlight, shake);
+      if (!styles.some((style) => style.highlight || style.shake)) {
+        target.append(document.createTextNode(chars.join("")));
+        return;
+      }
+
+      let run = "";
+      let runStyle = styles[0];
+      chars.forEach((char, index) => {
+        const style = styles[index];
+        const sameStyle = style.highlight === runStyle.highlight && style.shake === runStyle.shake;
+        if (!sameStyle) {
+          appendStyledRun(target, run, runStyle);
+          run = "";
+          runStyle = style;
+        }
+        run += char;
+      });
+      if (run) {
+        appendStyledRun(target, run, runStyle);
+      }
+    }
+
+    function getCurrentDialogText() {
+      return (settings.levels[dialogueIndex] && settings.levels[dialogueIndex].text) || "";
+    }
+
+    function getCurrentSignType() {
+      return (settings.levels[dialogueIndex] && settings.levels[dialogueIndex].sign) || "none";
+    }
+
+    function renderSignBoard() {
+      const level = settings.levels[dialogueIndex] || defaultSettings.levels[0];
+      const visible = Boolean(level.showSigns);
+      correctSignBoard.classList.toggle("is-visible", visible);
+      wrongSignBoard.classList.toggle("is-visible", visible);
+      setPercent("--correct-sign-x", level.correctX);
+      setPercent("--correct-sign-y", level.correctY);
+      setPercent("--correct-sign-w", level.correctW);
+      document.documentElement.style.setProperty("--correct-sign-rotate", `${Number(level.correctRotate) || 0}deg`);
+      setPercent("--wrong-sign-x", level.wrongX);
+      setPercent("--wrong-sign-y", level.wrongY);
+      setPercent("--wrong-sign-w", level.wrongW);
+      document.documentElement.style.setProperty("--wrong-sign-rotate", `${Number(level.wrongRotate) || 0}deg`);
+    }
+
+    function setSignsOut(out) {
+      correctSignBoard.classList.toggle("is-out", out);
+      wrongSignBoard.classList.toggle("is-out", out);
+    }
+
+    function resetChoiceState() {
+      levelChoice = null;
+      correctionMode = false;
+      correctSignBoard.classList.remove("is-picked", "is-disabled");
+      wrongSignBoard.classList.remove("is-picked", "is-disabled");
+      wrongSignBoard.src = "assets/wrong.png";
+      liveRoomImage.src = "assets/live_room.png";
+      doneButton.classList.remove("is-visible");
+    }
+
+    function renderErrorRegions() {
+      errorLayer.innerHTML = "";
+    }
+
+    function renderLevelState() {
+      resetChoiceState();
+      setSignsOut(false);
+      renderSignBoard();
+      renderErrorRegions();
+    }
+
+    function renderDialog() {
+      const text = getCurrentDialogText();
+      appendRichText(dialogText, text, dialogIndex, settings.dialogHighlightText || "", settings.dialogShakeText || "");
+      const cursor = document.createElement("span");
+      cursor.className = "cursor";
+      cursor.textContent = "|";
+      dialogText.append(cursor);
+    }
+
+    function typeDialog() {
+      clearTimeout(timer);
+      const text = getCurrentDialogText();
+      renderDialog();
+      if (dialogIndex >= text.length) {
+        setSignsOut(true);
+        return;
+      }
+      timer = setTimeout(() => {
+        dialogIndex += 1;
+        typeDialog();
+      }, settings.speed);
+    }
+
+    function typeCaption() {
+      clearTimeout(timer);
+      const text = settings.comicTexts[comicIndex] || "";
+      typingDone = charIndex >= text.length;
+      renderCaption();
+      if (typingDone) return;
+      timer = setTimeout(() => {
+        charIndex += 1;
+        typeCaption();
+      }, settings.speed);
+    }
+
+    function showComic(index) {
+      comicIndex = Math.max(0, Math.min(index, comicSources.length - 1));
+      charIndex = 0;
+      typingDone = false;
+      comicImage.src = comicSources[comicIndex];
+      applyComicLayout();
+      typeCaption();
+    }
+
+    function startGame() {
+      home.classList.add("is-hidden");
+      game.classList.add("is-active");
+      game.classList.remove("is-level");
+      stage = "comic";
+      showComic(0);
+    }
+
+    function startLevel() {
+      clearTimeout(timer);
+      stage = "level";
+      game.classList.remove("ready");
+      game.classList.add("is-level");
+      dialogueIndex = 0;
+      dialogIndex = 0;
+      renderLevelState();
+      typeDialog();
+    }
+
+    function goNextDialog() {
+      resetChoiceState();
+      if (dialogueIndex < settings.levels.length - 1) {
+        dialogueIndex += 1;
+        dialogIndex = 0;
+        renderLevelState();
+        typeDialog();
+      }
+    }
+
+    function advanceDialog() {
+      if (correctionMode) return;
+      const text = getCurrentDialogText();
+      if (dialogIndex < text.length) {
+        dialogIndex = text.length;
+        clearTimeout(timer);
+        renderDialog();
+        setSignsOut(true);
+        return;
+      }
+      if (!getCurrentSignType() || getCurrentSignType() === "none") goNextDialog();
+    }
+
+    function canChooseSign() {
+      const level = settings.levels[dialogueIndex] || defaultSettings.levels[0];
+      return stage === "level" && level.showSigns && correctSignBoard.classList.contains("is-out") && !levelChoice;
+    }
+
+    function chooseCorrect() {
+      if (!canChooseSign()) return;
+      levelChoice = "correct";
+      correctSignBoard.classList.add("is-picked");
+      wrongSignBoard.classList.add("is-disabled");
+      setTimeout(goNextDialog, 520);
+    }
+
+    function chooseWrong() {
+      if (!canChooseSign()) return;
+      levelChoice = "wrong";
+      wrongSignBoard.classList.add("is-picked");
+      correctSignBoard.classList.add("is-disabled");
+      liveRoomImage.src = "assets/cross_hand.png";
+      correctionMode = true;
+      dialogIndex = getCurrentDialogText().length;
+      renderDialog();
+      doneButton.classList.add("is-visible");
+    }
+
+    function advanceComic() {
+      if (stage === "level") {
+        advanceDialog();
+        return;
+      }
+      if (stage !== "comic") return;
+      const text = settings.comicTexts[comicIndex] || "";
+      if (!typingDone) {
+        charIndex = text.length;
+        typingDone = true;
+        clearTimeout(timer);
+        renderCaption();
+        return;
+      }
+      if (comicIndex < comicSources.length - 1) {
+        showComic(comicIndex + 1);
+      } else {
+        startLevel();
+      }
+    }
+
+    function reloadSettings() {
+      settings = loadSettings();
+      applySettings();
+      if (stage === "level") {
+        dialogueIndex = 0;
+        dialogIndex = 0;
+        renderLevelState();
+        typeDialog();
+      } else if (game.classList.contains("is-active")) {
+        charIndex = 0;
+        typeCaption();
+      }
+    }
+
+    function refreshIfChanged() {
+      const nextSettings = loadSettings();
+      const nextSnapshot = JSON.stringify(nextSettings);
+      if (nextSnapshot !== settingsSnapshot) {
+        settings = nextSettings;
+        applySettings();
+        if (stage === "level") {
+          dialogueIndex = 0;
+          dialogIndex = 0;
+          renderLevelState();
+          typeDialog();
+        } else if (game.classList.contains("is-active")) {
+          charIndex = 0;
+          typeCaption();
+        }
+      }
+    }
+
+    startBtn.addEventListener("click", startGame);
+    game.addEventListener("click", advanceComic);
+    correctSignBoard.addEventListener("click", (event) => {
+      event.stopPropagation();
+      chooseCorrect();
+    });
+    wrongSignBoard.addEventListener("click", (event) => {
+      event.stopPropagation();
+      chooseWrong();
+    });
+    doneButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      goNextDialog();
+    });
+    window.addEventListener("storage", (event) => {
+      if (event.key === configKey) reloadSettings();
+    });
+    window.addEventListener("focus", refreshIfChanged);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) refreshIfChanged();
+    });
+    if (configChannel) {
+      configChannel.addEventListener("message", (event) => {
+        if (event.data === "settings-updated") reloadSettings();
+      });
+    }
+
+    applySettings();
+  </script>
+</body>
+</html>

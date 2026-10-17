@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anchor Corridor Three.js Prototype</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./three-anchor.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <canvas id="stage" aria-label="3D anchor corridor prototype"></canvas>
+
+      <section class="hud" aria-label="run state">
+        <div>
+          <span>DISTANCE</span>
+          <strong id="distance">0.00 km</strong>
+        </div>
+        <div>
+          <span>FLOW</span>
+          <strong id="speed">0.0 m/s</strong>
+        </div>
+        <div>
+          <span>AHEAD</span>
+          <strong id="sceneState">DREAM</strong>
+        </div>
+        <div>
+          <span>ANCHOR</span>
+          <strong id="anchorState">READY</strong>
+        </div>
+      </section>
+
+      <section class="lower-ui" aria-label="controls">
+        <div id="message" class="message">A/D 选择船上物件，Space 抛锚 / 收锚。</div>
+        <div class="meters">
+          <span>WAKE</span>
+          <div class="meter"><i id="wakeFill"></i></div>
+        </div>
+        <div class="keys">
+          <kbd>A</kbd><span>选择左侧物件</span>
+          <kbd>D</kbd><span>选择右侧物件</span>
+          <kbd>Space</kbd><span>抛锚 / 收锚 / 重开</span>
+        </div>
+      </section>
+
+      <div id="overlay" class="overlay is-hidden">
+        <h1>醒来了</h1>
+        <p id="result">现实追上了船。</p>
+        <div class="restart-hint">按 Space 重新入梦</div>
+      </div>
+    </main>
+
+    <script type="module" src="./three-anchor.js"></script>
+  </body>
+</html>

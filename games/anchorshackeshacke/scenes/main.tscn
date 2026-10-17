@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://csi5oqu0pyr0g"]
+
+[ext_resource type="Script" uid="uid://b0xelp6ov1xf2" path="res://scripts/PlayerShip.gd" id="1_player_ship"]
+[ext_resource type="Script" uid="uid://c2gmst0yltea1" path="res://scripts/ParallaxBackground.gd" id="2_parallax_bg"]
+[ext_resource type="Texture2D" uid="uid://5sbrvhysiu0d" path="res://assets/ship/cruise-cutaway-bg-blank-transparent.png" id="3_ship_texture"]
+[ext_resource type="Script" uid="uid://cp22av31nw5dv" path="res://scripts/WaterOverlay.gd" id="4_water_overlay"]
+[ext_resource type="Script" uid="uid://dvckbpd0tqeyj" path="res://scripts/SandLayer.gd" id="5_sand_layer"]
+[ext_resource type="Script" uid="uid://hyuu64nh8k64" path="res://scripts/AnchorSystem.gd" id="6_anchor_system"]
+[ext_resource type="Script" uid="uid://dmr581m4tkwqu" path="res://scripts/ShipHullBody.gd" id="7_ship_hull"]
+[ext_resource type="Script" uid="uid://rjakfkmsvyid" path="res://scripts/SicknessGame.gd" id="8_sickness_game"]
+
+[node name="Main" type="Node2D" unique_id=132202379]
+
+[node name="PlayerShip" type="Node2D" parent="." unique_id=1704468672]
+script = ExtResource("1_player_ship")
+
+[node name="Camera2D" type="Camera2D" parent="PlayerShip" unique_id=1473689353]
+
+[node name="BackgroundRoot" type="Node2D" parent="PlayerShip" unique_id=1080676740]
+z_index = -100
+script = ExtResource("2_parallax_bg")
+
+[node name="ShipSprite" type="Sprite2D" parent="PlayerShip" unique_id=2123964708]
+z_index = 10
+position = Vector2(250, -73)
+scale = Vector2(0.36823002, 0.40881622)
+texture = ExtResource("3_ship_texture")
+
+[node name="WaterOverlay" type="Node2D" parent="PlayerShip" unique_id=805151237]
+visible = false
+z_index = 30
+script = ExtResource("4_water_overlay")
+
+[node name="ShipHullBody" type="RigidBody2D" parent="." unique_id=1218999539]
+z_index = 70
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("7_ship_hull")
+show_debug_polygon = false
+
+[node name="SandLayer" type="Node2D" parent="." unique_id=2065205676]
+z_index = -20
+script = ExtResource("5_sand_layer")
+seabed_y = 215.0
+layer_depth = 200.0
+
+[node name="AnchorSystem" type="Node2D" parent="." unique_id=506513485]
+z_index = 65
+script = ExtResource("6_anchor_system")
+
+[node name="SicknessGame" type="Node2D" parent="." unique_id=1277376250]
+z_index = 42
+script = ExtResource("8_sickness_game")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=338194993]

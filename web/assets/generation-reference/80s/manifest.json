@@ -1,0 +1,130 @@
+{
+  "items": [
+    {
+      "file": "assets/generation-reference/80s/80s-fashion-boombox-couple.png",
+      "era": "80年代",
+      "motif": "喇叭裤 + 蛤蟆镜 + 录音机穿搭",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-mood"
+      ],
+      "size": [
+        600,
+        798
+      ],
+      "note": "可切人物/录音机，整体也可做岸边海报拼贴"
+    },
+    {
+      "file": "assets/generation-reference/80s/80s-bicycle-street-fashion.png",
+      "era": "80年代",
+      "motif": "自行车潮流街景",
+      "roles": [
+        "riverbank-mood",
+        "transition-reference"
+      ],
+      "size": [
+        582,
+        343
+      ],
+      "note": "适合做河岸人群/时代背景，不优先切障碍"
+    },
+    {
+      "file": "assets/generation-reference/80s/80s-disco-poster.png",
+      "era": "80年代",
+      "motif": "迪斯科舞会海报",
+      "roles": [
+        "riverbank-texture",
+        "poster-reference"
+      ],
+      "size": [
+        248,
+        203
+      ],
+      "note": "适合做岸边海报/广告牌"
+    },
+    {
+      "file": "assets/generation-reference/80s/80s-aviator-sunglasses.png",
+      "era": "80年代",
+      "motif": "蛤蟆镜",
+      "roles": [
+        "obstacle-reference"
+      ],
+      "size": [
+        447,
+        447
+      ],
+      "note": "适合直接切出透明底障碍"
+    },
+    {
+      "file": "assets/generation-reference/80s/80s-cinema-street-poster.png",
+      "era": "80年代",
+      "motif": "影院街景/电影海报",
+      "roles": [
+        "riverbank-mood",
+        "poster-reference"
+      ],
+      "size": [
+        1280,
+        864
+      ],
+      "note": "适合做河岸大幅海报纹理"
+    },
+    {
+      "file": "assets/generation-reference/80s/80s-radio-cassette-player.png",
+      "era": "80年代",
+      "motif": "收录机/双卡录音机",
+      "roles": [
+        "obstacle-reference",
+        "core-prop"
+      ],
+      "size": [
+        447,
+        447
+      ],
+      "note": "第一优先障碍/收藏物"
+    },
+    {
+      "file": "assets/generation-reference/80s/80s-cassette-tape.png",
+      "era": "80年代",
+      "motif": "磁带",
+      "roles": [
+        "obstacle-reference",
+        "riverbank-texture",
+        "core-prop"
+      ],
+      "size": [
+        389,
+        280
+      ],
+      "note": "第一优先障碍/河面碎片"
+    },
+    {
+      "file": "assets/generation-reference/80s/80s-breakdance-stage.png",
+      "era": "80年代",
+      "motif": "霹雳舞/迪斯科舞姿",
+      "roles": [
+        "riverbank-mood",
+        "transition-reference"
+      ],
+      "size": [
+        515,
+        388
+      ],
+      "note": "适合做过渡剪影或岸边舞台"
+    },
+    {
+      "file": "assets/generation-reference/80s/80s-hongkong-movie-poster.png",
+      "era": "80年代",
+      "motif": "港台电影海报",
+      "roles": [
+        "riverbank-texture",
+        "poster-reference"
+      ],
+      "size": [
+        300,
+        448
+      ],
+      "note": "适合做岸边海报、VHS时代纹理"
+    }
+  ]
+}

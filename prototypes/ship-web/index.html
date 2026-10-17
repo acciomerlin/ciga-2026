@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>抛锚水手 - 风格原型</title>
+    <style>
+      :root {
+        --paper: #f5f3ea;
+        --paper-deep: #e6e1d0;
+        --ink: #181818;
+        --muted: #62615b;
+        --sea: #6bc9d8;
+        --sea-deep: #276d86;
+        --ship: #f9f7ef;
+        --brass: #c69a3b;
+        --danger: #c44732;
+        --panel: rgba(255, 252, 239, 0.9);
+        --shadow: rgba(20, 22, 26, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 15% 18%, rgba(107, 201, 216, 0.2), transparent 30%),
+          linear-gradient(135deg, #1c2427, #3b3230 58%, #202b2e);
+        color: var(--ink);
+        font-family:
+          "Trebuchet MS",
+          "Gill Sans",
+          "PingFang SC",
+          "Hiragino Sans GB",
+          "Microsoft YaHei",
+          sans-serif;
+      }
+
+      .game-shell {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        padding: clamp(10px, 1.8vw, 24px);
+      }
+
+      .stage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border: 3px solid var(--ink);
+        border-radius: 8px;
+        background:
+          linear-gradient(rgba(31, 31, 31, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31, 31, 31, 0.045) 1px, transparent 1px),
+          var(--paper);
+        background-size: 30px 30px;
+        box-shadow: 0 24px 65px var(--shadow);
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+      }
+
+      .hud {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        right: 14px;
+        z-index: 4;
+        display: grid;
+        grid-template-columns: minmax(230px, 1fr) repeat(4, minmax(82px, 116px));
+        gap: 10px;
+        pointer-events: none;
+      }
+
+      .brand,
+      .meter,
+      .score {
+        min-height: 42px;
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 4px 4px 0 rgba(24, 24, 24, 0.12);
+        pointer-events: auto;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 13px;
+        letter-spacing: 0;
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      .brand svg {
+        width: 24px;
+        height: 24px;
+        flex: 0 0 auto;
+      }
+
+      .brand strong {
+        font-size: clamp(18px, 2.1vw, 28px);
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.15;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .meter,
+      .score {
+        display: grid;
+        align-content: center;
+        padding: 6px 12px;
+        min-width: 116px;
+      }
+
+      .meter label,
+      .score label {
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.1;
+      }
+
+      .meter strong,
+      .score strong {
+        font-size: 22px;
+        line-height: 1.05;
+      }
+
+      .controls {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        z-index: 4;
+        display: grid;
+        grid-template-columns: minmax(190px, 280px) minmax(210px, 320px) minmax(170px, 250px) auto auto;
+        gap: 10px;
+        align-items: end;
+      }
+
+      .control-panel {
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 10px 12px;
+        box-shadow: 4px 4px 0 rgba(24, 24, 24, 0.12);
+      }
+
+      .control-panel label {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1;
+      }
+
+      .control-panel strong {
+        color: var(--ink);
+        font-size: 13px;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--danger);
+      }
+
+      input[type="number"] {
+        width: 58px;
+        height: 28px;
+        border: 2px solid var(--ink);
+        border-radius: 6px;
+        background: #fffaf0;
+        color: var(--ink);
+        font: 800 14px/1 "Trebuchet MS", "PingFang SC", sans-serif;
+        text-align: center;
+      }
+
+      .floor-inputs {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .floor-inputs span {
+        color: var(--muted);
+        font-weight: 800;
+      }
+
+      .timing-track {
+        position: relative;
+        height: 18px;
+        overflow: hidden;
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        background:
+          linear-gradient(90deg, transparent 0 32%, rgba(198, 154, 59, 0.24) 32% 68%, transparent 68%),
+          rgba(107, 201, 216, 0.22);
+      }
+
+      .timing-needle {
+        position: absolute;
+        top: -3px;
+        left: 50%;
+        width: 8px;
+        height: 24px;
+        border: 2px solid var(--ink);
+        border-radius: 5px;
+        background: var(--danger);
+        transform: translateX(-50%);
+      }
+
+      button {
+        height: 52px;
+        min-width: 88px;
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        background: var(--ship);
+        color: var(--ink);
+        box-shadow: 4px 4px 0 rgba(24, 24, 24, 0.16);
+        cursor: pointer;
+        font: 800 16px/1 "Trebuchet MS", "PingFang SC", sans-serif;
+      }
+
+      button.primary {
+        min-width: 112px;
+        background: var(--danger);
+        color: #fffaf0;
+      }
+
+      button:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 rgba(24, 24, 24, 0.18);
+      }
+
+      .toast {
+        position: absolute;
+        left: 50%;
+        top: 76px;
+        z-index: 5;
+        max-width: min(520px, calc(100vw - 48px));
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        background: rgba(255, 252, 239, 0.94);
+        padding: 9px 12px;
+        color: var(--ink);
+        font-weight: 800;
+        text-align: center;
+        box-shadow: 4px 4px 0 rgba(24, 24, 24, 0.12);
+        transform: translate(-50%, -8px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 160ms ease, transform 160ms ease;
+      }
+
+      .toast.is-visible {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      @media (max-width: 820px) {
+        .game-shell {
+          padding: 8px;
+        }
+
+        .hud {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .brand {
+          grid-column: 1 / -1;
+          min-height: 38px;
+        }
+
+        .brand span {
+          display: none;
+        }
+
+        .meter,
+        .score {
+          min-width: 0;
+          padding: 6px 9px;
+        }
+
+        .meter strong,
+        .score strong {
+          font-size: 17px;
+        }
+
+        .controls {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        button {
+          min-width: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="game-shell" aria-label="抛锚水手风格原型">
+      <section class="stage">
+        <canvas id="gameCanvas"></canvas>
+
+        <div class="hud">
+          <div class="brand">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M16 3v21" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+              <path d="M9 9h14M12 24c-4-1-7-5-7-10M20 24c4-1 7-5 7-10M8 18l-3-4-3 4M24 18l3-4 3 4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="16" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="2.3" />
+            </svg>
+            <strong>抛锚水手</strong>
+            <span>Stickman cruise sabotage prototype</span>
+          </div>
+          <div class="meter">
+            <label>航速</label>
+            <strong id="speedText">18.0 kn</strong>
+          </div>
+          <div class="meter">
+            <label>冲击</label>
+            <strong id="shockText">0%</strong>
+          </div>
+          <div class="meter">
+            <label>本局层数</label>
+            <strong id="layersText">7层</strong>
+          </div>
+          <div class="score">
+            <label>损坏分</label>
+            <strong id="scoreText">0</strong>
+          </div>
+        </div>
+
+        <div id="toast" class="toast">抛锚成功，宴会厅开始摇晃。</div>
+
+        <div class="controls">
+          <div class="control-panel">
+            <label>
+              层数区间
+              <strong id="floorRangeText">5-8层</strong>
+            </label>
+            <div class="floor-inputs">
+              <input id="floorMinInput" type="number" min="4" max="10" value="5" aria-label="最少层数" />
+              <span>到</span>
+              <input id="floorMaxInput" type="number" min="4" max="10" value="8" aria-label="最多层数" />
+            </div>
+          </div>
+          <div class="control-panel">
+            <label for="angleInput">
+              抛锚角度
+              <strong id="angleText">-42°</strong>
+            </label>
+            <input id="angleInput" type="range" min="-72" max="-18" value="-42" />
+          </div>
+          <div class="control-panel">
+            <label>
+              时机
+              <strong id="timingText">50%</strong>
+            </label>
+            <div class="timing-track" aria-hidden="true">
+              <div id="timingNeedle" class="timing-needle"></div>
+            </div>
+          </div>
+          <button id="resetBtn" type="button">重置</button>
+          <button id="throwBtn" class="primary" type="button">抛锚</button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+      const angleInput = document.getElementById("angleInput");
+      const angleText = document.getElementById("angleText");
+      const speedText = document.getElementById("speedText");
+      const shockText = document.getElementById("shockText");
+      const layersText = document.getElementById("layersText");
+      const scoreText = document.getElementById("scoreText");
+      const timingText = document.getElementById("timingText");
+      const timingNeedle = document.getElementById("timingNeedle");
+      const floorMinInput = document.getElementById("floorMinInput");
+      const floorMaxInput = document.getElementById("floorMaxInput");
+      const floorRangeText = document.getElementById("floorRangeText");
+      const throwBtn = document.getElementById("throwBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const toast = document.getElementById("toast");
+
+      const TAU = Math.PI * 2;
+      const ink = "#181818";
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+      let lastTime = 0;
+      let toastTimer = 0;
+
+      const state = {
+        angle: -42,
+        timing: 0.5,
+        timingDir: 1,
+        speed: 18,
+        shock: 0,
+        score: 0,
+        floorMin: 5,
+        floorMax: 8,
+        shipLayout: null,
+        scroll: 0,
+        anchorState: "idle",
+        anchor: { x: 0, y: 0, vx: 0, vy: 0, spin: 0, hitX: 0, hitY: 0 },
+        rope: [],
+        damage: [],
+        sparks: []
+      };
+
+      const roomCatalog = {
+        top: [
+          { id: "skyBar", label: "观景酒吧", color: "rgba(198,154,59,0.2)", props: ["wine", "table"], people: [1, 3], value: 1.15 },
+          { id: "suite", label: "皇家套房", color: "rgba(226,118,156,0.16)", props: ["bed", "vase", "jewel"], people: [1, 2], value: 1.3 },
+          { id: "pool", label: "空中泳池", color: "rgba(107,201,216,0.22)", props: ["pool", "chair"], people: [1, 3], value: 0.8 },
+          { id: "bridge", label: "船长室", color: "rgba(98,97,91,0.12)", props: ["wheel", "map"], people: [1, 2], value: 0.7 },
+          { id: "gallery", label: "私人画廊", color: "rgba(196,71,50,0.12)", props: ["art", "vase"], people: [0, 2], value: 1.35 }
+        ],
+        middle: [
+          { id: "ballroom", label: "宴会厅", color: "rgba(198,154,59,0.18)", props: ["cake", "piano", "table"], people: [3, 6], value: 1.45 },
+          { id: "casino", label: "赌场", color: "rgba(69,150,91,0.16)", props: ["chips", "jewel"], people: [2, 5], value: 1.4 },
+          { id: "auction", label: "珠宝拍卖", color: "rgba(196,71,50,0.15)", props: ["jewel", "art", "vase"], people: [2, 4], value: 1.55 },
+          { id: "restaurant", label: "法式餐厅", color: "rgba(198,154,59,0.14)", props: ["cake", "wine", "table"], people: [2, 5], value: 1.1 },
+          { id: "theater", label: "剧院", color: "rgba(118,102,180,0.14)", props: ["stage", "piano"], people: [2, 5], value: 1.0 },
+          { id: "boutique", label: "名品店", color: "rgba(226,118,156,0.15)", props: ["jewel", "bag"], people: [1, 4], value: 1.35 },
+          { id: "spa", label: "水疗会所", color: "rgba(107,201,216,0.16)", props: ["plant", "chair"], people: [1, 3], value: 0.9 }
+        ],
+        lower: [
+          { id: "kitchen", label: "甜品后厨", color: "rgba(198,154,59,0.13)", props: ["cake", "crate"], people: [1, 4], value: 0.95 },
+          { id: "cellar", label: "酒窖", color: "rgba(138,39,50,0.12)", props: ["wine", "crate"], people: [0, 2], value: 1.1 },
+          { id: "cargo", label: "贵货舱", color: "rgba(98,97,91,0.11)", props: ["crate", "jewel"], people: [0, 2], value: 1.2 },
+          { id: "laundry", label: "洗衣房", color: "rgba(107,201,216,0.11)", props: ["crate"], people: [1, 3], value: 0.55 },
+          { id: "crew", label: "船员休息", color: "rgba(69,150,91,0.12)", props: ["bed", "table"], people: [1, 4], value: 0.6 },
+          { id: "engine", label: "机电室", color: "rgba(196,71,50,0.1)", props: ["gear", "crate"], people: [1, 2], value: 0.85 }
+        ]
+      };
+
+      const valuableValues = {
+        cake: 420,
+        vase: 520,
+        wine: 330,
+        art: 650,
+        piano: 760,
+        jewel: 880,
+        chips: 570,
+        bag: 460,
+        crate: 280
+      };
+
+      const shipNames = ["白金远航号", "金色晚宴号", "蓝宝石王冠号", "暴富圆舞曲号", "海上拍卖厅号"];
+
+      function rand(min, max) {
+        return min + Math.random() * (max - min);
+      }
+
+      function randInt(min, max) {
+        return Math.floor(rand(min, max + 1));
+      }
+
+      function pick(list) {
+        return list[Math.floor(Math.random() * list.length)];
+      }
+
+      function syncFloorRange() {
+        let min = Math.round(Number(floorMinInput.value) || 5);
+        let max = Math.round(Number(floorMaxInput.value) || 8);
+        min = clamp(min, 4, 10);
+        max = clamp(max, 4, 10);
+        if (min > max) [min, max] = [max, min];
+        state.floorMin = min;
+        state.floorMax = max;
+        floorMinInput.value = String(min);
+        floorMaxInput.value = String(max);
+        floorRangeText.textContent = `${min}-${max}层`;
+      }
+
+      function roomBandForFloor(floorIndex, floorCount) {
+        const t = floorIndex / Math.max(1, floorCount - 1);
+        if (t < 0.24) return "top";
+        if (t > 0.72) return "lower";
+        return "middle";
+      }
+
+      function generateShipLayout() {
+        syncFloorRange();
+        const floorCount = randInt(state.floorMin, state.floorMax);
+        const targets = [];
+        const floors = Array.from({ length: floorCount }, (_, floorIndex) => {
+          const band = roomBandForFloor(floorIndex, floorCount);
+          const roomCount = randInt(band === "middle" ? 4 : 3, band === "middle" ? 6 : 5);
+          const rawWidths = Array.from({ length: roomCount }, () => rand(0.75, 1.45));
+          const widthSum = rawWidths.reduce((sum, value) => sum + value, 0);
+          let cursor = 0;
+          const rooms = rawWidths.map((rawWidth, roomIndex) => {
+            const roomKind = pick(roomCatalog[band]);
+            const roomW = rawWidth / widthSum;
+            const room = {
+              ...roomKind,
+              band,
+              floorIndex,
+              roomIndex,
+              x: cursor,
+              w: roomW,
+              people: randInt(roomKind.people[0], roomKind.people[1]),
+              seed: Math.random()
+            };
+            cursor += roomW;
+
+            const valuableProps = room.props.filter((prop) => valuableValues[prop]);
+            const valuableCount = Math.min(valuableProps.length, randInt(1, band === "middle" ? 2 : 1));
+            for (let i = 0; i < valuableCount; i += 1) {
+              const prop = pick(valuableProps);
+              const value = Math.round((valuableValues[prop] || 250) * room.value * rand(0.82, 1.18));
+              targets.push({
+                id: `${floorIndex}-${roomIndex}-${i}`,
+                type: prop,
+                label: room.label,
+                value,
+                floorIndex,
+                roomIndex,
+                rx: rand(0.28, 0.72),
+                ry: rand(0.44, 0.74),
+                broken: false
+              });
+            }
+            return room;
+          });
+          return { band, rooms };
+        });
+
+        return {
+          name: pick(shipNames),
+          floorCount,
+          floors,
+          targets,
+          seed: Math.floor(Math.random() * 9999)
+        };
+      }
+
+      function getTargets() {
+        return state.shipLayout?.targets || [];
+      }
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        dpr = 1;
+        width = Math.floor(rect.width);
+        height = Math.floor(rect.height);
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function scene() {
+        const shipX = width < 700 ? width * 0.42 : width * 0.28;
+        const shipY = Math.max(110, height * 0.15);
+        const shipW = width - shipX - 34;
+        const shipH = height * 0.7;
+        const waterY = height * 0.61;
+        const seabedY = height * 0.88;
+        return {
+          shipX,
+          shipY,
+          shipW,
+          shipH,
+          waterY,
+          seabedY,
+          sailorX: shipX - 44,
+          sailorY: waterY - 70
+        };
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function wobble(seed, amount) {
+        return Math.sin(seed * 12.9898 + state.scroll * 0.012) * amount;
+      }
+
+      function roughLine(x1, y1, x2, y2, color = ink, lw = 2, jitter = 1.8) {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = lw;
+        ctx.lineCap = "round";
+        for (let pass = 0; pass < 2; pass += 1) {
+          ctx.beginPath();
+          const ox1 = wobble(x1 + pass * 9, jitter);
+          const oy1 = wobble(y1 + pass * 11, jitter);
+          const ox2 = wobble(x2 + pass * 13, jitter);
+          const oy2 = wobble(y2 + pass * 15, jitter);
+          ctx.moveTo(x1 + ox1, y1 + oy1);
+          ctx.lineTo(x2 + ox2, y2 + oy2);
+          ctx.stroke();
+        }
+      }
+
+      function roughRect(x, y, w, h, color = ink, lw = 2) {
+        roughLine(x, y, x + w, y, color, lw);
+        roughLine(x + w, y, x + w, y + h, color, lw);
+        roughLine(x + w, y + h, x, y + h, color, lw);
+        roughLine(x, y + h, x, y, color, lw);
+      }
+
+      function roughCircle(x, y, r, color = ink, lw = 2) {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = lw;
+        ctx.beginPath();
+        for (let i = 0; i <= 40; i += 1) {
+          const a = (i / 40) * TAU;
+          const rr = r + Math.sin(i * 1.7 + state.scroll * 0.01) * 0.9;
+          const px = x + Math.cos(a) * rr;
+          const py = y + Math.sin(a) * rr;
+          if (i === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+      }
+
+      function waveLine(x, y, w, amp, step, color = ink, lw = 2) {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = lw;
+        ctx.beginPath();
+        for (let px = 0; px <= w; px += step) {
+          const py = y + Math.sin((px + state.scroll) * 0.025) * amp + Math.sin((px + state.scroll) * 0.011) * amp * 0.45;
+          if (px === 0) ctx.moveTo(x + px, py);
+          else ctx.lineTo(x + px, py);
+        }
+        ctx.stroke();
+      }
+
+      function drawStickman(x, y, scale = 1, pose = 0) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(scale, scale);
+        roughCircle(0, -28, 11, ink, 2);
+        roughLine(0, -16, 0, 20, ink, 2);
+        roughLine(0, -2, -18, 10 + Math.sin(pose) * 5, ink, 2);
+        roughLine(0, -2, 18, 6 - Math.sin(pose) * 7, ink, 2);
+        roughLine(0, 20, -14, 44, ink, 2);
+        roughLine(0, 20, 14, 44, ink, 2);
+        ctx.restore();
+      }
+
+      function drawAnchor(x, y, scale = 1, rotation = 0, color = ink) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(rotation);
+        ctx.scale(scale, scale);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 3;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        roughLine(0, -20, 0, 20, color, 2.6);
+        roughLine(-13, -12, 13, -12, color, 2.6);
+        roughCircle(0, -24, 5, color, 2.4);
+        ctx.beginPath();
+        ctx.arc(0, 8, 19, 0.1 * Math.PI, 0.9 * Math.PI);
+        ctx.stroke();
+        roughLine(-18, 16, -26, 7, color, 2.6);
+        roughLine(18, 16, 26, 7, color, 2.6);
+        ctx.restore();
+      }
+
+      function drawFish(x, y, s, flip = 1) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(flip * s, s);
+        ctx.strokeStyle = "#225b70";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 18, 8, 0, 0, TAU);
+        ctx.stroke();
+        roughLine(-18, 0, -31, -10, "#225b70", 2);
+        roughLine(-18, 0, -31, 10, "#225b70", 2);
+        roughCircle(8, -2, 1.5, "#225b70", 1.5);
+        ctx.restore();
+      }
+
+      function drawSea(s) {
+        ctx.save();
+        ctx.fillStyle = "rgba(107, 201, 216, 0.28)";
+        ctx.fillRect(0, s.waterY, width, height - s.waterY);
+        ctx.fillStyle = "rgba(39, 109, 134, 0.08)";
+        ctx.fillRect(0, s.waterY + 70, width, height - s.waterY - 70);
+
+        waveLine(20, s.waterY, width - 40, 12, 18, ink, 2.2);
+        waveLine(22, s.seabedY, width - 52, 20, 20, ink, 2.2);
+
+        ctx.strokeStyle = "rgba(24, 24, 24, 0.38)";
+        ctx.lineWidth = 1.3;
+        const rulerX = 54;
+        roughLine(rulerX, s.waterY + 24, rulerX, s.seabedY - 28, "rgba(24,24,24,0.45)", 1.4);
+        ctx.font = "700 12px Trebuchet MS, sans-serif";
+        ctx.fillStyle = "rgba(24,24,24,0.62)";
+        for (let i = 1; i <= 4; i += 1) {
+          const y = lerp(s.waterY + 48, s.seabedY - 48, i / 4);
+          roughLine(rulerX - 8, y, rulerX + 8, y, "rgba(24,24,24,0.45)", 1.3);
+          ctx.fillText(`${i * 25}m`, rulerX + 14, y + 4);
+        }
+
+        for (let i = 0; i < 6; i += 1) {
+          const fx = 90 + ((i * 137 + state.scroll * 0.28) % Math.max(180, s.shipX - 90));
+          const fy = s.waterY + 70 + Math.sin(state.scroll * 0.025 + i) * 24 + i * 28;
+          drawFish(fx, fy, 0.55 + (i % 3) * 0.13, i % 2 ? -1 : 1);
+        }
+
+        ctx.restore();
+      }
+
+      function drawShip(s) {
+        if (!state.shipLayout) state.shipLayout = generateShipLayout();
+        const layout = state.shipLayout;
+        const brakingOffset = -state.shock * 12;
+        const shake = Math.sin(state.scroll * 0.18) * state.shock * 7;
+        const x = s.shipX + brakingOffset + shake;
+        const y = s.shipY + Math.sin(state.scroll * 0.05) * 1.5;
+        const w = s.shipW;
+        const h = s.shipH;
+        const interior = getShipInterior(x, y, w, h, layout.floorCount);
+
+        ctx.save();
+        drawCruiseShell(x, y, w, h, layout);
+        drawRoomGrid(layout, interior);
+        drawStairStacks(interior, layout.floorCount);
+        drawRoomPeople(layout, interior);
+        drawShipTargets(layout, interior);
+        drawShipName(x, y, w, layout);
+        ctx.restore();
+      }
+
+      function getShipInterior(x, y, w, h, floorCount) {
+        const floorPadding = floorCount > 8 ? 0.07 : 0.08;
+        return {
+          x: x + w * floorPadding,
+          y: y + h * 0.14,
+          w: w * (1 - floorPadding * 2),
+          h: h * 0.71,
+          floorH: (h * 0.71) / floorCount
+        };
+      }
+
+      function drawCruiseShell(x, y, w, h, layout) {
+        const topY = y + h * 0.08;
+        const bowX = x + w * 0.98;
+        const sternX = x + w * 0.02;
+        const hullY = y + h * 0.79;
+        const bottomY = y + h * 0.95;
+
+        ctx.fillStyle = "rgba(249, 247, 239, 0.88)";
+        ctx.beginPath();
+        ctx.moveTo(sternX, y + h * 0.28);
+        ctx.lineTo(x + w * 0.12, topY);
+        ctx.lineTo(x + w * 0.76, topY);
+        ctx.lineTo(x + w * 0.91, y + h * 0.18);
+        ctx.lineTo(bowX, hullY);
+        ctx.lineTo(x + w * 0.9, bottomY);
+        ctx.lineTo(x + w * 0.12, bottomY);
+        ctx.lineTo(x, hullY);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = "rgba(198,154,59,0.11)";
+        ctx.fillRect(x + w * 0.08, topY + 6, w * 0.84, h * 0.16);
+        ctx.fillStyle = "rgba(107,201,216,0.09)";
+        ctx.fillRect(x + w * 0.08, y + h * 0.62, w * 0.84, h * 0.21);
+
+        roughLine(sternX, y + h * 0.28, x + w * 0.12, topY, ink, 2.6);
+        roughLine(x + w * 0.12, topY, x + w * 0.76, topY, ink, 2.6);
+        roughLine(x + w * 0.76, topY, x + w * 0.91, y + h * 0.18, ink, 2.6);
+        roughLine(x + w * 0.91, y + h * 0.18, bowX, hullY, ink, 2.6);
+        roughLine(bowX, hullY, x + w * 0.9, bottomY, ink, 2.6);
+        roughLine(x + w * 0.9, bottomY, x + w * 0.12, bottomY, ink, 2.6);
+        roughLine(x + w * 0.12, bottomY, x, hullY, ink, 2.6);
+        roughLine(x, hullY, sternX, y + h * 0.28, ink, 2.6);
+
+        roughLine(x + w * 0.06, hullY, x + w * 0.95, hullY, ink, 2.1);
+        roughLine(x + w * 0.1, y + h * 0.18, x + w * 0.86, y + h * 0.18, "rgba(24,24,24,0.55)", 1.5);
+        for (let i = 0; i < 3; i += 1) {
+          const fx = x + w * (0.34 + i * 0.12);
+          roughRect(fx, y + h * 0.015, w * 0.045, h * 0.07, ink, 2);
+          roughLine(fx + 4, y + h * 0.015, fx + w * 0.045 + 4, y - h * 0.02, "#c44732", 2.2);
+        }
+        roughRect(x + w * 0.7, y + h * 0.025, w * 0.14, h * 0.07, ink, 2);
+
+        ctx.font = `${Math.max(10, Math.min(14, w / 42))}px Trebuchet MS, PingFang SC, sans-serif`;
+        ctx.fillStyle = "rgba(24,24,24,0.5)";
+        ctx.fillText(`${layout.floorCount}层随机横切面`, x + w * 0.13, y + h * 0.125);
+      }
+
+      function drawRoomGrid(layout, interior) {
+        const { x, y, w, floorH } = interior;
+        ctx.save();
+        roughRect(x, y, w, interior.h, ink, 2.1);
+
+        layout.floors.forEach((floor, floorIndex) => {
+          const fy = y + floorIndex * floorH;
+          const isLower = floor.band === "lower";
+          ctx.fillStyle = isLower ? "rgba(107,201,216,0.08)" : "rgba(255,250,240,0.35)";
+          ctx.fillRect(x, fy, w, floorH);
+          roughLine(x, fy, x + w, fy, ink, 1.7);
+
+          floor.rooms.forEach((room) => {
+            const rx = x + room.x * w;
+            const rw = room.w * w;
+            ctx.fillStyle = room.color;
+            ctx.fillRect(rx + 1, fy + 1, Math.max(0, rw - 2), Math.max(0, floorH - 2));
+            roughLine(rx, fy, rx, fy + floorH, "rgba(24,24,24,0.65)", 1.35);
+            if (rw > 58 && floorH > 30) {
+              ctx.font = `800 ${Math.max(8, Math.min(11, floorH * 0.24))}px Trebuchet MS, PingFang SC, sans-serif`;
+              ctx.fillStyle = "rgba(24,24,24,0.66)";
+              ctx.fillText(room.label, rx + 5, fy + 13);
+            }
+            drawRoomProps(room, rx, fy, rw, floorH);
+          });
+        });
+
+        roughLine(x, y + interior.h, x + w, y + interior.h, ink, 2.1);
+        ctx.restore();
+      }
+
+      function drawRoomProps(room, x, y, w, h) {
+        const props = room.props.slice(0, w > 88 ? 3 : 2);
+        props.forEach((prop, index) => {
+          const px = x + w * (0.28 + index * 0.22);
+          const py = y + h * 0.68;
+          const scale = Math.max(0.22, Math.min(0.42, h / 96));
+          drawIcon(prop, px, py, scale, false, 0.28);
+        });
+      }
+
+      function drawStairStacks(interior, floorCount) {
+        const stacks = [interior.x + interior.w * 0.08, interior.x + interior.w * 0.91];
+        stacks.forEach((sx, stackIndex) => {
+          for (let i = 1; i < floorCount; i += 1) {
+            const y1 = interior.y + i * interior.floorH - interior.floorH * 0.72;
+            const y2 = interior.y + i * interior.floorH - 4;
+            const dir = stackIndex === 0 ? 1 : -1;
+            roughLine(sx, y1, sx + dir * 34, y2, "#8a612a", 2);
+            roughLine(sx + dir * 8, y1 + 8, sx + dir * 42, y2 + 8, "#8a612a", 1.5);
+            for (let step = 0; step < 4; step += 1) {
+              const sy = lerp(y1, y2, step / 3);
+              roughLine(sx + dir * (step * 9), sy, sx + dir * (step * 9 + 13), sy, "#8a612a", 1.2);
+            }
+          }
+        });
+      }
+
+      function drawRoomPeople(layout, interior) {
+        layout.floors.forEach((floor, floorIndex) => {
+          const fy = interior.y + floorIndex * interior.floorH;
+          floor.rooms.forEach((room) => {
+            const rx = interior.x + room.x * interior.w;
+            const rw = room.w * interior.w;
+            const count = Math.min(room.people, Math.max(1, Math.floor(rw / 42)));
+            for (let i = 0; i < count; i += 1) {
+              const px = rx + rw * ((i + 1) / (count + 1));
+              const py = fy + interior.floorH * 0.78 + state.shock * (i + 1) * 1.4;
+              const scale = Math.max(0.16, Math.min(0.28, interior.floorH / 120));
+              drawTinyPerson(px, py, scale, state.scroll * 0.09 + room.seed * 10 + i, room.value > 1.2);
+            }
+          });
+        });
+      }
+
+      function drawTinyPerson(x, y, scale, pose, fancy) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(scale, scale);
+        roughCircle(0, -28, 9, ink, 1.6);
+        roughLine(0, -18, 0, 16, ink, 1.6);
+        roughLine(0, -4, -14, 8 + Math.sin(pose) * 5, ink, 1.5);
+        roughLine(0, -4, 14, 7 - Math.sin(pose) * 4, ink, 1.5);
+        roughLine(0, 16, -10, 37, ink, 1.5);
+        roughLine(0, 16, 10, 37, ink, 1.5);
+        if (fancy) roughLine(-12, -39, 12, -39, "#b99037", 3);
+        ctx.restore();
+      }
+
+      function drawShipTargets(layout, interior) {
+        layout.targets.forEach((item, index) => {
+          const point = targetPoint(item, layout, interior);
+          if (!point) return;
+          if (!state.damage[index]) {
+            state.damage[index] = { broken: false, tilt: 0, dx: 0, dy: 0, pulse: 0 };
+          }
+          const d = state.damage[index];
+          ctx.save();
+          ctx.translate(point.x + d.dx, point.y + d.dy);
+          ctx.rotate(d.tilt);
+          drawIcon(item.type, 0, 0, point.scale, d.broken, 1);
+          if (d.broken) {
+            roughLine(-20 * point.scale, 18 * point.scale, 22 * point.scale, -16 * point.scale, "#c44732", 2.4);
+            roughLine(-17 * point.scale, -15 * point.scale, 21 * point.scale, 18 * point.scale, "#c44732", 2);
+          }
+          ctx.restore();
+        });
+      }
+
+      function targetPoint(item, layout, interior) {
+        const floor = layout.floors[item.floorIndex];
+        const room = floor?.rooms[item.roomIndex];
+        if (!room) return null;
+        const roomX = interior.x + room.x * interior.w;
+        const roomW = room.w * interior.w;
+        return {
+          x: roomX + roomW * item.rx,
+          y: interior.y + item.floorIndex * interior.floorH + interior.floorH * item.ry,
+          scale: Math.max(0.27, Math.min(0.52, interior.floorH / 82))
+        };
+      }
+
+      function drawIcon(type, x, y, scale = 1, broken = false, alpha = 1) {
+        ctx.save();
+        ctx.globalAlpha *= alpha;
+        ctx.translate(x, y);
+        ctx.scale(scale, scale);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = broken ? "#c44732" : ink;
+        const lineColor = broken ? "#c44732" : ink;
+
+        if (type === "cake") {
+          roughRect(-20, -5, 40, 14, lineColor, 2);
+          roughRect(-13, -18, 26, 13, lineColor, 2);
+          roughLine(-5, -22, -5, -30, "#c44732", 2);
+          roughLine(7, -22, 7, -29, "#c44732", 2);
+        } else if (type === "vase") {
+          ctx.beginPath();
+          ctx.moveTo(-8, 14);
+          ctx.bezierCurveTo(-20, -2, -9, -22, -2, -17);
+          ctx.bezierCurveTo(10, -23, 20, -2, 8, 14);
+          ctx.closePath();
+          ctx.stroke();
+          roughLine(-7, -20, 7, -20, lineColor, 2);
+        } else if (type === "wine") {
+          for (let row = 0; row < 3; row += 1) {
+            for (let col = 0; col <= row; col += 1) {
+              roughCircle((col - row / 2) * 12, row * -12, 4.6, "#8a2732", 1.8);
+            }
+          }
+        } else if (type === "art") {
+          roughRect(-23, -16, 46, 32, lineColor, 2);
+          waveLine(-17, -1, 34, 6, 8, "#c44732", 1.8);
+        } else if (type === "piano") {
+          roughRect(-24, -10, 48, 20, lineColor, 2);
+          roughLine(-14, -10, -20, -24, lineColor, 2);
+          roughLine(15, -10, 24, -20, lineColor, 2);
+        } else if (type === "jewel") {
+          roughLine(0, -18, 17, -2, "#2c91a3", 2);
+          roughLine(17, -2, 0, 17, "#2c91a3", 2);
+          roughLine(0, 17, -17, -2, "#2c91a3", 2);
+          roughLine(-17, -2, 0, -18, "#2c91a3", 2);
+          roughLine(-17, -2, 17, -2, "#2c91a3", 1.5);
+        } else if (type === "chips") {
+          for (let i = 0; i < 4; i += 1) roughCircle(-12 + i * 8, -i * 3, 7, i % 2 ? "#c44732" : "#2f8f5b", 2);
+        } else if (type === "bag") {
+          roughRect(-15, -5, 30, 22, lineColor, 2);
+          ctx.beginPath();
+          ctx.arc(0, -5, 9, Math.PI, TAU);
+          ctx.stroke();
+        } else if (type === "table") {
+          roughLine(-22, 0, 22, 0, lineColor, 2);
+          roughLine(-16, 0, -19, 18, lineColor, 1.7);
+          roughLine(16, 0, 19, 18, lineColor, 1.7);
+        } else if (type === "bed") {
+          roughRect(-24, -4, 48, 18, lineColor, 2);
+          roughRect(-22, -16, 16, 12, lineColor, 1.7);
+        } else if (type === "pool") {
+          ctx.strokeStyle = "#2c91a3";
+          ctx.beginPath();
+          ctx.ellipse(0, 2, 24, 11, 0, 0, TAU);
+          ctx.stroke();
+          waveLine(-16, 2, 32, 4, 8, "#2c91a3", 1.5);
+        } else if (type === "chair") {
+          roughLine(-10, -8, 8, 8, lineColor, 2);
+          roughLine(8, 8, 18, 2, lineColor, 2);
+          roughLine(5, 8, 5, 20, lineColor, 1.6);
+        } else if (type === "wheel") {
+          roughCircle(0, 0, 15, lineColor, 2);
+          for (let i = 0; i < 6; i += 1) {
+            const a = (i / 6) * TAU;
+            roughLine(0, 0, Math.cos(a) * 20, Math.sin(a) * 20, lineColor, 1.4);
+          }
+        } else if (type === "map") {
+          roughRect(-18, -12, 36, 24, lineColor, 1.8);
+          waveLine(-14, -2, 28, 4, 7, "#2c91a3", 1.4);
+        } else if (type === "plant") {
+          roughLine(0, 16, 0, -8, "#2f8f5b", 2);
+          roughCircle(-8, -10, 7, "#2f8f5b", 1.6);
+          roughCircle(8, -13, 7, "#2f8f5b", 1.6);
+          roughRect(-9, 14, 18, 10, lineColor, 1.6);
+        } else if (type === "stage") {
+          roughRect(-24, 2, 48, 12, lineColor, 2);
+          roughLine(-18, 2, -8, -12, "#b99037", 2);
+          roughLine(18, 2, 8, -12, "#b99037", 2);
+        } else if (type === "gear") {
+          roughCircle(0, 0, 13, lineColor, 2);
+          roughCircle(0, 0, 5, lineColor, 1.6);
+        } else {
+          roughRect(-17, -12, 34, 24, lineColor, 2);
+          roughLine(-10, -12, -10, 12, lineColor, 1.4);
+        }
+        ctx.restore();
+      }
+
+      function drawShipName(x, y, w, layout) {
+        ctx.font = "800 13px Trebuchet MS, PingFang SC, sans-serif";
+        ctx.fillStyle = "rgba(24,24,24,0.68)";
+        ctx.fillText(layout.name, x + w * 0.62, y + 19);
+      }
+
+      function drawSailorAndThrowPoint(s) {
+        const pose = state.anchorState === "idle" ? Math.sin(state.scroll * 0.08) : 1.4;
+        drawStickman(s.sailorX, s.sailorY, 0.86, pose);
+        roughLine(s.shipX - 8, s.shipY, s.shipX - 8, s.waterY + 18, ink, 2.3);
+
+        if (state.anchorState === "idle") {
+          drawAnchor(s.sailorX - 54, s.sailorY + 20, 0.78, 0.12);
+          drawAimGuide(s);
+        }
+      }
+
+      function drawAimGuide(s) {
+        const a = (state.angle * Math.PI) / 180;
+        const startX = s.sailorX - 14;
+        const startY = s.sailorY - 12;
+        const power = 120 + state.timing * 92;
+        ctx.save();
+        ctx.setLineDash([6, 10]);
+        ctx.strokeStyle = "rgba(196, 71, 50, 0.76)";
+        ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        for (let t = 0; t <= 1.2; t += 0.08) {
+          const px = startX + Math.cos(a) * -power * t;
+          const py = startY + Math.sin(a) * power * t + 82 * t * t;
+          if (t === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+        ctx.setLineDash([]);
+        drawAnchor(startX + Math.cos(a) * -54, startY + Math.sin(a) * 54, 0.42, a + Math.PI / 2, "#c44732");
+        ctx.restore();
+      }
+
+      function drawAnchorFlight(s) {
+        if (state.anchorState === "idle") return;
+
+        const ropeStartX = s.sailorX - 8;
+        const ropeStartY = s.sailorY - 12;
+        ctx.strokeStyle = ink;
+        ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        ctx.moveTo(ropeStartX, ropeStartY);
+        const points = state.rope.length ? state.rope : [state.anchor];
+        points.forEach((p, i) => {
+          const sag = Math.sin(i * 0.7 + state.scroll * 0.03) * 3;
+          ctx.lineTo(p.x, p.y + sag);
+        });
+        ctx.stroke();
+
+        drawAnchor(state.anchor.x, state.anchor.y, 0.76, state.anchor.spin, state.anchorState === "snagged" ? "#c44732" : ink);
+      }
+
+      function drawSparks() {
+        state.sparks.forEach((spark) => {
+          ctx.globalAlpha = spark.life;
+          roughLine(spark.x - spark.vx * 4, spark.y - spark.vy * 4, spark.x + spark.vx * 6, spark.y + spark.vy * 6, "#c44732", 2);
+          ctx.globalAlpha = 1;
+        });
+      }
+
+      function drawLabels(s) {
+        ctx.save();
+        ctx.font = "800 14px Trebuchet MS, PingFang SC, sans-serif";
+        ctx.fillStyle = "rgba(24,24,24,0.72)";
+        ctx.fillText("左舷抛锚区", Math.max(78, width * 0.06), s.waterY - 28);
+        ctx.fillText("游轮剖面", s.shipX + 22, s.shipY - 14);
+        ctx.restore();
+      }
+
+      function render(now) {
+        const dt = Math.min(0.033, (now - lastTime) / 1000 || 0.016);
+        lastTime = now;
+        update(dt);
+
+        ctx.clearRect(0, 0, width, height);
+        const s = scene();
+
+        drawSea(s);
+        drawShip(s);
+        drawSailorAndThrowPoint(s);
+        drawAnchorFlight(s);
+        drawSparks();
+        drawLabels(s);
+        requestAnimationFrame(render);
+      }
+
+      function update(dt) {
+        state.scroll += state.speed * dt * 13 + 0.8;
+        if (state.anchorState === "idle") {
+          state.timing += state.timingDir * dt * 0.72;
+          if (state.timing > 1) {
+            state.timing = 1;
+            state.timingDir = -1;
+          } else if (state.timing < 0) {
+            state.timing = 0;
+            state.timingDir = 1;
+          }
+        }
+
+        if (state.anchorState === "flying") {
+          const s = scene();
+          state.anchor.vy += 520 * dt;
+          state.anchor.x += state.anchor.vx * dt;
+          state.anchor.y += state.anchor.vy * dt;
+          state.anchor.spin += dt * 6;
+          state.rope.push({ x: state.anchor.x, y: state.anchor.y });
+          if (state.rope.length > 28) state.rope.shift();
+
+          const localDepth = s.seabedY + Math.sin((state.anchor.x + state.scroll) * 0.035) * 18;
+          if (state.anchor.y >= localDepth || state.anchor.x < 24) {
+            state.anchor.y = clamp(state.anchor.y, s.waterY + 18, localDepth);
+            snagAnchor(s);
+          }
+        }
+
+        if (state.anchorState === "snagged") {
+          const drag = 0.7 + state.shock * 5.6;
+          state.speed = Math.max(0, state.speed - drag * dt);
+          state.shock = Math.max(0, state.shock - dt * 0.22);
+          getTargets().forEach((_, index) => {
+            const d = state.damage[index];
+            if (!d) return;
+            d.dx = lerp(d.dx, d.broken ? -18 - index * 3 : 0, dt * 1.4);
+            d.dy = lerp(d.dy, d.broken ? 15 + (index % 2) * 10 : 0, dt * 1.2);
+            d.tilt = lerp(d.tilt, d.broken ? -0.45 + index * 0.08 : state.shock * 0.14, dt * 2.2);
+          });
+        }
+
+        state.sparks = state.sparks
+          .map((spark) => ({
+            ...spark,
+            x: spark.x + spark.vx,
+            y: spark.y + spark.vy,
+            vy: spark.vy + 0.12,
+            life: spark.life - dt * 1.8
+          }))
+          .filter((spark) => spark.life > 0);
+
+        updateHud();
+      }
+
+      function throwAnchor() {
+        if (state.anchorState !== "idle") return;
+        const s = scene();
+        const a = (state.angle * Math.PI) / 180;
+        const power = 260 + state.timing * 180;
+        state.anchorState = "flying";
+        state.anchor.x = s.sailorX - 20;
+        state.anchor.y = s.sailorY - 18;
+        state.anchor.vx = Math.cos(a) * -power;
+        state.anchor.vy = Math.sin(a) * power;
+        state.anchor.spin = 0;
+        state.rope = [];
+      }
+
+      function snagAnchor(s) {
+        state.anchorState = "snagged";
+        const depthFactor = clamp((state.anchor.y - s.waterY) / (s.seabedY - s.waterY), 0, 1);
+        const timingFactor = 1 - Math.abs(state.timing - 0.5) * 1.3;
+        const angleFactor = 1 - Math.abs(state.angle + 45) / 45;
+        const friction = clamp(0.18 + depthFactor * 0.45 + timingFactor * 0.26 + angleFactor * 0.22, 0.12, 1);
+        state.shock = clamp(friction, 0, 1);
+        const damageChance = clamp(friction * 1.2 + state.speed / 40, 0, 1);
+
+        getTargets().forEach((item, index) => {
+          if (!state.damage[index]) state.damage[index] = { broken: false, tilt: 0, dx: 0, dy: 0, pulse: 0 };
+          const d = state.damage[index];
+          const threshold = 0.18 + index * 0.045;
+          if (!d.broken && damageChance > threshold) {
+            d.broken = true;
+            state.score += Math.round(item.value * damageChance);
+          }
+        });
+
+        for (let i = 0; i < 16; i += 1) {
+          state.sparks.push({
+            x: state.anchor.x,
+            y: state.anchor.y,
+            vx: Math.cos(i * 0.7) * (1 + Math.random() * 4),
+            vy: Math.sin(i * 0.7) * (1 + Math.random() * 3) - 2,
+            life: 0.7 + Math.random() * 0.4
+          });
+        }
+
+        showToast(`摩擦冲击 ${Math.round(friction * 100)}%，损坏分 +${state.score}`);
+      }
+
+      function resetGame() {
+        state.speed = 18;
+        state.shock = 0;
+        state.score = 0;
+        state.anchorState = "idle";
+        state.rope = [];
+        state.sparks = [];
+        state.shipLayout = generateShipLayout();
+        state.damage = getTargets().map(() => ({ broken: false, tilt: 0, dx: 0, dy: 0, pulse: 0 }));
+        document.documentElement.dataset.shipName = state.shipLayout.name;
+        document.documentElement.dataset.shipFloors = String(state.shipLayout.floorCount);
+        document.documentElement.dataset.shipRooms = String(state.shipLayout.floors.reduce((sum, floor) => sum + floor.rooms.length, 0));
+        document.documentElement.dataset.shipTargets = String(state.shipLayout.targets.length);
+        showToast(`${state.shipLayout.name}：${state.shipLayout.floorCount}层横切面已生成。`);
+      }
+
+      function updateHud() {
+        angleText.textContent = `${state.angle}°`;
+        speedText.textContent = `${state.speed.toFixed(1)} kn`;
+        shockText.textContent = `${Math.round(state.shock * 100)}%`;
+        layersText.textContent = state.shipLayout ? `${state.shipLayout.floorCount}层` : `${state.floorMin}-${state.floorMax}`;
+        scoreText.textContent = String(state.score);
+        timingText.textContent = `${Math.round(state.timing * 100)}%`;
+        timingNeedle.style.left = `${state.timing * 100}%`;
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("is-visible");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 1500);
+      }
+
+      angleInput.addEventListener("input", (event) => {
+        state.angle = Number(event.target.value);
+        updateHud();
+      });
+
+      [floorMinInput, floorMaxInput].forEach((input) => {
+        input.addEventListener("change", () => {
+          syncFloorRange();
+          resetGame();
+        });
+      });
+
+      throwBtn.addEventListener("click", throwAnchor);
+      resetBtn.addEventListener("click", resetGame);
+
+      canvas.addEventListener("pointerdown", (event) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const s = scene();
+        if (x < s.shipX && y > 76 && y < height - 88) {
+          const dx = s.sailorX - x;
+          const dy = y - (s.sailorY - 12);
+          const deg = -Math.atan2(dy, dx) * 180 / Math.PI;
+          state.angle = Math.round(clamp(deg, -72, -18));
+          angleInput.value = String(state.angle);
+          updateHud();
+        }
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.code === "Space") {
+          event.preventDefault();
+          throwAnchor();
+        }
+        if (event.key.toLowerCase() === "r") resetGame();
+      });
+
+      window.addEventListener("resize", resize);
+      window.anchorGameDebug = {
+        get layout() {
+          return state.shipLayout;
+        },
+        get targets() {
+          return getTargets();
+        },
+        resetGame
+      };
+      resize();
+      resetGame();
+      requestAnimationFrame(render);
+    </script>
+  </body>
+</html>
