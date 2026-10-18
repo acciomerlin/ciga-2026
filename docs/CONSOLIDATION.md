@@ -37,7 +37,7 @@
 
 ## 上传边界
 
-- 新仓库建议为 `acciomerlin/ciga-2026-workspace`，私有。
+- GitHub 仓库为 `acciomerlin/ciga-2026`，私有。
 - 不带入三个旧 `.git` 的历史对象，旧提交仍在原目录。
 - 排除一份与游戏无关的个人 PDF；新的导出包从清理后的源码生成。
 - 船游戏系统字体换成已有的 Noto Sans SC，并附两种 Noto 字体的完整 OFL 授权。

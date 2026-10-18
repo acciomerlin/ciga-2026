@@ -56,12 +56,12 @@ macOS 示例：`--godot /Applications/Godot.app/Contents/MacOS/Godot`。Web 模�
 
 ## 上传 GitHub
 
-建议仓库名 `ciga-2026-workspace`，可见性为私有。当前没有为整个游戏添加新的开源许可证；原有代码、美术、素材和依赖的权利归属不因整理而改变。第三方依赖见 `THIRD_PARTY_NOTICES.md`。
+仓库名为 `ciga-2026`，可见性为私有。当前没有为整个游戏添加新的开源许可证；原有代码、美术、素材和依赖的权利归属不因整理而改变。第三方依赖见 `THIRD_PARTY_NOTICES.md`。
 
 仓库准备好后，使用自己的 GitHub 账号创建同名空仓库，再设置远端并推送：
 
 ```bash
-git remote add origin git@github.com:YOUR_ACCOUNT/ciga-2026-workspace.git
+git remote add origin git@github.com:YOUR_ACCOUNT/ciga-2026.git
 git push -u origin main
 ```
 
