@@ -18,7 +18,7 @@
 
 **操作：** 时机条出现时按 `Space` 抛锚；游戏结束后按 `Enter` 重开。
 
-**源码：** [games/anchorshackeshacke](games/anchorshackeshacke/) · Godot 4.7。场景、船体、锚链、沙石和晕船逻辑分别保留在项目自己的 `scenes/`、`scripts/` 和 `assets/` 中。
+**项目：** [01-ship](games/01-ship/) · [Godot 4.7 源码](games/01-ship/godot/) · [开发原型](games/01-ship/prototypes/web/)。场景、船体、锚链、沙石和晕船逻辑仍保留在 Godot 项目自己的 `scenes/`、`scripts/` 和 `assets/` 中。
 
 ### 02 · Help AI Anchorman
 
@@ -28,7 +28,7 @@
 
 **操作：** 鼠标点击开始、阅读漫画和操作直播间；具体交互跟随游戏画面提示。
 
-**源码：** [games/help-ai-anchorman](games/help-ai-anchorman/) · Godot 4.7。网页实现也保留了[后期 H5 版本](web/anchorman/)和[早期 H5 版本](archive/anchorman-h5-v1/)，它们是开发过程中的不同实现，不等同于 Godot 版本。
+**项目：** [02-ai-anchorman](games/02-ai-anchorman/) · [Godot 4.7 源码](games/02-ai-anchorman/godot/)。网页实现也保留了[后期 H5 版本](games/02-ai-anchorman/web/)和[早期 H5 版本](games/02-ai-anchorman/history/web-v1/)，它们是开发过程中的不同实现，不等同于 Godot 版本。[美术迭代](games/02-ai-anchorman/art/iterations/)也一起归在本游戏中。
 
 ### 03 · 梅人说不能做跑酷 / Anchor Drift
 
@@ -38,7 +38,7 @@
 
 **操作：** `A` 左锚，`D` 右锚，`Space` 松开当前锚；开始与结束页面也有按钮提示。
 
-**源码：** [web/index.html](web/index.html)、[web/game.js](web/game.js) 和 [web/assets](web/assets/) · HTML / CSS / JavaScript。
+**项目：** [03-anchor-drift](games/03-anchor-drift/) · [网页入口](games/03-anchor-drift/web/index.html)、[游戏逻辑](games/03-anchor-drift/web/game.js)和[时代素材](games/03-anchor-drift/web/assets/) · HTML / CSS / JavaScript。[开发原型](games/03-anchor-drift/prototypes/)包括透视网页、Three.js、Godot 跑酷和河道白盒。
 
 > 上面四张图均来自本仓库当前版本的浏览器运行截图：总入口、两个 Godot Web 导出和河流网页游戏。
 
@@ -64,35 +64,41 @@ macOS 的 Godot 路径通常类似 `/Applications/Godot.app/Contents/MacOS/Godot
 | 三个小游戏总入口 | <http://127.0.0.1:8080/> |
 | 晕船抛锚 | <http://127.0.0.1:8080/dist/anchorshackeshacke/> |
 | AI 主播 Godot 版 | <http://127.0.0.1:8080/dist/help-ai-anchorman/> |
-| 年代河流跑酷 | <http://127.0.0.1:8080/web/index.html> |
-| AI 主播 H5 版 | <http://127.0.0.1:8080/web/anchorman/> |
+| 年代河流跑酷 | <http://127.0.0.1:8080/games/03-anchor-drift/web/> |
+| AI 主播 H5 版 | <http://127.0.0.1:8080/games/02-ai-anchorman/web/> |
 
 `dist/` 是本地生成的导出目录，不提交到 Git。刚克隆的仓库需要先导出，前两个入口才会有内容。没有 Godot 时，仍可启动服务器查看河流游戏、H5 主播版本和网页原型。
 
 不要直接双击 Godot 导出的 HTML；浏览器需要通过 HTTP 加载 `.wasm` 和 `.pck`。上面的地址都是本机预览地址，上传 GitHub 仓库不会自动发布在线游戏。
 
-用 Godot 编辑时，分别导入 `games/` 下的 `project.godot`。`anchorshackeshacke`、`help-ai-anchorman` 当前用 Godot 4.7 验证；`throw-anchor` 保留原项目的 Godot 4.6 配置。
+用 Godot 编辑时，导入 `games/01-ship/godot/project.godot` 或 `games/02-ai-anchorman/godot/project.godot`。两个项目当前用 Godot 4.7 验证；河流游戏的 Godot 跑酷原型保留原有的 4.6 配置。导出参数和 `dist/` 地址不变。
 
 ## 3. 项目结构
 
 ```text
 ciga-2026/
-├── games/                       Godot 游戏源码
-│   ├── anchorshackeshacke/       晕船、抛锚与沙石
-│   ├── help-ai-anchorman/        AI 主播
-│   └── throw-anchor/            抛个锚 3D 原型
-├── web/                         总入口、河流游戏及主播 H5 版
-├── prototypes/                  船体、链条、物理与 3D 白盒实验
-├── art/anchorman-iterations/    主播美术迭代、切图
-├── archive/anchorman-h5-v1/     早期主播 H5 版本
+├── site/                        Anchor Plus+ 总入口及入口图片
+├── games/                       按入口中的三个小游戏归类
+│   ├── 01-ship/                 有人要吐了，，
+│   │   ├── godot/               当前游戏源码
+│   │   ├── prototypes/web/      船体、锚链、物理网页实验
+│   │   └── docs/history/        早期接入记录
+│   ├── 02-ai-anchorman/         Help AI Anchorman
+│   │   ├── godot/               当前 Godot 游戏源码
+│   │   ├── web/                 后期 H5 实现
+│   │   ├── history/web-v1/      早期 H5 实现
+│   │   └── art/iterations/      美术迭代、切图
+│   └── 03-anchor-drift/         梅人说不能做跑酷
+│       ├── web/                 当前河流游戏及时代素材
+│       └── prototypes/          网页、Godot 跑酷、3D 河道白盒
 ├── docs/                        运行截图、统计与迁移记录
 ├── licenses/                    字体授权
 └── tools/                       导出、运行与检查脚本
 ```
 
-开发过程中的实验也留着，可以分别查看：[船体与物理网页原型](prototypes/ship-web/)、[Godot 3D 抛锚原型](prototypes/godot-anchor-3d/)和[河道白盒](prototypes/anchor-river-whitebox-4.3/)。它们代表不同阶段的尝试，不都是总入口中的最终玩法。
+每个游戏目录都有自己的图文说明、操作和版本导航。开发过程中的原型、美术、历史版本都保留在对应游戏下面，不当作无用文件删除；它们代表不同阶段的尝试，不都是总入口中的当前玩法。
 
-主播的表情、手势、地球、时钟和文字切图保存在 [art/anchorman-iterations](art/anchorman-iterations/)；河流游戏的时代素材及来源记录在 [web/assets](web/assets/)。
+主播的表情、手势、地球、时钟和文字切图保存在[主播美术迭代](games/02-ai-anchorman/art/iterations/)；河流游戏的时代素材及来源记录在[河流素材](games/03-anchor-drift/web/assets/)。旧目录与现目录的对照见[目录重组记录](docs/REORGANIZATION.md)。
 
 ## 4. 整理与验证
 
@@ -102,9 +108,10 @@ ciga-2026/
 
 ```bash
 python3 tools/check_workspace.py
+python3 -m unittest discover -s tools/tests -v
 ```
 
-检查脚本会核对静态资源路径、源文件大小，并在安装 Node.js 时检查自有 JavaScript 的语法。两个 Godot 项目已做 Web 导出和启动检查；本地 HTTP 检查记录在 [docs/verification.json](docs/verification.json)。这些检查不等于完整人工通关测试。
+检查脚本会核对静态资源路径、源文件大小，并在安装 Node.js 时检查自有 JavaScript 的语法。两个 Godot 项目已重新做 Web 导出和启动检查；本次目录重组的逐文件、HTTP 和试玩核验见 [reorganization-verification.json](docs/reorganization-verification.json)，第一次整理的记录仍保留在 [verification.json](docs/verification.json)。这些检查不等于完整人工通关测试。
 
 ## 5. 来源与使用范围
 

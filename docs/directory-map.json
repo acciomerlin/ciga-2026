@@ -1,0 +1,27 @@
+{
+  "baseline_commit": "062fc65f1863337b474e12009a3119e57f5aa8c1",
+  "date": "2026-10-18",
+  "purpose": "按 README 的三个小游戏归类；保留内容、原型、美术和历史版本。",
+  "moves": [
+    ["games/anchorshackeshacke", "games/01-ship/godot"],
+    ["prototypes/ship-web", "games/01-ship/prototypes/web"],
+    ["docs/history/README_GAME1_INTEGRATION.md", "games/01-ship/docs/history/README_GAME1_INTEGRATION.md"],
+    ["games/help-ai-anchorman", "games/02-ai-anchorman/godot"],
+    ["web/anchorman", "games/02-ai-anchorman/web"],
+    ["archive/anchorman-h5-v1", "games/02-ai-anchorman/history/web-v1"],
+    ["art/anchorman-iterations", "games/02-ai-anchorman/art/iterations"],
+    ["games/throw-anchor", "games/03-anchor-drift/prototypes/anchor-runner-godot"],
+    ["prototypes/godot-anchor-3d", "games/03-anchor-drift/prototypes/anchor-river-3d"],
+    ["prototypes/anchor-river-whitebox-4.3", "games/03-anchor-drift/prototypes/anchor-river-whitebox-4.3"],
+    ["web/anchor-plus3.html", "site/index.html"],
+    ["web/anchor-plus3.css", "site/anchor-plus3.css"],
+    ["web/assets/anchor-plus3", "site/assets/anchor-plus3"],
+    ["web/perspective.html", "games/03-anchor-drift/prototypes/web/perspective.html"],
+    ["web/perspective.css", "games/03-anchor-drift/prototypes/web/perspective.css"],
+    ["web/perspective.js", "games/03-anchor-drift/prototypes/web/perspective.js"],
+    ["web/three-anchor.html", "games/03-anchor-drift/prototypes/web/three-anchor.html"],
+    ["web/three-anchor.css", "games/03-anchor-drift/prototypes/web/three-anchor.css"],
+    ["web/three-anchor.js", "games/03-anchor-drift/prototypes/web/three-anchor.js"],
+    ["web", "games/03-anchor-drift/web"]
+  ]
+}

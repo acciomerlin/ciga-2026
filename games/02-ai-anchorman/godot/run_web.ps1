@@ -1,11 +1,11 @@
 # Godot Web 导出运行脚本
 # 解决 "Failed to fetch" 错误:浏览器用 file:// 协议无法 fetch WASM/PCK 文件
-# 用法:在 help-ai-anchorman 目录下运行 .\run_web.ps1
+# 用法:在 games/02-ai-anchorman/godot 目录下运行 .\run_web.ps1
 
 $ErrorActionPreference = "Stop"
 $port = 8060
 $dir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$workspaceRoot = Split-Path -Parent (Split-Path -Parent $dir)
+$workspaceRoot = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $dir))
 $gameUrl = "http://localhost:$port/dist/help-ai-anchorman/index.html"
 
 if (-not (Test-Path (Join-Path $workspaceRoot "dist/help-ai-anchorman/index.html"))) {

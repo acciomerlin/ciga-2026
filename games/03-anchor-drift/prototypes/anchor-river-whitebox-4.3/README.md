@@ -5,7 +5,7 @@ Godot 4 whitebox prototype for the 3D anchor mechanic.
 ## Run
 
 1. Open Godot 4.x.
-2. Import `/Users/acciomac/Desktop/ciga/godot_anchor_3d/project.godot`.
+2. Import this directory's `project.godot` (`games/03-anchor-drift/prototypes/anchor-river-whitebox-4.3/project.godot` from the repository root).
 3. Press Run.
 
 ## Controls

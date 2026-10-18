@@ -9,7 +9,7 @@ const restartButton = document.querySelector("#restart");
 const TAU = Math.PI * 2;
 const boatImage = new Image();
 boatImage.decoding = "async";
-boatImage.src = "assets/duck-boat-oblique-collage.png";
+boatImage.src = "../../web/assets/duck-boat-oblique-collage.png";
 
 let dpr = 1;
 let width = 0;

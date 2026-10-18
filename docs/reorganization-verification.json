@@ -1,0 +1,165 @@
+{
+  "baseline_commit": "062fc65f1863337b474e12009a3119e57f5aa8c1",
+  "baseline_files_checked": 566,
+  "byte_identical_files": 551,
+  "documented_updates": [
+    {
+      "before": "README.md",
+      "after": "README.md",
+      "type": "documentation/provenance"
+    },
+    {
+      "before": "THIRD_PARTY_NOTICES.md",
+      "after": "THIRD_PARTY_NOTICES.md",
+      "type": "documentation/provenance"
+    },
+    {
+      "before": "docs/CONSOLIDATION.md",
+      "after": "docs/CONSOLIDATION.md",
+      "type": "documentation/provenance"
+    },
+    {
+      "before": "docs/source-manifest.json",
+      "after": "docs/source-manifest.json",
+      "type": "documentation/provenance"
+    },
+    {
+      "before": "games/anchorshackeshacke/export_presets.cfg",
+      "after": "games/01-ship/godot/export_presets.cfg",
+      "type": "path-only"
+    },
+    {
+      "before": "games/help-ai-anchorman/export_presets.cfg",
+      "after": "games/02-ai-anchorman/godot/export_presets.cfg",
+      "type": "path-only"
+    },
+    {
+      "before": "games/help-ai-anchorman/run_web.ps1",
+      "after": "games/02-ai-anchorman/godot/run_web.ps1",
+      "type": "path-only"
+    },
+    {
+      "before": "index.html",
+      "after": "index.html",
+      "type": "path-only"
+    },
+    {
+      "before": "prototypes/anchor-river-whitebox-4.3/README.md",
+      "after": "games/03-anchor-drift/prototypes/anchor-river-whitebox-4.3/README.md",
+      "type": "documentation/provenance"
+    },
+    {
+      "before": "prototypes/godot-anchor-3d/README.md",
+      "after": "games/03-anchor-drift/prototypes/anchor-river-3d/README.md",
+      "type": "documentation/provenance"
+    },
+    {
+      "before": "tools/export_web.py",
+      "after": "tools/export_web.py",
+      "type": "path-only"
+    },
+    {
+      "before": "web/anchor-plus3.html",
+      "after": "site/index.html",
+      "type": "path-only"
+    },
+    {
+      "before": "web/index.html",
+      "after": "games/03-anchor-drift/web/index.html",
+      "type": "path-only"
+    },
+    {
+      "before": "web/perspective.js",
+      "after": "games/03-anchor-drift/prototypes/web/perspective.js",
+      "type": "path-only"
+    },
+    {
+      "before": "web/three-anchor.js",
+      "after": "games/03-anchor-drift/prototypes/web/three-anchor.js",
+      "type": "path-only"
+    }
+  ],
+  "missing_files": [],
+  "unexpected_content_changes": [],
+  "original_files_checked": 893,
+  "original_content_changes": [],
+  "http_checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/site/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/games/03-anchor-drift/web/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/games/02-ai-anchorman/web/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/games/02-ai-anchorman/history/web-v1/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/games/01-ship/prototypes/web/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/games/03-anchor-drift/prototypes/web/perspective.html",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/games/03-anchor-drift/prototypes/web/three-anchor.html",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/dist/anchorshackeshacke/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/dist/help-ai-anchorman/",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/dist/anchorshackeshacke/index.wasm",
+      "status": 200,
+      "content_type": "application/wasm"
+    },
+    {
+      "path": "/dist/help-ai-anchorman/index.pck",
+      "status": 200,
+      "content_type": "application/octet-stream"
+    }
+  ],
+  "godot_web_exports": [
+    "dist/anchorshackeshacke/index.html",
+    "dist/help-ai-anchorman/index.html"
+  ],
+  "godot_export_errors": [],
+  "automated_layout_tests": 7,
+  "godot_headless_startup": {
+    "ship": "passed: --quit-after 60, exit 0, no script/resource errors",
+    "anchorman": "passed: --quit-after 60, exit 0, no script/resource errors"
+  },
+  "browser_smoke_checks": [
+    "Menu: all three entries navigated successfully",
+    "Ship: game-over screen and Enter restart observed",
+    "Anchorman: start button opened comic scene",
+    "River: start, left anchor, release and return-menu observed"
+  ],
+  "scope": "Directory and navigation regression checks only, not complete playthroughs or prototype completeness testing"
+}

@@ -14,9 +14,13 @@ def main():
     executable = shutil.which(args.godot)
     if not executable:
         parser.error('Godot not found. Set GODOT or pass --godot /path/to/Godot')
-    games = ['anchorshackeshacke', 'help-ai-anchorman'] if args.game == 'all' else [args.game]
+    projects = {
+        'anchorshackeshacke': root / 'games/01-ship/godot',
+        'help-ai-anchorman': root / 'games/02-ai-anchorman/godot',
+    }
+    games = list(projects) if args.game == 'all' else [args.game]
     for game in games:
-        project = root / 'games' / game
+        project = projects[game]
         output = root / 'dist' / game / 'index.html'
         output.parent.mkdir(parents=True, exist_ok=True)
         subprocess.run([executable, '--headless', '--editor', '--path', str(project), '--import'], check=True)
