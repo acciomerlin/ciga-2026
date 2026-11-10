@@ -99,22 +99,3 @@ ciga-2026/
 每个游戏目录都有自己的图文说明、操作和版本导航。开发过程中的原型、美术、历史版本都保留在对应游戏下面，不当作无用文件删除；它们代表不同阶段的尝试，不都是总入口中的当前玩法。
 
 主播的表情、手势、地球、时钟和文字切图保存在[主播美术迭代](games/02-ai-anchorman/art/iterations/)；河流游戏的时代素材及来源记录在[河流素材](games/03-anchor-drift/web/assets/)。旧目录与现目录的对照见[目录重组记录](docs/REORGANIZATION.md)。
-
-## 4. 整理与验证
-
-仓库由原来的 `ciga`、`ciga_2`、`ciga-3` 整理而来。原文件约 **1.162 GB**，整理后的源码工作区约 **271 MB**；原始目录仍完整保留。
-
-合并了两份完全相同的“抛个锚”源码，保留有差异的 H5 版本和美术迭代。旧 Git 历史、编辑器缓存、ZIP 和 Web 导出没有带进新仓库。容量、目录映射及处理规则见 [整理记录](docs/CONSOLIDATION.md)，逐文件来源及原始校验值见 [迁移清单](docs/source-manifest.json)。
-
-```bash
-python3 tools/check_workspace.py
-python3 -m unittest discover -s tools/tests -v
-```
-
-检查脚本会核对静态资源路径、源文件大小，并在安装 Node.js 时检查自有 JavaScript 的语法。两个 Godot 项目已重新做 Web 导出和启动检查；本次目录重组的逐文件、HTTP 和试玩核验见 [reorganization-verification.json](docs/reorganization-verification.json)，第一次整理的记录仍保留在 [verification.json](docs/verification.json)。这些检查不等于完整人工通关测试。
-
-## 5. 来源与使用范围
-
-保留原有素材的来源记录及第三方声明，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。Noto 字体的授权文本放在 [licenses](licenses/)。
-
-目前仓库为私有，没有给整个游戏新增开源许可证；代码、美术、角色和第三方素材的使用范围仍需分别确认。
